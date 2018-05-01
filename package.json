@@ -47,6 +47,7 @@
   },
   "main": "src/electron-main.js",
   "homepage": "./",
+  "productName": "Cast Bucket",
   "scripts": {
     "react-start": "node scripts/start.js",
     "build": "node scripts/build.js",
@@ -57,7 +58,6 @@
   "devDependencies": {
     "concurrently": "^3.5.1",
     "electron": "^1.8.6",
-    "foreman": "^2.0.0",
     "jest": "^22.4.3",
     "wait-on": "^2.1.0"
   },
