@@ -1,0 +1,29 @@
+
+.Button {
+  font-weight: 700;
+  line-height: 40px;
+  border: 0px none;
+  font-size: 14px;
+  padding: 0px 1.3rem;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 2px;
+  min-height: 40px;
+  outline: medium none currentcolor;
+  text-decoration: none;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 6px, rgba(48, 13, 79, 0.145) 0px 2px 3px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 1.5rem;
+  margin-right: 1rem;
+  transition: all 0.05s linear 0s;
+}
+
+.Button-Blue {
+  background: #348dfa;
+  color: white;
+}
+
+.Button-Blue:hover {
+  background: #2b6ec1
+}
