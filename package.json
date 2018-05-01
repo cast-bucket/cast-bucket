@@ -1,0 +1,28 @@
+{
+  "name": "cast-bucket",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-scripts": "1.1.4",
+    "walker": "^1.0.7"
+  },
+  "main": "src/electron-main.js",
+  "homepage": "./",
+  "scripts": {
+    "react-start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "start": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000/ && npm run electron\""
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "electron": "^1.8.6",
+    "foreman": "^2.0.0",
+    "jest": "^22.4.3",
+    "wait-on": "^2.1.0"
+  }
+}
