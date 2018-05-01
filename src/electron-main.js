@@ -1,7 +1,7 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 const url = require("url");
-const HOMEDIR = path.join(__dirname, "..");
+const HOMEDIR = path.join(__dirname, "..", "..");
 const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -22,10 +22,7 @@ function createWindow() {
       protocol: "file:",
       slashes: true
     });
-  mainWindow.loadURL(BASE_URL);
-
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  mainWindow.loadURL(startUrl);
 
   mainWindow.on("closed", function() {
     // Dereference the window object, usually you would store windows
