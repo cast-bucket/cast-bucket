@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.gradle/caches/modules-2/files-2.1/android.arch.lifecycle/common/1.0.0/e414a4cb28434e25c4f6aa71426eb20cf4874ae9/common-1.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="e414a4cb28434e25c4f6aa71426eb20cf4874ae9">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/common-1.0.0_04fcc2929a4fbcfe184fcd4b2d95f6b4c11884df.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/7786b0ee637f775458c53ec5a9bb3ca53e938450/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_4320904ad633fe09d61bc872afb5899280ab534f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/746415305faf3d33e0b628d9f2805a5fb48bbf24/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="e7a850c25a7efbd533c496ab482c980fdafac58d">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_b582de299f94ffa5b73d9b03847585a7d0eaa821.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/26.1.0/814258103cf26a15fcc26ecce35f5b7d24b73f8/support-annotations-26.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="0814258103cf26a15fcc26ecce35f5b7d24b73f8">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/support-annotations-26.1.0_60b73cb8dfcb0d2c05f27e6d1499de538562e01c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.10.0/ec614c05825ddd2267677a99f585d3913474b125/okhttp-urlconnection-3.10.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="ec614c05825ddd2267677a99f585d3913474b125">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.10.0_d21e6e07552f0c693204246086861ab9a8863574.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/1c67433e943e002f7cd48580a7767703b4aef97e/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_396e7e18ddca48ae838b05993f0b17c571378e6f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/746415305faf3d33e0b628d9f2805a5fb48bbf24/output/jars/libs/infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_2100650b61682bb6dde6e1fdff129ab7a7fdc208.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/d1f5ed476367d91092f32cf4b740c9c0482b5d17/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="7efef32744ca4a436492d5cf28c08698cc2af256">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_a39ad0618029a83ee37583137aaee3258bd20505.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_9c67fe2e0ed75f90277813a82540172706e4943b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_5969ec0a698701b3c36b16d9727cb4e319a9d6a1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/c43cf3c55e5dcff9ada8191153516775a4f604aa/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="87382214d92be4e3c931cb6aa7aa4e827bc179b7">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_776af76916f1f3a3a9c0491a86b2075f88d98d0a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/ff239cbe762ff1db5e29aa128c92eafc95880675/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="40392f30a601db5675cdf18192aab013d6fee6ec">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_0d28231a68dcd8ced26d9f15d14fd6a7c0836192.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/d441169db44d100121dffa00d04b7d29977bbd7a/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="1c9837ec75b2273699379c2ba0ae63d669b4f08c">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_838ae71ad45d9746f5eaca0848feaa8b41b25f33.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.gradle/caches/modules-2/files-2.1/android.arch.core/common/1.0.0/a2d487452376193fc8c103dd2b9bd5f2b1b44563/common-1.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/common-1.0.0_55fd13a883226faf9c7a4b4601a2da72a73e0715.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.14.0/102d7be47241d781ef95f1581d414b0943053130/okio-1.14.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="102d7be47241d781ef95f1581d414b0943053130">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/okio-1.14.0_1f11d2bd278e3a4ace3c692b6d8b4d8e002c6c56.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/2d8832fb2d4f0252f57700babfb1b232762e41db/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="2442771a5590dd4eb4bce00c2e9dca9e22e4c963">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_e2ce250dcab889d077abcdb185642dd1bcdadade.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_e93a8c9ec3fb8d65b2b8aaeb0b284ed586bcab97.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/22c54668d21cac55fff3b520bbaf807536f6ad68/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="b62fdc4cfef174c1e456014195c83fa7de7dc041">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_58bf2c6e1c9838baa40accd1f561c8cc4cb34316.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/758c826f9d9d334b880e08bb886a106f08deffe2/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="f428e2fbc9ed0b297e3a3f420e51e6982f66822d">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_e1e4d7281958557158ecf198c642296e5789321b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/f17ac77d72648401b9988e1b5bb5b7a137b85a83/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="f97cf85b0fe70d37a705111dafa6b1b418ea1650">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_bc3e6812b456297b783dff90a641d78f7fb56d12.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.10.0/7ef0f1d95bf4c0b3ba30bbae25e0e562b05cf75e/okhttp-3.10.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="7ef0f1d95bf4c0b3ba30bbae25e0e562b05cf75e">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/okhttp-3.10.0_a01da846e5fa1c96abcb802d6961171b730a091f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/b84625523f568bbcc6984ef273efab0ed6d04dbb/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="233f60a165ae622c8b36731502ebbda0f65e1930">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_9079c78144e002564f47a777f9e9c9d13c4270d1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/144c806ac779e2b33623548531a2297708ee051d/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="6f4138a4e065826cb044d49faea4cfd7191773d1">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_ae6dfeb4c937d4156db37fd84536ee3948ec3104.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/0d5be7a4fd074a60da9d56b8e3c16edc0a45b8a6/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="f80a752d1333efd4fb9b87da63e73909acb151af">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_1058b2907555dbd75ffc73c50e793817549debf9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/4c4674a609f68d2a97fefe25b4a954d709d05606/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="dc6c0959ecc7b21932675183573b2bcecf2687b9">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_b0e4291ec2cd0ae38401b343b6f7644e2adf10bb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/2b7bcf3b1918b3bb7160caa1b9648ed5b61f5f2b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="9803a14716e9f462afb5742811f3456c39f3be3a">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_1d71181e3be11355d231abb94dca32a6e6ab049c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/fde14c5f744d8001f5a5e8bb7fc90c5b3bbe9cff/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="ae15c560bc6685007440d8a70686f8348bafd791">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_5d131e3560bf6fe3f818056930083ff83574ea07.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_bbec1b611fef68198b6cd32396b1bd1ddd599cab.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/e94d20f7adddc70855f3cddd7d4234867880c7f4/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="da59c80e4a1c8df62d2b4188ef3efddab8afa236">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_db8cb8b1e6f7d2f248db580cab54553170dfb8ea.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.android/build-cache/f1934db42107c8f1d45ef43400506d370c6bc709/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="508f50705b4fde51a16259f29c854201a3044516">
+        <dex dex="/Users/shrbalaj/Repositories/re-start/castBucket/android/app/build/intermediates/pre-dexed/debug/classes_e95f2db4c26e7ef2a65753ac7f5d4c914f39ab82.jar" />
+    </item>
+
+</items>

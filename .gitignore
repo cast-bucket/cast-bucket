@@ -59,3 +59,12 @@ typings/
 
 # Platform specific packaged builds
 platform-built-apps/
+
+# Temporary Directories
+tmp/
+
+# App Intermediate build directories
+android/app/build
+
+# Intermediate Builds iOS
+ios/build
