@@ -1,44 +1,13 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+/** @format */
+import { AppRegistry } from "react-native";
+import App from "./App";
+import { name as appName } from "./meta/app.json";
 
-const instructions = Platform.select({
-	ios: `Press Cmd+R to reload 
-    Cmd+D or shake for dev menu`,
-	android: `Double tap R on your keyboard to reload 
-        Shake or press menu button for dev menu`,
-	web: `You are good to go.`
-});
+AppRegistry.registerComponent(appName, () => App);
 
-class App extends Component {
-	render() {
-		return (
-			<View style={styles.container}>
-				<Text style={styles.welcome}>Welcome to re-route, a react-native template</Text>
-				<Text style={styles.instructions}>To get started, edit App.js</Text>
-				<Text style={styles.instructions}>{instructions}</Text>
-			</View>
-		);
-	}
+if (window.document) {
+  AppRegistry.runApplication(appName, {
+    initialProps: {},
+    rootTag: document.getElementById("root")
+  });
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: '#F5FCFF'
-	},
-	welcome: {
-		fontSize: 20,
-		textAlign: 'center',
-		margin: 10
-	},
-	instructions: {
-		textAlign: 'center',
-		color: '#333333',
-		marginBottom: 5
-	}
-});
-
-ReactDOM.render(<App />, document.getElementById('root'));

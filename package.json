@@ -12,16 +12,23 @@
 		"test:web": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
 		"electron": "react-scripts start & electron .",
-		"android-linux": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android"
+		"android-linux": "react-native bundle --platform android --dev false --entry-file src/index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/Shriram-Balaji/cast-bucket.git"
-	},
+    },
+    "rnpm": {
+        "assets": [
+       "./src/assets/fonts/"
+        ]
+    },
 	"dependencies": {
 		"react": "16.4.1",
 		"react-dom": "^16.2.0",
 		"react-native": "0.56.0",
+		"react-native-elements": "^0.19.1",
+		"react-native-vector-icons": "^4.6.0",
 		"react-native-web": "0.1.13"
 	},
 	"devDependencies": {
@@ -33,6 +40,8 @@
 		"react-scripts": "1.1.0",
 		"react-test-renderer": "16.4.1"
 	},
-	"jest": { "preset": "react-native" },
+	"jest": {
+		"preset": "react-native"
+	},
 	"main": "index.electron.js"
 }
