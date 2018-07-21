@@ -3,21 +3,21 @@
 
     <item
         is-multidex="false"
-        jar="/Users/shrbalaj/Repositories/cast-bucket/node_modules/react-native-vector-icons/android/build/intermediates/bundles/default/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.3"
-        sha1="279750fed3c920d06351dbf32889c1b48203c7ad">
-        <dex dex="/Users/shrbalaj/Repositories/cast-bucket/android/app/build/intermediates/pre-dexed/debug/classes_e1ff0f10087b57cb7a013a31e98f37c828b02394.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/Users/shrbalaj/.android/build-cache/4a8adcaf763940f625acc8a9f79caefe43373a02/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.3"
         sha1="e7a850c25a7efbd533c496ab482c980fdafac58d">
         <dex dex="/Users/shrbalaj/Repositories/cast-bucket/android/app/build/intermediates/pre-dexed/debug/classes_fe354a56263ce17548a7d1aa19c8168cf8cf5ff1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/Repositories/cast-bucket/node_modules/react-native-vector-icons/android/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="279750fed3c920d06351dbf32889c1b48203c7ad">
+        <dex dex="/Users/shrbalaj/Repositories/cast-bucket/android/app/build/intermediates/pre-dexed/debug/classes_e1ff0f10087b57cb7a013a31e98f37c828b02394.jar" />
     </item>
     <item
         is-multidex="false"
