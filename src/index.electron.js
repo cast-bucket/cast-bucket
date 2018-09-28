@@ -11,7 +11,8 @@ function createWindow() {
 	let windowOptions = {
 		width: 800,
 		height: 600,
-		titleBarStyle: 'hiddenInset'
+    titleBarStyle: 'hiddenInset',
+    fullscreen: true
 	};
 	mainWindow = new BrowserWindow(windowOptions);
 
