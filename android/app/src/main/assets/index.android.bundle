@@ -1805,7 +1805,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   _reactNative.AppRegistry.registerComponent(_app.name, function () {
     return _App.default;
   });
-},0,[1,353,399],"index.android.js");
+},0,[1,353,400],"index.android.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -74478,7 +74478,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }(_react.Component);
 
   exports.default = App;
-},353,[22,354,384,389,394,397],"src/App.js");
+},353,[22,354,384,389,395,398],"src/App.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -76422,7 +76422,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _Button = babelHelpers.interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "../components/presentation/Button"));
 
-  var _styles = _$$_REQUIRE(_dependencyMap[3], "../config/styles");
+  var _styles = babelHelpers.interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "../config/styles"));
 
   var _jsxFileName = "/Users/shrbalaj/Repositories/cast-bucket/src/screens/LandingPage.js";
 
@@ -76465,7 +76465,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
             lineNumber: 24
           }
         }), _react.default.createElement(_reactNative.Text, {
-          style: [_styles.globalStyles.fontXLarge, _styles.globalStyles.title, _styles.globalStyles.primaryText, styles.welcome],
+          style: [_styles.default.styles.fontXLarge, _styles.default.styles.title, _styles.default.styles.primaryText, _styles.default.styles.defaultSansBold, styles.welcome],
           __source: {
             fileName: _jsxFileName,
             lineNumber: 31
@@ -76545,12 +76545,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
         lineHeight: 60
       },
       ios: {
-        fontWeight: "500",
-        alignSelf: "center",
-        left: 35,
+        textAlign: "center",
         top: 20,
-        width: 400,
-        fontSize: 45
+        padding: 20,
+        fontSize: 35,
+        fontFamily: "CircularStd-Medium",
+        lineHeight: 60,
+        letterSpacing: -0.005
       }
     })),
     logo: babelHelpers.objectSpread({}, _reactNative.Platform.select({
@@ -76583,6 +76584,11 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       android: {
         top: 100,
         borderRadius: 4
+      },
+      ios: {
+        padding: 10,
+        top: 100,
+        borderRadius: 4
       }
     })),
     instructions: {
@@ -76591,7 +76597,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       marginBottom: 5
     }
   });
-},389,[22,1,390,391,392,393],"src/screens/LandingPage.js");
+},389,[22,1,390,391,393,394],"src/screens/LandingPage.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -76602,7 +76608,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _reactNative = _$$_REQUIRE(_dependencyMap[1], "react-native");
 
-  var _styles = _$$_REQUIRE(_dependencyMap[2], "../../config/styles");
+  var _styles = babelHelpers.interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "../../config/styles"));
 
   var _jsxFileName = "/Users/shrbalaj/Repositories/cast-bucket/src/components/presentation/Button.js";
   var defaultColor = "mediumseagreen";
@@ -76627,7 +76633,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
             lineNumber: 16
           }
         }, _react.default.createElement(_reactNative.Text, {
-          style: [_styles.globalStyles.defaultSansFont, styles.titleStyle, this.props.titleStyle],
+          style: [styles.titleStyle, this.props.titleStyle],
           __source: {
             fileName: _jsxFileName,
             lineNumber: 20
@@ -76666,21 +76672,29 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.globalStyles = void 0;
+  exports.default = void 0;
 
   var _reactNative = _$$_REQUIRE(_dependencyMap[0], "react-native");
 
-  var globalStyles = _reactNative.StyleSheet.create({
+  var _FontMaker = _$$_REQUIRE(_dependencyMap[1], "../util/FontMaker");
+
+  var global = {};
+  var defaultSansFont = (0, _FontMaker.fontMaker)({
+    weight: '400',
+    family: 'CircularStd'
+  });
+  var defaultSansBoldFont = {
+    fontFamily: "CircularStd-Bold"
+  } || (0, _FontMaker.fontMaker)({
+    weight: '700',
+    family: 'CircularStd'
+  });
+  global.styles = _reactNative.StyleSheet.create({
     title: {
-      fontFamily: "CircularStd",
       fontSize: 50
     },
-    defaultSansFont: {
-      fontFamily: "CircularStd-Medium"
-    },
-    defaultMonoFont: {
-      fontFamily: "Space Mono"
-    },
+    defaultSansFont: defaultSansFont,
+    defaultSansBoldFont: defaultSansBoldFont,
     primaryText: {
       color: "#4c4c4c"
     },
@@ -76700,9 +76714,75 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       fontSize: 16
     }
   });
+  global.fonts = {};
+  global.fonts.default = (0, _FontMaker.fontMaker)({
+    weight: '400',
+    family: 'CircularStd'
+  });
+  global.fonts.defaultBold = (0, _FontMaker.fontMaker)({
+    weight: '700',
+    family: 'CircularStd'
+  });
+  var _default = global;
+  exports.default = _default;
+},391,[1,392],"src/config/styles.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.fontMaker = void 0;
 
-  exports.globalStyles = globalStyles;
-},391,[1],"src/config/styles.js");
+  var _reactNative = _$$_REQUIRE(_dependencyMap[0], "react-native");
+
+  var font = {
+    CircularStd: {
+      weights: {
+        Black: '800',
+        Bold: '700',
+        Medium: '400'
+      },
+      styles: {
+        Italic: 'italic'
+      }
+    }
+  };
+
+  var fontMaker = function fontMaker() {
+    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    var _Object$assign = babelHelpers.extends({
+      weight: null,
+      style: null,
+      family: 'CircularStd'
+    }, options),
+        weight = _Object$assign.weight,
+        style = _Object$assign.style,
+        family = _Object$assign.family;
+
+    var _font$family = font[family],
+        weights = _font$family.weights,
+        styles = _font$family.styles;
+
+    if (_reactNative.Platform.OS === 'android') {
+      weight = weights[weight] ? weight : '';
+      style = styles[style] ? style : '';
+      var suffix = weight + style;
+      return {
+        fontFamily: family + (suffix.length ? "-" + suffix : '')
+      };
+    } else {
+      weight = weights[weight] || weights['Medium'];
+      style = styles[style] || null;
+      return {
+        fontFamily: family,
+        fontWeight: weight,
+        fontStyle: style
+      };
+    }
+  };
+
+  exports.fontMaker = fontMaker;
+},392,[1],"src/util/FontMaker.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -76714,7 +76794,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     "name": "cast-bucket-logo-green-300",
     "type": "png"
   });
-},392,[149],"src/assets/logo/png/cast-bucket-logo-green-300.png");
+},393,[149],"src/assets/logo/png/cast-bucket-logo-green-300.png");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -76726,7 +76806,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     "name": "music",
     "type": "png"
   });
-},393,[149],"src/assets/images/music.png");
+},394,[149],"src/assets/images/music.png");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -76809,7 +76889,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   })(InterestsContainer);
 
   exports.default = _default;
-},394,[22,1,395,354,396],"src/components/container/InterestsContainer.js");
+},395,[22,1,396,354,397],"src/components/container/InterestsContainer.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -76836,7 +76916,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       });
     };
   }
-},395,[388],"src/actions/prefs/interestActions.js");
+},396,[388],"src/actions/prefs/interestActions.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -76881,7 +76961,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       borderRadius: 2
     }
   });
-},396,[22,1],"src/components/presentation/ImageCard.js");
+},397,[22,1],"src/components/presentation/ImageCard.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -76939,7 +77019,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }();
 
   exports.default = GlobalFont;
-},397,[22,1,398],"node_modules/react-native-global-font/index.js");
+},398,[22,1,399],"node_modules/react-native-global-font/index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var FUNC_ERROR_TEXT = 'Expected a function';
   var PLACEHOLDER = '__lodash_placeholder__';
@@ -77614,13 +77694,21 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   partial.placeholder = {};
   module.exports = wrap;
-},398,[],"node_modules/lodash.wrap/index.js");
+},399,[],"node_modules/lodash.wrap/index.js");
 __d(function(global, require, _aUnused, _bUnused, module, exports, _cUnused) {
   module.exports = {
   "name": "castBucket",
-  "displayName": "castBucket"
+  "displayName": "castBucket", 
+  "android": {
+    "name": "castBucket",
+    "displayName": "castBucket"
+  },
+  "ios": {
+    "name": "cast-bucket",
+    "displayName": "cast-bucket"
+  }
 }
 ;
-},399,[],"src/meta/app.json");
+},400,[],"src/meta/app.json");
 __r(58);
 __r(0);

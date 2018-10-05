@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { TouchableOpacity, Text, StyleSheet, Platform } from "react-native";
-import { globalStyles } from "../../config/styles";
+import global from "../../config/styles";
 
 const defaultColor = "mediumseagreen";
 const defaultFontColor = "white";
@@ -17,7 +17,7 @@ export default class Button extends Component {
           style={[this.props.style, styles.button]}
           onPress={this.props.onPress}
         >
-          <Text style={[globalStyles.defaultSansFont, styles.titleStyle, this.props.titleStyle]}> {this.props.title} </Text>
+          <Text style={[styles.titleStyle, this.props.titleStyle]}> {this.props.title} </Text>
         </TouchableOpacity>
     );
   }

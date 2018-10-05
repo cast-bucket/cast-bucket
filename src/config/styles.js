@@ -1,19 +1,17 @@
 import { StyleSheet, Platform } from "react-native";
+import { fontMaker } from "../util/FontMaker"
 
-export const globalStyles = StyleSheet.create({
+let global = {}; 
+
+const defaultSansFont = fontMaker({ weight: '400', family: 'CircularStd'});
+const defaultSansBoldFont = {fontFamily: "CircularStd-Bold"} || fontMaker({ weight: '700', family: 'CircularStd'});
+
+global.styles = StyleSheet.create({
   title: {
-    fontFamily: "CircularStd-Medium",
     fontSize: 50
   },
-  defaultSansBoldFont: {
-    fontFamily: "CircularStd-Bold"
-  },
-  defaultSansFont: {
-    fontFamily: "CircularStd-Medium"
-  },
-  defaultMonoFont: {
-    fontFamily: "Space Mono"
-  },
+  defaultSansFont: defaultSansFont,
+  defaultSansBoldFont: defaultSansBoldFont,
   primaryText: {
     color: "#4c4c4c"
   },
@@ -21,7 +19,7 @@ export const globalStyles = StyleSheet.create({
     color: "#bdbdbd"
   },
   fontXLarge: {
-    fontSize: 50,
+    fontSize: 50
   },
   fontLarge: {
     fontSize: 35
@@ -34,3 +32,9 @@ export const globalStyles = StyleSheet.create({
   }
 });
 
+global.fonts = {}
+global.fonts.default = fontMaker({ weight: '400', family: 'CircularStd'})
+global.fonts.defaultBold = fontMaker({ weight: '700', family: 'CircularStd'});
+// global.fonts.defaultMonoFont = fontMaker({weight: '400', family: 'Space Mono'})
+
+export default global;

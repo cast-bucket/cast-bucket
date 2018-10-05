@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View, Image } from "react-native";
 import Button from "../components/presentation/Button";
-import { globalStyles } from "../config/styles"
+import global from "../config/styles"
 
 
 const logo = require("../assets/logo/png/cast-bucket-logo-green-300.png");
@@ -28,7 +28,7 @@ export default class LandingPage extends Component {
               style={styles.logo}
         />
         
-        <Text style={[globalStyles.fontXLarge, globalStyles.title, globalStyles.primaryText, styles.welcome]}>{greeting}</Text>
+        <Text style={[global.styles.fontXLarge, global.styles.title, global.styles.primaryText, global.styles.defaultSansBold, styles.welcome]}>{greeting}</Text>
         <Button title="Sign Up" style={styles.signupButton}/>
         <Image accessibilityLabel="Background" style={styles.heroBackground} resizeMode="contain" source={background} />
       </View>
@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     })
   },
   welcome: {
+      fontFamily: "CircularStd-Medium",
     ...Platform.select({
       web: {
         fontWeight: "500",
@@ -91,12 +92,12 @@ const styles = StyleSheet.create({
       lineHeight: 60
     }, 
     ios: {
-      fontWeight: "500",
-      alignSelf: "center",
-      left: 35,
+      textAlign: "center",
       top: 20,
-      width: 400,
-      fontSize: 45
+      padding: 20,
+      fontSize: 35,
+      lineHeight: 60,
+      letterSpacing: -0.005
     }
     })
 
@@ -132,6 +133,11 @@ const styles = StyleSheet.create({
         top: 200,
       },
       android: {
+        top: 100,
+        borderRadius: 4
+      }, 
+      ios: {
+        padding: 10,
         top: 100,
         borderRadius: 4
       }

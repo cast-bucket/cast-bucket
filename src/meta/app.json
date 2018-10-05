@@ -1,4 +1,12 @@
 {
   "name": "castBucket",
-  "displayName": "castBucket"
+  "displayName": "castBucket", 
+  "android": {
+    "name": "castBucket",
+    "displayName": "castBucket"
+  },
+  "ios": {
+    "name": "cast-bucket",
+    "displayName": "cast-bucket"
+  }
 }

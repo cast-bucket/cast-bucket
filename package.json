@@ -12,8 +12,9 @@
 		"test:web": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
 		"electron": "react-scripts start & electron .",
-		"android-linux": "react-native bundle --platform android --dev true --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android"
-	},
+		"android-linux": "react-native bundle --platform android --dev true --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
+    "ios-linux": "react-native bundle --entry-file='index.ios.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios' && react-native run-ios"
+  },
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/Shriram-Balaji/cast-bucket.git"
