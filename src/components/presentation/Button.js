@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, StyleSheet, Platform } from "react-native";
 import { globalStyles } from "../../config/styles";
 
 const defaultColor = "mediumseagreen";
@@ -25,19 +25,23 @@ export default class Button extends Component {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "white",
-    color: "mediumseagreen",
-    padding: "10px",
-    cursor: "pointer",
-    border: "2px solid mediumseagreen",
-    borderRadius: "100px",
-    minHeight: "50px",
-    minWidth: "200px",
+    backgroundColor: "#3cb371",
     textAlign: "center",
-    textTransform: "uppercase"
+    textTransform: "uppercase",
+    ...Platform.select({
+      web: {
+      padding: "10",
+      minHeight: "50",
+      minWidth: "200",
+      }, 
+      android: {
+        padding: 6
+      }
+    })
   },
   titleStyle: {
-    fontSize: "18px",
-    letterSpacing: ".2em"
+    fontSize: 20,
+    letterSpacing: 1,
+    color: "#fff"
   }
 });

@@ -64,22 +64,14 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
-		<string>Inter-UI-Black.woff</string>
-		<string>Inter-UI-Black.woff2</string>
-		<string>Inter-UI-BlackItalic.woff</string>
-		<string>Inter-UI-BlackItalic.woff2</string>
-		<string>Inter-UI-Bold.woff</string>
-		<string>Inter-UI-Bold.woff2</string>
-		<string>Inter-UI-BoldItalic.woff</string>
-		<string>Inter-UI-BoldItalic.woff2</string>
-		<string>Inter-UI-Italic.woff</string>
-		<string>Inter-UI-Italic.woff2</string>
-		<string>Inter-UI-Medium.woff</string>
-		<string>Inter-UI-Medium.woff2</string>
-		<string>Inter-UI-MediumItalic.woff</string>
-		<string>Inter-UI-MediumItalic.woff2</string>
-		<string>Inter-UI-Regular.woff</string>
-		<string>Inter-UI-Regular.woff2</string>
+    <string>CircularStd-Black.ttf </string>       
+    <string>CircularStd-Book.ttf</string>
+    <string>CircularStd-BlackItalic.ttf</string>  
+    <string>CircularStd-BookItalic.ttf</string>
+    <string>CircularStd-Bold.ttf</string>         
+    <string>CircularStd-Medium.ttf</string>
+    <string>CircularStd-BoldItalic.ttf</string>   
+    <string>CircularStd-MediumItalic.ttf</string>
 	</array>
 </dict>
 </plist>

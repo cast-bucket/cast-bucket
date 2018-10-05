@@ -54,11 +54,3 @@ buck-out/
 
 # Bundle artifact
 *.jsbundle
-
-# Ignoring temporary files
-tmp/
-
-android/.gradle
-
-# Mac temporary files
-.DS_Store

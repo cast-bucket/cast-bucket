@@ -1,13 +1,15 @@
-import { StyleSheet } from "react-native";
-import "typeface-space-mono";
+import { StyleSheet, Platform } from "react-native";
 
 export const globalStyles = StyleSheet.create({
   title: {
-    fontFamily: "CircularStd",
+    fontFamily: "CircularStd-Medium",
     fontSize: 50
   },
+  defaultSansBoldFont: {
+    fontFamily: "CircularStd-Bold"
+  },
   defaultSansFont: {
-    fontFamily: "CircularStd"
+    fontFamily: "CircularStd-Medium"
   },
   defaultMonoFont: {
     fontFamily: "Space Mono"

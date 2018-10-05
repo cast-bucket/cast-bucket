@@ -1,8 +1,8 @@
 {
-  "main.css": "static/css/main.93f8f2ad.css",
-  "main.css.map": "static/css/main.93f8f2ad.css.map",
-  "main.js": "static/js/main.9b2309e7.js",
-  "main.js.map": "static/js/main.9b2309e7.js.map",
+  "main.css": "static/css/main.c6c931a4.css",
+  "main.css.map": "static/css/main.c6c931a4.css.map",
+  "main.js": "static/js/main.86bec0d1.js",
+  "main.js.map": "static/js/main.86bec0d1.js.map",
   "static/media/CircularStd-Black.eot": "static/media/CircularStd-Black.faf6412f.eot",
   "static/media/CircularStd-Black.svg": "static/media/CircularStd-Black.263293c6.svg",
   "static/media/CircularStd-Black.ttf": "static/media/CircularStd-Black.c885948f.ttf",
@@ -36,13 +36,5 @@
   "static/media/CircularStd-MediumItalic.ttf": "static/media/CircularStd-MediumItalic.7095d23a.ttf",
   "static/media/CircularStd-MediumItalic.woff": "static/media/CircularStd-MediumItalic.21a7520d.woff",
   "static/media/cast-bucket-logo-green-300.png": "static/media/cast-bucket-logo-green-300.57b01139.png",
-  "static/media/music.png": "static/media/music.8a7a5bde.png",
-  "static/media/space-mono-latin-400.woff": "static/media/space-mono-latin-400.0cfbcf14.woff",
-  "static/media/space-mono-latin-400.woff2": "static/media/space-mono-latin-400.d96ed1a3.woff2",
-  "static/media/space-mono-latin-400italic.woff": "static/media/space-mono-latin-400italic.94da6336.woff",
-  "static/media/space-mono-latin-400italic.woff2": "static/media/space-mono-latin-400italic.a2776eb8.woff2",
-  "static/media/space-mono-latin-700.woff": "static/media/space-mono-latin-700.c4fffd8d.woff",
-  "static/media/space-mono-latin-700.woff2": "static/media/space-mono-latin-700.324bb003.woff2",
-  "static/media/space-mono-latin-700italic.woff": "static/media/space-mono-latin-700italic.0e90fd25.woff",
-  "static/media/space-mono-latin-700italic.woff2": "static/media/space-mono-latin-700italic.43f332ad.woff2"
+  "static/media/music.png": "static/media/music.8a7a5bde.png"
 }

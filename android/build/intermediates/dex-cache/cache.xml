@@ -3,12 +3,12 @@
 
     <item
         is-multidex="false"
-        jar="/Users/shrbalaj/.android/build-cache/4a8adcaf763940f625acc8a9f79caefe43373a02/output/jars/classes.jar"
+        jar="/Users/shrbalaj/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.14.0/102d7be47241d781ef95f1581d414b0943053130/okio-1.14.0.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.3"
-        sha1="e7a850c25a7efbd533c496ab482c980fdafac58d">
-        <dex dex="/Users/shrbalaj/Repositories/cast-bucket/android/app/build/intermediates/pre-dexed/debug/classes_fe354a56263ce17548a7d1aa19c8168cf8cf5ff1.jar" />
+        sha1="102d7be47241d781ef95f1581d414b0943053130">
+        <dex dex="/Users/shrbalaj/Repositories/cast-bucket/android/app/build/intermediates/pre-dexed/debug/okio-1.14.0_1f11d2bd278e3a4ace3c692b6d8b4d8e002c6c56.jar" />
     </item>
     <item
         is-multidex="false"
@@ -21,12 +21,48 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/shrbalaj/.android/build-cache/4a8adcaf763940f625acc8a9f79caefe43373a02/output/jars/libs/infer-annotations-4.0.jar"
+        jar="/Users/shrbalaj/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.3"
-        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
-        <dex dex="/Users/shrbalaj/Repositories/cast-bucket/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_cb43368f6f5dc7cc552ed499a00835c2360fdb7f.jar" />
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/shrbalaj/Repositories/cast-bucket/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_e93a8c9ec3fb8d65b2b8aaeb0b284ed586bcab97.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/shrbalaj/Repositories/cast-bucket/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_bbec1b611fef68198b6cd32396b1bd1ddd599cab.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.10.0/ec614c05825ddd2267677a99f585d3913474b125/okhttp-urlconnection-3.10.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="ec614c05825ddd2267677a99f585d3913474b125">
+        <dex dex="/Users/shrbalaj/Repositories/cast-bucket/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.10.0_d21e6e07552f0c693204246086861ab9a8863574.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.10.0/7ef0f1d95bf4c0b3ba30bbae25e0e562b05cf75e/okhttp-3.10.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="7ef0f1d95bf4c0b3ba30bbae25e0e562b05cf75e">
+        <dex dex="/Users/shrbalaj/Repositories/cast-bucket/android/app/build/intermediates/pre-dexed/debug/okhttp-3.10.0_a01da846e5fa1c96abcb802d6961171b730a091f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/shrbalaj/Repositories/cast-bucket/node_modules/react-native-svg/android/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.3"
+        sha1="37b98d63a3a6d8f62db089d34494fd55f27dc51d">
+        <dex dex="/Users/shrbalaj/Repositories/cast-bucket/android/app/build/intermediates/pre-dexed/debug/classes_c106809665a4a7753eb5084f17636a17a5367ef0.jar" />
     </item>
 
 </items>
