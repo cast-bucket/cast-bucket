@@ -76527,7 +76527,9 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
         opacity: 0.15
       }
     })),
-    welcome: babelHelpers.objectSpread({}, _reactNative.Platform.select({
+    welcome: babelHelpers.objectSpread({
+      fontFamily: "CircularStd-Medium"
+    }, _reactNative.Platform.select({
       web: {
         fontWeight: "500",
         alignSelf: "flex-start",
@@ -76549,7 +76551,6 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
         top: 20,
         padding: 20,
         fontSize: 35,
-        fontFamily: "CircularStd-Medium",
         lineHeight: 60,
         letterSpacing: -0.005
       }
