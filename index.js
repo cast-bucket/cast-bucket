@@ -4,14 +4,13 @@ import App from "./src/App";
 import meta from "./src/meta/app.json";
 
 const appName = Platform.select({
-  "web": meta.name,
-  "android": meta.android.name,
-  "ios": meta.ios.name
-})
+  web: meta.name,
+  android: meta.android.name,
+  ios: meta.ios.name
+});
 
 // defaults to platform independent name.
-if(!appName) 
-  appName = meta.name;
+if (!appName) appName = meta.name;
 
 AppRegistry.registerComponent(appName, () => App);
 

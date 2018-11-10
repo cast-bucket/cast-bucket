@@ -13,12 +13,9 @@ export default class Button extends Component {
 
   render() {
     return (
-        <TouchableOpacity
-          style={[this.props.style, styles.button]}
-          onPress={this.props.onPress}
-        >
-          <Text style={[styles.titleStyle, this.props.titleStyle]}> {this.props.title} </Text>
-        </TouchableOpacity>
+      <TouchableOpacity style={[this.props.style, styles.button]} onPress={this.props.onPress}>
+        <Text style={[styles.titleStyle, this.props.titleStyle]}> {this.props.title} </Text>
+      </TouchableOpacity>
     );
   }
 }
@@ -27,13 +24,16 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#3cb371",
     textAlign: "center",
+    padding: 50,
     textTransform: "uppercase",
+    borderRadius: 3,
     ...Platform.select({
       web: {
-      padding: "10",
-      minHeight: "50",
-      minWidth: "200",
-      }, 
+        fontFamily: "CircularStd",
+        padding: "20",
+        minHeight: "50",
+        minWidth: "200"
+      },
       android: {
         padding: 6
       }
@@ -42,6 +42,12 @@ const styles = StyleSheet.create({
   titleStyle: {
     fontSize: 20,
     letterSpacing: 1,
-    color: "#fff"
+    color: "#fff",
+    ...Platform.select({
+      web: {
+        fontFamily: "CircularStd",
+        padding: 20
+      }
+    })
   }
 });
