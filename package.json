@@ -25,6 +25,7 @@
 		]
 	},
 	"dependencies": {
+		"axios": "^0.18.0",
 		"circular-std": "^1.0.0",
 		"nachos-ui": "^0.2.0-beta.1",
 		"react": "^16.5.1",
