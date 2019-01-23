@@ -14,14 +14,10 @@ class InterestsContainer extends Component {
     this.props.fetchInterests();
   }
 
-  renderInterests = interests => {
-    return interests.map(interest => {
-      <ImageCard image={{ require: interest.image }} title={interest.name} />;
-    });
-  };
 
   render() {
-    return <View style={styles.container}>{this.renderInterests(this.props.interests)}</View>;
+    return <p> Hello </p>
+    // return <View style={styles.container}>{this.renderInterests(this.props.interests)}</View>;
   }
 }
 
@@ -35,7 +31,7 @@ const styles = StyleSheet.create({
 
 // subscribe to redux store updates
 const mapStateToProps = state => {
-  interests: state.interests.items;
+  // interests: state.interests.items;
 };
 
 export default connect(

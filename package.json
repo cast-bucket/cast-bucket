@@ -1,61 +1,67 @@
 {
-	"name": "cast-bucket",
-	"description": "A cross-platform podcast application",
-	"version": "0.0.1",
-	"author": "Shriram Balaji",
-	"license": "MIT",
-	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest",
-		"web": "react-scripts start",
-		"build": "react-scripts build",
-		"test:web": "react-scripts test --env=jsdom",
-		"eject": "react-scripts eject",
-		"electron": "react-scripts start & electron .",
-		"android-linux": "react-native bundle --platform android --dev true --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
-		"ios-linux": "react-native bundle --entry-file='index.ios.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios' && react-native run-ios"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Shriram-Balaji/cast-bucket.git"
-	},
-	"rnpm": {
-		"assets": [
-			"./src/assets/fonts/circular/mobile"
-		]
-	},
-	"dependencies": {
-		"axios": "^0.18.0",
-		"circular-std": "^1.0.0",
-		"nachos-ui": "^0.2.0-beta.1",
-		"react": "^16.5.1",
-		"react-art": "^16.5.2",
-		"react-dom": "^16.5.1",
-		"react-native": "^0.57.0-rc.4",
-		"react-native-global-font": "^1.0.2",
-		"react-native-svg": "^7.0.3",
-		"react-native-typography": "^1.3.0",
-		"react-native-vector-icons": "^4.6.0",
-		"react-native-web": "^0.9.1",
-		"react-navigation": "^2.9.0",
-		"react-redux": "^5.0.7",
-		"redux": "^4.0.0",
-		"redux-thunk": "^2.3.0",
-		"typeface-space-mono": "0.0.54"
-	},
-	"devDependencies": {
-		"babel-jest": "23.4.0",
-		"@babel/plugin-proposal-decorators": "^7.0.0",
-		"babel-plugin-transform-react-remove-prop-types": "0.4.10",
-		"babel-preset-react-native": "^5",
-		"electron": "^1.6.11",
-		"jest": "23.4.1",
-		"react-scripts": "^1.1.0",
-		"react-test-renderer": "^16.4.1",
-		"schedule": "^0.4.0"
-	},
-	"jest": {
-		"preset": "react-native"
-	},
-	"main": "index.electron.js"
+  "name": "cast-bucket",
+  "description": "A cross-platform podcast application",
+  "version": "0.0.1",
+  "author": "Shriram Balaji",
+  "license": "MIT",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "web": "react-scripts start",
+    "build": "react-scripts build",
+    "test:web": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron": "react-scripts start & electron .",
+    "android-linux": "react-native bundle --platform android --dev true --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
+    "ios-linux": "react-native bundle --entry-file='index.ios.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios' && react-native run-ios"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shriram-Balaji/cast-bucket.git"
+  },
+  "rnpm": {
+    "assets": [
+      "./src/assets/fonts/circular/mobile"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "circular-std": "^1.0.0",
+    "nachos-ui": "^0.2.0-beta.1",
+    "react": "^16.5.1",
+    "react-art": "^16.5.2",
+    "react-dom": "^16.5.1",
+    "react-native": "^0.57.8",
+    "react-native-global-font": "^1.0.2",
+    "react-native-svg": "^9.0.2",
+    "react-native-typography": "^1.3.0",
+    "react-native-vector-icons": "^6.2.0",
+    "react-native-web": "^0.10.0-alpha.3",
+    "react-navigation": "^3.0.9",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "typeface-space-mono": "0.0.71"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-transform-react-remove-prop-types": "0.4.23",
+    "babel-preset-react-native": "^5",
+    "electron": "^4.0.2",
+    "react-scripts": "^2.1.3",
+    "react-test-renderer": "^16.4.1",
+    "schedule": "^0.4.0",
+    "scheduler": "^0.12.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "main": "index.electron.js",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
