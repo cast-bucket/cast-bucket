@@ -1,6 +1,16 @@
-import { REQUEST_PODCASTS, RECEIVE_PODCASTS, FETCH_PODCASTS } from "../../actions/types";
+import { REQUEST_PODCASTS, RECEIVE_PODCASTS } from "../actions/types";
 const initialState = { isFetching: false, items: [] };
-const podcastsReducer = (state = initialState, action) => {
+
+export const selectedCategory = (state = "Technology", action) => {
+  switch (action.type) {
+    case "SELECTED_CATEGORY":
+      return action.category;
+    default:
+      return state;
+  }
+};
+
+export const podcastsReducer = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_PODCASTS:
       return {
@@ -13,28 +23,20 @@ const podcastsReducer = (state = initialState, action) => {
         isFetching: false,
         items: action.podcasts
       };
-    case FETCH_PODCASTS:
-      return {
-        ...state,
-        podcasts: action.payload
-      };
     default:
       return state;
   }
 };
 
-const podcastsByCategory = (state = {}, action) => {
+export const podcastsByCategory = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_PODCASTS:
     case REQUEST_PODCASTS:
       return {
         ...state,
-        [action.category]: podcasts(state[action.category], action)
+        [action.category]: podcastsReducer(state[action.category], action)
       };
-
     default:
-      break;
+      return state;
   }
 };
-
-export default podcastsReducer;

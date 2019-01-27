@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import { fetchInterests } from "../../actions/prefs/interestActions";
 import { connect } from "react-redux";
-import ImageCard from "../presentation/ImageCard";
 
 // call to redux store
 class InterestsContainer extends Component {
@@ -14,10 +13,8 @@ class InterestsContainer extends Component {
     this.props.fetchInterests();
   }
 
-
   render() {
-    return <p> Hello </p>
-    // return <View style={styles.container}>{this.renderInterests(this.props.interests)}</View>;
+    return <Text> Hello </Text>;
   }
 }
 

@@ -1,4 +1,4 @@
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet } from "react-native";
 import { fontMaker } from "../util/FontMaker";
 
 let global = {};
@@ -29,7 +29,7 @@ global.styles = StyleSheet.create({
     fontSize: 25
   },
   fontSmall: {
-    fontSize: 16
+    fontSize: 18
   }
 });
 

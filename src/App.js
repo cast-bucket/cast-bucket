@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Provider } from "react-redux";
 import configureStore from "./config/store";
 import LandingPage from "./screens/LandingPage";
-import InterestsContainer from "./components/container/InterestsContainer";
+import Home from "./screens/Home";
 import GlobalFont from "react-native-global-font";
 
 const initialState = {};
@@ -17,7 +17,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <LandingPage />
+        <Home />
       </Provider>
     );
   }

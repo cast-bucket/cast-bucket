@@ -13,7 +13,11 @@ function createWindow() {
 		width: 800,
 		height: 600,
     titleBarStyle: 'hiddenInset',
-    fullscreen: true
+    fullscreen: true,
+    webPreferences: {
+      nodeIntegration: true,
+      enableRemoteModule: false
+    }
 	};
 	mainWindow = new BrowserWindow(windowOptions);
 

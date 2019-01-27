@@ -6,13 +6,13 @@ import global from "../config/styles";
 const logo = require("../assets/logo/png/cast-bucket-logo-green-300.png");
 const background = require("../assets/images/music.png");
 
-const instructions = Platform.select({
-  ios: `Press Cmd+R to reload
-          Cmd+D or shake for dev menu`,
-  android: `Double tap R on your keyboard to reload 
-    Shake or press menu button for dev menu`,
-  web: `You are good to go.`
-});
+// const instructions = Platform.select({
+//   ios: `Press Cmd+R to reload
+//           Cmd+D or shake for dev menu`,
+//   android: `Double tap R on your keyboard to reload
+//     Shake or press menu button for dev menu`,
+//   web: `You are good to go.`
+// });
 
 const greeting = `An open-source cross platform podcast listening experience `;
 
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
       web: {
         position: "absolute",
         left: 100,
-        top: 400,
+        top: 400
       },
       android: {
         top: 100,
