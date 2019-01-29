@@ -27,3 +27,7 @@ export const memoCheck = async key => {
     // Error retrieving data
   }
 };
+
+export const memoDelete = async key => {
+  await AsyncStorage.removeItem(key);
+};
