@@ -14,7 +14,7 @@ import { fetchPodcastsIfNeeded } from "../../actions/podcast/podcastActions";
 
 let { width } = Dimensions.get("window");
 
-class TopPodcastsListContainer extends Component {
+class TopPodcasts extends Component {
   constructor(props) {
     super(props);
     this.category = this.props.category;
@@ -160,4 +160,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(mapStateToProps)(TopPodcastsListContainer);
+export default connect(mapStateToProps)(TopPodcasts);

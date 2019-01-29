@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Provider } from "react-redux";
 import configureStore from "./config/store";
-import LandingPage from "./screens/LandingPage";
-import Home from "./screens/Home";
+import { Home, LandingPage } from "./screens";
+import { Text, View } from "react-native";
 import GlobalFont from "react-native-global-font";
+import { Router, Route, Link } from "./routes/routes";
 
 const initialState = {};
 const store = configureStore(initialState);
@@ -17,7 +18,13 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Home />
+        <Router>
+          <View>
+            <Link to="/home"> Home </Link>
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/" component={LandingPage} />
+          </View>
+        </Router>
       </Provider>
     );
   }
