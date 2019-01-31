@@ -5,10 +5,6 @@ import { connect } from "react-redux";
 
 // call to redux store
 class InterestsContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     this.props.fetchInterests();
   }
@@ -18,13 +14,13 @@ class InterestsContainer extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between"
-  }
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     flexDirection: "row",
+//     justifyContent: "space-between"
+//   }
+// });
 
 // subscribe to redux store updates
 const mapStateToProps = state => {

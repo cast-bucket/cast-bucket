@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import RecyclerView from "../presentation/RecyclerView";
+import TopPodcastItem from "../presentation/TopPodcastItem";
 import { fetchPodcastsIfNeeded } from "../../actions/podcast/podcastActions";
 
 let { width } = Dimensions.get("window");
@@ -61,20 +62,7 @@ class TopPodcasts extends Component {
     const { values } = data;
     switch (type) {
       case "TOPLIST_ITEM":
-        return (
-          <Image
-            style={{
-              width: 100,
-              height: 100,
-              padding: 20,
-              marginLeft: 20,
-              marginTop: 20,
-              marginBottom: 20,
-              borderRadius: 10
-            }}
-            source={{ uri: values.logoUrl || values.scaledLogoUrl }}
-          />
-        );
+        return <TopPodcastItem {...values} />;
       case "PODCAST_LIST_ITEM":
         return <View />;
       case "HEADER":
@@ -110,13 +98,11 @@ class TopPodcasts extends Component {
     const { podcasts, isFetching, selectedCategory } = this.props;
 
     const heading =
-      selectedCategory === "All"
-        ? `Top Podcasts in Cast Bucket`
-        : `Top Podcasts in ${selectedCategory}`;
+      selectedCategory === "All" ? `Featured Podcasts` : `Top Podcasts in ${selectedCategory}`;
     return (
-      <View>
-        {isFetching === true && this.showActivityIndicator()}
-        <Text style={[styles.podcastHeading]}>{heading}</Text>
+      <View style={{ flex: 1 }}>
+        {/* {isFetching === true && this.showActivityIndicator()} */}
+        <Text style={[styles.listHeading]}>{heading}</Text>
         {podcasts.length > 0 && this.renderPodcastItems(podcasts)}
       </View>
     );
@@ -139,10 +125,13 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     minHeight: 1,
-    height: 150,
-    minWidth: 1
+    minWidth: 1,
+    flex: 1,
+    flexDirection: "row",
+    marginTop: 10,
+    marginBottom: 30
   },
-  podcastHeading: {
+  listHeading: {
     margin: 20,
     marginBottom: 5,
     fontSize: 25,

@@ -19,7 +19,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <View>
+          <View style={{ flex: 1 }}>
             <Link to="/home"> Home </Link>
             <Route exact path="/home" component={Home} />
             <Route exact path="/" component={LandingPage} />
