@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, Platform } from "react-native";
 import { connect } from "react-redux";
 import TopPodcasts from "../components/container/TopPodcasts";
-
+import globals from "../config/globals";
 class Home extends Component {
   render() {
     return (
       <View style={[styles.container]}>
-        <Text style={{ fontSize: 20 }}> Discover </Text>
+        <Text style={[globals.styles.defaultMonoFont, globals.styles.fontLarge]}> Discover </Text>
         <TopPodcasts category="All" />
         <TopPodcasts category="Technology" />
       </View>
@@ -18,8 +18,7 @@ class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    padding: 10
+    justifyContent: "center"
   },
   listContainer: {
     minHeight: 1,

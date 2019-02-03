@@ -100,7 +100,7 @@ class TopPodcasts extends Component {
     const heading =
       selectedCategory === "All" ? `Featured Podcasts` : `Top Podcasts in ${selectedCategory}`;
     return (
-      <View style={{ flex: 1 }}>
+      <View>
         {/* {isFetching === true && this.showActivityIndicator()} */}
         <Text style={[styles.listHeading]}>{heading}</Text>
         {podcasts.length > 0 && this.renderPodcastItems(podcasts)}
@@ -126,10 +126,8 @@ const styles = StyleSheet.create({
   listContainer: {
     minHeight: 1,
     minWidth: 1,
-    flex: 1,
-    flexDirection: "row",
-    marginTop: 10,
-    marginBottom: 30
+    height: 300,
+    marginTop: 10
   },
   listHeading: {
     margin: 20,

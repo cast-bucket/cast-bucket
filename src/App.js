@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import { View } from "react-native";
 import { Provider } from "react-redux";
-import configureStore from "./config/store";
-import { Home, LandingPage } from "./screens";
-import { Text, View } from "react-native";
 import GlobalFont from "react-native-global-font";
 import { Router, Route, Link } from "./routes/routes";
+import { Home, LandingPage } from "./screens";
+import configureStore from "./config/store";
 
 const initialState = {};
 const store = configureStore(initialState);
@@ -20,9 +20,9 @@ export default class App extends Component {
       <Provider store={store}>
         <Router>
           <View style={{ flex: 1 }}>
-            <Link to="/home"> Home </Link>
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/" component={LandingPage} />
+            {/* <Link to="/home">Home</Link> */}
+            <Route exact path="/" component={Home} />
+            <Route exact path="/landing" component={LandingPage} />
           </View>
         </Router>
       </Provider>

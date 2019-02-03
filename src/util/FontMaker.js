@@ -11,6 +11,16 @@ const font = {
     styles: {
       Italic: "italic"
     }
+  },
+  "Space Mono": {
+    weights: {
+      Black: "800",
+      Bold: "700",
+      Medium: "400"
+    },
+    styles: {
+      Italic: "italic"
+    }
   }
 };
 
@@ -25,7 +35,7 @@ export const fontMaker = (options = {}) => {
     options
   );
   const { weights, styles } = font[family];
-  if (Platform.OS === "android") {
+  if (Platform.OS === "android" || Platform.OS === "ios") {
     weight = weights[weight] ? weight : "";
     style = styles[style] ? style : "";
 

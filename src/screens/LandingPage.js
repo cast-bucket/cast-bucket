@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View, Image } from "react-native";
 import Button from "../components/presentation/Button";
-import global from "../config/styles";
+import global from "../config/globals";
 
 const logo = require("../assets/logo/png/cast-bucket-logo-green-300.png");
 const background = require("../assets/images/music.png");

@@ -21,13 +21,13 @@
   },
   "rnpm": {
     "assets": [
-      "./src/assets/fonts/circular/mobile"
+      "./src/assets/fonts/**/"
     ]
   },
   "dependencies": {
     "axios": "^0.18.0",
     "circular-std": "^1.0.0",
-    "node-gpodder": "^0.1.8",
+    "node-gpodder": "^0.1.9",
     "react": "^16.5.1",
     "react-art": "^16.5.2",
     "react-dom": "^16.5.1",
