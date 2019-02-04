@@ -121,13 +121,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    padding: 10
+    padding: 10,
+    marginTop: 20,
+    ...Platform.select({
+      web: {
+        marginTop: 100
+      }
+    })
   },
   listContainer: {
     minHeight: 1,
     minWidth: 1,
-    height: 300,
-    marginTop: 10
+    height: 220,
+    ...Platform.select({
+      web: {
+        height: 270,
+        marginTop: 20,
+        marginBottom: 10
+      }
+    })
   },
   listHeading: {
     margin: 20,
@@ -139,7 +151,7 @@ const styles = StyleSheet.create({
         fontFamily: "CircularStd"
       },
       android: {
-        fontSize: 20,
+        fontSize: 22,
         marginBottom: 0,
         fontFamily: "CircularStd-Bold"
       }

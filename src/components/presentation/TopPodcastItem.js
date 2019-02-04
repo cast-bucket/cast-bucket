@@ -1,67 +1,68 @@
 import React from "react";
-// import { CachedImage } from "react-native-img-cache";
-import { StyleSheet, Text, View, Image, Platform } from "react-native";
+import FastImage from "../presentation/FastImage/FastImage";
+import { StyleSheet, Text, View, Image, Platform, TouchableHighlight } from "react-native";
+import { Redirect } from "../../routes/routes";
 import global from "../../config/globals";
-const fallBackImage = require("../../assets/logo/png/cast-bucket-icon-green-300.png");
+import { withRouter, Switch } from "../../routes/routes";
+
+const fallBackImage = require("../../assets/placeholders/cast-bucket-icon-green(1).png");
 
 const titleShortener = title => {
   const stripDashesFromTitle = title.split("-");
-  return stripDashesFromTitle[0];
+  const stripBracketsFromTitle = stripDashesFromTitle[0].replace(/ *\([^)]*\) */g, "");
+  return stripBracketsFromTitle;
 };
 
 const TopPodcastItem = props => {
   return (
-    <View>
-      <Image
-        key={props.id}
-        style={[styles.podcastImage, styles.podcastItem]}
-        defaultSource={require("../../assets/placeholders/cast-bucket-icon-green(1).png")}
-        source={{ uri: props.logoUrl || props.scaledLogoUrl }}
-      />
-      <Text style={[styles.podcastItem, styles.podcastTitle, global.styles.defaultSansFont]}>
-        {titleShortener(props.title)}
-      </Text>
-    </View>
+    <TouchableHighlight
+      onPress={() =>
+        props.history.push({
+          pathname: "/episodes",
+          state: { feedUrl: props.url }
+        })
+      }
+    >
+      <View>
+        <FastImage
+          style={[styles.podcastImage, styles.podcastItem]}
+          defaultSource={fallBackImage}
+          source={{ uri: props.logoUrl || props.scaledLogoUrl }}
+        />
+        <Text
+          style={[
+            styles.podcastItem,
+            styles.podcastTitle,
+            global.styles.defaultSansFont,
+            global.styles.fontXSmall
+          ]}
+        >
+          {titleShortener(props.title)}
+        </Text>
+      </View>
+    </TouchableHighlight>
   );
 };
 
 const styles = StyleSheet.create({
   podcastImage: {
-    width: 140,
-    height: 140,
-    ...Platform.select({
-      web: {
-        width: 140,
-        height: 140
-      }
-    }),
+    width: 130,
+    height: 130,
     borderRadius: 5,
     backgroundColor: "#fafafa",
     borderWidth: 0.005,
-    marginTop: 30,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84
+    marginTop: 30
   },
   podcastItem: {
     marginLeft: 20,
-    marginRight: 30,
+    marginRight: 10,
     marginBottom: 20
   },
   podcastTitle: {
     textAlignVertical: "center",
     textAlign: "center",
-    flex: 1,
-    flexWrap: "wrap",
-    maxWidth: 140,
-    fontSize: 18,
-    fontFamily: "CircularStd-Bold",
-    textTransform: "capitalize"
+    maxWidth: 130
   }
 });
 
-export default TopPodcastItem;
+export default withRouter(TopPodcastItem);

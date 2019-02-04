@@ -3,23 +3,21 @@ import { StyleSheet, Text, View, Platform } from "react-native";
 import { connect } from "react-redux";
 import TopPodcasts from "../components/container/TopPodcasts";
 import globals from "../config/globals";
+import { withRouter } from "../routes/routes";
 class Home extends Component {
   render() {
     return (
-      <View style={[styles.container]}>
+      <View>
         <Text style={[globals.styles.defaultMonoFont, globals.styles.fontLarge]}> Discover </Text>
         <TopPodcasts category="All" />
         <TopPodcasts category="Technology" />
+        <TopPodcasts category="Arts" />
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center"
-  },
   listContainer: {
     minHeight: 1,
     height: 150,

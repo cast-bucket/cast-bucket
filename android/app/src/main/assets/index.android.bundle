@@ -1371,7 +1371,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   _reactNative.AppRegistry.registerComponent(_app.name, function () {
     return _App.default;
   });
-},0,[1,2,386,531],"index.android.js");
+},0,[1,2,386,533],"index.android.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {
@@ -81705,7 +81705,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }(_react.Component);
 
   exports.default = App;
-},386,[1,387,19,20,27,30,33,46,2,388,412,414,446,526],"src/App.js");
+},386,[1,387,19,20,27,30,33,46,2,388,412,414,446,528],"src/App.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   function _interopRequireWildcard(obj) {
     if (obj && obj.__esModule) {
@@ -87743,7 +87743,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   var _LandingPage = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "./LandingPage"));
 
   var _Interest = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "./Interest"));
-},446,[1,447,519,523],"src/screens/index.js");
+},446,[1,447,521,525],"src/screens/index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -87847,7 +87847,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   var _default = (0, _reactRedux.connect)()(Home);
 
   exports.default = _default;
-},447,[1,387,43,19,20,27,30,33,46,2,388,448,492],"src/screens/Home.js");
+},447,[1,387,43,19,20,27,30,33,46,2,388,448,494],"src/screens/Home.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -88095,7 +88095,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   var _default = (0, _reactRedux.connect)(mapStateToProps)(TopPodcasts);
 
   exports.default = _default;
-},448,[1,387,43,8,19,20,27,30,33,29,46,2,388,449,491,497],"src/components/container/TopPodcasts.js");
+},448,[1,387,43,8,19,20,27,30,33,29,46,2,388,449,491,499],"src/components/container/TopPodcasts.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -91441,13 +91441,15 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _react = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "react"));
 
-  var _reactNative = _$$_REQUIRE(_dependencyMap[3], "react-native");
+  var _FastImage = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "../presentation/FastImage/FastImage"));
 
-  var _globals = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "../../config/globals"));
+  var _reactNative = _$$_REQUIRE(_dependencyMap[4], "react-native");
+
+  var _globals = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "../../config/globals"));
 
   var _jsxFileName = "/home/shriram/Repositories/cast-bucket/src/components/presentation/TopPodcastItem.js";
 
-  var fallBackImage = _$$_REQUIRE(_dependencyMap[5], "../../assets/logo/png/cast-bucket-icon-green-300.png");
+  var fallBackImage = _$$_REQUIRE(_dependencyMap[6], "../../assets/placeholders/cast-bucket-icon-green(1).png");
 
   var titleShortener = function titleShortener(title) {
     var stripDashesFromTitle = title.split("-");
@@ -91460,12 +91462,13 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
         fileName: _jsxFileName,
         lineNumber: 14
       }
-    }, _react.default.createElement(_reactNative.Image, {
+    }, _react.default.createElement(_FastImage.default, {
+      key: props.id,
       style: [styles.podcastImage, styles.podcastItem],
+      defaultSource: _$$_REQUIRE(_dependencyMap[6], "../../assets/placeholders/cast-bucket-icon-green(1).png"),
       source: {
         uri: props.logoUrl || props.scaledLogoUrl
       },
-      loadingIndicatorSource: _$$_REQUIRE(_dependencyMap[5], "../../assets/logo/png/cast-bucket-icon-green-300.png"),
       __source: {
         fileName: _jsxFileName,
         lineNumber: 15
@@ -91474,7 +91477,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       style: [styles.podcastItem, styles.podcastTitle, _globals.default.styles.defaultSansFont],
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20
+        lineNumber: 21
       }
     }, titleShortener(props.title)));
   };
@@ -91490,6 +91493,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       }
     }), {
       borderRadius: 5,
+      backgroundColor: "#fafafa",
       borderWidth: 0.005,
       marginTop: 30,
       shadowColor: "#000",
@@ -91512,13 +91516,229 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       flexWrap: "wrap",
       maxWidth: 140,
       fontSize: 18,
-      fontFamily: "CircularStd-Bold"
+      fontFamily: "CircularStd-Bold",
+      textTransform: "capitalize"
     }
   });
 
   var _default = TopPodcastItem;
   exports.default = _default;
-},491,[1,43,46,2,492,496],"src/components/presentation/TopPodcastItem.js");
+},491,[1,43,46,492,2,494,498],"src/components/presentation/TopPodcastItem.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _extends2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/extends"));
+
+  var _react = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "react"));
+
+  var _reactNativeFastImage = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "react-native-fast-image"));
+
+  var _jsxFileName = "/home/shriram/Repositories/cast-bucket/src/components/presentation/FastImage/FastImage.js";
+
+  var MobileFastImage = function MobileFastImage(props) {
+    return _react.default.createElement(_reactNativeFastImage.default, (0, _extends2.default)({}, props, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 4
+      }
+    }));
+  };
+
+  var _default = MobileFastImage;
+  exports.default = _default;
+},492,[1,8,46,493],"src/components/presentation/FastImage/FastImage.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  var _interopRequireWildcard = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/interopRequireWildcard");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _objectSpread2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/objectSpread"));
+
+  var _extends2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/extends"));
+
+  var _objectWithoutProperties2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/objectWithoutProperties"));
+
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "@babel/runtime/helpers/classCallCheck"));
+
+  var _createClass2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "@babel/runtime/helpers/createClass"));
+
+  var _possibleConstructorReturn2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[7], "@babel/runtime/helpers/possibleConstructorReturn"));
+
+  var _getPrototypeOf3 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[8], "@babel/runtime/helpers/getPrototypeOf"));
+
+  var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[9], "@babel/runtime/helpers/inherits"));
+
+  var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[10], "react"));
+
+  var _propTypes = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[11], "prop-types"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[12], "react-native");
+
+  var _jsxFileName = "/home/shriram/Repositories/cast-bucket/node_modules/react-native-fast-image/src/index.js";
+  var FastImageViewNativeModule = _reactNative.NativeModules.FastImageView;
+
+  var FastImage = function (_Component) {
+    (0, _inherits2.default)(FastImage, _Component);
+
+    function FastImage() {
+      var _getPrototypeOf2;
+
+      var _this;
+
+      (0, _classCallCheck2.default)(this, FastImage);
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(FastImage)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+      _this.captureRef = function (e) {
+        return _this._root = e;
+      };
+
+      return _this;
+    }
+
+    (0, _createClass2.default)(FastImage, [{
+      key: "setNativeProps",
+      value: function setNativeProps(nativeProps) {
+        this._root.setNativeProps(nativeProps);
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this$props = this.props,
+            source = _this$props.source,
+            onLoadStart = _this$props.onLoadStart,
+            onProgress = _this$props.onProgress,
+            onLoad = _this$props.onLoad,
+            onError = _this$props.onError,
+            onLoadEnd = _this$props.onLoadEnd,
+            style = _this$props.style,
+            children = _this$props.children,
+            fallback = _this$props.fallback,
+            props = (0, _objectWithoutProperties2.default)(_this$props, ["source", "onLoadStart", "onProgress", "onLoad", "onError", "onLoadEnd", "style", "children", "fallback"]);
+
+        var resolvedSource = _reactNative.Image.resolveAssetSource(source);
+
+        if (fallback) {
+          return _react.default.createElement(_reactNative.View, {
+            style: [styles.imageContainer, style],
+            ref: this.captureRef,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 39
+            }
+          }, _react.default.createElement(FastImageView, (0, _extends2.default)({}, props, {
+            style: _reactNative.StyleSheet.absoluteFill,
+            source: resolvedSource,
+            onLoadStart: onLoadStart,
+            onProgress: onProgress,
+            onLoad: onLoad,
+            onError: onError,
+            onLoadEnd: onLoadEnd,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 43
+            }
+          })), children);
+        }
+
+        return _react.default.createElement(_reactNative.View, {
+          style: [styles.imageContainer, style],
+          ref: this.captureRef,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 59
+          }
+        }, _react.default.createElement(FastImageView, (0, _extends2.default)({}, props, {
+          style: _reactNative.StyleSheet.absoluteFill,
+          source: resolvedSource,
+          onFastImageLoadStart: onLoadStart,
+          onFastImageProgress: onProgress,
+          onFastImageLoad: onLoad,
+          onFastImageError: onError,
+          onFastImageLoadEnd: onLoadEnd,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 60
+          }
+        })), children);
+      }
+    }]);
+    return FastImage;
+  }(_react.Component);
+
+  var styles = _reactNative.StyleSheet.create({
+    imageContainer: {
+      overflow: 'hidden'
+    }
+  });
+
+  FastImage.resizeMode = {
+    contain: 'contain',
+    cover: 'cover',
+    stretch: 'stretch',
+    center: 'center'
+  };
+  FastImage.priority = {
+    low: 'low',
+    normal: 'normal',
+    high: 'high'
+  };
+  FastImage.cacheControl = {
+    immutable: 'immutable',
+    web: 'web',
+    cacheOnly: 'cacheOnly'
+  };
+
+  FastImage.preload = function (sources) {
+    FastImageViewNativeModule.preload(sources);
+  };
+
+  FastImage.defaultProps = {
+    resizeMode: FastImage.resizeMode.cover
+  };
+
+  var FastImageSourcePropType = _propTypes.default.shape({
+    uri: _propTypes.default.string,
+    headers: _propTypes.default.objectOf(_propTypes.default.string),
+    priority: _propTypes.default.oneOf(Object.keys(FastImage.priority)),
+    cache: _propTypes.default.oneOf(Object.keys(FastImage.cacheControl))
+  });
+
+  FastImage.propTypes = (0, _objectSpread2.default)({}, _reactNative.ViewPropTypes, {
+    source: _propTypes.default.oneOfType([FastImageSourcePropType, _propTypes.default.number]),
+    onLoadStart: _propTypes.default.func,
+    onProgress: _propTypes.default.func,
+    onLoad: _propTypes.default.func,
+    onError: _propTypes.default.func,
+    onLoadEnd: _propTypes.default.func,
+    fallback: _propTypes.default.bool
+  });
+  var FastImageView = (0, _reactNative.requireNativeComponent)('FastImageView', FastImage, {
+    nativeOnly: {
+      onFastImageLoadStart: true,
+      onFastImageProgress: true,
+      onFastImageLoad: true,
+      onFastImageError: true,
+      onFastImageLoadEnd: true
+    }
+  });
+  var _default = FastImage;
+  exports.default = _default;
+},493,[1,387,43,8,6,19,20,27,30,33,46,63,2],"node_modules/react-native-fast-image/src/index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -91537,7 +91757,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   };
   var _default = global;
   exports.default = _default;
-},492,[1,493,495],"src/config/globals/index.js");
+},494,[1,495,497],"src/config/globals/index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -91593,7 +91813,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _default = styles;
   exports.default = _default;
-},493,[2,494],"src/config/globals/styles.js");
+},495,[2,496],"src/config/globals/styles.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -91664,7 +91884,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   };
 
   exports.fontMaker = fontMaker;
-},494,[1,8,2],"src/util/FontMaker.js");
+},496,[1,8,2],"src/util/FontMaker.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -91673,19 +91893,19 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   var settings = {};
   var _default = settings;
   exports.default = _default;
-},495,[],"src/config/globals/settings.js");
+},497,[],"src/config/globals/settings.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
-    "httpServerLocation": "/assets/src/assets/logo/png",
+    "httpServerLocation": "/assets/src/assets/placeholders",
     "width": 165,
     "height": 165,
     "scales": [1],
-    "hash": "a84c43df89a2c6adb5cceba63507857a",
-    "name": "cast-bucket-icon-green-300",
+    "hash": "ef819032a0947cfa4c0de57c8de552e6",
+    "name": "cast-bucket-icon-green(1)",
     "type": "png"
   });
-},496,[179],"src/assets/logo/png/cast-bucket-icon-green-300.png");
+},498,[179],"src/assets/placeholders/cast-bucket-icon-green(1).png");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -91786,7 +92006,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   };
 
   exports.fetchPodcastsIfNeeded = fetchPodcastsIfNeeded;
-},497,[498,499,500],"src/actions/podcast/podcastActions.js");
+},499,[500,501,502],"src/actions/podcast/podcastActions.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -91806,7 +92026,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   exports.RECEIVE_PODCASTS = RECEIVE_PODCASTS;
   var FETCH_CLIENT = "FETCH_CLIENT";
   exports.FETCH_CLIENT = FETCH_CLIENT;
-},498,[],"src/actions/types.js");
+},500,[],"src/actions/types.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -91918,7 +92138,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   };
 
   exports.memoDelete = memoDelete;
-},499,[1,95,2],"src/util/memoize.js");
+},501,[1,95,2],"src/util/memoize.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var SimpleClient = _$$_REQUIRE(_dependencyMap[0], "./client/simple-client");
 
@@ -91931,7 +92151,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     AdvancedClient: AdvancedClient,
     Api: Api
   };
-},500,[501,503,504],"node_modules/node-gpodder/src/index.js");
+},502,[503,505,506],"node_modules/node-gpodder/src/index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _classCallCheck = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/classCallCheck");
 
@@ -91972,7 +92192,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }();
 
   module.exports = SimpleClient;
-},501,[19,20,502],"node_modules/node-gpodder/src/client/simple-client.js");
+},503,[19,20,504],"node_modules/node-gpodder/src/client/simple-client.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   ;
 
@@ -92090,7 +92310,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       root.base64 = base64;
     }
   })(this);
-},502,[],"node_modules/base-64/base64.js");
+},504,[],"node_modules/base-64/base64.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _classCallCheck = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/classCallCheck");
 
@@ -92131,7 +92351,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }();
 
   module.exports = AdvancedClient;
-},503,[19,20,502],"node_modules/node-gpodder/src/client/advanced-client.js");
+},505,[19,20,504],"node_modules/node-gpodder/src/client/advanced-client.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var Subscriptions = _$$_REQUIRE(_dependencyMap[0], "./subscriptions.api");
 
@@ -92153,7 +92373,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     Authentication: Authentication,
     Public: Public
   };
-},504,[505,510,511,512,513,514],"node_modules/node-gpodder/src/api/index.js");
+},506,[507,512,513,514,515,516],"node_modules/node-gpodder/src/api/index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   "use strict";
 
@@ -92324,7 +92544,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }();
 
   module.exports = new SubscriptionsApi();
-},505,[19,20,506,507,508],"node_modules/node-gpodder/src/api/subscriptions.api.js");
+},507,[19,20,508,509,510],"node_modules/node-gpodder/src/api/subscriptions.api.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   exports = global.fetch;
   exports.default = global.fetch;
@@ -92333,7 +92553,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   exports.Request = global.Request;
   exports.Response = global.Response;
   module.exports = exports;
-},506,[],"node_modules/cross-fetch/dist/react-native-ponyfill.js");
+},508,[],"node_modules/cross-fetch/dist/react-native-ponyfill.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var removeTrailingSlash = function removeTrailingSlash(url) {
     if (/(\/)$/.test(url)) {
@@ -92416,7 +92636,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     normalizeReqParams: normalizeReqParams,
     removeTrailingSlash: removeTrailingSlash
   };
-},507,[],"node_modules/node-gpodder/src/util/http.util.js");
+},509,[],"node_modules/node-gpodder/src/util/http.util.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _classCallCheck = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/classCallCheck");
 
@@ -92698,7 +92918,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }();
 
   module.exports = Locator;
-},508,[19,20,507,509],"node_modules/node-gpodder/src/util/locator.util.js");
+},510,[19,20,509,511],"node_modules/node-gpodder/src/util/locator.util.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   module.exports = {
     base: "https://gpodder.net",
@@ -92724,7 +92944,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     },
     version: "2"
   };
-},509,[],"node_modules/node-gpodder/config/api.config.js");
+},511,[],"node_modules/node-gpodder/config/api.config.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   "use strict";
 
@@ -92776,7 +92996,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }();
 
   module.exports = new SuggestionsApi();
-},510,[19,20,506,507,508,509],"node_modules/node-gpodder/src/api/suggestions.api.js");
+},512,[19,20,508,509,510,511],"node_modules/node-gpodder/src/api/suggestions.api.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   "use strict";
 
@@ -92836,7 +93056,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }();
 
   module.exports = new FavoritesApi();
-},511,[19,20,506,507,508],"node_modules/node-gpodder/src/api/favorites.api.js");
+},513,[19,20,508,509,510],"node_modules/node-gpodder/src/api/favorites.api.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   "use strict";
 
@@ -92961,7 +93181,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }();
 
   module.exports = new DeviceApi();
-},512,[19,20,506,507,508],"node_modules/node-gpodder/src/api/device.api.js");
+},514,[19,20,508,509,510],"node_modules/node-gpodder/src/api/device.api.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   "use strict";
 
@@ -93027,7 +93247,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       });
     }
   };
-},513,[506,507,508],"node_modules/node-gpodder/src/api/authentication.api.js");
+},515,[508,509,510],"node_modules/node-gpodder/src/api/authentication.api.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   "use strict";
 
@@ -93176,7 +93396,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }();
 
   module.exports = new PublicApi();
-},514,[19,20,506,515,507,508,509],"node_modules/node-gpodder/src/api/public.api.js");
+},516,[19,20,508,517,509,510,511],"node_modules/node-gpodder/src/api/public.api.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -93233,7 +93453,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
     return camelCaseConvert(input, opts);
   };
-},515,[8,516,517,518],"node_modules/camelcase-keys/index.js");
+},517,[8,518,519,520],"node_modules/camelcase-keys/index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -93281,7 +93501,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
     return target;
   };
-},516,[8],"node_modules/map-obj/index.js");
+},518,[8],"node_modules/map-obj/index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -93347,7 +93567,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       return p1.toUpperCase();
     });
   };
-},517,[],"node_modules/camelcase/index.js");
+},519,[],"node_modules/camelcase/index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -93700,7 +93920,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }();
 
   module.exports = QuickLRU;
-},518,[95,8,19,20],"node_modules/quick-lru/index.js");
+},520,[95,8,19,20],"node_modules/quick-lru/index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -93899,7 +94119,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       marginBottom: 5
     }
   });
-},519,[1,387,43,19,20,27,30,33,46,2,520,492,521,522],"src/screens/LandingPage.js");
+},521,[1,387,43,19,20,27,30,33,46,2,522,494,523,524],"src/screens/LandingPage.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -93965,7 +94185,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _default = Button;
   exports.default = _default;
-},520,[1,43,46,2],"src/components/presentation/Button.js");
+},522,[1,43,46,2],"src/components/presentation/Button.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -93977,7 +94197,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     "name": "cast-bucket-logo-green-300",
     "type": "png"
   });
-},521,[179],"src/assets/logo/png/cast-bucket-logo-green-300.png");
+},523,[179],"src/assets/logo/png/cast-bucket-logo-green-300.png");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -93989,7 +94209,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     "name": "music",
     "type": "png"
   });
-},522,[179],"src/assets/images/music.png");
+},524,[179],"src/assets/images/music.png");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -94039,7 +94259,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }(_react.Component);
 
   exports.default = Interests;
-},523,[1,387,19,20,27,30,33,46,524],"src/screens/Interest.js");
+},525,[1,387,19,20,27,30,33,46,526],"src/screens/Interest.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -94104,7 +94324,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   })(InterestsContainer);
 
   exports.default = _default;
-},524,[1,387,19,20,27,30,33,46,2,525,388],"src/components/container/InterestsContainer.js");
+},526,[1,387,19,20,27,30,33,46,2,527,388],"src/components/container/InterestsContainer.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -94131,7 +94351,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       });
     };
   }
-},525,[498],"src/actions/prefs/interestActions.js");
+},527,[500],"src/actions/prefs/interestActions.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -94151,7 +94371,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     var store = (0, _redux.createStore)(_reducers.default, preloadedState, _redux.applyMiddleware.apply(void 0, middleware));
     return store;
   }
-},526,[1,401,527,528],"src/config/store.js");
+},528,[1,401,529,530],"src/config/store.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -94176,7 +94396,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   var thunk = createThunkMiddleware();
   thunk.withExtraArgument = createThunkMiddleware;
   exports['default'] = thunk;
-},527,[],"node_modules/redux-thunk/lib/index.js");
+},529,[],"node_modules/redux-thunk/lib/index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -94199,7 +94419,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   });
 
   exports.default = _default;
-},528,[1,401,529,530],"src/reducers/index.js");
+},530,[1,401,531,532],"src/reducers/index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -94233,7 +94453,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _default = interestsReducer;
   exports.default = _default;
-},529,[1,43,498],"src/reducers/prefs/interestsReducer.js");
+},531,[1,43,500],"src/reducers/prefs/interestsReducer.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -94306,7 +94526,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   };
 
   exports.podcastsByCategory = podcastsByCategory;
-},530,[1,44,43,498],"src/reducers/podcastsReducer.js");
+},532,[1,44,43,500],"src/reducers/podcastsReducer.js");
 __d(function(global, require, _aUnused, _bUnused, module, exports, _cUnused) {
   module.exports = {
   "name": "castBucket",
@@ -94321,6 +94541,6 @@ __d(function(global, require, _aUnused, _bUnused, module, exports, _cUnused) {
   }
 }
 ;
-},531,[],"src/meta/app.json");
+},533,[],"src/meta/app.json");
 __r(82);
 __r(0);

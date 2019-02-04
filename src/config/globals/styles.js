@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { fontMaker } from "../../util/FontMaker";
+import { fontMaker } from "../../util/font-maker";
 
 const defaultSansFont = fontMaker({ weight: "400", family: "CircularStd" });
 const defaultSansBoldFont = fontMaker({ weight: "700", family: "CircularStd" });
