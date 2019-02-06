@@ -1,7 +1,7 @@
 import React from "react";
-import FastImage from "react-native-fast-image";
+import { Image } from "react-native";
 
 const MobileFastImage = props => {
-  return <FastImage {...props} />;
+  return <Image {...props} />;
 };
 export default MobileFastImage;

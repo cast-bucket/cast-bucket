@@ -1,5 +1,7 @@
 import { memoCheck, memoSet } from "../../util/memoize";
-import RssParser from "rss-parser";
+import * as RssParser from "react-native-rss-parser";
+import fetch from "cross-fetch";
+
 const MAX_FEED_COUNT = 25;
 const enableCors = url => {
   return `https://cors-anywhere.herokuapp.com/${url}`;
@@ -23,30 +25,32 @@ export const errorDuringFetch = (feedUrl, error) => ({
   error
 });
 
-export const fetchFeed = feedUrl => async dispatch => {
+export const fetchFeed = feedUrl => dispatch => {
   dispatch(requestFeed(feedUrl));
-  const parserOptions = { maxRedirects: 4 };
-  const parser = new RssParser(parserOptions);
-  return parser
-    .parseURL(enableCors(feedUrl))
-    .then(response => {
-      const feedItems = [];
-      let { items, ...meta } = response;
-      items.forEach(item => {
-        feedItems.push({ type: "FEED_ITEM", values: item });
-      });
-      const feedData = {
-        meta,
-        items: feedItems
-      };
-      memoSet(feedUrl, {
-        timestamp: Date.now(),
-        data: feedData
-      });
-      dispatch(receiveFeed(feedUrl, feedData));
-    })
-    .catch(e => {
-      dispatch(errorDuringFetch(feedUrl, { message: e.message, detailed: e.stack }));
+  // const feed = await fetch(enableCors(feedUrl));
+  return fetch(enableCors(feedUrl))
+    .then(feedResponse => feedResponse.text())
+    .then(feed => {
+      RssParser.parse(feed)
+        .then(response => {
+          const feedItems = [];
+          let { items, ...meta } = response;
+          items.forEach(item => {
+            feedItems.push({ type: "FEED_ITEM", values: item });
+          });
+          const feedData = {
+            meta,
+            items: feedItems
+          };
+          memoSet(feedUrl, {
+            timestamp: Date.now(),
+            data: feedData
+          });
+          dispatch(receiveFeed(feedUrl, feedData));
+        })
+        .catch(e => {
+          dispatch(errorDuringFetch(feedUrl, { message: e.message, detailed: e.stack }));
+        });
     });
 };
 
