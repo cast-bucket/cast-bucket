@@ -1,3 +1,3 @@
 # Cast-Bucket
 
-An open source podcast application written using Electron and React. JavaScript FTW!
+An open source cross-platform podcast app for developers written using React Native.
