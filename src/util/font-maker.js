@@ -21,7 +21,7 @@ const font = {
     styles: {
       Italic: "italic"
     }
-  }
+  },
 };
 
 // generate styles for a font with given weight and style

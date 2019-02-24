@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import InterestsContainer from "../components/container/InterestsContainer";
+// import InterestsContainer from "../components/container/InterestsContainer";
 
 export default class Interests extends Component {
   constructor(props) {
@@ -7,6 +7,6 @@ export default class Interests extends Component {
   }
 
   render() {
-    return <InterestsContainer />;
+    return <div />;
   }
 }

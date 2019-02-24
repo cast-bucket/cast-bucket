@@ -28,7 +28,7 @@ export const errorDuringFetch = (feedUrl, error) => ({
 export const fetchFeed = feedUrl => dispatch => {
   dispatch(requestFeed(feedUrl));
   // const feed = await fetch(enableCors(feedUrl));
-  return fetch(enableCors(feedUrl))
+  return fetch(feedUrl)
     .then(feedResponse => feedResponse.text())
     .then(feed => {
       RssParser.parse(feed)
