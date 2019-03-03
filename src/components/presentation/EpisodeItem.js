@@ -1,11 +1,8 @@
 import React from "react";
-import FastImage from "../presentation/FastImage/FastImage";
-import { StyleSheet, Text, View, Image, Platform } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import global from "../../config/globals";
 import truncate from "truncate";
 import { Dimensions } from "react-native";
-
-const fallBackImage = require("../../assets/placeholders/cast-bucket-icon-green(1).png");
 
 const titleShortener = title => {
   return truncate(title, 50);

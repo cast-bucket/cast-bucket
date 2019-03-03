@@ -1,0 +1,10 @@
+@import url("https://cdn.jsdelivr.net/npm/inter-ui@3.3.4/inter.min.css");
+html {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+}
+/* @supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", sans-serif;
+  }
+} */

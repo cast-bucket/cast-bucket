@@ -16,6 +16,10 @@ export const memoCheck = async key => {
     if (value !== null) {
       const json = JSON.parse(value);
       const difference = Math.floor((Date.now() - json.timestamp) / 1000 / 60);
+      if (difference > MEMOIZATION_TTL) {
+        await memoDelete(key);
+        return null;
+      }
       return json;
     }
   } catch (error) {

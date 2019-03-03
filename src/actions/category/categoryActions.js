@@ -7,7 +7,9 @@ const BASE_URL = process.env.REACT_APP_API_URL;
 const categories_url = `${BASE_URL}/v1/categories`;
 
 const ignoreTransformations = {
-  iOS: "iOS"
+  iOS: "iOS",
+  bsd: "BSD",
+  "Data Science And Machine Learning": "Data Science and Machine Learning"
 };
 
 export const receivedCategories = response => ({
@@ -21,7 +23,11 @@ export function fetchCategories() {
     try {
       const categories = await axios.get(categories_url).then(res => res.data);
       const response = categories.map(
-        category => ignoreTransformations[category] || titleCase(category)
+        category => {
+          console.log('>>>-SHRIRAM->>> category', category);
+          console.log('>>>-SHRIRAM->>> ignoreTransformations[category]', ignoreTransformations[category]);
+          return ignoreTransformations[category] || titleCase(category)
+        }
       );
       dispatch(receivedCategories(response));
     } catch (error) {

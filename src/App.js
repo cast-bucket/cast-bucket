@@ -1,14 +1,30 @@
 import React, { Component } from "react";
-import { View, ScrollView } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import { Provider } from "react-redux";
 import GlobalFont from "react-native-global-font";
-import { Router, Route, Link } from "./routes/routes";
+import { Router, Route } from "./routes/routes";
 import { Home, LandingPage } from "./screens";
 import Episodes from "./components/container/Episodes";
 import configureStore from "./config/store";
+import NativeTachyons from "react-native-style-tachyons";
 
 const initialState = {};
 const store = configureStore(initialState);
+
+NativeTachyons.build(
+  {
+    colors: {
+      palette: {
+        green: "#00FF00"
+      }
+    },
+    /* REM parameter is optional, default is 16 */
+    rem: window.width > 340 ? 18 : 16,
+    /* fontRem parameter is optional to allow adjustment in font-scaling. default falls back to rem */
+    fontRem: 20
+  },
+  StyleSheet
+);
 
 export default class App extends Component {
   componentDidMount() {

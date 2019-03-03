@@ -22,6 +22,22 @@ const font = {
       Italic: "italic"
     }
   },
+  Inter: {
+    weights: {
+      Thin: "100",
+      UltraLight: "200",
+      Light: "300",
+      Regular: "400",
+      Medium: "500",
+      Semibold: "600",
+      Bold: "700",
+      Heavy: "800",
+      Black: "900"
+    },
+    styles: {
+      Italic: "italic"
+    }
+  }
 };
 
 // generate styles for a font with given weight and style
@@ -34,6 +50,7 @@ export const fontMaker = (options = {}) => {
     },
     options
   );
+  console.log('>>>-SHRIRAM->>> weight', weight);
   const { weights, styles } = font[family];
   if (Platform.OS === "android" || Platform.OS === "ios") {
     weight = weights[weight] ? weight : "";
@@ -47,6 +64,9 @@ export const fontMaker = (options = {}) => {
   } else {
     weight = weights[weight] || weights["Medium"];
     style = styles[style] || null;
+    console.log(">>>-SHRIRAM->>> family", family);
+    console.log('>>>-SHRIRAM->>> weight', weight);
+    console.log('>>>-SHRIRAM->>> style', style);
     return {
       fontFamily: family,
       fontWeight: weight,

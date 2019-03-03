@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { RecyclerListView, DataProvider, LayoutProvider } from "recyclerlistview";
-import { View } from "react-native";
 
 export default class RecyclerView extends Component {
   constructor(args) {
@@ -24,14 +23,14 @@ export default class RecyclerView extends Component {
   render() {
     const { containerStyle, recyclerViewProps } = this.props;
     return (
-      <View style={containerStyle || { flex: 1, minHeight: 100, minWidth: 1 }}>
-        <RecyclerListView
-          rowRenderer={this._renderRow}
-          dataProvider={this.state.dataProvider}
-          layoutProvider={this._layoutProvider}
-          {...recyclerViewProps}
-        />
-      </View>
+      <RecyclerListView
+        style={{ flex: 1 }}
+        contentContainerStyle={containerStyle}
+        rowRenderer={this._renderRow}
+        dataProvider={this.state.dataProvider}
+        layoutProvider={this._layoutProvider}
+        {...recyclerViewProps}
+      />
     );
   }
 }

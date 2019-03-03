@@ -1,17 +1,33 @@
 import { StyleSheet } from "react-native";
-import { fontMaker } from "../../util/font-maker";
+import { styles as s } from "react-native-style-tachyons";
+import { InterRegular, InterBold, InterSemibold, InterMedium, SpaceMonoRegular } from "./fonts";
 
-const defaultSansFont = fontMaker({ weight: "400", family: "CircularStd" });
-const defaultSansBoldFont = fontMaker({ weight: "700", family: "CircularStd" });
-const defaultMonoFont = fontMaker({ weight: "400", family: "Space Mono" });
+const defaultSansFont = InterRegular;
+const defaultSansBoldFont = InterBold;
+const defaultMonoFont = SpaceMonoRegular;
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 50
-  },
   defaultSansFont,
   defaultSansBoldFont,
   defaultMonoFont,
+  title: {
+    fontSize: 45,
+    ...InterSemibold
+  },
+  headline: {
+    fontSize: 56,
+    ...InterBold
+  },
+  content: {
+    ...InterRegular,
+    fontSize: 16,
+    lineHeight: 22,
+    letterSpacing: "-0.011em"
+  },
+  subheading: {
+    fontSize: 25,
+    ...InterMedium
+  },
   primaryText: {
     color: "#4c4c4c"
   },

@@ -3,9 +3,6 @@ import * as RssParser from "react-native-rss-parser";
 import fetch from "cross-fetch";
 
 const MAX_FEED_COUNT = 25;
-const enableCors = url => {
-  return `https://cors-anywhere.herokuapp.com/${url}`;
-};
 
 export const requestFeed = feedUrl => ({
   type: "REQUEST_FEED",

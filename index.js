@@ -13,10 +13,3 @@ const appName = Platform.select({
 if (!appName) appName = meta.name;
 
 AppRegistry.registerComponent(appName, () => App);
-
-if (window.document) {
-  AppRegistry.runApplication(appName, {
-    initialProps: {},
-    rootTag: document.getElementById("root")
-  });
-}

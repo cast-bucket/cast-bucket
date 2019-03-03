@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Dimensions,
-  Platform,
-  ActivityIndicator
-} from "react-native";
+import { StyleSheet, Text, View, Dimensions, Platform, ActivityIndicator } from "react-native";
 import { connect } from "react-redux";
 import RecyclerView from "../presentation/RecyclerView";
 import EpisodeItem from "../presentation/EpisodeItem";
