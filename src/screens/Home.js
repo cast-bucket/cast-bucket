@@ -8,10 +8,7 @@ class Home extends Component {
   render() {
     return (
       <View>
-        <Text style={[globals.styles.title, s.f2]}> Discover </Text>
-        {/* <TopPodcasts category="All" />
-        <TopPodcasts category="Technology" />
-        <TopPodcasts category="Arts" /> */}
+        <Text style={[globals.styles.title, s.f2, s.ma3]}>Discover</Text>
         <Categories />
       </View>
     );

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Provider } from "react-redux";
-import GlobalFont from "react-native-global-font";
 import { Router, Route } from "./routes/routes";
 import { Home, LandingPage } from "./screens";
 import Episodes from "./components/container/Episodes";
@@ -27,11 +26,6 @@ NativeTachyons.build(
 );
 
 export default class App extends Component {
-  componentDidMount() {
-    let fontName = "CircularStd";
-    GlobalFont.applyGlobal(fontName);
-  }
-
   render() {
     return (
       <Provider store={store}>

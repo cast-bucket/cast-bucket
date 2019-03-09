@@ -1,38 +1,53 @@
 import { styles as s } from "react-native-style-tachyons";
 import React from "react";
 // import FastImage from "../presentation/FastImage/FastImage";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from "react-native";
 import global from "../../config/globals";
-import randomColor from "random-hex-color";
+import constants from "../../util/constants";
 
+const { width } = Dimensions.get("window");
+const isSmallScreen = width <= constants.breakpoints.MEDIUM_WIDTH;
 const CategoryItem = props => {
   return (
     <View style={styles.categoryItem}>
-      <TouchableOpacity onPress={props.onPress}>
-        <Image style={[styles.categoryImage, s["bg_green"]]} />
+      <TouchableOpacity onPress={props.onPress} elevation={5} style={styles.categoryItemTouchable}>
+        <Image style={[styles.categoryImage, s["bg_green_70"]]} />
+        <Text style={[styles.categoryTitle, global.styles.subheading, isSmallScreen ? s.f6 : s.f5]}>
+          {props.title}
+        </Text>
       </TouchableOpacity>
-      <Text style={[styles.categoryTitle, global.styles.subheading, s.f6]}>{props.title}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   categoryImage: {
-    width: 200,
-    height: 200,
+    width: isSmallScreen ? 150 : 200,
+    height: 150,
+    borderRadius: 5,
+    resizeMode: "cover"
+  },
+  categoryItemTouchable: {
+    shadowColor: "#000000",
+    shadowOpacity: 0.15,
+    shadowRadius: 10,
+    shadowOffset: {
+      height: 1,
+      width: 1
+    },
     borderRadius: 5
-    // borderWidth: 0.005,
   },
   categoryItem: {
     flex: 1,
-    alignItems: "center",
-    margin: 20
+    marginHorizontal: isSmallScreen ? 7 : 30,
+    marginVertical: 20
   },
   categoryTitle: {
     textAlignVertical: "center",
     textAlign: "center",
-    maxWidth: 200,
-    marginTop: 15
+    maxWidth: isSmallScreen ? 150 : 220,
+    marginTop: 15,
+    marginBottom: 15
   }
 });
 

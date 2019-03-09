@@ -50,7 +50,6 @@ export const fontMaker = (options = {}) => {
     },
     options
   );
-  console.log('>>>-SHRIRAM->>> weight', weight);
   const { weights, styles } = font[family];
   if (Platform.OS === "android" || Platform.OS === "ios") {
     weight = weights[weight] ? weight : "";
@@ -64,9 +63,6 @@ export const fontMaker = (options = {}) => {
   } else {
     weight = weights[weight] || weights["Medium"];
     style = styles[style] || null;
-    console.log(">>>-SHRIRAM->>> family", family);
-    console.log('>>>-SHRIRAM->>> weight', weight);
-    console.log('>>>-SHRIRAM->>> style', style);
     return {
       fontFamily: family,
       fontWeight: weight,

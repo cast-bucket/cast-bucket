@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
-import { styles as s } from "react-native-style-tachyons";
 import { InterRegular, InterBold, InterSemibold, InterMedium, SpaceMonoRegular } from "./fonts";
+// import { styles as s } from "react-native-style-tachyons";
 
 const defaultSansFont = InterRegular;
 const defaultSansBoldFont = InterBold;

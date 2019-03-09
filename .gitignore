@@ -57,3 +57,5 @@ buck-out/
 
 # local env config
 .env.local
+
+tmp/

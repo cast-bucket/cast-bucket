@@ -9,6 +9,7 @@
       "request": "launch",
       "name": "Launch Chrome against localhost",
       "url": "http://localhost.cast-bucket.com:3000",
+      "runtimeExecutable": "/opt/google/chrome-unstable/google-chrome-unstable",
       "webRoot": "${workspaceFolder}"
     }
   ]
