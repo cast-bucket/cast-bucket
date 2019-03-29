@@ -6,7 +6,6 @@ import { categories } from "./categoriesReducer";
 export default combineReducers({
   podcastsReducer,
   podcastsByCategory,
-  selectedCategory,
   feeds,
   feedsReducer,
   categories

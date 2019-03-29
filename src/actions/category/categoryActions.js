@@ -19,15 +19,25 @@ export const receivedCategories = response => ({
   receivedAt: Date.now()
 });
 
+export function selectCategories() {
+  return async dispatch => {
+    try {
+    } catch (error) {}
+  };
+}
+
 export function fetchCategories() {
   return async dispatch => {
     try {
+      const response = [];
       const categories = await axios.get(categories_url).then(res => res.data);
-      const response = categories.map(
-        category => {
-          return ignoreTransformations[category] || titleCase(category)
-        }
-      );
+      categories.forEach(category => {
+        response.push({
+          title: ignoreTransformations[category] || titleCase(category),
+          categoryId: category
+        });
+      });
+      console.log('>>>-SHRIRAM->>> response', response);
       dispatch(receivedCategories(response));
     } catch (error) {
       dispatch(errorWhileFetching(error, categories_url));

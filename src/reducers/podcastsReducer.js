@@ -1,15 +1,6 @@
 import { REQUEST_PODCASTS, RECEIVE_PODCASTS } from "../actions/types";
+
 const initialState = { isFetching: false, items: [] };
-
-export const selectedCategory = (state = "Technology", action) => {
-  switch (action.type) {
-    case "SELECTED_CATEGORY":
-      return action.category;
-    default:
-      return state;
-  }
-};
-
 export const podcastsReducer = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_PODCASTS:

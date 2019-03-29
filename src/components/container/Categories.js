@@ -19,7 +19,7 @@ const calcNumColumns = screenWidth => {
 
 class Categories extends Component {
   renderItem({ item }) {
-    return <CategoryItem title={item} />;
+    return <CategoryItem title={item.title} id={item.categoryId} />;
   }
 
   componentDidMount() {
@@ -28,6 +28,7 @@ class Categories extends Component {
 
   render() {
     const { categories } = this.props;
+    console.log('>>>-SHRIRAM->>> categories', categories);
     const numberOfColumns = calcNumColumns(width);
     return (
       <View>

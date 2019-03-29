@@ -7,12 +7,15 @@ import constants from "../../util/constants";
 
 const { width } = Dimensions.get("window");
 const isSmallScreen = width <= constants.breakpoints.MEDIUM_WIDTH;
+
+
 const CategoryItem = props => {
   return (
     <View style={styles.categoryItem}>
-      <TouchableOpacity onPress={props.onPress} elevation={5} style={styles.categoryItemTouchable}>
-        <Image style={[styles.categoryImage, s["bg_green_70"]]} />
-        <Text style={[styles.categoryTitle, global.styles.subheading, isSmallScreen ? s.f6 : s.f5]}>
+      <TouchableOpacity onPress={props.onPress} elevation={5}>
+        {props.selected.includes(props.title)}
+        <Image style={[styles.categoryImage, styles.categoryItemTouchable, s["bg_green_70"]]} />
+        <Text style={[styles.categoryTitle, global.styles.subheading, s.f6]}>
           {props.title}
         </Text>
       </TouchableOpacity>
@@ -22,8 +25,8 @@ const CategoryItem = props => {
 
 const styles = StyleSheet.create({
   categoryImage: {
-    width: isSmallScreen ? 150 : 200,
-    height: 150,
+    width: 125,
+    height: 125,
     borderRadius: 5,
     resizeMode: "cover"
   },
@@ -40,12 +43,13 @@ const styles = StyleSheet.create({
   categoryItem: {
     flex: 1,
     marginHorizontal: isSmallScreen ? 7 : 30,
-    marginVertical: 20
+    marginVertical: 10
   },
   categoryTitle: {
     textAlignVertical: "center",
     textAlign: "center",
-    maxWidth: isSmallScreen ? 150 : 220,
+    maxWidth: 125,
+    fontSize: 16,
     marginTop: 15,
     marginBottom: 15
   }

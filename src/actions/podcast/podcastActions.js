@@ -2,12 +2,6 @@ import { REQUEST_PODCASTS, RECEIVE_PODCASTS } from "../types";
 import { memoCheck, memoSet } from "../../util/memoize";
 import { Api } from "node-gpodder";
 
-export function selectCategory(category) {
-  return {
-    type: "SELECTED_CATEGORY",
-    category
-  };
-}
 
 export const requestPodcasts = category => ({
   type: REQUEST_PODCASTS,
