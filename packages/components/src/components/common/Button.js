@@ -1,5 +1,4 @@
 import React from "react";
-import { TouchableOpacity, Text } from "react-native";
 import styled from "@emotion/native";
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
@@ -9,16 +8,23 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
 `;
 
 const StyledText = styled.Text`
-  font-size: ${props => props.fontSize || 18};
-  letter-spacing: ${props => props.letterSpacing || "0px"};
-  color: ${props => props.color || "#fff"};
-  font-family: ${props => (props.fontFamily ? props.fontFamily : "Inter")};
+  font-size: ${props => props.fontSize};
+  letter-spacing: ${props => props.letterSpacing};
+  color: ${props => props.color};
+  font-family: ${props => props.fontFamily};
 `;
 
-export const StyledButton = props => {
+export const Button = props => {
   return (
     <StyledTouchableOpacity onPress={props.onPress} activeOpacity={0.6} underlayColor="#000">
-      <StyledText> {props.title} </StyledText>
+      <StyledText>{props.title}</StyledText>
     </StyledTouchableOpacity>
   );
+};
+
+StyledText.defaultProps = {
+  fontSize: 18,
+  letterSpacing: "0px",
+  color: "#fff",
+  fontFamily: "Inter"
 };
