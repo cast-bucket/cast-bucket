@@ -5,11 +5,13 @@
   "author": "Shriram Balaji",
   "license": "MIT",
   "scripts": {
-    "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "build:stats": "react-app-rewired build --stats && webpack-bundle-analyzer build/bundle-stats.json -m static -r build/bundle-stats.html -O",
-    "test:web": "react-app-rewired test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "cd .. && yarn patch-package",
+    "lint": "eslint --ext .js --ext .jsx src",
+    "start": "react-app-rewired start",
+    "test:web": "react-app-rewired test --env=jsdom"
   },
   "dependencies": {
     "@babel/polyfill": "7.4.0",

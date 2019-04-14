@@ -9,13 +9,14 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "web": "yarn start:web",
-    "start:web": "yarn workspace @cast-bucket/web start",
+    "start:web": "concurrently --kill-others \"yarn workspace @cast-bucket/web lint:watch\" \"yarn workspace @cast-bucket/web start\"",
     "build:web": "yarn workspace @cast-bucket/web build",
     "test:web": "yarn workspace @cast-bucket/web test",
     "eject": "react-scripts eject",
     "electron": "react-scripts start & electron .",
     "android-linux": "react-native bundle --platform android --dev true --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
     "ios-linux": "react-native bundle --entry-file='index.ios.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios' && react-native run-ios",
+    "prepare": "yarn patch-package",
     "patch-package": "patch-package"
   },
   "workspaces": {
@@ -30,10 +31,12 @@
   "devDependencies": {
     "concurrently": "4.1.0",
     "cross-env": "5.2.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
     "husky": "1.3.1",
     "patch-package": "^6.1.1",
     "postinstall-postinstall": "^2.0.0",
-    "prettier": "1.16.4"
+    "prettier": "^1.17.0"
   },
   "jest": {
     "preset": "react-native"
@@ -44,5 +47,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "dependencies": {
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-native": "^3.6.0"
+  }
 }

@@ -1,8 +1,16 @@
 import React, { Component } from "react";
-import { Text, Platform } from "react-native";
 import styled from "@emotion/native";
+import { Provider } from "react-redux";
+import { Router, Route } from "../router";
+import configureStore from "../redux/store";
 
-import { Button } from "@cast-bucket/components/src/components/common";
+import { Home } from "./screens";
+import Categories from "./layout/CategoryGrid";
+
+const initialState = {};
+const store = configureStore(initialState);
+
+// const action = type => store.dispatch({ type });
 
 const Container = styled.View`
   display: flex;
@@ -18,11 +26,14 @@ const Texter = styled.Text`
 export class App extends Component {
   render() {
     return (
-      <Container>
-        {/* <Animated.Image source={logo} style={[styles.logo, { transform: [{ rotate: spin }] }]} /> */}
-        <Texter> Cast Bucket</Texter>
-        <Button color="#d3d3d3" title="Click!" />
-      </Container>
+      <Provider store={store}>
+        <Router>
+          <Container>
+            <Route exact path="/choose-categories" component={Categories} />
+            <Route exact path="/" component={Home} />
+          </Container>
+        </Router>
+      </Provider>
     );
   }
 }
