@@ -9,7 +9,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "web": "yarn start:web",
-    "start:web": "concurrently --kill-others \"yarn workspace @cast-bucket/web lint:watch\" \"yarn workspace @cast-bucket/web start\"",
+    "start:web": "yarn workspace @cast-bucket/web start",
     "build:web": "yarn workspace @cast-bucket/web build",
     "test:web": "yarn workspace @cast-bucket/web test",
     "eject": "react-scripts eject",

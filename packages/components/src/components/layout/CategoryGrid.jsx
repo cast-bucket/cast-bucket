@@ -5,7 +5,7 @@ import CategoryItem from "../common/CategoryItem";
 import { FlatGrid } from "react-native-super-grid";
 
 import { fetchCategories } from "../../redux/actions/categories";
-import { isSmallScreen, getAdjustedFontSize } from "../utils/breakpoints";
+import { isSmallScreen } from "../utils/breakpoints";
 
 const DEFAULT_ITEM_WIDTH = 150;
 
@@ -13,15 +13,38 @@ const { width } = Dimensions.get("window");
 const itemSpacing = isSmallScreen(width) ? 20 : 60;
 
 class CategoriesGrid extends Component {
-  renderItem({ item, index }) {
-    const labelSize = getAdjustedFontSize(16, width);
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedCategories: []
+    };
+  }
+
+  selectCategory = categoryId => {
+    const categories = this.state.selectedCategories;
+    this.setState({
+      selectedCategories: categories.concat(categoryId)
+    });
+  };
+
+  unselectCategory = categoryId => {
+    const categories = this.state.selectedCategories;
+    this.setState({
+      selectedCategories: categories.filter(item => item !== categoryId)
+    });
+  };
+
+  renderItem = ({ item, index }) => {
     const itemProps = {
+      categoryId: item,
       dimensions: DEFAULT_ITEM_WIDTH,
       key: index,
-      title: item
+      selectCategory: this.selectCategory,
+      unselectCategory: this.unselectCategory,
+      selected: this.state.selectedCategories
     };
     return <CategoryItem {...itemProps} />;
-  }
+  };
 
   componentDidMount() {
     this.props.dispatch(fetchCategories());

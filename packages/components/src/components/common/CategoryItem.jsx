@@ -1,8 +1,8 @@
 import React from "react";
-// import FastImage from "../presentation/FastImage/FastImage";
 import styled from "@emotion/native";
-import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { View } from "react-native";
 import titleCase from "title-case";
+const checkedIcon = require("../../assets/icons/checked.svg");
 
 const ignoreTransformations = {
   iOS: "iOS",
@@ -11,65 +11,69 @@ const ignoreTransformations = {
   "programming-languages-and-frameworks": "Programming Languages and Frameworks"
 };
 
-const appendDimUnit = dimensions => `${dimensions}px`;
+const appendUnit = dimensions => `${dimensions}px`;
+
+const Checked = styled.Image`
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1;
+`;
 
 const CategoryImage = styled.Image`
-  width: ${props => appendDimUnit(props.dimensions)};
-  height: ${props => appendDimUnit(props.dimensions)};
+  width: ${props => appendUnit(props.dimensions)};
+  height: ${props => appendUnit(props.dimensions)};
   border-radius: 5px;
+  border: ${props => (props.isSelected ? "1.5px solid green" : "0px")};
   background-color: #1ad195;
   cursor: pointer;
 `;
 
+const CategoryTouchable = styled.TouchableOpacity`
+  border-radius: 5px;
+  shadow-color: black;
+  shadow-opacity: 0.15;
+  shadow-radius: 10;
+  shadow-offset: {
+    height: 1px,
+    width: 1px
+  }
+`;
+
 const CategoryTitle = styled.Text`
-  font-size: 1.05rem;
-  text-align: center;
+  font-size: 1.15rem;
   margin-top: 15px;
   margin-bottom: 15px;
+  text-align: center;
 `;
 
 const transformTitle = title => ignoreTransformations[title] || titleCase(title);
+
 const CategoryItem = props => {
+  const { categoryId, dimensions, selectCategory, unselectCategory, selected } = props;
+  const isSelected = selected.includes(categoryId);
+
   return (
     <View style={{ flex: 1, justifyContent: "flex-start" }}>
-      <TouchableOpacity
-        onPress={props.onPress}
-        elevation={5}
-        style={styles.categoryItemTouchable}
-        activeOpacity={0.6}
+      <CategoryTouchable
+        activeOpacity={0.8}
+        elevation={10}
+        isSelected={isSelected}
+        onPress={() => (isSelected ? unselectCategory(categoryId) : selectCategory(categoryId))}
+        underlayColor="black"
       >
-        <CategoryImage dimensions={props.dimensions} style={{ resizeMode: "cover" }} />
-      </TouchableOpacity>
-      <CategoryTitle>{transformTitle(props.title)}</CategoryTitle>
+        {isSelected && <Checked source={checkedIcon} />}
+        <CategoryImage
+          dimensions={dimensions}
+          style={{ resizeMode: "cover" }}
+          isSelected={isSelected}
+        />
+      </CategoryTouchable>
+      <CategoryTitle>{transformTitle(categoryId)}</CategoryTitle>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  categoryImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 5,
-    resizeMode: "cover",
-    backgroundColor: "#1ad195"
-  },
-  categoryItemTouchable: {
-    shadowColor: "#000000",
-    shadowOpacity: 0.15,
-    shadowRadius: 10,
-    shadowOffset: {
-      height: 1,
-      width: 1
-    },
-    borderRadius: 5
-  },
-  categoryTitle: {
-    fontSize: "14px",
-    textAlignVertical: "center",
-    textAlign: "center",
-    marginTop: 15
-    // marginBottom: 15
-  }
-});
 
 export default CategoryItem;
