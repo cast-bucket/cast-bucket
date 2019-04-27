@@ -1,7 +1,59 @@
-<?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" 
-  xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 426.667 426.667" style="enable-background:new 0 0 426.667 426.667;" xml:space="preserve" width="512px" height="512px" class="">
-  <g>
-    <path d="M213.333,0C95.518,0,0,95.514,0,213.333s95.518,213.333,213.333,213.333  c117.828,0,213.333-95.514,213.333-213.333S331.157,0,213.333,0z M174.199,322.918l-93.935-93.931l31.309-31.309l62.626,62.622  l140.894-140.898l31.309,31.309L174.199,322.918z" data-original="#6AC259" class="active-path" data-old_color="#1772F8" fill="#085039"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 53.333375 53.333375"
+   xml:space="preserve"
+   width="64"
+   height="64"
+   class=""
+   sodipodi:docname="checked.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="/home/shriram/Repositories/cb-monorepo/cast-bucket/packages/components/src/assets/icons/checkmark-blue.png"
+   inkscape:export-xdpi="95.800003"
+   inkscape:export-ydpi="95.800003"><metadata
+   id="metadata186"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs184" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1920"
+   inkscape:window-height="1004"
+   id="namedview182"
+   showgrid="false"
+   inkscape:zoom="4.4083688"
+   inkscape:cx="64.628666"
+   inkscape:cy="-12.957746"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="g179" />
+  <g
+   id="g179"
+   transform="matrix(0.1192158,0,0,0.1192158,1.2212029,1.1523229)">
+    <path
+   d="M 213.333,0 C 95.518,0 0,95.514 0,213.333 c 0,117.819 95.518,213.333 213.333,213.333 117.828,0 213.333,-95.514 213.333,-213.333 C 426.666,95.514 331.157,0 213.333,0 Z m -39.134,322.918 -93.935,-93.931 31.309,-31.309 62.626,62.622 140.894,-140.898 31.309,31.309 z"
+   data-original="#6AC259"
+   class="active-path"
+   data-old_color="#1772F8"
+   id="path177"
+   inkscape:connector-curvature="0"
+   style="fill:#0055d4" />
   </g>
 </svg>
