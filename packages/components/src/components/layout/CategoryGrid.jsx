@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Dimensions } from "react-native";
+import { Dimensions, View } from "react-native";
 import { connect } from "react-redux";
-import CategoryItem from "../common/CategoryItem";
+import { CategoryItem, Button } from "../common";
 import { FlatGrid } from "react-native-super-grid";
-
 import { fetchCategories } from "../../redux/actions/categories";
 import { isSmallScreen } from "../utils/breakpoints";
 
@@ -50,17 +49,32 @@ class CategoriesGrid extends Component {
     this.props.dispatch(fetchCategories());
   }
 
+  // TODO: Fix Button Width, Move Container View to Screens
   render() {
+    const { selectedCategories } = this.state;
     const categories = this.props.categories || [];
     return (
-      <FlatGrid
-        style={{ marginTop: 20, flex: 1 }}
-        fixed={true}
-        itemDimension={DEFAULT_ITEM_WIDTH}
-        items={categories}
-        spacing={itemSpacing}
-        renderItem={this.renderItem}
-      />
+      <View style={{ flex: 1, width: "100%", backgroundColor: "#0a0a0a" }}>
+        <FlatGrid
+          fixed={true}
+          itemDimension={DEFAULT_ITEM_WIDTH}
+          items={categories}
+          spacing={itemSpacing}
+          renderItem={this.renderItem}
+        />
+        {categories.length > 0 && (
+          <Button
+            disabled={selectedCategories.length <= 0}
+            css={{
+              margin: 20,
+              alignSelf: "flex-end"
+            }}
+            onPress={() => localStorage.setItem("selectedCategories", selectedCategories.sort())}
+          >
+            Next
+          </Button>
+        )}
+      </View>
     );
   }
 }

@@ -43,15 +43,16 @@ const CategoryTouchable = styled.TouchableOpacity`
 `;
 
 const CategoryTitle = styled.Text`
-  font-size: 1.15rem;
+  font-size: 1rem;
   margin-top: 15px;
   margin-bottom: 15px;
   text-align: center;
+  color: #fff;
 `;
 
 const transformTitle = title => ignoreTransformations[title] || titleCase(title);
 
-const CategoryItem = props => {
+export const CategoryItem = React.memo(props => {
   const { categoryId, dimensions, selectCategory, unselectCategory, selected } = props;
   const isSelected = selected.includes(categoryId);
 
@@ -74,6 +75,4 @@ const CategoryItem = props => {
       <CategoryTitle>{transformTitle(categoryId)}</CategoryTitle>
     </View>
   );
-};
-
-export default CategoryItem;
+});

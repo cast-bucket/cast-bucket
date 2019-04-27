@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "@emotion/native";
 import { Provider } from "react-redux";
-import { Router, Route } from "../router";
+import { Router, Route, Switch } from "../router";
 import configureStore from "../redux/store";
 
 import { Home } from "./screens";
@@ -16,7 +16,6 @@ const Container = styled.View`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 50px;
 `;
 
 const Texter = styled.Text`
@@ -29,8 +28,10 @@ export class App extends Component {
       <Provider store={store}>
         <Router>
           <Container>
-            <Route exact path="/choose-categories" component={Categories} />
-            <Route exact path="/" component={Home} />
+            <Switch>
+              <Route exact path="/choose-categories" component={Categories} />
+              <Route exact path="/" component={Home} />
+            </Switch>
           </Container>
         </Router>
       </Provider>

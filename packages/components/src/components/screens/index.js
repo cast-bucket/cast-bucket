@@ -1,1 +1,1 @@
-export { Home } from "./HomeScreen";
+export { Home } from "./Home";
