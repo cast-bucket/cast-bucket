@@ -12,6 +12,7 @@
     "start:web": "yarn workspace @cast-bucket/web start",
     "build:web": "yarn workspace @cast-bucket/web build",
     "test:web": "yarn workspace @cast-bucket/web test",
+    "android": "yarn workspace @cast-bucket/mobile android",
     "start:mobile": "yarn workspace @cast-bucket/mobile start",
     "dev:mobile": "yarn workspace @cast-bucket/mobile dev",
     "test:mobile": "yarn workspace @cast-bucket/mobile test",
