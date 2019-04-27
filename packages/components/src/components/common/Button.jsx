@@ -9,7 +9,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
     else return props.background;
   }};
   width: ${props => props.width};
-  border-radius: 3px;
+  border-radius: 5px;
   align-self: ${props => props.alignSelf};
 `;
 
@@ -27,7 +27,7 @@ export const Button = props => {
     <StyledTouchableOpacity
       disabled={props.disabled}
       onPress={props.onPress}
-      activeOpacity={0.9}
+      activeOpacity={0.65}
       underlayColor="#000"
       style={{ ...props.css }}
     >
@@ -43,7 +43,7 @@ StyledTouchableOpacity.defaultProps = {
 };
 
 StyledText.defaultProps = {
-  fontSize: 18,
-  letterSpacing: "0px",
+  fontSize: 20,
+  letterSpacing: "2px",
   color: "#fff"
 };
