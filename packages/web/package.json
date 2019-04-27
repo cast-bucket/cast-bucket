@@ -1,0 +1,40 @@
+{
+  "name": "@cast-bucket/web",
+  "version": "0.1.0",
+  "private": false,
+  "author": "Shriram Balaji",
+  "license": "MIT",
+  "scripts": {
+    "build": "react-app-rewired build",
+    "build:stats": "react-app-rewired build --stats && webpack-bundle-analyzer build/bundle-stats.json -m static -r build/bundle-stats.html -O",
+    "eject": "react-scripts eject",
+    "prepare": "cd .. && yarn patch-package",
+    "lint": "eslint --ext .js --ext .jsx src",
+    "start": "react-app-rewired start",
+    "test:web": "react-app-rewired test --env=jsdom"
+  },
+  "dependencies": {
+    "@babel/polyfill": "7.4.0",
+    "@cast-bucket/components": "^0.1.0",
+    "@emotion/native": "^10.0.10",
+    "react": "16.8.4",
+    "react-app-polyfill": "0.2.2",
+    "react-art": "16.8.4",
+    "react-dom": "16.8.4",
+    "react-native-super-grid": "^3.0.3",
+    "react-native-web": "0.11.2",
+    "react-scripts": "^2.1.5"
+  },
+  "devDependencies": {
+    "babel-plugin-react-native-web": "0.11.1",
+    "react-app-rewired": "2.1.1",
+    "serve": "10.1.2",
+    "webpack-bundle-analyzer": "3.1.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 9",
+    "not op_mini all"
+  ]
+}

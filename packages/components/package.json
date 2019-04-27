@@ -1,0 +1,32 @@
+{
+  "name": "@cast-bucket/components",
+  "version": "0.1.0",
+  "main": "index.js",
+  "private": false,
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ext .js --ext .jsx src"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.10",
+    "@emotion/native": "^10.0.10",
+    "axios": "^0.18.0",
+    "react": "16.8.4",
+    "react-app-polyfill": "0.2.2",
+    "react-art": "16.8.4",
+    "react-dom": "16.8.4",
+    "react-native": "0.59.4",
+    "react-native-vector-icons": "6.4.2",
+    "react-redux": "6.0.1",
+    "react-router-dom": "^5.0.0",
+    "react-router-native": "^5.0.0",
+    "react-spring": "8.0.18",
+    "react-test-renderer": "16.8.4",
+    "redux": "4.0.1",
+    "redux-devtools-extension": "2.13.8",
+    "redux-persist": "5.10.0",
+    "redux-saga": "1.0.2",
+    "reselect": "4.0.0",
+    "title-case": "^2.1.1"
+  }
+}

@@ -1,106 +1,59 @@
 {
   "name": "cast-bucket",
-  "version": "0.1.0",
+  "description": "A cross-platform podcast application",
   "private": true,
-  "dependencies": {
-    "autoprefixer": "7.1.6",
-    "babel-core": "6.26.0",
-    "babel-eslint": "7.2.3",
-    "babel-jest": "20.0.3",
-    "babel-loader": "7.1.2",
-    "babel-preset-react-app": "^3.1.1",
-    "babel-runtime": "6.26.0",
-    "case-sensitive-paths-webpack-plugin": "2.1.1",
-    "chalk": "1.1.3",
-    "css-loader": "0.28.7",
-    "dotenv": "4.0.0",
-    "dotenv-expand": "4.2.0",
-    "eslint": "4.10.0",
-    "eslint-config-react-app": "^2.1.0",
-    "eslint-loader": "1.9.0",
-    "eslint-plugin-flowtype": "2.39.1",
-    "eslint-plugin-import": "2.8.0",
-    "eslint-plugin-jsx-a11y": "5.1.1",
-    "eslint-plugin-react": "7.4.0",
-    "extract-text-webpack-plugin": "3.0.2",
-    "file-loader": "1.1.5",
-    "fs-extra": "3.0.1",
-    "html-webpack-plugin": "2.29.0",
-    "jest": "20.0.4",
-    "object-assign": "4.1.1",
-    "postcss-flexbugs-fixes": "3.2.0",
-    "postcss-loader": "2.0.8",
-    "promise": "8.0.1",
-    "raf": "3.4.0",
-    "react": "^16.3.2",
-    "react-dev-utils": "^5.0.1",
-    "react-dom": "^16.3.2",
-    "resolve": "1.6.0",
-    "style-loader": "0.19.0",
-    "sw-precache-webpack-plugin": "0.11.4",
-    "url-loader": "0.6.2",
-    "walker": "^1.0.7",
-    "webpack": "3.8.1",
-    "webpack-dev-server": "2.9.4",
-    "webpack-manifest-plugin": "1.3.2",
-    "whatwg-fetch": "2.0.3"
-  },
-  "main": "src/electron-main.js",
-  "homepage": "./",
-  "productName": "Cast Bucket",
+  "version": "0.0.1",
+  "author": "Shriram Balaji",
+  "license": "MIT",
   "scripts": {
-    "react-start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
-    "electron": "electron .",
-    "start": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000/ && npm run electron\""
+    "test": "jest",
+    "clean": "yarn workspaces run clean",
+    "web": "yarn start:web",
+    "start:web": "yarn workspace @cast-bucket/web start",
+    "build:web": "yarn workspace @cast-bucket/web build",
+    "test:web": "yarn workspace @cast-bucket/web test",
+    "android": "yarn workspace @cast-bucket/mobile android",
+    "start:mobile": "yarn workspace @cast-bucket/mobile start",
+    "dev:mobile": "yarn workspace @cast-bucket/mobile dev",
+    "test:mobile": "yarn workspace @cast-bucket/mobile test",
+    "eject": "react-scripts eject",
+    "electron": "react-scripts start & electron .",
+    "android-linux": "react-native bundle --platform android --dev true --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
+    "ios-linux": "react-native bundle --entry-file='index.ios.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios' && react-native run-ios",
+    "prepare": "yarn patch-package",
+    "patch-package": "patch-package"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shriram-Balaji/cast-bucket.git"
   },
   "devDependencies": {
-    "concurrently": "^3.5.1",
-    "electron": "^1.8.6",
-    "jest": "^22.4.3",
-    "wait-on": "^2.1.0"
+    "concurrently": "4.1.0",
+    "cross-env": "5.2.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "1.3.1",
+    "patch-package": "^6.1.1",
+    "postinstall-postinstall": "^2.0.0",
+    "prettier": "^1.17.0"
   },
   "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,mjs}"
-    ],
-    "setupFiles": [
-      "<rootDir>/config/polyfills.js"
-    ],
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
-      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
-    ],
-    "testEnvironment": "node",
-    "testURL": "http://localhost",
-    "transform": {
-      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
-    ],
-    "moduleNameMapper": {
-      "^react-native$": "react-native-web"
-    },
-    "moduleFileExtensions": [
-      "web.js",
-      "js",
-      "json",
-      "web.jsx",
-      "jsx",
-      "node",
-      "mjs"
-    ]
+    "preset": "react-native"
   },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+  "main": "index.electron.js",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-native": "^3.6.0"
   }
 }

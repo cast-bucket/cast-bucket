@@ -1,3 +1,3 @@
 # Cast-Bucket
 
-An open source cross-platform podcast app for developers.
+A cross-plaform, open source podcast app for developers.
