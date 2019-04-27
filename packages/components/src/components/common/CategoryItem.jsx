@@ -2,8 +2,7 @@ import React from "react";
 import styled from "@emotion/native";
 import { View } from "react-native";
 import titleCase from "title-case";
-const checkedIcon = require("../../assets/icons/checked.svg");
-
+const checkedIcon = require("../../assets/icons/checkmark-green.png");
 const ignoreTransformations = {
   iOS: "iOS",
   bsd: "BSD",
@@ -14,25 +13,35 @@ const ignoreTransformations = {
 const appendUnit = dimensions => `${dimensions}px`;
 
 const Checked = styled.Image`
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 10;
+  top: 10;
   z-index: 1;
+  opacity: 0.9;
 `;
 
 const CategoryImage = styled.Image`
   width: ${props => appendUnit(props.dimensions)};
   height: ${props => appendUnit(props.dimensions)};
   border-radius: 5px;
-  border: ${props => (props.isSelected ? "1.5px solid green" : "0px")};
+  ${props => {
+    const borderEnabled = {
+      borderRadius: 5,
+      borderWidth: 1.5,
+      borderColor: "#085039"
+    };
+    const borderDisabled = {
+      borderWidth: 0
+    };
+    return props.isSelected ? borderEnabled : borderDisabled;
+  }}
   background-color: #1ad195;
-  cursor: pointer;
 `;
 
 const CategoryTouchable = styled.TouchableOpacity`
-  border-radius: 5px;
+  border-radius: 25px;
   shadow-color: black;
   shadow-opacity: 0.15;
   shadow-radius: 10;
@@ -43,11 +52,14 @@ const CategoryTouchable = styled.TouchableOpacity`
 `;
 
 const CategoryTitle = styled.Text`
-  font-size: 1rem;
+  color: #0a0a0a;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: -0.176px;
   margin-top: 15px;
   margin-bottom: 15px;
   text-align: center;
-  color: #fff;
 `;
 
 const transformTitle = title => ignoreTransformations[title] || titleCase(title);
