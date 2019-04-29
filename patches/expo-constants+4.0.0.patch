@@ -1,0 +1,220 @@
+diff --git a/node_modules/expo-constants/build/ExponentConstants.web.js b/node_modules/expo-constants/build/ExponentConstants.web.js
+index 6a82692..2780caf 100644
+--- a/node_modules/expo-constants/build/ExponentConstants.web.js
++++ b/node_modules/expo-constants/build/ExponentConstants.web.js
+@@ -1,85 +1,93 @@
+-import UAParser from 'ua-parser-js';
+-import uuidv4 from 'uuid/v4';
+-const ExpoPackageJson = require('expo/package.json');
++import UAParser from "ua-parser-js";
++import uuidv4 from "uuid/v4";
++let ExpoPackageJson;
+ const parser = new UAParser();
+-const ID_KEY = 'EXPO_CONSTANTS_INSTALLATION_ID';
++const ID_KEY = "EXPO_CONSTANTS_INSTALLATION_ID";
+ const _sessionId = uuidv4();
++
++// Optional Require Expo for Web
++let expoFound = true;
++try {
++  ExpoPackageJson = require("expo/package.json");
++} catch (error) {
++  console.log("Expo not found due to", error.message);
++  expoFound = false;
++}
++
+ export default {
+-    get name() {
+-        return 'ExponentConstants';
+-    },
+-    get appOwnership() {
+-        return 'expo';
+-    },
+-    get installationId() {
+-        let installationId;
+-        try {
+-            installationId = localStorage.getItem(ID_KEY);
+-            if (installationId == null || typeof installationId !== 'string') {
+-                installationId = uuidv4();
+-                localStorage.setItem(ID_KEY, installationId);
+-            }
+-        }
+-        catch (error) {
+-            installationId = _sessionId;
+-        }
+-        finally {
+-            return installationId;
+-        }
+-    },
+-    get sessionId() {
+-        return _sessionId;
+-    },
+-    get platform() {
+-        return { web: UAParser(navigator.userAgent) };
+-    },
+-    get isHeadless() {
+-        return false;
+-    },
+-    get isDevice() {
+-        // TODO: Bacon: Possibly want to add information regarding simulators
+-        return true;
+-    },
+-    get isDetached() {
+-        return false;
+-    },
+-    get expoVersion() {
+-        return ExpoPackageJson.version;
+-    },
+-    get linkingUri() {
+-        // On native this is `exp://`
+-        return location.origin + location.pathname;
+-    },
+-    get expoRuntimeVersion() {
+-        return ExpoPackageJson.version;
+-    },
+-    get deviceName() {
+-        const { browser, engine, os: OS } = parser.getResult();
+-        return browser.name || engine.name || OS.name || undefined;
+-    },
+-    get systemFonts() {
+-        // TODO: Bacon: Maybe possible.
+-        return [];
+-    },
+-    get statusBarHeight() {
+-        return 0;
+-    },
+-    get deviceYearClass() {
+-        // TODO: Bacon: The android version isn't very accurate either, maybe we could try and guess this value.
+-        console.log(`ExponentConstants.deviceYearClass: is unimplemented on web.`);
+-        return null;
+-    },
+-    get manifest() {
+-        return process.env.APP_MANIFEST || {};
+-    },
+-    get experienceUrl() {
+-        return location.origin + location.pathname;
+-    },
+-    get debugMode() {
+-        return __DEV__;
+-    },
+-    async getWebViewUserAgentAsync() {
+-        return navigator.userAgent;
+-    },
++  get name() {
++    return "ExponentConstants";
++  },
++  get appOwnership() {
++    return "expo";
++  },
++  get installationId() {
++    let installationId;
++    try {
++      installationId = localStorage.getItem(ID_KEY);
++      if (installationId == null || typeof installationId !== "string") {
++        installationId = uuidv4();
++        localStorage.setItem(ID_KEY, installationId);
++      }
++    } catch (error) {
++      installationId = _sessionId;
++    } finally {
++      return installationId;
++    }
++  },
++  get sessionId() {
++    return _sessionId;
++  },
++  get platform() {
++    return { web: UAParser(navigator.userAgent) };
++  },
++  get isHeadless() {
++    return false;
++  },
++  get isDevice() {
++    // TODO: Bacon: Possibly want to add information regarding simulators
++    return true;
++  },
++  get isDetached() {
++    return false;
++  },
++  get expoVersion() {
++    return expoFound ? ExpoPackageJson.version : null;
++  },
++  get linkingUri() {
++    // On native this is `exp://`
++    return location.origin + location.pathname;
++  },
++  get expoRuntimeVersion() {
++    return expoFound ? ExpoPackageJson.version : null;
++  },
++  get deviceName() {
++    const { browser, engine, os: OS } = parser.getResult();
++    return browser.name || engine.name || OS.name || undefined;
++  },
++  get systemFonts() {
++    // TODO: Bacon: Maybe possible.
++    return [];
++  },
++  get statusBarHeight() {
++    return 0;
++  },
++  get deviceYearClass() {
++    // TODO: Bacon: The android version isn't very accurate either, maybe we could try and guess this value.
++    console.log(`ExponentConstants.deviceYearClass: is unimplemented on web.`);
++    return null;
++  },
++  get manifest() {
++    return process.env.APP_MANIFEST || {};
++  },
++  get experienceUrl() {
++    return location.origin + location.pathname;
++  },
++  get debugMode() {
++    return __DEV__;
++  },
++  async getWebViewUserAgentAsync() {
++    return navigator.userAgent;
++  }
+ };
+ //# sourceMappingURL=ExponentConstants.web.js.map
+diff --git a/node_modules/expo-constants/src/Constants.types.ts b/node_modules/expo-constants/src/Constants.types.ts
+index 1544cda..6144d73 100644
+--- a/node_modules/expo-constants/src/Constants.types.ts
++++ b/node_modules/expo-constants/src/Constants.types.ts
+@@ -1,13 +1,13 @@
+ export enum AppOwnership {
+-  Standalone = 'standalone',
+-  Expo = 'expo',
+-  Guest = 'guest',
++  Standalone = "standalone",
++  Expo = "expo",
++  Guest = "guest"
+ }
+ 
+ export enum UserInterfaceIdiom {
+-  Handset = 'handset',
+-  Tablet = 'tablet',
+-  Unsupported = 'unsupported',
++  Handset = "handset",
++  Tablet = "tablet",
++  Unsupported = "unsupported"
+ }
+ 
+ export interface IOSManifest {
+@@ -85,14 +85,14 @@ export interface PlatformManifest {
+ }
+ 
+ export interface NativeConstants {
+-  name: 'ExponentConstants';
++  name: "ExponentConstants";
+   appOwnership: AppOwnership;
+   debugMode: boolean;
+   deviceName?: string;
+   deviceYearClass: number | null;
+   experienceUrl: string;
+-  expoRuntimeVersion: string;
+-  expoVersion: string;
++  expoRuntimeVersion: string | null;
++  expoVersion: string | null;
+   isDetached?: boolean;
+   intentUri?: string;
+   installationId: string;

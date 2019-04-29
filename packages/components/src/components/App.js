@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { Router, Route, Switch } from "../libs/router";
 import configureStore from "../redux/store";
 
-import { Home } from "./screens";
+import { Home, Player } from "./screens";
 import Categories from "./layout/CategoryGrid";
 import { Dimensions } from "react-native";
 

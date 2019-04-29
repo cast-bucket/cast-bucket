@@ -79,6 +79,7 @@ project.ext.react = [
 
 // apply from: "../../../../node_modules/react-native-vector-icons/fonts.gradle"
 
+apply from: '../../node_modules/react-native-unimodules/gradle.groovy'
 apply from: "../../../../node_modules/react-native/react.gradle"
 
 /**
@@ -146,7 +147,7 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     
     // implementation project(':react-native-vector-icons')
-
+    addUnimodulesDependencies([modulesPaths: ['../../../node_modules']])
 }
 
 // Run this once to be able to run the application with BUCK

@@ -7,7 +7,14 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPl
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
-const externalModules = [resolveApp("../../node_modules/react-native-super-grid")];
+const externalModules = [
+  resolveApp("../../node_modules/react-native-super-grid"),
+  resolveApp("../../node_modules/react-native-unimodules"),
+  resolveApp("../../node_modules/expo-av"),
+  resolveApp("../../node_modules/@unimodules/core"),
+  resolveApp("../../node_modules/@unimodules/react-native-adapter")
+];
+
 const appIncludes = [
   resolveApp("src"),
   resolveApp("../core/src"),
@@ -16,6 +23,16 @@ const appIncludes = [
 ];
 
 module.exports = function override(config, env) {
+  config.resolve.alias["react-native/Libraries/Components/View/ViewStylePropTypes$"] =
+    "react-native-web/dist/exports/View/ViewStylePropTypes";
+  config.resolve.alias["react-native/Libraries/EventEmitter/RCTDeviceEventEmitter$"] =
+    "react-native-web/dist/vendor/react-native/NativeEventEmitter/RCTDeviceEventEmitter";
+  config.resolve.alias["react-native/Libraries/vendor/emitter/EventEmitter$"] =
+    "react-native-web/dist/vendor/react-native/emitter/EventEmitter";
+  config.resolve.alias["react-native/Libraries/vendor/emitter/EventSubscriptionVendor$"] =
+    "react-native-web/dist/vendor/react-native/emitter/EventSubscriptionVendor";
+  config.resolve.alias["react-native/Libraries/EventEmitter/NativeEventEmitter$"] =
+    "react-native-web/dist/vendor/react-native/NativeEventEmitter";
   config.resolve.alias["deepmerge$"] = "deepmerge/dist/umd.js";
 
   // allow importing from outside of src folder
