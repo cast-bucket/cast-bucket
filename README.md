@@ -36,4 +36,5 @@ If the feature is big, open an issue first for discussion.
 
 - `git clone git@github.com:cast-bucket/cast-bucket.git`
 - `yarn`
+- `yarn prepare` 
 - `yarn start:web` or `yarn start:mobile` based on the platform you wish to run.
