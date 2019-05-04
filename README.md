@@ -35,7 +35,7 @@ If the feature is big, open an issue first for discussion.
 #### How to run
 
 - `git clone https://github.com/cast-bucket/cast-bucket.git`
-- `cd cast-bucket.git`
+- `cd cast-bucket`
 - `yarn`
 - `yarn prepare` 
 -  To avoid CORS issues, add the following host entry in your /etc/hosts file
@@ -47,7 +47,7 @@ If the feature is big, open an issue first for discussion.
 - `yarn start:web`
 -  Open http://localhost.cast-bucket.com:3000/ in the browser of your choice.
 
-(Running `yarn start:web` indicates that app is running on the host and port - localhost:3000. However, in the /etc/hosts file we have created an alias named localhost.cast-bucket.com so we can use the alias for browsing.)
+> **Note**: Running `yarn start:web` indicates that app is running at localhost:3000. However, in the /etc/hosts file we have created a mapping between 127.0.0.1 and `localhost.cast-bucket.com` during developement. Your browser uses entries in the /etc/hosts file to override the IP-address-to-URL mapping returned by a DNS server.
 
 
 ##### Mobile
