@@ -26,8 +26,8 @@ export class App extends Component {
         <Router>
           <Container>
             <Switch>
-              <Route exact path="/" component={Categories} />
-              <Route exact path="/home" component={Home} />
+              <Route exact path="/choose-categories" component={Categories} />
+              <Route exact path="/" component={Home} />
             </Switch>
           </Container>
         </Router>
