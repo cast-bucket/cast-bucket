@@ -43,5 +43,4 @@ If the feature is big, open an issue first for discussion.
 ## Author 
 
 Follow me on Twitter: [@__shriram](https://twitter.com/__shriram)
-<br/>Join our Slack Community: [Slack Invitation]
-(https://join.slack.com/t/cast-bucket/shared_invite/enQtNjI1NzY0NjEyOTQ4LWRkMzM3MDRmNGU2ODI5MGJmMWU4NjViZDUxZThjOTA2MTU1Yzc3ODFhYzI4NTIwYjIzYjlmYzA1MTQ3NGY1NTQ)
+<br/>Join our Slack Community: [Slack Invitation](https://join.slack.com/t/cast-bucket/shared_invite/enQtNjI1NzY0NjEyOTQ4LWRkMzM3MDRmNGU2ODI5MGJmMWU4NjViZDUxZThjOTA2MTU1Yzc3ODFhYzI4NTIwYjIzYjlmYzA1MTQ3NGY1NTQ)
