@@ -34,16 +34,21 @@ If the feature is big, open an issue first for discussion.
 
 #### How to run
 
-- `git clone git@github.com:cast-bucket/cast-bucket.git`
+- `git clone https://github.com/cast-bucket/cast-bucket.git`
+- `cd cast-bucket`
 - `yarn`
 - `yarn prepare` 
 -  To avoid CORS issues, add the following host entry in your /etc/hosts file
     ```bash
-      127.0.0.1 http://localhost.cast-bucket.com:3000/
+      127.0.0.1 localhost.cast-bucket.com
     ```
+
 ##### Web
 - `yarn start:web`
 -  Open http://localhost.cast-bucket.com:3000/ in the browser of your choice.
+
+> **Note**: Running `yarn start:web` indicates that app is running at localhost:3000. However, in the /etc/hosts file we have created a mapping between 127.0.0.1 and `localhost.cast-bucket.com` during developement. Your browser uses entries in the /etc/hosts file to override the IP-address-to-URL mapping returned by a DNS server.
+
 
 ##### Mobile
 -  To start the [metro bundler](https://facebook.github.io/metro/)
