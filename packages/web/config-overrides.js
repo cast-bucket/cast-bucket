@@ -16,7 +16,7 @@ const appIncludes = [
 ];
 
 module.exports = function override(config, env) {
-  config.resolve.alias["deepmerge$"] = "deepmerge/dist/umd.js";
+  config.resolve.alias.deepmerge$ = "deepmerge/dist/umd.js";
 
   // allow importing from outside of src folder
   config.resolve.plugins = config.resolve.plugins.filter(
@@ -24,7 +24,7 @@ module.exports = function override(config, env) {
   );
 
   config.module.rules[0].include = appIncludes;
-  config.module.rules[1] = null;
+  config.module.rules[1].include = appIncludes;
   config.module.rules[2].oneOf[1].include = appIncludes;
   config.module.rules[2].oneOf[1].options.plugins = [
     require.resolve("babel-plugin-react-native-web")

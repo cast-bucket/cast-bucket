@@ -2,7 +2,9 @@ import React from "react";
 import styled from "@emotion/native";
 import { View } from "react-native";
 import titleCase from "title-case";
+
 const checkedIcon = require("../../assets/icons/checkmark-green.png");
+
 const ignoreTransformations = {
   iOS: "iOS",
   bsd: "BSD",
