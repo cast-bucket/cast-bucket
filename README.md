@@ -46,6 +46,7 @@ If the feature is big, open an issue first for discussion.
 ##### Web
 - `yarn start:web`
 -  Open http://localhost.cast-bucket.com:3000/ in the browser of your choice.
+
 (Running `yarn start:web` indicates that app is running on the host and port - localhost:3000. However, in the /etc/hosts file we have created an alias named localhost.cast-bucket.com so we can use the alias for browsing.)
 
 
