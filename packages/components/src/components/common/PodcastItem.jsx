@@ -1,9 +1,8 @@
 import React from "react";
 import { View, TouchableHighlight } from "react-native";
-import styled, { css } from "@emotion/native";
+import styled from "@emotion/native";
 import { withRouter } from "../../libs/router";
 import { Text } from "../common";
-
 import getPlaceHolderImage from "../utils/getPlaceHolderImage";
 
 const titleShortener = title => {
@@ -38,10 +37,7 @@ const PodcastItem = React.memo(props => {
   const { title } = props;
   return (
     <TouchableHighlight
-      style={css`
-        margin-right: 25px;
-      `}
-      // onPress={() => console.log(title)}
+    // onPress={() => console.log(title)}
     >
       <View>
         <PodcastImage source={imageSource} />
