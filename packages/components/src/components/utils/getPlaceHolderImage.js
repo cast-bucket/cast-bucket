@@ -1,9 +1,11 @@
-const cards = [];
-const numberOfImages = 4;
+const cards = [
+  require(`../../assets/images/cards/pattern-1.png`),
+  require(`../../assets/images/cards/pattern-2.png`),
+  require(`../../assets/images/cards/pattern-3.png`),
+  require(`../../assets/images/cards/pattern-4.png`)
+];
 
-for (let i = 1; i <= numberOfImages; i++) {
-  cards.push(require(`../../assets/images/cards/pattern-${i}.png`));
-}
+const numberOfImages = cards.length;
 
 export default stringId => {
   let count = 0;
