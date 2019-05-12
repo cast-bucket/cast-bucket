@@ -1,3 +1,2 @@
-import subscriptions from "./subscriptions.json";
-
-export { subscriptions };
+import podcastListItems from "./podcastListItems.json";
+export { podcastListItems };
