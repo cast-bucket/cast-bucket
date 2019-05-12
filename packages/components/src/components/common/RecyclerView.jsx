@@ -24,7 +24,7 @@ export class RecyclerView extends Component {
     const { containerStyle, recyclerViewProps } = this.props;
     return (
       <RecyclerListView
-        style={{ flex: 1 }}
+        ref={component => (this._recycler = component)}
         contentContainerStyle={containerStyle}
         rowRenderer={this._renderRow}
         dataProvider={this.state.dataProvider}
