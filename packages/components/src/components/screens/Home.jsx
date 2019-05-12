@@ -3,19 +3,20 @@ import styled, { css } from "@emotion/native";
 import { Dimensions } from "react-native";
 import Podcasts from "../containers/Podcasts";
 import { Heading, Text, Title } from "../common";
+import { isMobile } from "../utils/platforms";
+
 const { width } = Dimensions.get("window");
 
-const Container = styled.View`
-  margin: 30px;
+const Container = styled.ScrollView`
+  padding: ${isMobile ? "20px" : "30px"};
 `;
 
 const Section = styled.View`
   padding: 10px;
-  margin-bottom: 50px;
+  margin-bottom: ${isMobile ? "0px" : "50px"};
 `;
 
 const RowButton = styled(Text)`
-  align-self: center;
   color: #1f1f1f;
   font-size: 18px;
 `;
@@ -27,7 +28,7 @@ const Row = styled.View`
 `;
 
 const SectionTitle = styled(Title)`
-  width: 300px;
+  width: ${width / 4}px;
 `;
 
 const UserAvatar = styled.Image`
@@ -67,21 +68,21 @@ export const Home = props => (
     </Section>
     <Section>
       <Row>
-        <Title>Subscriptions</Title>
+        <SectionTitle>Subscriptions</SectionTitle>
         <RowButton onPress={() => handleRowButtonPress("subscriptions")}>{RowButtonText}</RowButton>
       </Row>
       <Podcasts type="subscriptions" />
     </Section>
     <Section>
       <Row>
-        <Title>Recommended</Title>
+        <SectionTitle>Recommended</SectionTitle>
         <RowButton onPress={() => handleRowButtonPress("recommended")}>{RowButtonText}</RowButton>
       </Row>
       <Podcasts type="recommended" />
     </Section>
     <Section>
       <Row>
-        <Title>Recently Played</Title>
+        <SectionTitle>Recently Played</SectionTitle>
         <RowButton onPress={() => handleRowButtonPress("recently-played")}>
           {RowButtonText}
         </RowButton>
