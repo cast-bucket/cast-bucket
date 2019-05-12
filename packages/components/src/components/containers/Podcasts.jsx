@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 // import { connect } from "react-redux";
-import SubscriptionsList from "../layout/SubscriptionsList";
+import PodcastsList from "../layout/PodcastsList";
+
 import * as mocks from "../../mocks";
+
+/**
+ * Subscriptions
+ * Recently Played
+ * Recommended
+ */
 
 class Podcasts extends Component {
   constructor(props) {
@@ -10,30 +17,13 @@ class Podcasts extends Component {
   }
 
   render() {
-    const userSubscriptions = mocks.subscriptions.map(subscription => ({
-      ...subscription,
+    const items = mocks.podcastListItems.map(item => ({
+      ...item,
       type: "PODCAST_ITEM"
     }));
 
     const podcastContainerType = this.props.type;
-    switch (podcastContainerType) {
-      // podcasts user has subscribed to
-      case "subscriptions":
-        return <SubscriptionsList subscriptions={userSubscriptions} />;
-
-      // podcasts based on categories selected
-      case "recommended":
-        break;
-
-      case "recently-played":
-        break;
-
-      case "new":
-        break;
-
-      default:
-        break;
-    }
+    return <PodcastsList data={items} type={podcastContainerType} />;
   }
 }
 
