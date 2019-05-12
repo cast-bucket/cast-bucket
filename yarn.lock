@@ -7419,11 +7419,6 @@ locate-path@^3.0.0:
     p-locate "^3.0.0"
     path-exists "^3.0.0"
 
-lodash-es@4.17.4:
-  version "4.17.4"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.4.tgz#dcc1d7552e150a0640073ba9cb31d70f032950e7"
-  integrity sha1-3MHXVS4VCgZABzupyzHXDwMpUOc=
-
 lodash._reinterpolate@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
@@ -7433,6 +7428,11 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
   integrity sha1-soqmKIorn8ZRA1x3EfZathkDMaY=
+
+lodash.debounce@4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
 lodash.memoize@^4.1.2:
   version "4.1.2"
@@ -10582,12 +10582,12 @@ recursive-readdir@2.2.2:
   dependencies:
     minimatch "3.0.4"
 
-recyclerlistview@^1.3.4:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/recyclerlistview/-/recyclerlistview-1.3.4.tgz#4c0e57d19d5480d3c4e7e5abc45b23ca7ce09a5f"
-  integrity sha1-TA5X0Z1UgNPE5+WrxFsjynzgml8=
+recyclerlistview@^2.0.0-beta.4:
+  version "2.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/recyclerlistview/-/recyclerlistview-2.0.0-beta.4.tgz#c3c96f3e55650b1c96543fe71009009ea5ce9d63"
+  integrity sha512-O+d5PlPM2guStiPVNuj/M/bY68fvDXacoNpkne7iVs+IV9wy432zhzO1P1BfSdwMXiZMXs7zrKC4rX1knBpc2Q==
   dependencies:
-    lodash-es "4.17.4"
+    lodash.debounce "4.0.8"
     prop-types "15.5.8"
     ts-object-utils "0.0.5"
 
