@@ -2,6 +2,9 @@ import React from "react";
 import { View, TouchableHighlight } from "react-native";
 import styled, { css } from "@emotion/native";
 import { withRouter } from "../../libs/router";
+import { Text } from "../common";
+
+import getPlaceHolderImage from "../utils/getPlaceHolderImage";
 
 const titleShortener = title => {
   const stripDashesFromTitle = title.split("-");
@@ -9,38 +12,43 @@ const titleShortener = title => {
   return stripBracketsFromTitle;
 };
 
-const PodcastTitle = styled.Text`
+const ITEM_SIZE = "200px";
+
+const PodcastTitle = styled(Text)`
   font-size: 18px;
   margin-top: 10px;
-  max-width: 150px;
+  max-width: ${ITEM_SIZE};
   text-align: center;
   line-height: 25px;
 `;
 
 const PodcastImage = styled.Image`
-  width: 150px;
-  height: 150px;
-  border-radius: 5px;
+  width: ${ITEM_SIZE};
+  height: ${ITEM_SIZE};
+  border-radius: 15px;
   background-color: #7cffc3;
 `;
 
-// TODO: Add fallbackImage when image cannot be loaded
-const PodcastItem = props => {
+const getPodcastImage = ({ logo, title }) => {
+  return logo && logo.image ? { uri: logo.image } : getPlaceHolderImage(title);
+};
+
+const PodcastItem = React.memo(props => {
+  const imageSource = getPodcastImage(props);
+  const { title } = props;
   return (
     <TouchableHighlight
       style={css`
-        margin-right: 20px;
+        margin-right: 25px;
       `}
+      // onPress={() => console.log(title)}
     >
       <View>
-        <PodcastImage
-          // defaultSource={fallBackImage}
-          source={{ uri: props.logo.thumbnail || props.logo.url }}
-        />
-        <PodcastTitle>{titleShortener(props.title)}</PodcastTitle>
+        <PodcastImage source={imageSource} />
+        <PodcastTitle>{titleShortener(title)}</PodcastTitle>
       </View>
     </TouchableHighlight>
   );
-};
+});
 
 export default withRouter(PodcastItem);
