@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import styled from "@emotion/native";
 import { Provider } from "react-redux";
+import { Dimensions } from "react-native";
 import { Router, Route, Switch } from "../libs/router";
 import configureStore from "../redux/store";
 
-import { Home } from "./screens";
+import { Home, Episodes } from "./screens";
 import Categories from "./layout/CategoryGrid";
-import { Dimensions } from "react-native";
 
 const initialState = {};
 const store = configureStore(initialState);
@@ -26,6 +26,7 @@ export class App extends Component {
         <Router>
           <Container>
             <Switch>
+              <Route exact path="/episodes" component={Episodes} />
               <Route exact path="/choose-categories" component={Categories} />
               <Route exact path="/" component={Home} />
             </Switch>
