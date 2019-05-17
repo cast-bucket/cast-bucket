@@ -15,6 +15,7 @@ class PodcastsList extends Component {
       isHorizontal: true,
       useWindowScroll: true,
       renderAheadOffset: 5,
+      showsHorizontalScrollIndicator: false,
       renderFooter: () => <View style={{ paddingRight: ITEM_SPACING }} />
     };
 
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
     minHeight: 1,
     minWidth: 1,
     height: ITEM_SIZE + 30,
-    marginTop: 30
+    marginVertical: 25
   }
 });
 
