@@ -26,18 +26,37 @@ const PodcastImage = styled.Image`
   background-color: #7cffc3;
 `;
 
-const getPodcastImage = ({ logo, title }) => {
+const getPodcastImage = (logo, title) => {
   return logo && logo.image ? { uri: logo.image } : getPlaceHolderImage(title);
 };
 
 const PodcastItem = React.memo(props => {
-  const imageSource = getPodcastImage(props);
-  const { title } = props;
+  const { categoryId, description, hosts, logo, rss, runtime, title } = props;
+  const imageSource = getPodcastImage(logo, title);
+
+  const podcastOptions = {
+    categoryId,
+    description,
+    hosts,
+    logo,
+    podcastId: title,
+    rss,
+    runtime
+  };
+
   return (
-    <TouchableHighlight style={props.style}>
+    <TouchableHighlight
+      style={props.style}
+      onPress={() => {
+        props.history.push({
+          pathname: "/episodes",
+          state: { options: podcastOptions }
+        });
+      }}
+    >
       <View>
         <PodcastImage source={imageSource} size={props.size} />
-        <PodcastTitle size={props.size}>{titleShortener(title)}</PodcastTitle>
+        <PodcastTitle size={props.size}>{titleShortener(props.title)}</PodcastTitle>
       </View>
     </TouchableHighlight>
   );
