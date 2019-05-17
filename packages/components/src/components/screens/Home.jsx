@@ -3,7 +3,7 @@ import styled, { css } from "@emotion/native";
 import { Dimensions } from "react-native";
 import RF from "react-native-responsive-fontsize";
 import Podcasts from "../containers/Podcasts";
-import { Heading, Text, Title } from "../common";
+import { Heading, Text, Title } from "../common/Typography";
 import { isMobile } from "../utils/platforms";
 
 const { width } = Dimensions.get("window");
