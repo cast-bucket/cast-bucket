@@ -12,11 +12,11 @@ export const Text = styled(RPText)`
 `;
 
 const titleStyle = {
-  fontSize: RF(4)
+  fontSize: RF(3.5)
 };
 
 const headingStyle = {
-  fontSize: RF(4.75)
+  fontSize: RF(4)
 };
 
 export const Title = props => (
