@@ -22,7 +22,7 @@ const PodcastTitle = styled(Text)`
 const PodcastImage = styled.Image`
   width: ${props => props.size};
   height: ${props => props.size};
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: #7cffc3;
 `;
 
