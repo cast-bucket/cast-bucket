@@ -5,7 +5,7 @@ import { RecyclerView } from "../common/RecyclerView";
 
 const { height } = Dimensions.get("window");
 
-const ITEM_SIZE = 240;
+const ITEM_SIZE = 220;
 const ITEM_SPACING = 40;
 
 class PodcastsList extends Component {
@@ -26,7 +26,7 @@ class PodcastsList extends Component {
     };
 
     const renderListItem = (type, data) => {
-      let itemsStyles = { paddingLeft: ITEM_SPACING };
+      const itemsStyles = { paddingLeft: ITEM_SPACING };
       const podcastItemDimensions = `${ITEM_SIZE - ITEM_SPACING}px`;
       return <PodcastItem {...data} style={itemsStyles} size={podcastItemDimensions} />;
     };
@@ -48,9 +48,8 @@ const styles = StyleSheet.create({
   listContainer: {
     minHeight: 1,
     minWidth: 1,
-    height: 275,
-    marginTop: 30,
-    marginBottom: 10
+    height: ITEM_SIZE + 30,
+    marginTop: 30
   }
 });
 
