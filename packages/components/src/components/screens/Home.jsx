@@ -1,23 +1,28 @@
 import React from "react";
-import styled, { css } from "@emotion/native";
+import styled from "@emotion/native";
 import { Dimensions } from "react-native";
 import RF from "react-native-responsive-fontsize";
+import titleCase from "title-case";
 import Podcasts from "../containers/Podcasts";
 import { Heading, Text, Title } from "../common/Typography";
+import { isMobile } from "../utils/platforms";
 
 const { width } = Dimensions.get("window");
-
 const Container = styled.ScrollView``;
 
-const Section = styled.View`
-  margin-top: 30px;
+const PageHeading = styled(Heading)`
+  font-weight: 700;
 `;
 
 const Row = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  width: ${width};
   padding-left: 40px;
+  width: ${width};
+`;
+
+const Section = styled.View`
+  margin-top: 36px;
 `;
 
 const SectionTitle = styled(Title)`
@@ -25,24 +30,44 @@ const SectionTitle = styled(Title)`
 `;
 
 const UserAvatar = styled.Image`
-  align-self: center;
+  align-self: flex-start;
   background: lightblue;
   border-radius: 100px;
-  width: 40px;
-  height: 40px;
   margin-right: 20px;
+  height: 50px;
+  width: 50px;
 `;
+
+const rowButtonStyles = {
+  alignSelf: "center",
+  color: "#184277",
+  fontSize: RF(2.5),
+  marginRight: 15
+};
+
+if (!isMobile) {
+  rowButtonStyles.cursor = "pointer";
+}
 
 // TODO: load more items, or link section to new page?
 const handleRowButtonPress = rowId => {
   console.log(rowId);
 };
 
-const RowButton = () => (
-  <Text style={{ fontSize: RF(2.5), marginRight: 15, alignSelf: "center" }}>View All</Text>
+const RowButton = () => <Text style={rowButtonStyles}>View All</Text>;
+
+const sections = ["new-releases", "subscriptions", "recommended", "recently-played"];
+const renderSections = sectionId => (
+  <Section key={sectionId}>
+    <Row>
+      <SectionTitle>{titleCase(sectionId)}</SectionTitle>
+      <RowButton onPress={() => handleRowButtonPress(sectionId)} />
+    </Row>
+    <Podcasts type={sectionId} />
+  </Section>
 );
 
-export const Home = props => (
+export const Home = () => (
   <Container>
     <Row
       style={{
@@ -50,39 +75,9 @@ export const Home = props => (
         paddingBottom: 20
       }}
     >
-      <Heading
-        style={css`
-          font-weight: 700;
-        `}
-      >
-        Home
-      </Heading>
+      <PageHeading>Home</PageHeading>
       <UserAvatar source={{ uri: "https://i.pravatar.cc/120" }} />
     </Row>
-    <Section>
-      <Row>
-        <SectionTitle>New Releases</SectionTitle>
-        <RowButton onPress={() => handleRowButtonPress("new-releases")} />
-      </Row>
-      <Podcasts type="new-releases" />
-    </Section>
-    <Section>
-      <Row>
-        <SectionTitle>Subscriptions</SectionTitle>
-      </Row>
-      <Podcasts type="subscriptions" />
-    </Section>
-    <Section>
-      <Row>
-        <SectionTitle>Recommended</SectionTitle>
-      </Row>
-      <Podcasts type="recommended" />
-    </Section>
-    <Section>
-      <Row>
-        <SectionTitle>Recently Played</SectionTitle>
-      </Row>
-      <Podcasts type="recently-played" />
-    </Section>
+    {sections.map(renderSections)}
   </Container>
 );
