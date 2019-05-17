@@ -23,11 +23,9 @@
     "prepare": "yarn patch-package",
     "patch-package": "patch-package"
   },
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Shriram-Balaji/cast-bucket.git"
