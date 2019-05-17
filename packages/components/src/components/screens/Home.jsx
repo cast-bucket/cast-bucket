@@ -4,14 +4,13 @@ import { Dimensions } from "react-native";
 import RF from "react-native-responsive-fontsize";
 import Podcasts from "../containers/Podcasts";
 import { Heading, Text, Title } from "../common/Typography";
-import { isMobile } from "../utils/platforms";
 
 const { width } = Dimensions.get("window");
 
 const Container = styled.ScrollView``;
 
 const Section = styled.View`
-  margin-top: ${isMobile ? "0px" : "50px"};
+  margin-top: 30px;
 `;
 
 const Row = styled.View`
