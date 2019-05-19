@@ -1,17 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "@emotion/native";
-import { Provider } from "react-redux";
 import { Dimensions } from "react-native";
-import { Router, Route, Switch } from "../libs/router";
+import { Provider } from "react-redux";
+import { Route, Switch, withRouter } from "../libs/router";
 import configureStore from "../redux/store";
-
-import { Home, Episodes } from "./screens";
-import Categories from "./layout/CategoryGrid";
+import { Episodes, Home } from "./screens";
 
 const initialState = {};
 const store = configureStore(initialState);
 
-// const action = type => store.dispatch({ type });
 const { width, height } = Dimensions.get("window");
 const Container = styled.View`
   flex: 1;
@@ -19,20 +16,17 @@ const Container = styled.View`
   height: ${height},
 `;
 
-export class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Router>
-          <Container>
-            <Switch>
-              <Route exact path="/episodes" component={Episodes} />
-              <Route exact path="/choose-categories" component={Categories} />
-              <Route exact path="/" component={Home} />
-            </Switch>
-          </Container>
-        </Router>
-      </Provider>
-    );
-  }
-}
+const AppView = props => {
+  return (
+    <Provider store={store}>
+      <Container>
+        <Switch>
+          <Route exact path="/episodes" component={Episodes} />
+          <Route exact path="/" component={Home} />
+        </Switch>
+      </Container>
+    </Provider>
+  );
+};
+
+export const App = withRouter(AppView);
