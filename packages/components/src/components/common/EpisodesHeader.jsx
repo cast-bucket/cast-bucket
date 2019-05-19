@@ -3,8 +3,8 @@ import styled from "@emotion/native";
 import getPlaceHolderImage from "../utils/getPlaceHolderImage";
 
 const PodcastImage = styled.Image`
-  width: ${props => props.size};
-  height: ${props => props.size};
+  width: ${props => `${props.size}px`};
+  height: ${props => `${props.size}px`};
   border-radius: 10px;
 `;
 
@@ -21,13 +21,10 @@ const PodcastInfo = styled.View``;
 
 const EpisodeHeader = ({ logo, size, title }) => {
   const imageSource = getPodcastImage(logo, title);
-  const podcastImageSize = `${size}px`;
-  const podcastInfoPosition = `${size / 2}px`;
-
   return (
-    <HeaderContainer style={{ height: podcastImageSize }}>
-      <PodcastInfo style={{ top: podcastInfoPosition }}>
-        <PodcastImage source={imageSource} size={podcastImageSize} />
+    <HeaderContainer style={{ height: size }}>
+      <PodcastInfo style={{ marginTop: size / 2 }}>
+        <PodcastImage source={imageSource} size={size} />
       </PodcastInfo>
     </HeaderContainer>
   );
