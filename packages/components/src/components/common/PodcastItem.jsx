@@ -1,15 +1,9 @@
 import React from "react";
-import { View, TouchableHighlight } from "react-native";
 import styled from "@emotion/native";
+import { View } from "react-native";
 import { withRouter } from "../../libs/router";
-import { Text } from "./Typography";
 import getPlaceHolderImage from "../utils/getPlaceHolderImage";
-
-const titleShortener = title => {
-  const stripDashesFromTitle = title.split("-");
-  const stripBracketsFromTitle = stripDashesFromTitle[0].replace(/ *\([^)]*\) */g, "");
-  return stripBracketsFromTitle;
-};
+import { Text } from "./Typography";
 
 const PodcastTitle = styled(Text)`
   font-size: 18px;
@@ -24,6 +18,12 @@ const PodcastImage = styled.Image`
   height: ${props => props.size};
   border-radius: 10px;
   background-color: #7cffc3;
+`;
+
+const PodcastImageContainer = styled.TouchableHighlight`
+  width: ${props => props.size};
+  height: ${props => props.size};
+  border-radius: 10px;
 `;
 
 const getPodcastImage = (logo, title) => {
@@ -45,20 +45,22 @@ const PodcastItem = React.memo(props => {
   };
 
   return (
-    <TouchableHighlight
-      style={props.style}
-      onPress={() => {
-        props.history.push({
-          pathname: "/episodes",
-          state: { options: podcastOptions }
-        });
-      }}
-    >
-      <View>
+    <View style={[props.style]}>
+      <PodcastImageContainer
+        size={props.size}
+        underlayColor="black"
+        activeOpacity={0.9}
+        onPress={() => {
+          props.history.push({
+            pathname: "/episodes",
+            state: { options: podcastOptions }
+          });
+        }}
+      >
         <PodcastImage source={imageSource} size={props.size} />
-        <PodcastTitle size={props.size}>{titleShortener(props.title)}</PodcastTitle>
-      </View>
-    </TouchableHighlight>
+      </PodcastImageContainer>
+      <PodcastTitle size={props.size}>{props.title}</PodcastTitle>
+    </View>
   );
 });
 
