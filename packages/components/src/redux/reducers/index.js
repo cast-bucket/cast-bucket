@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
 // import { podcastsReducer, podcastsByCategory, selectedCategory } from "./podcastsReducer";
-// import { feeds, feedsReducer } from "./feedReducer";
+import { podcastsReducer } from "./podcasts";
 import { categoriesReducer } from "./categories";
 
 export default combineReducers({
-  categories: categoriesReducer
+  categories: categoriesReducer,
+  podcasts: podcastsReducer
 });
