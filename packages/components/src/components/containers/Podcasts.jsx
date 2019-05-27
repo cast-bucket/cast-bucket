@@ -1,35 +1,33 @@
-import React, { Component } from "react";
-// import { connect } from "react-redux";
+import React from "react";
+import { ActivityIndicator } from "react-native-paper";
+import { connect } from "react-redux";
+import { fetchPodcasts } from "../../redux/actions/podcasts";
 import PodcastsList from "../layout/PodcastsList";
-
-import * as mocks from "../../mocks";
-
 /**
  * Subscriptions
  * Recently Played
  * Recommended
  */
 
-class Podcasts extends Component {
-  constructor(props) {
-    super(props);
-    this.category = this.props.category;
+class Podcasts extends React.Component {
+  componentDidMount() {
+    if (!this.props.items.length > 0) this.props.dispatch(fetchPodcasts());
   }
 
   render() {
-    const items = mocks.podcastListItems.map(item => ({
-      ...item,
-      type: "PODCAST_ITEM"
-    }));
-
-    const podcastContainerType = this.props.type;
-    return <PodcastsList data={items} type={podcastContainerType} />;
+    const { items, type, isFetching, location } = this.props;
+    return isFetching ? (
+      <ActivityIndicator animating />
+    ) : (
+      <PodcastsList data={items} type={type} location={location} />
+    );
   }
 }
+const mapStateToProps = state => {
+  const data = state.podcasts;
+  const defaultState = { isFetching: true, items: [] };
+  const { isFetching, items } = data || defaultState;
+  return { isFetching, items };
+};
 
-export default Podcasts;
-// const mapStateToProps = (state, ownProps) => {
-//   return { selectedCategory, isFetching, podcasts };
-// };
-
-// export default connect(mapStateToProps)(Podcasts);
+export default connect(mapStateToProps)(Podcasts);
