@@ -5,7 +5,7 @@ export const categoriesReducer = (state = initialState, action) => {
     case "RECEIVED_CATEGORIES":
       return {
         ...state,
-        categories: action.categories
+        items: action.categories
       };
     default:
       return state;
