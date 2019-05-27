@@ -8,6 +8,7 @@ const { height } = Dimensions.get("window");
 const ITEM_SIZE = 220;
 const ITEM_SPACING = 40;
 
+// FIXME: This is remounted everytime location changes
 class PodcastsList extends Component {
   render() {
     const { data } = this.props;
