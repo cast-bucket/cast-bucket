@@ -3,8 +3,8 @@ import styled from "@emotion/native";
 import { Dimensions } from "react-native";
 import RF from "react-native-responsive-fontsize";
 import titleCase from "title-case";
-import Podcasts from "../containers/Podcasts";
 import { Heading, Text, Title } from "../common/Typography";
+import Podcasts from "../containers/Podcasts";
 import { isMobile } from "../utils/platforms";
 
 const { width } = Dimensions.get("window");
@@ -56,18 +56,22 @@ const handleRowButtonPress = rowId => {
 
 const RowButton = () => <Text style={rowButtonStyles}>View All</Text>;
 
-const sections = ["new-releases", "subscriptions", "recommended", "recently-played"];
-const renderSections = sectionId => (
-  <Section key={sectionId}>
-    <Row>
-      <SectionTitle>{titleCase(sectionId)}</SectionTitle>
-      <RowButton onPress={() => handleRowButtonPress(sectionId)} />
-    </Row>
-    <Podcasts type={sectionId} />
-  </Section>
-);
+const renderHomePageSections = location => {
+  const sections = ["new-releases", "subscriptions", "recommended", "recently-played"];
+  return sections.map(sectionId => {
+    return (
+      <Section key={sectionId}>
+        <Row>
+          <SectionTitle>{titleCase(sectionId)}</SectionTitle>
+          <RowButton onPress={() => handleRowButtonPress(sectionId)} />
+        </Row>
+        <Podcasts type={sectionId} location={location} />
+      </Section>
+    );
+  });
+};
 
-export const Home = () => (
+export const Home = ({ location }) => (
   <Container>
     <Row
       style={{
@@ -78,6 +82,6 @@ export const Home = () => (
       <PageHeading>Home</PageHeading>
       <UserAvatar source={{ uri: "https://i.pravatar.cc/120" }} />
     </Row>
-    {sections.map(renderSections)}
+    {renderHomePageSections(location)}
   </Container>
 );
