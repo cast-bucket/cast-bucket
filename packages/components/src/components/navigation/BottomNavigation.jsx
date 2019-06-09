@@ -28,7 +28,7 @@ const Navigation = props => {
       barStyle={{ backgroundColor: "#f3f3f3" }}
       labeled={false}
       onTabPress={({ route }) =>
-        !isCurrentLocation(route.key) && history.push({ pathname: `/${route.key}` })
+        !isCurrentLocation(route.key) && history.replace({ pathname: `/${route.key}` })
       }
     />
   );
