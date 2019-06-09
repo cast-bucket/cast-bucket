@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { Dimensions, FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import EpisodeItem from "../common/EpisodeItem";
-
-const { width } = Dimensions.get("window");
 
 class EpisodesList extends Component {
   render() {
@@ -11,7 +9,6 @@ class EpisodesList extends Component {
       return <EpisodeItem {...data} />;
     };
     const containerStyle = styles.listContainer;
-    const recyclerViewData = data.items.map(item => ({ ...item, key: item.link }));
     return (
       <FlatList
         contentContainerStyle={containerStyle}
