@@ -1,58 +1,68 @@
 import styled from "@emotion/native";
 import React from "react";
-import { Dimensions, View } from "react-native";
-import { withRouter } from "../../libs/router";
+import { View, Dimensions, StyleSheet } from "react-native";
 import { Text } from "./Typography";
 
+const { width } = Dimensions.get("window");
 const PlayImage = require("../../assets/images/play-button.png");
 
-const { width } = Dimensions.get("window");
-
 const EpisodeTitle = styled(Text)`
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 30px;
-  margin-bottom: 20px;
-  max-width: 300px;
   color: #111111;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 30px;
+  padding-right: 20px;
+`;
+
+const EpisodeDate = styled(Text)`
+  color: #7a7a7a;
+  margin-vertical: 5px;
 `;
 
 const PlayButtonIcon = styled.Image`
-  width: 30px;
+  align-self: flex-end;
   height: 30px;
-  align-self: flex-start;
   justify-content: center;
-  margin-right: 30px;
+  margin-horizontal: 20px;
   margin-top: 10px;
-  margin-left: 10px;
+  width: 30px;
 `;
 
 const Row = styled.View`
+  align-self: stretch;
   flex-direction: row;
   justify-content: space-between;
 `;
 
-const EpisodeItem = React.memo(props => {
-  // TODO: Use link, enclosure, contentSnippet
-  const { title, isoDate } = props;
+const PlayButtonContainer = styled.View`
+  flex: 1;
+`;
+
+const EpisodeItem = React.memo(({ item }) => {
+  const { title, isoDate } = item;
 
   return (
-    <View
-      style={{
-        paddingLeft: 20,
-        paddingVertical: 30,
-        borderTopColor: "#d3d3d3",
-        borderTopWidth: 1,
-        width
-      }}
-    >
+    <View style={styles.episodeContainer}>
       <Row>
-        <EpisodeTitle>{title}</EpisodeTitle>
-        <PlayButtonIcon width={20} height={20} source={PlayImage} />
+        <View style={{ flexDirection: "column", maxWidth: width * 0.75 }}>
+          <EpisodeTitle>{title}</EpisodeTitle>
+          <EpisodeDate>{new Date(isoDate).toDateString()}</EpisodeDate>
+        </View>
+        <PlayButtonContainer>
+          <PlayButtonIcon source={PlayImage} />
+        </PlayButtonContainer>
       </Row>
-      <Text>{new Date(isoDate).toDateString()}</Text>
     </View>
   );
 });
 
-export default withRouter(EpisodeItem);
+const styles = StyleSheet.create({
+  episodeContainer: {
+    paddingLeft: 20,
+    paddingVertical: 25,
+    borderTopColor: "#d3d3d3",
+    borderTopWidth: 1,
+    alignSelf: "stretch"
+  }
+});
+export default EpisodeItem;
