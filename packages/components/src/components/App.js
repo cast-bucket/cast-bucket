@@ -11,11 +11,9 @@ import { Text } from "./common/Typography";
 const initialState = {};
 const store = configureStore(initialState);
 
-const { width, height } = Dimensions.get("window");
 const Container = styled.View`
   flex: 1;
-  width: ${width},
-  height: ${height},
+  align-items: stretch;
 `;
 
 const Browse = () => <Text> Browse </Text>;
