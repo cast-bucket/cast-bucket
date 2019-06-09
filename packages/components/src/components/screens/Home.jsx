@@ -1,32 +1,35 @@
 import React from "react";
 import styled from "@emotion/native";
-import { Dimensions } from "react-native";
 import RF from "react-native-responsive-fontsize";
 import titleCase from "title-case";
+import { View } from "react-native";
 import { Heading, Text, Title } from "../common/Typography";
 import Podcasts from "../containers/Podcasts";
 import { isMobile } from "../utils/platforms";
+import * as constants from "../utils/constants";
 
-const { width } = Dimensions.get("window");
-const Container = styled.ScrollView``;
+const Container = styled.ScrollView`
+  flex: 1;
+`;
 
-const PageHeading = styled(Heading)`
+const PageHeading = styled(Title)`
   font-weight: 700;
+  margin-left: ${constants.spacing.containerMargin.dim};
 `;
 
 const Row = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  padding-left: 40px;
-  width: ${width};
+  align-items: stretch;
 `;
 
 const Section = styled.View`
-  margin-top: 36px;
+  margin-top: 20px;
 `;
 
 const SectionTitle = styled(Title)`
   font-weight: 700;
+  padding-left: ${constants.spacing.containerMargin.dim};
 `;
 
 const UserAvatar = styled.Image`
@@ -72,16 +75,19 @@ const renderHomePageSections = location => {
 };
 
 export const Home = ({ location }) => (
-  <Container>
-    <Row
+  <Container contentContainerStyle={{ alignItems: "stretch" }}>
+    <View
       style={{
-        paddingTop: 50,
-        paddingBottom: 20
+        flex: 1,
+        flexDirection: "row",
+        alignItems: "stretch",
+        justifyContent: "space-between",
+        paddingTop: 40
       }}
     >
-      <PageHeading>Home</PageHeading>
+      <PageHeading style={{ fontSize: RF(4) }}>Home</PageHeading>
       <UserAvatar source={{ uri: "https://i.pravatar.cc/120" }} />
-    </Row>
+    </View>
     {renderHomePageSections(location)}
   </Container>
 );
