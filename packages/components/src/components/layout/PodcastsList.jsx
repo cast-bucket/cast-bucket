@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
 import PodcastItem from "../common/PodcastItem";
 import { RecyclerView } from "../common/RecyclerView";
+import { isMobile } from "../utils/platforms";
+import * as constants from "../utils/constants";
 
 const { height } = Dimensions.get("window");
 
-const ITEM_SIZE = 220;
-const ITEM_SPACING = 40;
+const ITEM_SIZE = isMobile ? 180 : 220;
+const ITEM_SPACING = constants.spacing.containerMargin.val;
 
 // FIXME: This is remounted everytime location changes
 class PodcastsList extends Component {
