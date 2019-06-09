@@ -59,7 +59,7 @@ const EpisodeItem = React.memo(({ item }) => {
 const styles = StyleSheet.create({
   episodeContainer: {
     paddingLeft: 20,
-    paddingVertical: 25,
+    paddingVertical: 30,
     borderTopColor: "#d3d3d3",
     borderTopWidth: 1,
     alignSelf: "stretch"
