@@ -14,7 +14,7 @@ const getPodcastImage = (logo, title) => {
 
 const HeaderContainer = styled.View`
   align-items: center;
-  background-color: #d5d7ff;
+  background-color: #f9f9f9;
 `;
 
 const PodcastInfo = styled.View``;
