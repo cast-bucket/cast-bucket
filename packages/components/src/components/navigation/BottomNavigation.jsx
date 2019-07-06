@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BottomNavigation } from "react-native-paper";
 import { withRouter } from "../../libs/router";
+import { Feather as Icon } from "../../libs/vector-icons";
 
 const Navigation = props => {
   const { history, routes, location } = props;
@@ -9,9 +10,16 @@ const Navigation = props => {
 
   const handleIndexChange = index => setNavigationIndex(index);
 
+  const routesWithIcons = navigationRoutes.map(route => {
+    return {
+      ...route,
+      icon: () => <Icon name={`${route.icon}`} size={24} color="#222" />
+    };
+  });
+
   const navState = {
     index: navigationIndex,
-    routes: navigationRoutes
+    routes: routesWithIcons
   };
 
   // avoid re-render when tabPress on currentLocation
