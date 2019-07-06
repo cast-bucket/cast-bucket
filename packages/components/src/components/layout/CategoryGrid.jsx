@@ -3,7 +3,7 @@ import { Dimensions, View } from "react-native";
 import { connect } from "react-redux";
 import { FlatGrid } from "react-native-super-grid";
 import { CategoryItem, Button } from "../common";
-import { fetchCategories } from "../../redux/actions/categories";
+import { fetchCategories } from "../../redux/actions/";
 import { isSmallScreen } from "../utils/breakpoints";
 
 import { memoSet } from "../utils/memoize";

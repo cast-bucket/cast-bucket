@@ -1,7 +1,7 @@
 import React from "react";
 import { ActivityIndicator } from "react-native-paper";
 import { connect } from "react-redux";
-import { fetchPodcasts } from "../../redux/actions/podcasts";
+import { fetchPodcasts } from "../../redux/actions/";
 import PodcastsList from "../layout/PodcastsList";
 /**
  * Subscriptions
@@ -16,7 +16,7 @@ class Podcasts extends React.Component {
 
   render() {
     const { items, type, isFetching, location } = this.props;
-    return isFetching ? (
+    return isFetching || items.length <= 0 ? (
       <ActivityIndicator animating />
     ) : (
       <PodcastsList data={items} type={type} location={location} />
