@@ -3,7 +3,7 @@ import styled from "@emotion/native";
 import RF from "react-native-responsive-fontsize";
 import titleCase from "title-case";
 import { View } from "react-native";
-import { Heading, Text, Title } from "../common/Typography";
+import { Text, Title } from "../common/Typography";
 import Podcasts from "../containers/Podcasts";
 import { isMobile } from "../utils/platforms";
 import * as constants from "../utils/constants";
