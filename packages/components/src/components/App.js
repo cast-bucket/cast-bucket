@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "@emotion/native";
-import { Dimensions, View } from "react-native";
+import { View } from "react-native";
 import { Provider } from "react-redux";
 import { Route, Switch, withRouter } from "../libs/router";
 import configureStore from "../redux/store";
 import BottomNavigation from "./navigation/BottomNavigation";
 import { Episodes, Home } from "./screens";
 import { Text } from "./common/Typography";
+import Player from "./common/Player";
 
 const initialState = {};
 const store = configureStore(initialState);
@@ -21,13 +22,14 @@ const Library = () => <Text> Library </Text>;
 const Account = () => <Text> Account </Text>;
 
 const navigationRoutes = [
-  { key: "home", title: "Home", icon: "queue-music" },
-  { key: "browse", title: "Browse", icon: "queue-music" },
-  { key: "library", title: "Library", icon: "queue-music" },
-  { key: "account", title: "Account", icon: "queue-music" }
+  { key: "home", title: "Home", icon: "home" },
+  { key: "browse", title: "Browse", icon: "radio" },
+  { key: "library", title: "Library", icon: "bookmark" },
+  { key: "account", title: "Account", icon: "user" }
 ];
 
-const AppView = props => {
+// TODO: Show navigation based on Platform Type
+const AppView = () => {
   return (
     <Provider store={store}>
       <View style={{ flex: 1, flexDirection: "column" }}>
@@ -41,6 +43,7 @@ const AppView = props => {
             <Route exact path="/choose-categories" component={Episodes} />
           </Switch>
         </Container>
+        <Player />
         <BottomNavigation routes={navigationRoutes} />
       </View>
     </Provider>
