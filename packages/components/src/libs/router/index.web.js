@@ -4,12 +4,14 @@ import {
   Link as WebLink,
   Redirect as WebRedirect,
   withRouter as WebWithRouter,
-  Switch as WebSwitch
+  Switch as WebSwitch,
+  __RouterContext as WebRouterContext
 } from "react-router-dom";
 
-export let Router = BrowserRouter;
-export let Route = WebRoute;
-export let Link = WebLink;
-export let Redirect = WebRedirect;
-export let Switch = WebSwitch;
-export let withRouter = WebWithRouter;
+export const Router = BrowserRouter;
+export const Route = WebRoute;
+export const Link = WebLink;
+export const Redirect = WebRedirect;
+export const Switch = WebSwitch;
+export const withRouter = WebWithRouter;
+export const __RouterContext = WebRouterContext;
