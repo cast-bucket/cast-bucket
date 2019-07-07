@@ -1,12 +1,12 @@
 import React from "react";
-import styled, { css } from "@emotion/native";
+import styled from "@emotion/native";
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
   margin: ${props => props.margin};
   padding: ${props => props.padding};
   background-color: ${props => {
     if (props.disabled) return "#d3d3d3";
-    else return props.background;
+    return props.background;
   }};
   width: ${props => props.width};
   border-radius: 5px;

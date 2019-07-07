@@ -1,6 +1,7 @@
-import FeatherIcons from "react-native-vector-icons/dist/Feather";
+import Feather from "react-native-vector-icons/Feather";
 import FeatherIconFont from "react-native-vector-icons/Fonts/Feather.ttf";
-export { FeatherIcons };
+
+export { Feather };
 
 const iconStyles = [`@font-face { src:url(${FeatherIconFont});font-family: Feather; }`].join("\n");
 

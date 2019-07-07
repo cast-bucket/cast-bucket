@@ -1,37 +1,53 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "@emotion/native";
+import { View } from "react-native";
 import { Provider } from "react-redux";
-import { Router, Route, Switch } from "../libs/router";
+import { Route, Switch, withRouter } from "../libs/router";
 import configureStore from "../redux/store";
-
-import { Home } from "./screens";
-import Categories from "./layout/CategoryGrid";
-import { Dimensions } from "react-native";
+import BottomNavigation from "./navigation/BottomNavigation";
+import { Episodes, Home } from "./screens";
+import { Text } from "./common/Typography";
+import Player from "./common/Player";
 
 const initialState = {};
 const store = configureStore(initialState);
 
-// const action = type => store.dispatch({ type });
-const { width, height } = Dimensions.get("window");
 const Container = styled.View`
   flex: 1;
-  width: ${width},
-  height: ${height},
+  align-items: stretch;
 `;
 
-export class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Router>
-          <Container>
-            <Switch>
-              <Route exact path="/" component={Categories} />
-              <Route exact path="/home" component={Home} />
-            </Switch>
-          </Container>
-        </Router>
-      </Provider>
-    );
-  }
-}
+const Browse = () => <Text> Browse </Text>;
+const Library = () => <Text> Library </Text>;
+const Account = () => <Text> Account </Text>;
+
+const navigationRoutes = [
+  { key: "home", title: "Home", icon: "home" },
+  { key: "browse", title: "Browse", icon: "radio" },
+  { key: "library", title: "Library", icon: "bookmark" },
+  { key: "account", title: "Account", icon: "user" }
+];
+
+// TODO: Show navigation based on Platform Type
+const AppView = () => {
+  return (
+    <Provider store={store}>
+      <View style={{ flex: 1, flexDirection: "column" }}>
+        <Container>
+          <Switch>
+            <Route exact path={["/", "/home"]} component={Home} />
+            <Route exact path="/browse" component={Browse} />
+            <Route exact path="/library" component={Library} />
+            <Route exact path="/account" component={Account} />
+            <Route exact path="/episodes" component={Episodes} />
+            <Route exact path="/choose-categories" component={Episodes} />
+          </Switch>
+        </Container>
+        <Player />
+        <BottomNavigation routes={navigationRoutes} />
+      </View>
+    </Provider>
+  );
+};
+
+export const App = withRouter(AppView);
