@@ -1,6 +1,8 @@
 import { takeEvery, call, put } from "redux-saga/effects";
 import * as Api from "./api";
 import * as mocks from "../../mocks";
+import Player from "../../libs/audio-player/";
+const AudioPlayer = new Player();
 
 export function* fetchCategories() {
   try {
@@ -35,8 +37,33 @@ export function* fetchEpisodes(podcastId) {
   }
 }
 
+export function* playEpisode(episodeId) {
+  try {
+    AudioPlayer.play(episodeId);
+    yield put({ type: "PLAY_EPISODE_SUCCESS", episodeId });
+  } catch (error) {
+    yield put({ type: "PLAY_EPISODE_FAILED", episodeId, error });
+  }
+}
+
+export function* pauseEpisode(episodeId) {
+  try {
+    AudioPlayer.pause(episodeId);
+    yield put({ type: "PAUSE_EPISODE_SUCCESS", episodeId });
+  } catch (error) {
+    yield put({ type: "PAUSE_EPISODE_FAILED", error });
+  }
+}
+
+export function* playEpisodeFailed({ error, episodeId }) {
+  console.log(`Unable to play episode ${episodeId} due to ${error.message}`);
+}
+
 export default function* rootSaga() {
   yield takeEvery("FETCH_CATEGORIES", fetchCategories);
   yield takeEvery("FETCH_EPISODES", fetchEpisodes);
   yield takeEvery("FETCH_PODCASTS", fetchPodcasts);
+  yield takeEvery("PLAY_EPISODE", playEpisode);
+  yield takeEvery("PLAY_EPISODE_FAILED", playEpisodeFailed);
+  yield takeEvery("PAUSE_EPISODE", pauseEpisode);
 }

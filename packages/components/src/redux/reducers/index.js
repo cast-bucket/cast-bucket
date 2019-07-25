@@ -35,6 +35,18 @@ export const episodesReducer = (state = initialState, action) => {
         items: action.episodes,
         isFetching: false
       };
+    case "PLAY_EPISODE":
+      return {
+        ...state,
+        episodeId: action.episodeId,
+        isPlaying: true
+      };
+    case "PAUSE_EPISODE":
+      return {
+        ...state,
+        episodeId: action.episodeId,
+        isPlaying: false
+      };
     default:
       return state;
   }
