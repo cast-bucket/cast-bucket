@@ -11,7 +11,6 @@ class Episodes extends Component {
   constructor(props) {
     super(props);
     this.category = this.props.category;
-    AudioPlayer.clear();
 
     if (mocks.episodeItems[mockFeedId]) {
       mocks.episodeItems[mockFeedId].items.forEach(item => {
@@ -22,9 +21,11 @@ class Episodes extends Component {
     }
   }
 
+
   render() {
     // TODO: Replace mockEpisodes with sagas
     // const { feed } = this.props;
+    AudioPlayer.clear();
     return <EpisodesList data={mocks.episodeItems[mockFeedId]} />;
   }
 }
