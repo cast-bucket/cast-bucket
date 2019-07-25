@@ -41,13 +41,16 @@ const PlayButtonContainer = styled(TouchableOpacity)`
   height: 30px;
 `;
 
-const EpisodeItem = React.memo(({ item, play, pause }) => {
+const EpisodeItem = React.memo(({ item, _index: episodeIndex, play, pause }) => {
   const { title, isoDate } = item;
   const [isPlaying, setPlayingIndicator] = useState(false);
 
   if (!item.enclosure || !item.enclosure.url) return;
 
-  const episodeId = item.enclosure.url;
+  const episode = {
+    id: item.enclosure.url,
+    index: episodeIndex,
+  };
 
   return (
     <View style={styles.episodeContainer}>
@@ -59,7 +62,7 @@ const EpisodeItem = React.memo(({ item, play, pause }) => {
         <PlayButtonContainer
           onPress={() => {
             setPlayingIndicator(!isPlaying);
-            isPlaying ? pause(episodeId) : play(episodeId);
+            isPlaying ? pause(episode) : play(episode);
           }}
           underlayColor="#000"
           activeOpacity={0.65}
@@ -86,8 +89,8 @@ const styles = StyleSheet.create({
 });
 
 const mapDispatchToProps = {
-  play: episodeId => playEpisode(episodeId),
-  pause: episodeId => pauseEpisode(episodeId)
+  play: ({ id: episodeId, ...meta }) => playEpisode(episodeId, meta),
+  pause: ({ id: episodeId, ...meta }) => pauseEpisode(episodeId, meta )
 };
 
 export default connect(

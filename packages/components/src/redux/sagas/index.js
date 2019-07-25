@@ -37,18 +37,20 @@ export function* fetchEpisodes(podcastId) {
   }
 }
 
-export function* playEpisode(episodeId) {
+export function* playEpisode({ episodeId, meta }) {
   try {
-    AudioPlayer.play(episodeId);
+    const episodeIndex = meta && meta.index ? meta.index : null;
+    AudioPlayer.play(episodeId, episodeIndex);
     yield put({ type: "PLAY_EPISODE_SUCCESS", episodeId });
   } catch (error) {
     yield put({ type: "PLAY_EPISODE_FAILED", episodeId, error });
   }
 }
 
-export function* pauseEpisode(episodeId) {
+export function* pauseEpisode({ episodeId, meta }) {
   try {
-    AudioPlayer.pause(episodeId);
+    const episodeIndex = meta && meta.index ? meta.index : null;
+    AudioPlayer.pause(episodeId, episodeIndex);
     yield put({ type: "PAUSE_EPISODE_SUCCESS", episodeId });
   } catch (error) {
     yield put({ type: "PAUSE_EPISODE_FAILED", error });
@@ -56,7 +58,7 @@ export function* pauseEpisode(episodeId) {
 }
 
 export function* playEpisodeFailed({ error, episodeId }) {
-  console.log(`Unable to play episode ${episodeId} due to ${error.message}`);
+  console.error(`Unable to play episode ${episodeId} due to ${error.message}`);
 }
 
 export default function* rootSaga() {

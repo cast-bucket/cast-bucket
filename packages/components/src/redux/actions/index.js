@@ -6,12 +6,14 @@ export const fetchPodcasts = () => ({
   type: "FETCH_PODCASTS"
 });
 
-export const playEpisode = episodeId => ({
+export const playEpisode = (episodeId, meta = null) => ({
   type: "PLAY_EPISODE",
-  episodeId
+  episodeId,
+  meta
 });
 
-export const pauseEpisode = episodeId => ({
+export const pauseEpisode = (episodeId, meta = null) => ({
   type: "PAUSE_EPISODE",
-  episodeId
+  episodeId,
+  meta
 });
