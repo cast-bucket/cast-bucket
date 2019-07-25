@@ -54,7 +54,7 @@ if (!isMobile) {
 
 // TODO: load more items, or link section to new page?
 const handleRowButtonPress = rowId => {
-  console.log(rowId);
+  console.log("Row Row Row the boat at" + rowId);
 };
 
 const RowButton = () => <Text style={rowButtonStyles}>View All</Text>;
