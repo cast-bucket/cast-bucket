@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { Feather as Icon } from "../../../libs/vector-icons";
 import { isSmallScreen } from "../../utils/platforms";
 import { Text } from "../Typography";
+import Player from "../../../libs/audio-player";
 
 const MediaIcon = styled(Icon)`
   margin-left: 16px;
@@ -20,7 +21,9 @@ const PodcastImage = styled.Image`
 
 const { width, height } = Dimensions.get("window");
 
-class Player extends Component {
+const AudioPlayer = new Player();
+
+class MediaPlayer extends Component {
   constructor(props) {
     super(props);
 
@@ -266,6 +269,7 @@ class Player extends Component {
               this.setState({
                 isPlaying: !this.state.isPlaying
               });
+              isPlaying ? AudioPlayer.pause() : AudioPlayer.play();
             }}
           />
           {!isSmallScreen && <MediaIcon name="skip-forward" size={28} color="black" />}
@@ -311,7 +315,7 @@ class Player extends Component {
   }
 }
 
-Player.propTypes = {
+MediaPlayer.propTypes = {
   player: PropTypes.shape({
     contextID: PropTypes.string,
     episodeID: PropTypes.string,
@@ -342,4 +346,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Player);
+)(MediaPlayer);
