@@ -24,18 +24,21 @@ export default class Player {
   }
   /**
    * Play a song in the playlist.
+   * @param  {String} episodeId - Episode Identifier / URL
    * @param  {Number} index Index of the song in the playlist (leave empty to play the first or current).
    */
   play(episodeId, index = null) {
     let sound, data;
     try {
-      index = typeof index === "number" ? index : 0;
-
-      if (episodeId) {
-        index = this.playlist.findAt(episode => episode.link === episodeId);
+      const isValidEpisodeIdx = typeof index === 'number';
+      
+      if (!isValidEpisodeIdx && episodeId) {
+        const episodeIndex = this.playlist.findIndex(episode => episode.link === episodeId);
+        index = episodeIndex >= 0 ? episodeIndex : null;
       }
 
-      data = this.playlist[index];
+      data = this.playlist[index || 0];
+      // console.log('data at index data', data);
       // If we already loaded this track, use the current one.
       // Otherwise, setup and load a new Howl.
       if (data.howl) {
@@ -79,16 +82,26 @@ export default class Player {
   }
 
   /**
-   * Pause the currently playing track.
+   * Pause the specific or the current playing track.
    */
-  pause(index) {
-    // Get the Howl we want to manipulate.
-    index = typeof index === "number" ? index : this.playlist.findIndex(item => item.howl);
-    const currentPlaying = this.playlist[index];
+  pause(episodeId, index = null) {
+    try {
+      const isValidEpisodeIdx = typeof index === 'number';
+    
+      if (!isValidEpisodeIdx && episodeId) {
+        const episodeIndex = this.playlist.findIndex(episode => episode.link === episodeId);
+        index = episodeIndex >= 0 ? episodeIndex : this.playlist.findIndex(item => item.howl);
+      }
 
-    if (currentPlaying && currentPlaying.howl) {
-      this.lastPlayed = index;
-      currentPlaying.howl.pause();
+      const currentPlaying = this.playlist[index];
+
+      if (currentPlaying && currentPlaying.howl) {
+        this.lastPlayed = index;
+        currentPlaying.howl.pause();
+      }
+    } 
+    catch(e) {
+      console.error(`Unable to pause episode due to ${e.message}`);
     }
   }
 
