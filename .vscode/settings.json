@@ -1,4 +1,8 @@
 {
   "files.autoSave": "onFocusChange",
-  "prettier.eslintIntegration": true
+  "prettier.eslintIntegration": true,
+  "editor.fontFamily": "'Roboto Mono', Consolas, 'Courier New', monospace",
+  "editor.lineHeight": 24,
+  "editor.fontSize": 12
 }
+
