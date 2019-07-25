@@ -1,14 +1,22 @@
 import { Howl, Howler } from "howler";
 
 /**
- * Player class containing the state of our playlist and where we are in it.
+ * Singleton Player class containing the state of our playlist and where we are in it.
  * Includes all methods for playing, skipping, updating the display, etc.
  * @param {Array} playlist Array of objects with playlist song details ({title, file, howl}).
  */
 
-class Player {
+export default class Player {
+  static instance;
+  static playlist = [];
+
   constructor() {
-    this.playlist = [];
+    if (Player.instance) {
+      return instance;
+    }
+    this.instance = this;
+    this.playlist = Player.playlist;
+    this.lastPlayed = 0;
   }
 
   add(playListItem) {
@@ -18,63 +26,68 @@ class Player {
    * Play a song in the playlist.
    * @param  {Number} index Index of the song in the playlist (leave empty to play the first or current).
    */
-  play(index) {
-    const self = this;
-    let sound;
+  play(episodeId, index = null) {
+    let sound, data;
+    try {
+      index = typeof index === "number" ? index : 0;
 
-    index = typeof index === "number" ? index : 0;
-    var data = self.playlist[index];
+      if (episodeId) {
+        index = this.playlist.findAt(episode => episode.link === episodeId);
+      }
 
-    // If we already loaded this track, use the current one.
-    // Otherwise, setup and load a new Howl.
-    if (data.howl) {
-      sound = data.howl;
-    } else {
-      sound = data.howl = new Howl({
-        src: [data.link],
-        html5: true,
-        onplay: function() {
-          // Display the duration.
-          // duration.innerHTML = self.formatTime(Math.round(sound.duration()));
+      data = this.playlist[index];
+      // If we already loaded this track, use the current one.
+      // Otherwise, setup and load a new Howl.
+      if (data.howl) {
+        sound = data.howl;
+      } else {
+        sound = data.howl = new Howl({
+          src: [data.link],
+          html5: true,
+          onplay: function() {
+            // Display the duration.
+            // duration.innerHTML = this.formatTime(Math.round(sound.duration()));
+            // Start upating the progress of the track.
+            // requestAnimationFrame(this.step.bind(this));
+            // // Start the wave animation if we have already loaded
+            // wave.container.style.display = "block";
+            // bar.style.display = "none";
+            // pauseBtn.style.display = "block";
+          },
+          onload: function() {
+            // Start the wave animation.
+          },
+          onend: function() {
+            // Stop the wave animation.
+          },
+          onpause: function() {},
+          onstop: function() {},
+          onseek: function() {
+            // Start upating the progress of the track.
+            // requestAnimationFrame(this.step.bind(this));
+          }
+        });
+      }
 
-          // Start upating the progress of the track.
-          requestAnimationFrame(self.step.bind(self));
+      this.lastPlayed = index;
 
-          // // Start the wave animation if we have already loaded
-          // wave.container.style.display = "block";
-          // bar.style.display = "none";
-          // pauseBtn.style.display = "block";
-        },
-        onload: function() {
-          // Start the wave animation.
-        },
-        onend: function() {
-          // Stop the wave animation.
-        },
-        onpause: function() {},
-        onstop: function() {},
-        onseek: function() {
-          // Start upating the progress of the track.
-          requestAnimationFrame(self.step.bind(self));
-        }
-      });
+      // Begin playing the sound.
+      sound.play();
+    } catch (error) {
+      throw error;
     }
-
-    // Begin playing the sound.
-    sound.play();
   }
 
   /**
    * Pause the currently playing track.
    */
   pause(index) {
-    var self = this;
-
     // Get the Howl we want to manipulate.
-    const currentPlaying =
-      typeof index === "number" ? self.playlist[index] : self.playlist.find(item => item.howl);
+    index = typeof index === "number" ? index : this.playlist.findIndex(item => item.howl);
+    const currentPlaying = this.playlist[index];
 
     if (currentPlaying && currentPlaying.howl) {
+      this.lastPlayed = index;
       currentPlaying.howl.pause();
     }
   }
@@ -84,23 +97,21 @@ class Player {
    * @param  {String} direction 'next' or 'prev'.
    */
   skip(direction) {
-    var self = this;
-
     // Get the next track based on the direction of the track.
     var index = 0;
     if (direction === "prev") {
-      index = self.index - 1;
+      index = this.index - 1;
       if (index < 0) {
-        index = self.playlist.length - 1;
+        index = this.playlist.length - 1;
       }
     } else {
-      index = self.index + 1;
-      if (index >= self.playlist.length) {
+      index = this.index + 1;
+      if (index >= this.playlist.length) {
         index = 0;
       }
     }
 
-    self.skipTo(index);
+    this.skipTo(index);
   }
 
   /**
@@ -108,9 +119,7 @@ class Player {
    * @param  {Number} index Index in the playlist.
    */
   skipTo(index) {
-    var self = this;
-
-    const currentPlaying = self.playlist.filter(item => item.howl);
+    const currentPlaying = this.playlist.filter(item => item.howl);
 
     // Stop the current track.
     if (currentPlaying && currentPlaying.howl) {
@@ -121,7 +130,7 @@ class Player {
     // progress.style.width = "0%";
 
     // Play the new track.
-    self.play(index);
+    this.play(index);
   }
 
   /**
@@ -129,8 +138,6 @@ class Player {
    * @param  {Number} val Volume between 0 and 1.
    */
   volume(val) {
-    var self = this;
-
     // Update the global volume (affecting all Howls).
     Howler.volume(val);
   }
@@ -140,10 +147,8 @@ class Player {
    * @param  {Number} per Percentage through the song to skip.
    */
   seek(per) {
-    var self = this;
-
     // Get the Howl we want to manipulate.
-    var sound = self.playlist.filter(item => item.howl);
+    var sound = this.playlist.filter(item => item.howl);
     // Convert the percent into a seek position.
     if (sound.playing()) {
       sound.seek(sound.duration() * per);
@@ -154,19 +159,17 @@ class Player {
    * The step called within requestAnimationFrame to update the playback position.
    */
   step() {
-    var self = this;
-
     // Get the Howl we want to manipulate.
-    const sound = self.playlist.find(item => item.howl).howl;
+    const sound = this.playlist.find(item => item.howl).howl;
 
     // Determine our current seek position.
     var seek = sound ? sound.seek() : 0;
-    // // timer.innerHTML = self.formatTime(Math.round(seek));
+    // // timer.innerHTML = this.formatTime(Math.round(seek));
     // progress.style.width = ((seek / sound.duration()) * 100 || 0) + "%";
 
     // If the sound is still playing, continue stepping.
     if (sound && sound.playing()) {
-      requestAnimationFrame(self.step.bind(self));
+      requestAnimationFrame(this.step.bind(this));
     }
   }
 
@@ -174,7 +177,6 @@ class Player {
    * Toggle the playlist display on/off.
    */
   togglePlaylist() {
-    var self = this;
     var display = playlist.style.display === "block" ? "none" : "block";
 
     setTimeout(
@@ -190,7 +192,6 @@ class Player {
    * Toggle the volume display on/off.
    */
   toggleVolume() {
-    var self = this;
     var display = volume.style.display === "block" ? "none" : "block";
 
     setTimeout(
@@ -219,10 +220,10 @@ class Player {
   }
 }
 
-const PlayerInstance = new Player();
+// const PlayerInstance = new Player();
 // Object.freeze(PlayerInstance);
 
-export default PlayerInstance;
+// export default PlayerInstance;
 
 // var Player = function(playlist) {
 //   this.playlist = playlist;
