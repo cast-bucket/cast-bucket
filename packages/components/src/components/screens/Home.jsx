@@ -5,8 +5,8 @@ import titleCase from "title-case";
 import { View } from "react-native";
 import { Text, Title } from "../common/Typography";
 import Podcasts from "../containers/Podcasts";
-import { isMobile } from "../utils/platforms";
-import * as constants from "../utils/constants";
+import { isMobile } from "../../utils/platforms";
+import * as constants from "../../utils/constants";
 
 const Container = styled.ScrollView`
   flex: 1;
