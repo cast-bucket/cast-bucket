@@ -1,9 +1,11 @@
 import Feather from "react-native-vector-icons/Feather";
 import FeatherIconFont from "react-native-vector-icons/Fonts/Feather.ttf";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import MaterialIconFont from "react-native-vector-icons/Fonts/MaterialIcons.ttf";
 
-export { Feather };
+export { Feather, MaterialIcons };
 
-const iconStyles = [`@font-face { src:url(${FeatherIconFont});font-family: Feather; }`].join("\n");
+const iconStyles = [`@font-face { src:url(${FeatherIconFont});font-family: Feather; }`, `@font-face { src:url(${MaterialIconFont});font-family: MaterialIcons; }`].join("\n");
 
 const style = document.createElement("style");
 style.type = "text/css";

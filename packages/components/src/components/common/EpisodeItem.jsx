@@ -2,7 +2,7 @@ import styled from "@emotion/native";
 import React, { useState } from "react";
 import { Dimensions, StyleSheet, TouchableOpacity, View } from "react-native";
 import { connect } from "react-redux";
-import { Feather as Icon } from "../../libs/vector-icons";
+import { MaterialIcons as Icon } from "../../libs/vector-icons";
 import { pauseEpisode, playEpisode } from "../../redux/actions";
 import { Text } from "./Typography";
 
@@ -49,7 +49,7 @@ const EpisodeItem = React.memo(({ item, _index: episodeIndex, play, pause }) => 
 
   const episode = {
     id: item.enclosure.url,
-    index: episodeIndex,
+    index: episodeIndex
   };
 
   return (
@@ -68,9 +68,9 @@ const EpisodeItem = React.memo(({ item, _index: episodeIndex, play, pause }) => 
           activeOpacity={0.65}
         >
           <PlayButtonIcon
-            name={isPlaying ? "pause-circle" : "play-circle"}
+            name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
             size={30}
-            color="#3e70ff"
+            color="#5e5fb8"
           />
         </PlayButtonContainer>
       </Row>
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
 
 const mapDispatchToProps = {
   play: ({ id: episodeId, ...meta }) => playEpisode(episodeId, meta),
-  pause: ({ id: episodeId, ...meta }) => pauseEpisode(episodeId, meta )
+  pause: ({ id: episodeId, ...meta }) => pauseEpisode(episodeId, meta)
 };
 
 export default connect(
