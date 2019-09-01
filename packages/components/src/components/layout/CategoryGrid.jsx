@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { FlatGrid } from "react-native-super-grid";
 import { CategoryItem, Button } from "../common";
 import { fetchCategories } from "../../redux/actions/";
-import { isSmallScreen } from "../utils/breakpoints";
+import { isSmallScreen } from "../../utils/breakpoints";
 
-import { memoSet } from "../utils/memoize";
+import { memoSet } from "../../utils/memoize";
 
 const DEFAULT_ITEM_WIDTH = 150;
 

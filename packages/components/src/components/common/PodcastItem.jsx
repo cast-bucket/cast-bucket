@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/native";
 import { View } from "react-native";
 import { withRouter } from "../../libs/router";
-import getPlaceHolderImage from "../utils/getPlaceHolderImage";
+import getPlaceHolderImage from "../../utils/getPlaceHolderImage";
 import { Text } from "./Typography";
 
 const PodcastTitle = styled(Text)`

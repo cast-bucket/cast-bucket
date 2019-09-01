@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FlatList, StyleSheet } from "react-native";
 import EpisodeItem from "../common/EpisodeItem";
-import { isMobile } from "../utils/platforms";
+import { isMobile } from "../../utils/platforms";
 class EpisodesList extends Component {
   resize = () => this.forceUpdate();
 

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
 import PodcastItem from "../common/PodcastItem";
 import { RecyclerView } from "../common/RecyclerView";
-import { isMobile } from "../utils/platforms";
-import * as constants from "../utils/constants";
+import { isMobile } from "../../utils/platforms";
+import * as constants from "../../utils/constants";
 
 const { height } = Dimensions.get("window");
 
