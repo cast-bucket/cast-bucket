@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import playerReducer from './player';
 
 const initialState = { isFetching: false, items: [], receivedAt: Date.now() };
 
@@ -55,5 +56,6 @@ export const episodesReducer = (state = initialState, action) => {
 export default combineReducers({
   categories: categoriesReducer,
   podcasts: podcastsReducer,
-  episodes: episodesReducer
+  episodes: episodesReducer,
+  player: playerReducer
 });
