@@ -1,9 +1,12 @@
 import styled from "@emotion/native";
 import React from "react";
+import { connect } from "react-redux";
 import { Dimensions, View } from "react-native";
 import { MaterialIcons as Icon } from "../../libs/vector-icons";
 import { isSmallScreen } from "../../utils/platforms";
 import { Text } from "./Typography";
+import { isMobile } from '../../utils/platforms'
+// import { recentlyPlayed, playEpisode, pauseEpisode } from "../../redux/actions";
 
 const MediaIcon = styled(Icon)`
   margin-left: 16px;
@@ -34,50 +37,60 @@ const EpisodeTitle = styled(Text)`
   margin-horizontal: 12px;
 `;
 
-const Player = ({ isPlaying, onPress, audio, episode, currentTime }) => {
-  return (
-    <PlayerContainer
-      style={{
-        maxHeight: isSmallScreen ? 0.175 * height : 0.125 * height,
-        shadowColor: "#2d2d2d40",
-        shadowRadius: 10
-      }}
-    >
-      <View
+class Player extends React.Component {
+  resize = () => this.forceUpdate();
+
+  render() {
+    if (!isMobile) {
+      window.addEventListener("resize", this.resize);
+    }
+    const { isPlaying } = this.props;
+    return (
+      <PlayerContainer
         style={{
-          flex: 1,
-          flexDirection: "row",
-          alignItems: "center"
+          maxHeight: isSmallScreen ? 0.175 * height : 0.125 * height,
+          shadowColor: "#2d2d2d40",
+          shadowRadius: 10
         }}
       >
-        <EpisodeInfoContainer
-          style={{
-            userSelect: "none"
-          }}
-        >
-          <PodcastImage source={{ uri: "" }} style={{ width: 52, height: 52 }} />
-          <EpisodeTitle style={{ maxWidth: 0.4 * width }}>Lorem Ipsum Podcast Title</EpisodeTitle>
-        </EpisodeInfoContainer>
         <View
           style={{
-            userSelect: "none"
+            flex: 1,
+            flexDirection: "row",
+            alignItems: "center"
           }}
-        />
-        {!isSmallScreen && <MediaIcon name="replay-10" size={28} color="#5e5fb8" />}
-        <MediaIcon
-          name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
-          size={42}
-          color="#5e5fb8"
-          onPress={() => {
-            console.log('Playing');
-            onPress();
-          }}
-        />
-        {!isSmallScreen && <MediaIcon name="forward-10" size={28} color="#5e5fb8" />}
-      </View>
-      <View />
-    </PlayerContainer>
-  );
-};
+        >
+          <EpisodeInfoContainer
+            style={{
+              userSelect: "none"
+            }}
+          >
+            <PodcastImage source={{ uri: "" }} style={{ width: 52, height: 52 }} />
+            <EpisodeTitle style={{ maxWidth: 0.4 * width }}>Lorem Ipsum Podcast Title</EpisodeTitle>
+          </EpisodeInfoContainer>
+          <View
+            style={{
+              userSelect: "none"
+            }}
+          />
+          {!isSmallScreen && <MediaIcon name="replay-10" size={28} color="#5e5fb8" />}
+          <MediaIcon
+            name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
+            size={42}
+            color="#5e5fb8"
+            onPress={() => {
+              console.log("Playing");
+            }}
+          />
+          {!isSmallScreen && <MediaIcon name="forward-10" size={28} color="#5e5fb8" />}
+        </View>
+        <View />
+      </PlayerContainer>
+    );
+  }
+}
 
-export default Player;
+export default connect(
+  null,
+  null
+)(Player);
