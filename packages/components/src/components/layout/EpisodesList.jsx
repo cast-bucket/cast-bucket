@@ -5,7 +5,6 @@ import { pauseEpisode, playEpisode } from "../../redux/actions";
 import { isMobile } from "../../utils/platforms";
 import EpisodeItem from "../common/EpisodeItem";
 
-
 // TODO: Move local component state `episodes` to redux
 class EpisodesList extends Component {
   constructor(props) {
@@ -72,12 +71,11 @@ class EpisodesList extends Component {
   resize = () => this.forceUpdate();
 
   setEpisode = episode => {
-    const { play, pause } = this.props;
     const episodeUrl = episode.url;
-    const isEpisodePlaying = this.isPlaying(episodeUrl);
     this.pauseOtherEpisodes(episodeUrl);
     this.togglePlaying(episodeUrl);
-    return isEpisodePlaying ? pause(episode) : play(episode);
+    const action = this.isPlaying(episodeUrl) ? 'pause' : 'play';
+    return this.props[action](episode);
   };
 
   togglePlaying = url => {
