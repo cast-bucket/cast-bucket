@@ -8,12 +8,20 @@ export const fetchPodcasts = () => ({
 
 export const playEpisode = (episodeId, meta = null) => ({
   type: "PLAY_EPISODE",
-  episodeId,
-  meta
+  episode: {
+    episodeId,
+    meta
+  }
 });
 
 export const pauseEpisode = (episodeId, meta = null) => ({
   type: "PAUSE_EPISODE",
-  episodeId,
-  meta
+  episode: {
+    episodeId,
+    meta
+  }
+});
+
+export const recentlyPlayed = () => ({
+  type: "RECENTLY_PLAYED"
 });

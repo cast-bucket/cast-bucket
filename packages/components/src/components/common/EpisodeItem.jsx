@@ -1,9 +1,7 @@
 import styled from "@emotion/native";
-import React, { useState } from "react";
+import React from "react";
 import { Dimensions, StyleSheet, TouchableOpacity, View } from "react-native";
-import { connect } from "react-redux";
 import { MaterialIcons as Icon } from "../../libs/vector-icons";
-import { pauseEpisode, playEpisode } from "../../redux/actions";
 import { Text } from "./Typography";
 
 const { width } = Dimensions.get("window");
@@ -41,16 +39,9 @@ const PlayButtonContainer = styled(TouchableOpacity)`
   height: 30px;
 `;
 
-const EpisodeItem = React.memo(({ item, _index: episodeIndex, play, pause }) => {
+const EpisodeItem = React.memo(({ item, _index: episodeIndex, setEpisode, isPlaying }) => {
+  if (!item.url) return;
   const { title, isoDate } = item;
-  const [isPlaying, setPlayingIndicator] = useState(false);
-
-  if (!item.enclosure || !item.enclosure.url) return;
-
-  const episode = {
-    id: item.enclosure.url,
-    index: episodeIndex
-  };
 
   return (
     <View style={styles.episodeContainer}>
@@ -61,8 +52,7 @@ const EpisodeItem = React.memo(({ item, _index: episodeIndex, play, pause }) => 
         </View>
         <PlayButtonContainer
           onPress={() => {
-            setPlayingIndicator(!isPlaying);
-            isPlaying ? pause(episode) : play(episode);
+            setEpisode(item);
           }}
           underlayColor="#000"
           activeOpacity={0.65}
@@ -88,12 +78,4 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapDispatchToProps = {
-  play: ({ id: episodeId, ...meta }) => playEpisode(episodeId, meta),
-  pause: ({ id: episodeId, ...meta }) => pauseEpisode(episodeId, meta)
-};
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(EpisodeItem);
+export default EpisodeItem;

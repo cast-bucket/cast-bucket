@@ -1,6 +1,4 @@
-import { call, put } from "redux-saga/effects";
-import * as AudioPlayer from "../../libs/audio-player/";
-import { isWeb } from "../../utils/platforms";
+import AudioPlayer from "../../libs/audio-player/";
 
 const initialState = {
   currentEpisode: null,
@@ -12,11 +10,15 @@ const initialState = {
 
 export default function playerReducer(state = initialState, action) {
   const { audio } = state;
+  const { lastEpisodeId } = audio;
   switch (action.type) {
-    case "PLAY":
-      audio.play();
+    case "PLAY_EPISODE":
+      const { episodeId, ...meta} = action.episode;
+      audio.play(episodeId);
+      audio.setMetadata(meta, episodeId);
       return {
         ...state,
+        currentEpisode: episodeId,
         isPlaying: true
       };
 
@@ -29,8 +31,8 @@ export default function playerReducer(state = initialState, action) {
         isPlaying
       };
 
-    case "PAUSE":
-      audio.pause();
+    case "PAUSE_EPISODE":
+      audio.pause(action?.episode?.episodeId);
       return {
         ...state,
         isPlaying: false
@@ -42,29 +44,14 @@ export default function playerReducer(state = initialState, action) {
         currentTime: state.audio.currentTime
       };
 
+    case 'RECENTLY_PLAYED':
+      return {
+        ...state,
+        episodeId: lastEpisodeId,
+        meta: audio.getMetadata(lastEpisodeId)
+      };
+
     default:
       return state;
-  }
-
-  // Why is this needed?
-  const delayAnimation = () => {
-    return new Promise(resolve => requestAnimationFrame(resolve));
-  };
-
-  export function* seekSaga() {
-    if (isWeb) {
-      yield call(delayAnimation);
-    }
-
-    const isPlaying = yield select(state => state.player.isPlaying);
-    if (isPlaying) {
-      yield put({ type: 'SHOW_CURRENT_TIME' });
-      const currentTime = yield select(state => state.player.audio.currentTime);
-      const duration = yield select(state => state.player.audio.duration);
-
-      if (currentTime === duration) {
-        yield put({ type: 'SEEKED' });
-      }
-    }
   }
 }
