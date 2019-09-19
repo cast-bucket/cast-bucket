@@ -5,8 +5,8 @@ import { Dimensions, View } from "react-native";
 import { MaterialIcons as Icon } from "../../libs/vector-icons";
 import { isSmallScreen } from "../../utils/platforms";
 import { Text } from "./Typography";
-import { isMobile } from '../../utils/platforms'
-// import { recentlyPlayed, playEpisode, pauseEpisode } from "../../redux/actions";
+import { isMobile } from "../../utils/platforms";
+import { playEpisode, pauseEpisode } from "../../redux/actions";
 
 const MediaIcon = styled(Icon)`
   margin-left: 16px;
@@ -41,10 +41,12 @@ class Player extends React.Component {
   resize = () => this.forceUpdate();
 
   render() {
+    const { isPlaying, currentEpisode, title, play, pause } = this.props;
+    if (!currentEpisode) return null;
+
     if (!isMobile) {
       window.addEventListener("resize", this.resize);
     }
-    const { isPlaying } = this.props;
     return (
       <PlayerContainer
         style={{
@@ -66,7 +68,7 @@ class Player extends React.Component {
             }}
           >
             <PodcastImage source={{ uri: "" }} style={{ width: 52, height: 52 }} />
-            <EpisodeTitle style={{ maxWidth: 0.4 * width }}>Lorem Ipsum Podcast Title</EpisodeTitle>
+            <EpisodeTitle style={{ maxWidth: 0.4 * width }}>{title}</EpisodeTitle>
           </EpisodeInfoContainer>
           <View
             style={{
@@ -79,7 +81,8 @@ class Player extends React.Component {
             size={42}
             color="#5e5fb8"
             onPress={() => {
-              console.log("Playing");
+              // !FIXME: Connect EpisodesList.episodes with redux and use that here
+              // return isPlaying ? pause(currentEpisode) : play(currentEpisode);
             }}
           />
           {!isSmallScreen && <MediaIcon name="forward-10" size={28} color="#5e5fb8" />}
@@ -90,7 +93,23 @@ class Player extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  const { audioPlayer } = state;
+  const { isPlaying, currentEpisode } = audioPlayer;
+  return {
+    isPlaying,
+    currentEpisode,
+    title: currentEpisode ? currentEpisode.meta.title : null
+  };
+};
+
+const mapDispatchToProps = {
+  play: ({ url: episodeId, ...meta }) => playEpisode(episodeId, meta),
+  pause: ({ url: episodeId, ...meta }) => pauseEpisode(episodeId, meta)
+};
+
+
 export default connect(
-  null,
-  null
+  mapStateToProps,
+  mapDispatchToProps
 )(Player);
