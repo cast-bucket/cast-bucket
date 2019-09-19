@@ -1,5 +1,5 @@
 import axios from "axios";
-import { call, put, takeEvery, } from "redux-saga/effects";
+import { call, put, take, takeEvery } from "redux-saga/effects";
 import * as mocks from "../mocks";
 
 const base = process.env.REACT_APP_API_URL || "https://cast-bucket-api.now.sh";
@@ -31,7 +31,6 @@ export function* fetchCategories() {
  * @returns podcasts of the specified type
  */
 export function* fetchPodcasts(podcastType) {
-  console.log("fetching podcasts");
   try {
     // const podcasts = yield call(fetch, "/podcasts");
     const podcasts = mocks.podcastListItems.map(item => ({ ...item, type: "PODCAST_ITEM" }));
@@ -54,8 +53,8 @@ export default function* rootSaga() {
   yield takeEvery("FETCH_CATEGORIES", fetchCategories);
   yield takeEvery("FETCH_EPISODES", fetchEpisodes);
   yield takeEvery("FETCH_PODCASTS", fetchPodcasts);
-  yield takeEvery("PLAY_EPISODE");
-  yield takeEvery("PAUSE_EPISODE");
-  yield takeEvery("TOGGLE_PLAYING");
-  yield takeEvery("RECENTLY_PLAYED");
+  yield take("PLAY_EPISODE");
+  yield take("PAUSE_EPISODE");
+  yield take("TOGGLE_PLAYING");
+  yield take("RECENTLY_PLAYED");
 }
