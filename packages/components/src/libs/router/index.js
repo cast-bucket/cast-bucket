@@ -4,12 +4,16 @@ import {
   Link as NativeLink,
   Redirect as NativeRedirect,
   withRouter as NativeWithRouter,
-  Switch as NativeSwitch
+  Switch as NativeSwitch,
+  BackButton as NativeBackButton,
+  __RouterContext as NativeRouterContext
 } from "react-router-native";
 
-export let Router = NativeRouter;
-export let Route = NativeRoute;
-export let Link = NativeLink;
-export let Redirect = NativeRedirect;
-export let withRouter = NativeWithRouter;
-export let Switch = NativeSwitch;
+export const Router = NativeRouter;
+export const Route = NativeRoute;
+export const Link = NativeLink;
+export const Redirect = NativeRedirect;
+export const withRouter = NativeWithRouter;
+export const Switch = NativeSwitch;
+export const BackButton = NativeBackButton;
+export const __RouterContext = NativeRouterContext;

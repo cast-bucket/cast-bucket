@@ -20,7 +20,7 @@ import expo.modules.av.AVPackage;
 import java.util.Arrays;
 import java.util.List;
 
-// import com.oblador.vectoricons.VectorIconsPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 
 public class MainApplication extends Application implements ReactApplication {
   private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(Arrays.<Package>asList(
@@ -38,7 +38,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage()
           , new ModuleRegistryAdapter(mModuleRegistryProvider)
-        // , new VectorIconsPackage()
+        , new VectorIconsPackage()
       );
     }
 

@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Dimensions, View } from "react-native";
 import { connect } from "react-redux";
-import { CategoryItem, Button } from "../common";
 import { FlatGrid } from "react-native-super-grid";
-import { fetchCategories } from "../../redux/actions/categories";
-import { isSmallScreen } from "../utils/breakpoints";
+import { CategoryItem, Button } from "../common";
+import { fetchCategories } from "../../redux/actions/";
+import { isSmallScreen } from "../../utils/breakpoints";
 
-import { memoSet } from "../utils/memoize";
+import { memoSet } from "../../utils/memoize";
+
 const DEFAULT_ITEM_WIDTH = 150;
 
 const { width } = Dimensions.get("window");
@@ -82,7 +83,7 @@ class CategoriesGrid extends Component {
     return (
       <View>
         <FlatGrid
-          fixed={true}
+          fixed
           itemDimension={DEFAULT_ITEM_WIDTH}
           items={categories}
           spacing={itemSpacing}
