@@ -10,18 +10,18 @@ const initialState = {
 
 export default function playerReducer(state = initialState, action) {
   const { audio } = state;
-  const { lastEpisodeId } = audio;
+
   switch (action.type) {
     case "PLAY_EPISODE":
       const { episodeId, ...meta} = action.episode;
       audio.play(episodeId);
-      audio.setMetadata(meta, episodeId);
+      // audio.setMetadata(meta, episodeId);
       return {
         ...state,
-        currentEpisode: episodeId,
+        currentEpisode: action.episode,
         isPlaying: true
       };
-
+    
     case "TOGGLE_PLAYING":
       const isPlaying = !state.isPlaying;
       isPlaying ? audio.play() : audio.pause();
@@ -44,12 +44,6 @@ export default function playerReducer(state = initialState, action) {
         currentTime: state.audio.currentTime
       };
 
-    case 'RECENTLY_PLAYED':
-      return {
-        ...state,
-        episodeId: lastEpisodeId,
-        meta: audio.getMetadata(lastEpisodeId)
-      };
 
     default:
       return state;
