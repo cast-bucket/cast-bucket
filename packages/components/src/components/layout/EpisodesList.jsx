@@ -1,108 +1,43 @@
 import React, { Component } from "react";
 import { FlatList, StyleSheet } from "react-native";
 import { connect } from "react-redux";
-import { pauseEpisode, playEpisode } from "../../redux/actions";
+import { fetchEpisodes, togglePlaying } from "../../redux/actions";
 import { isMobile } from "../../utils/platforms";
 import EpisodeItem from "../common/EpisodeItem";
 
-// TODO: Move local component state `episodes` to redux
 class EpisodesList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      episodes: {}
-    };
-  }
-
   componentDidMount() {
+    const { episodes, feed, fetchEpisodes } = this.props;
+    if (!Object.keys(episodes).length > 0) fetchEpisodes(feed);
     if (!isMobile) {
       window.addEventListener("resize", this.resize);
     }
-
-    this.setState({
-      episodes: this.addEpisodes()
-    });
   }
 
   componentWillUnmount() {
     if (!isMobile) {
       window.removeEventListener("resize", this.resize);
     }
-    this.setState({
-      episodes: {}
-    });
   }
 
-  addEpisodes = () => {
-    const { episodes } = this.state;
-    const { data } = this.props;
-    data.items.forEach(item => {
-      if (item.enclosure && item.enclosure.url) {
-        episodes[item.enclosure.url] = {
-          ...item,
-          url: item.enclosure.url,
-          isPlaying: false
-        };
-      }
-    });
-    return episodes;
-  };
-
   isPlaying = url => {
-    const episode = this.state.episodes[url];
+    const episode = this.props.episodes[url];
     return episode ? episode.isPlaying : false;
   };
 
-  pauseOtherEpisodes = episodeUrl => {
-    let { episodes } = this.state;
-    const { pause } = this.props;
-    const otherPlayingEpisodes = Object.values(episodes).filter(
-      e => e.isPlaying === true && e.url !== episodeUrl
-    );
-    otherPlayingEpisodes.forEach(ep => {
-      episodes[ep.url].isPlaying = false;
-      pause(ep);
-    });
-    this.setState({
-      episodes
-    });
-  };
-
   resize = () => this.forceUpdate();
-
-  setEpisode = episode => {
-    const episodeUrl = episode.url;
-    this.pauseOtherEpisodes(episodeUrl);
-    this.togglePlaying(episodeUrl);
-    const action = this.isPlaying(episodeUrl) ? 'pause' : 'play';
-    return this.props[action](episode);
-  };
-
-  togglePlaying = url => {
-    const episode = this.state.episodes[url];
-    this.setState({
-      episodes: {
-        ...this.state.episodes,
-        [url]: {
-          ...episode,
-          isPlaying: !episode.isPlaying
-        }
-      }
-    });
-  };
 
   render() {
     if (!isMobile) {
       window.addEventListener("resize", this.resize);
     }
-    const { episodes } = this.state;
-
-    const renderListItem = ({ item, index }) => {
+    const { episodes } = this.props;
+    const renderListItem = ({ item }) => {
       return (
         <EpisodeItem
           item={item}
           isPlaying={this.isPlaying(item.url)}
-          setEpisode={this.setEpisode}
+          togglePlaying={this.props.togglePlaying}
         />
       );
     };
@@ -125,12 +60,19 @@ const styles = StyleSheet.create({
   }
 });
 
+const mapStateToProps = state => {
+  const defaultState = { isFetching: true, items: {} };
+  const { isFetching, items: episodes } = state.episodes || defaultState;
+  const nowPlaying = Object.values(episodes).filter(p => p.isPlaying === true);
+  return { isFetching, episodes, nowPlaying };
+};
+
 const mapDispatchToProps = {
-  play: ({ url: episodeId, ...meta }) => playEpisode(episodeId, meta),
-  pause: ({ url: episodeId, ...meta }) => pauseEpisode(episodeId, meta)
+  togglePlaying,
+  fetchEpisodes
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(EpisodesList);
