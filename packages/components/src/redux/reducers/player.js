@@ -1,49 +1,39 @@
 import AudioPlayer from "../../libs/audio-player/";
 
 const initialState = {
-  currentEpisode: null,
-  progress: 0,
-  currentTime: 0,
   audio: new AudioPlayer(),
-  isPlaying: false
+  currentEpisode: null,
+  isPlaying: false,
+  playerId: null
 };
 
 export default function playerReducer(state = initialState, action) {
   const { audio } = state;
 
+  console.log('>>>-SHRIRAM->>> action.episode', action.episode);
   switch (action.type) {
     case "PLAY_EPISODE":
-      const { episodeId, ...meta} = action.episode;
-      audio.play(episodeId);
-      // audio.setMetadata(meta, episodeId);
+      const { url: episodeId } = action.episode;
+      const newPlayerId = audio.play(episodeId);
       return {
         ...state,
-        currentEpisode: action.episode,
+        episodeId,
+        playerId: newPlayerId,
         isPlaying: true
-      };
-    
-    case "TOGGLE_PLAYING":
-      const isPlaying = !state.isPlaying;
-      isPlaying ? audio.play() : audio.pause();
-
-      return {
-        ...state,
-        isPlaying
       };
 
     case "PAUSE_EPISODE":
-      audio.pause(action?.episode?.episodeId);
+      audio.pause(action?.episode.url);
       return {
         ...state,
-        isPlaying: false
+        isPlaying: false,
       };
 
-    case 'SHOW_CURRENT_TIME':
+    case "SHOW_CURRENT_TIME":
       return {
         ...state,
         currentTime: state.audio.currentTime
       };
-
 
     default:
       return state;

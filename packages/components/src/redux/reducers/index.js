@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import playerReducer from './player';
+import playerReducer from "./player";
 
-const initialState = { isFetching: false, items: [], receivedAt: Date.now() };
+const initialState = { isFetching: false, items: [] };
 
 export const categoriesReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -28,9 +28,16 @@ export const podcastsReducer = (state = initialState, action) => {
   }
 };
 
-export const episodesReducer = (state = initialState, action) => {
+export const episodesReducer = (state = { isFetching: false, items: {} }, action) => {
   switch (action.type) {
     case "RECEIVED_EPISODES":
+      return {
+        ...state,
+        items: action.episodes,
+        isFetching: false
+      };
+
+    case "UPDATED_EPISODES":
       return {
         ...state,
         items: action.episodes,
