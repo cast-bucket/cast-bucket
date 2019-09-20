@@ -18,23 +18,29 @@ const PodcastImage = styled.Image`
   margin-horizontal: 10px;
 `;
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 const PlayerContainer = styled.View`
-  flex: 1;
-  background-color: white;
   align-items: center;
+  background-color: white;
+  flex: 1;
 `;
 
 const EpisodeInfoContainer = styled.View`
-  flex-direction: row;
   align-items: center;
+  flex-direction: row;
 `;
 
+// TODO: Add marquee to episodeTitle
 const EpisodeTitle = styled(Text)`
-  line-height: 30;
   font-size: 18;
-  margin-horizontal: 12px;
+  line-height: 30;
+  margin-horizontal: 10px;
+  margin-vertical: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  white-space: nowrap;
 `;
 
 class Player extends React.Component {
@@ -50,7 +56,7 @@ class Player extends React.Component {
     return (
       <PlayerContainer
         style={{
-          maxHeight: isSmallScreen ? 0.175 * height : 0.125 * height,
+          maxHeight: 75,
           shadowColor: "#2d2d2d40",
           shadowRadius: 10
         }}
@@ -59,16 +65,18 @@ class Player extends React.Component {
           style={{
             flex: 1,
             flexDirection: "row",
-            alignItems: "center"
+            alignItems: "center",
+            padding: 10
           }}
         >
           <EpisodeInfoContainer
             style={{
-              userSelect: "none"
+              userSelect: "none",
+              maxWidth: isSmallScreen ? 0.75 * width : width
             }}
           >
             <PodcastImage source={{ uri: "" }} style={{ width: 52, height: 52 }} />
-            <EpisodeTitle style={{ maxWidth: 0.4 * width }}>{title}</EpisodeTitle>
+            <EpisodeTitle>{title}</EpisodeTitle>
           </EpisodeInfoContainer>
           <View
             style={{
