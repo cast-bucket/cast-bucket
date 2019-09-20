@@ -39,9 +39,9 @@ const PlayButtonContainer = styled(TouchableOpacity)`
   height: 30px;
 `;
 
-const EpisodeItem = React.memo(({ item, _index: episodeIndex, setEpisode, isPlaying }) => {
-  if (!item.url) return;
-  const { title, isoDate } = item;
+const EpisodeItem = React.memo(({ item: episode, togglePlaying, isPlaying }) => {
+  if (!episode.url) return;
+  const { title, isoDate } = episode;
 
   return (
     <View style={styles.episodeContainer}>
@@ -52,7 +52,7 @@ const EpisodeItem = React.memo(({ item, _index: episodeIndex, setEpisode, isPlay
         </View>
         <PlayButtonContainer
           onPress={() => {
-            setEpisode(item);
+            togglePlaying(episode);
           }}
           underlayColor="#000"
           activeOpacity={0.65}
