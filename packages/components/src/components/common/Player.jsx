@@ -6,7 +6,7 @@ import { MaterialIcons as Icon } from "../../libs/vector-icons";
 import { isSmallScreen } from "../../utils/platforms";
 import { Text } from "./Typography";
 import { isMobile } from "../../utils/platforms";
-import { playEpisode, pauseEpisode } from "../../redux/actions";
+import { playEpisode, pauseEpisode, togglePlaying } from "../../redux/actions";
 
 const MediaIcon = styled(Icon)`
   margin-left: 16px;
@@ -45,14 +45,17 @@ const EpisodeTitle = styled(Text)`
 
 class Player extends React.Component {
   resize = () => this.forceUpdate();
-
+  
   render() {
-    const { isPlaying, currentEpisode, title, play, pause } = this.props;
+    const { currentEpisode, togglePlaying } = this.props;
     if (!currentEpisode) return null;
 
     if (!isMobile) {
       window.addEventListener("resize", this.resize);
     }
+
+    const { isPlaying, title } = currentEpisode;
+    
     return (
       <PlayerContainer
         style={{
@@ -89,8 +92,7 @@ class Player extends React.Component {
             size={42}
             color="#5e5fb8"
             onPress={() => {
-              // !FIXME: Connect EpisodesList.episodes with redux and use that here
-              // return isPlaying ? pause(currentEpisode) : play(currentEpisode);
+              togglePlaying(currentEpisode);
             }}
           />
           {!isSmallScreen && <MediaIcon name="forward-10" size={28} color="#5e5fb8" />}
@@ -102,20 +104,21 @@ class Player extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const { audioPlayer } = state;
-  const { isPlaying, currentEpisode } = audioPlayer;
+  const { audioPlayer, episodes } = state;
+  const { episodeId } = audioPlayer;
+  let currentEpisode = null;
+  if (episodeId) currentEpisode = episodes.items[episodeId];
+
   return {
-    isPlaying,
-    currentEpisode,
-    title: currentEpisode ? currentEpisode.meta.title : null
+    currentEpisode
   };
 };
 
 const mapDispatchToProps = {
+  togglePlaying,
   play: ({ url: episodeId, ...meta }) => playEpisode(episodeId, meta),
   pause: ({ url: episodeId, ...meta }) => pauseEpisode(episodeId, meta)
 };
-
 
 export default connect(
   mapStateToProps,
