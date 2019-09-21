@@ -45,7 +45,7 @@ module.exports = function override(config, env) {
   );
 
   config.module.rules.push({
-    test: /\.js$/,
+    test: /\.(js|jsx)$/,
     exclude: /node_modules[/\\](?!react-native-paper|react-native-vector-icons|react-native-safe-area-view)/,
     use: {
       loader: "babel-loader",
