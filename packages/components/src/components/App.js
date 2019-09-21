@@ -4,10 +4,10 @@ import { View } from "react-native";
 import { Provider } from "react-redux";
 import { Route, Switch, withRouter } from "../libs/router";
 import configureStore from "../redux/store";
+import Player from "./common/Player";
+import { Text } from "./common/Typography";
 import BottomNavigation from "./navigation/BottomNavigation";
 import { Episodes, Home } from "./screens";
-import { Text } from "./common/Typography";
-import Player from "./common/Player";
 
 const initialState = {};
 const store = configureStore(initialState);
@@ -35,11 +35,14 @@ const AppView = () => {
       <View style={{ flex: 1, flexDirection: "column" }}>
         <Container>
           <Switch>
-            <Route exact path={["/", "/home"]} component={Home} />
+            <Route exact path={["/", "/home"]} render={() => <Home />} />
             <Route exact path="/browse" component={Browse} />
             <Route exact path="/library" component={Library} />
             <Route exact path="/account" component={Account} />
-            <Route exact path="/episodes" component={Episodes} />
+            <Route
+              path="/episodes/:podcastId"
+              render={props => <Episodes key={props.match.params.podcastId} {...props} />}
+            />
             <Route exact path="/choose-categories" component={Episodes} />
           </Switch>
         </Container>
