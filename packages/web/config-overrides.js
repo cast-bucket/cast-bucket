@@ -8,7 +8,8 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 const externalModules = [
   resolveApp("../../node_modules/react-native-super-grid"),
-  resolveApp("../../node_modules/react-native-responsive-fontsize")
+  resolveApp("../../node_modules/react-native-responsive-fontsize"),
+  resolveApp("../../node_modules/react-native-text-ticker")
 ];
 const appIncludes = [
   resolveApp("src"),
@@ -44,7 +45,7 @@ module.exports = function override(config, env) {
   );
 
   config.module.rules.push({
-    test: /\.js$/,
+    test: /\.(js|jsx)$/,
     exclude: /node_modules[/\\](?!react-native-paper|react-native-vector-icons|react-native-safe-area-view)/,
     use: {
       loader: "babel-loader",
@@ -60,6 +61,7 @@ module.exports = function override(config, env) {
           "@babel/preset-flow"
         ],
         plugins: [
+          "@babel/plugin-proposal-optional-chaining",
           "@babel/plugin-proposal-class-properties",
           "@babel/plugin-proposal-object-rest-spread"
         ]

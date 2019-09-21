@@ -5,8 +5,8 @@ import titleCase from "title-case";
 import { View } from "react-native";
 import { Text, Title } from "../common/Typography";
 import Podcasts from "../containers/Podcasts";
-import { isMobile } from "../utils/platforms";
-import * as constants from "../utils/constants";
+import { isMobile } from "../../utils/platforms";
+import * as constants from "../../utils/constants";
 
 const Container = styled.ScrollView`
   flex: 1;
@@ -54,7 +54,7 @@ if (!isMobile) {
 
 // TODO: load more items, or link section to new page?
 const handleRowButtonPress = rowId => {
-  console.log(rowId);
+  console.log("Row Row Row the boat at" + rowId);
 };
 
 const RowButton = () => <Text style={rowButtonStyles}>View All</Text>;
