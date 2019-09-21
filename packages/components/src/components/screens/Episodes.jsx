@@ -1,12 +1,15 @@
 import React from "react";
 import styled from "@emotion/native";
-import { ScrollView } from "react-native";
+import { ScrollView, Dimensions } from "react-native";
 import Header from "../common/EpisodesHeader";
 import { Paragraph, Text } from "../common/Typography";
 import { Redirect } from "../../libs/router";
-import EpisodesList from "../containers/Episodes";
+import EpisodesList from "../layout/EpisodesList";
+import { isSmallScreen } from "../../utils/platforms";
 
 const ITEM_SIZE = 250;
+
+const { width } = Dimensions.get("window");
 
 const getPodcastOptions = ({ location }) => (location.state && location.state.options) || {};
 
@@ -14,7 +17,6 @@ const PodcastDescription = styled(Paragraph)`
   align-self: center;
   text-align: center;
   line-height: 35;
-  max-width: 400px;
   padding-horizontal: 30px;
 `;
 
@@ -47,7 +49,11 @@ export const Episodes = props => {
         <Header logo={logo} title={podcastId} size={ITEM_SIZE} style={{ flex: 1 }} />
       </EpisoderHeaderContainer>
       <PodcastTitle>{podcastId}</PodcastTitle>
-      <PodcastDescription style={{ fontSize: 22 }}>{description}</PodcastDescription>
+      <PodcastDescription
+        style={{ fontSize: 22, maxWidth: isSmallScreen ? width * 0.9 : width * 0.5 }}
+      >
+        {description}
+      </PodcastDescription>
       <EpisodesContainer>
         <EpisodesList feed={rss} />
       </EpisodesContainer>
