@@ -7,10 +7,16 @@ import EpisodeItem from "../common/EpisodeItem";
 
 class EpisodesList extends Component {
   componentDidMount() {
-    const { episodes, feed, fetchEpisodes } = this.props;
-    if (!Object.keys(episodes).length > 0) fetchEpisodes(feed);
+    const { feed, fetchEpisodes } = this.props;
+    fetchEpisodes(feed);
     if (!isMobile) {
       window.addEventListener("resize", this.resize);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.feed !== this.props.feed) {
+      fetchEpisodes(this.props.feed);
     }
   }
 
@@ -60,7 +66,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   const defaultState = { isFetching: true, items: {} };
   const { isFetching, items: episodes } = state.episodes || defaultState;
   const nowPlaying = Object.values(episodes).filter(p => p.isPlaying === true);
