@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/native";
-import getPlaceHolderImage from "../utils/getPlaceHolderImage";
+import getPlaceHolderImage from "../../utils/getPlaceHolderImage";
 
 const PodcastImage = styled.Image`
   width: ${props => `${props.size}px`};

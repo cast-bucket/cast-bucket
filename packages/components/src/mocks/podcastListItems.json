@@ -1,7 +1,7 @@
 [
   {
+    "category": "agile",
     "title": "Agile For Humans",
-    "categoryId": "agile",
     "description": "Interviews people about Agile and becoming better at Agile",
     "external": {
       "links": ["https://ryanripley.com/agile-for-humans"]
@@ -21,10 +21,77 @@
     "web": {
       "title": "Agile for Humans™ Podcast",
       "url": "https://ryanripley.com/agile-for-humans/"
+    }
+  },
+  {
+    "title": "Agile In 3 Minutes",
+    "category": "agile",
+    "description": "A micropodcast about thinking and doing business effectively.",
+    "external": {
+      "links": ["https://agilein3minut.es"]
     },
-    "logo": {
-      "thumbnail": "https://picsum.com/200",
-      "url": "https://picsum.com/400"
+    "frequency": "Once a quarter",
+    "hosts": [
+      {
+        "name": "Amitai Schleier",
+        "twitter": {
+          "link": "https://twitter.com/schmonz",
+          "username": "@schmonz"
+        }
+      }
+    ],
+    "rss": "https://agilein3minut.es/archive/index.rss",
+    "runtime": "3 mins, regularly ~3 mins",
+    "web": {
+      "title": "Agile in 3 Minutes",
+      "url": "https://agilein3minut.es/"
+    }
+  },
+  {
+    "title": "Meta-Cast",
+    "category": "agile",
+    "description": "Bob Galen and Josh Anderson use their decades of agile coaching experience to power your organizations need for agility and scale",
+    "external": {
+      "links": ["http://feeds.feedburner.com/meta-cast"]
+    },
+    "frequency": "Once a fortnight",
+    "hosts": [
+      {
+        "name": "Bob Galen"
+      },
+      {
+        "name": "Josh Anderson"
+      }
+    ],
+    "rss": "http://feeds.feedburner.com/meta-cast",
+    "runtime": "40 - 60 mins, regularly ~40 mins",
+    "web": {
+      "title": "Meta-Cast, an agile podcast",
+      "url": "https://www.meta-cast.com/"
+    }
+  },
+  {
+    "title": "Scrum Master Toolbox",
+    "category": "agile",
+    "description": "A daily podcast for Scrum Masters and Agile Coaches",
+    "external": {
+      "links": ["https://scrum-master-toolbox.org"]
+    },
+    "frequency": "Daily",
+    "hosts": [
+      {
+        "name": "Vasco Duarte",
+        "twitter": {
+          "link": "https://twitter.com/duarte_vasco",
+          "username": "@duarte_vasco"
+        }
+      }
+    ],
+    "rss": "https://scrum-master-toolbox.org/feed/",
+    "runtime": "5 - 20 mins, regularly ~10 mins",
+    "web": {
+      "title": "Scrum Master Toolbox Podcast – A daily podcast for Scrum Masters and Agile Coaches",
+      "url": "https://scrum-master-toolbox.org/"
     }
   },
   {
@@ -63,10 +130,6 @@
     "web": {
       "title": "Android Developers Backstage",
       "url": "http://androidbackstage.blogspot.com/"
-    },
-    "logo": {
-      "thumbnail": "https://picsum.com/200",
-      "url": "https://picsum.com/400"
     }
   },
   {
@@ -91,262 +154,68 @@
     "web": {
       "title": "Android Snacks",
       "url": "http://androidsnacks.com"
-    },
-    "logo": {
-      "thumbnail": "https://picsum.com/200",
-      "url": "https://picsum.com/400"
     }
   },
   {
-    "title": "Android Snacks",
+    "title": "Context Podcast",
     "category": "android",
-    "description": "The TL;DR of last weeks Android developer news",
+    "description": "Podcast that discusses on various frameworks and tools available in Android Community",
     "external": {
-      "links": ["http://androidsnacks.com"]
+      "links": ["https://github.com/artem-zinnatullin/TheContext-Podcast"]
     },
-    "frequency": "Weekly once",
+    "frequency": "Monthly Once",
     "hosts": [
       {
-        "name": "Mike Scamell",
+        "name": "Artem Zinnatullin",
         "twitter": {
-          "link": "https://twitter.com/mikescamell",
-          "username": "@MikeSamell"
-        }
-      }
-    ],
-    "rss": "https://rss.simplecast.com/podcasts/3213/rss",
-    "runtime": "5 - 10 mins, regularly 5 mins",
-    "web": {
-      "title": "Android Snacks",
-      "url": "http://androidsnacks.com"
-    },
-    "logo": {
-      "thumbnail": "https://picsum.com/200",
-      "url": "https://picsum.com/400"
-    }
-  },
-  {
-    "title": "Android Snacks",
-    "category": "android",
-    "description": "The TL;DR of last weeks Android developer news",
-    "external": {
-      "links": ["http://androidsnacks.com"]
-    },
-    "frequency": "Weekly once",
-    "hosts": [
-      {
-        "name": "Mike Scamell",
-        "twitter": {
-          "link": "https://twitter.com/mikescamell",
-          "username": "@MikeSamell"
-        }
-      }
-    ],
-    "rss": "https://rss.simplecast.com/podcasts/3213/rss",
-    "runtime": "5 - 10 mins, regularly 5 mins",
-    "web": {
-      "title": "Android Snacks",
-      "url": "http://androidsnacks.com"
-    },
-    "logo": {
-      "thumbnail": "https://picsum.com/200",
-      "url": "https://picsum.com/400"
-    }
-  },
-  {
-    "title": "Android Snacks",
-    "category": "android",
-    "description": "The TL;DR of last weeks Android developer news",
-    "external": {
-      "links": ["http://androidsnacks.com"]
-    },
-    "frequency": "Weekly once",
-    "hosts": [
-      {
-        "name": "Mike Scamell",
-        "twitter": {
-          "link": "https://twitter.com/mikescamell",
-          "username": "@MikeSamell"
-        }
-      }
-    ],
-    "rss": "https://rss.simplecast.com/podcasts/3213/rss",
-    "runtime": "5 - 10 mins, regularly 5 mins",
-    "web": {
-      "title": "Android Snacks",
-      "url": "http://androidsnacks.com"
-    },
-    "logo": {
-      "thumbnail": "https://picsum.com/200",
-      "url": "https://picsum.com/400"
-    }
-  },
-  {
-    "title": "Android Snacks",
-    "category": "android",
-    "description": "The TL;DR of last weeks Android developer news",
-    "external": {
-      "links": ["http://androidsnacks.com"]
-    },
-    "frequency": "Weekly once",
-    "hosts": [
-      {
-        "name": "Mike Scamell",
-        "twitter": {
-          "link": "https://twitter.com/mikescamell",
-          "username": "@MikeSamell"
-        }
-      }
-    ],
-    "rss": "https://rss.simplecast.com/podcasts/3213/rss",
-    "runtime": "5 - 10 mins, regularly 5 mins",
-    "web": {
-      "title": "Android Snacks",
-      "url": "http://androidsnacks.com"
-    },
-    "logo": {
-      "thumbnail": "https://picsum.com/200",
-      "url": "https://picsum.com/400"
-    }
-  },
-  {
-    "title": "Agile For Humans",
-    "categoryId": "agile",
-    "description": "Interviews people about Agile and becoming better at Agile",
-    "external": {
-      "links": ["https://ryanripley.com/agile-for-humans"]
-    },
-    "frequency": "Once a week",
-    "hosts": [
-      {
-        "name": "Ryan Ripley",
-        "twitter": {
-          "link": "https://twitter.com/ryanripley",
-          "username": "@ryanripley"
-        }
-      }
-    ],
-    "rss": "https://ryanripley.com/feed/",
-    "runtime": "25 - 60 mins, regularly ~45 mins",
-    "web": {
-      "title": "Agile for Humans™ Podcast",
-      "url": "https://ryanripley.com/agile-for-humans/"
-    },
-    "logo": {
-      "thumbnail": "https://picsum.com/200",
-      "url": "https://picsum.com/400"
-    }
-  },
-  {
-    "title": "Android Developers Backstage",
-    "category": "android",
-    "description": "Podcast interviewing Google engineers about the latest Android APIs",
-    "external": {
-      "links": ["http://feeds.feedburner.com/blogspot/AndroidDevelopersBackstage"]
-    },
-    "frequency": "Monthly once",
-    "hosts": [
-      {
-        "name": "Romain Guy",
-        "twitter": {
-          "link": "https://twitter.com/romainguy",
-          "username": "@romainguy"
+          "link": "https://twitter.com/artem_zin",
+          "username": "@artem_zin"
         }
       },
       {
-        "name": "Chet Haase",
+        "name": "Hannes Dorfmann",
         "twitter": {
-          "link": "https://twitter.com/chethaase",
-          "username": "@chethasse"
-        }
-      },
-      {
-        "name": "Tor Norbye",
-        "twitter": {
-          "link": "https://twitter.com/tornorbye",
-          "username": "@tornorbye"
+          "link": "https://twitter.com/sockeqwe",
+          "username": "@sockeqwe &amp; Artur Dryomov "
         }
       }
     ],
-    "rss": "http://feeds.feedburner.com/blogspot/AndroidDevelopersBackstage",
-    "runtime": "30 - 60 mins, regularly ~55 mins",
+    "rss": "https://raw.githubusercontent.com/artem-zinnatullin/TheContext-Podcast/master/feed.rss",
+    "runtime": "35 - 100 mins, regularly ~50 mins",
     "web": {
-      "title": "Android Developers Backstage",
-      "url": "http://androidbackstage.blogspot.com/"
-    },
-    "logo": {
-      "thumbnail": "https://picsum.com/200",
-      "url": "https://picsum.com/400"
+      "title": "Context Podcast",
+      "url": "https://github.com/artem-zinnatullin/TheContext-Podcast"
     }
   },
   {
-    "title": "Agile For Humans",
-    "categoryId": "agile",
-    "description": "Interviews people about Agile and becoming better at Agile",
-    "external": {
-      "links": ["https://ryanripley.com/agile-for-humans"]
-    },
-    "frequency": "Once a week",
-    "hosts": [
-      {
-        "name": "Ryan Ripley",
-        "twitter": {
-          "link": "https://twitter.com/ryanripley",
-          "username": "@ryanripley"
-        }
-      }
-    ],
-    "rss": "https://ryanripley.com/feed/",
-    "runtime": "25 - 60 mins, regularly ~45 mins",
-    "web": {
-      "title": "Agile for Humans™ Podcast",
-      "url": "https://ryanripley.com/agile-for-humans/"
-    },
-    "logo": {
-      "thumbnail": "https://picsum.com/200",
-      "url": "https://picsum.com/400"
-    }
-  },
-  {
-    "title": "Android Developers Backstage",
+    "title": "Fragmented Podcast",
     "category": "android",
-    "description": "Podcast interviewing Google engineers about the latest Android APIs",
+    "description": "An Android Developer Podcast",
     "external": {
-      "links": ["http://feeds.feedburner.com/blogspot/AndroidDevelopersBackstage"]
+      "links": ["http://fragmentedpodcast.com/category/episodes"]
     },
-    "frequency": "Monthly once",
+    "frequency": "Weekly once or twice",
     "hosts": [
       {
-        "name": "Romain Guy",
+        "name": "Donn Felker",
         "twitter": {
-          "link": "https://twitter.com/romainguy",
-          "username": "@romainguy"
+          "link": "https://twitter.com/donnfelker",
+          "username": "@donnfelker"
         }
       },
       {
-        "name": "Chet Haase",
+        "name": "Kaushik Gopal",
         "twitter": {
-          "link": "https://twitter.com/chethaase",
-          "username": "@chethasse"
-        }
-      },
-      {
-        "name": "Tor Norbye",
-        "twitter": {
-          "link": "https://twitter.com/tornorbye",
-          "username": "@tornorbye"
+          "link": "https://twitter.com/kaushikgopal",
+          "username": "@kaushikgopal"
         }
       }
     ],
-    "rss": "http://feeds.feedburner.com/blogspot/AndroidDevelopersBackstage",
-    "runtime": "30 - 60 mins, regularly ~55 mins",
+    "rss": "https://fragmentedpodcast.com/feed/",
+    "runtime": "20 - 60 mins, regularly ~50 mins",
     "web": {
-      "title": "Android Developers Backstage",
-      "url": "http://androidbackstage.blogspot.com/"
-    },
-    "logo": {
-      "thumbnail": "https://picsum.com/200",
-      "url": "https://picsum.com/400"
+      "title": "Episodes – Fragmented",
+      "url": "http://fragmentedpodcast.com/category/episodes/"
     }
   }
 ]

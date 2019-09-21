@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Launch Chrome against localhost",
       "url": "http://localhost.cast-bucket.com:3000",
-      "runtimeExecutable": "/snap/bin/chromium",
+      "runtimeExecutable": "/usr/bin/vivaldi",
       "webRoot": "${workspaceFolder}"
     }
   ]

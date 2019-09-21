@@ -1,60 +1,71 @@
+import isTouchDevice from "is-touch-device";
 import React, { Component } from "react";
-import { Dimensions, StyleSheet, View } from "react-native";
+import { Dimensions, View } from "react-native";
+import { DataProvider, LayoutProvider, RecyclerListView } from "recyclerlistview";
+import * as constants from "../../utils/constants";
+import { isMobile } from "../../utils/platforms";
+import CarouselScrollView from "../common/CarouselScrollView";
 import PodcastItem from "../common/PodcastItem";
-import { RecyclerView } from "../common/RecyclerView";
-import { isMobile } from "../utils/platforms";
-import * as constants from "../utils/constants";
+import ContextHelper from '../../utils/context-helper';
 
 const { height } = Dimensions.get("window");
 
 const ITEM_SIZE = isMobile ? 180 : 220;
 const ITEM_SPACING = constants.spacing.containerMargin.val;
+const ViewTypes = {
+  PODCAST_ITEM: 0
+};
 
-// FIXME: This is remounted everytime location changes
+// FIXME: Remove parentContainer and move redux actions into here to avoid remount
 class PodcastsList extends Component {
-  render() {
+  constructor(props) {
+    super(props);
     const { data } = this.props;
-    const recyclerViewProps = {
-      isHorizontal: true,
-      useWindowScroll: true,
-      renderAheadOffset: 5,
-      showsHorizontalScrollIndicator: false,
-      renderFooter: () => <View style={{ paddingRight: ITEM_SPACING }} />
+    this._recycler = React.createRef();
+    this.state = {
+      dataProvider: new DataProvider((r1, r2) => {
+        return r1.rss !== r2.rss; // rss values are unique, so use them in the comparator
+      }).cloneWithRows(data),
+      layoutProvider: new LayoutProvider(
+        () => ViewTypes.PODCAST_ITEM,
+        (_, dim) => {
+          dim.height = height;
+          dim.width = ITEM_SIZE;
+        }
+      ),
+      contextProvider: new ContextHelper('PODCASTS_LIST')
     };
+  }
 
-    const getRecyclerViewLayout = () => {
-      return (type, dim) => {
-        dim.width = ITEM_SIZE;
-        dim.height = height;
-      };
-    };
+  getRef = () => this._recycler;
 
-    const renderListItem = (type, data) => {
+  renderPodcastItem = (type, data) => {
+    if (type === ViewTypes.PODCAST_ITEM) {
       const itemsStyles = { paddingLeft: ITEM_SPACING };
       const podcastItemDimensions = `${ITEM_SIZE - ITEM_SPACING}px`;
       return <PodcastItem {...data} style={itemsStyles} size={podcastItemDimensions} />;
-    };
+    }
+  };
 
-    const containerStyle = styles.listContainer;
+  render() {
     return (
-      <RecyclerView
-        data={data}
-        renderListItem={renderListItem}
-        layoutType={getRecyclerViewLayout()}
-        containerStyle={containerStyle}
-        recyclerViewProps={recyclerViewProps}
+      <RecyclerListView
+        isHorizontal={true}
+        dataProvider={this.state.dataProvider}
+        layoutProvider={this.state.layoutProvider}
+        contextProvider={this.state.contextProvider}
+        contentContainerStyle={{ height: ITEM_SIZE + 30, marginVertical: 25, flex: 1 }}
+        showsHorizontalScrollIndicator={false}
+        rowRenderer={this.renderPodcastItem}
+        canChangeSize={true}
+        ref={this._recycler}
+        getRecyclerViewRef={this.getRef}
+        useWindowScroll={true}
+        {...(!isTouchDevice() ? { externalScrollView: CarouselScrollView } : {})} // enable carousel buttons only on non-touch devices
+        renderFooter={() => <View style={{ paddingRight: 30 }} />}
       />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  listContainer: {
-    minHeight: 1,
-    minWidth: 1,
-    height: ITEM_SIZE + 30,
-    marginVertical: 25
-  }
-});
 
 export default PodcastsList;

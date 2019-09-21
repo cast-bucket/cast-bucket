@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "@emotion/native";
 import { View } from "react-native";
-import { withRouter } from "../../libs/router";
-import getPlaceHolderImage from "../utils/getPlaceHolderImage";
+import { Link } from "../../libs/router";
+import getPlaceHolderImage from "../../utils/getPlaceHolderImage";
 import { Text } from "./Typography";
+import dashify from "dashify";
 
 const PodcastTitle = styled(Text)`
   font-size: 18px;
@@ -46,22 +47,20 @@ const PodcastItem = React.memo(props => {
 
   return (
     <View style={[props.style]}>
-      <PodcastImageContainer
-        size={props.size}
-        underlayColor="black"
-        activeOpacity={0.9}
-        onPress={() => {
-          props.history.push({
-            pathname: "/episodes",
-            state: { options: podcastOptions }
-          });
+      <Link
+        push={true}
+        to={{
+          pathname: `/episodes/${dashify(props.title)}`,
+          state: { options: podcastOptions }
         }}
       >
-        <PodcastImage source={imageSource} size={props.size} />
-      </PodcastImageContainer>
+        <PodcastImageContainer size={props.size} underlayColor="black" activeOpacity={0.9}>
+          <PodcastImage source={imageSource} size={props.size} />
+        </PodcastImageContainer>
+      </Link>
       <PodcastTitle size={props.size}>{props.title}</PodcastTitle>
     </View>
   );
 });
 
-export default withRouter(PodcastItem);
+export default PodcastItem;

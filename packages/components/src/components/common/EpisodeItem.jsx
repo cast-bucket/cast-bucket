@@ -1,9 +1,8 @@
 import styled from "@emotion/native";
-import React, { useState } from "react";
-import { View, Dimensions, StyleSheet, TouchableOpacity } from "react-native";
+import React from "react";
+import { Dimensions, StyleSheet, TouchableOpacity, View } from "react-native";
+import { MaterialIcons as Icon } from "../../libs/vector-icons";
 import { Text } from "./Typography";
-import { Feather as Icon } from "../../libs/vector-icons";
-import AudioPlayer from "../../libs/audio-player";
 
 const { width } = Dimensions.get("window");
 
@@ -40,11 +39,9 @@ const PlayButtonContainer = styled(TouchableOpacity)`
   height: 30px;
 `;
 
-const EpisodeItem = React.memo(({ item, _index }) => {
-  const { title, isoDate } = item;
-  const [isPlaying, setPlayingIndicator] = useState(false);
-
-  if (!item.enclosure || !item.enclosure.url) return;
+const EpisodeItem = React.memo(({ item: episode, togglePlaying, isPlaying }) => {
+  if (!episode.url) return;
+  const { title, isoDate } = episode;
 
   return (
     <View style={styles.episodeContainer}>
@@ -55,17 +52,15 @@ const EpisodeItem = React.memo(({ item, _index }) => {
         </View>
         <PlayButtonContainer
           onPress={() => {
-            setPlayingIndicator(!isPlaying);
-            isPlaying ? AudioPlayer.pause(_index) : AudioPlayer.play(_index);
-            // play(item.enclosure.url);
+            togglePlaying(episode);
           }}
           underlayColor="#000"
           activeOpacity={0.65}
         >
           <PlayButtonIcon
-            name={isPlaying ? "pause-circle" : "play-circle"}
+            name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
             size={30}
-            color="#3e70ff"
+            color="#5e5fb8"
           />
         </PlayButtonContainer>
       </Row>
@@ -82,4 +77,5 @@ const styles = StyleSheet.create({
     alignSelf: "stretch"
   }
 });
+
 export default EpisodeItem;
