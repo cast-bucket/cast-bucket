@@ -43,7 +43,7 @@ export function* fetchPodcasts(podcastType) {
 
 export function* fetchEpisodes({ podcastId }) {
   try {
-    const mockEpisodeItems = mocks.episodeItems[podcastId || mockFeedId]?.items || [];
+    const mockEpisodeItems = mocks.episodeItems[podcastId]?.items || [];
     const episodeItems = mockEpisodeItems
       .filter(item => item.enclosure && item.enclosure.url)
       .map(item => ({
