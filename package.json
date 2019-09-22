@@ -4,14 +4,11 @@
   "private": true,
   "version": "0.0.1",
   "author": "Shriram Balaji",
-  "license": "MIT",
+  "license": "AGPL-3.0-or-later",
   "scripts": {
     "test": "jest",
     "clean": "yarn workspaces run clean",
-    "web": "yarn start:web",
-    "start:web": "yarn patch-package && yarn workspace @cast-bucket/web start",
-    "build:web": "yarn workspace @cast-bucket/web build",
-    "test:web": "yarn workspace @cast-bucket/web test",
+    "dev:web": "yarn workspace @cast-bucket/web compile && concurrently --kill-others \"yarn workspace @cast-bucket/web compile -w\" \"yarn workspace @cast-bucket/web start\"",
     "android": "yarn workspace @cast-bucket/mobile android",
     "start:mobile": "yarn patch-package && yarn workspace @cast-bucket/mobile start",
     "dev:mobile": "yarn workspace @cast-bucket/mobile dev",
@@ -32,9 +29,9 @@
   },
   "precommit": "NODE_ENV=production lint-staged",
   "lint-staged": {
-    "*.{js,jsx}": [
-      "pretty-quick --staged",
-      "eslint src/ --fix",
+    "*.{ts,tsx}": [
+      "tslint --fix",
+      "prettier --write",
       "git add"
     ]
   },
@@ -52,7 +49,11 @@
     "patch-package": "^6.1.1",
     "postinstall-postinstall": "^2.0.0",
     "prettier": "^1.17.0",
-    "pretty-quick": "^1.10.0"
+    "pretty-quick": "^1.10.0",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^4.1.0",
+    "typescript": "^3.6.3"
   },
   "jest": {
     "preset": "react-native"
