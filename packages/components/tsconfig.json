@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "isolatedModules": false,
+    "jsx": "preserve",
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": "src",
+    "resolveJsonModule": true,
+    "typeRoots": ["../../@types", "../../node_modules/@types"]
+  },
+  "include": ["src/**/*", "./src/mocks/*.json"]
+}

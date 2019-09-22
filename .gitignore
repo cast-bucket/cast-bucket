@@ -60,3 +60,6 @@ buck-out/
 
 tmp/
 .vscode/launch.json
+packages/**/dist/
+*.tsbuildinfo
+.vscode

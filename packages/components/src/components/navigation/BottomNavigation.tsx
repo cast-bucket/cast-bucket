@@ -32,10 +32,10 @@ const Navigation = props => {
       style={{ flex: 1, maxHeight: 54 }}
       navigationState={navState}
       onIndexChange={handleIndexChange}
-      renderScene={() => {}}
+      renderScene={() => null}
       barStyle={{ backgroundColor: "#f3f3f3" }}
       labeled={false}
-      onTabPress={({ route }) =>
+      onTabPress={({ route }: any) =>
         !isCurrentLocation(route.key) && history.replace({ pathname: `/${route.key}` })
       }
     />

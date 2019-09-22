@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": false,
   "author": "Shriram Balaji",
-  "license": "MIT",
+  "license": "AGPL-3.0-or-later",
   "scripts": {
     "build": "react-app-rewired build",
     "build:stats": "react-app-rewired build --stats && webpack-bundle-analyzer build/bundle-stats.json -m static -r build/bundle-stats.html -O",
+    "clean": "shx rm -rf dist/*",
+    "compile": "tsc -b --incremental",
     "eject": "react-scripts eject",
+    "format": "prettier --write '{.,src/**}/*.{js,jsx,ts,tsx}'",
+    "lint": "tslint -p .",
     "prepare": "cd .. && yarn patch-package",
-    "lint": "eslint --ext .js --ext .jsx src",
     "start": "react-app-rewired start",
     "test:web": "react-app-rewired test --env=jsdom"
   },

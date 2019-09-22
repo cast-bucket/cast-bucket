@@ -14,7 +14,7 @@ const externalModules = [
 const appIncludes = [
   resolveApp("src"),
   resolveApp("../core/src"),
-  resolveApp("../components/src/components"),
+  resolveApp("../components/src/"),
   ...externalModules
 ];
 
@@ -56,7 +56,13 @@ module.exports = function override(config, env) {
 
         // The configration for compilation
         presets: [
-          ["@babel/preset-env", { useBuiltIns: "usage" }],
+          [
+            "@babel/preset-env",
+            {
+              useBuiltIns: "usage", // "usage" | "entry" | false, defaults to false.
+              corejs: "2.0.0",
+            }
+          ],
           "@babel/preset-react",
           "@babel/preset-flow"
         ],

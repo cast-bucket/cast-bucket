@@ -1,16 +1,21 @@
 import AudioPlayer from "../../libs/audio-player/";
+import { Reducer } from '../types';
 
-const initialState = {
+export interface State {
+  audio: any;
+  currentEpisode: any | null,
+  isPlaying: boolean;
+}
+
+const initialState: State = {
   audio: new AudioPlayer(),
   currentEpisode: null,
-  isPlaying: false,
-  playerId: null
+  isPlaying: false
 };
 
-export default function playerReducer(state = initialState, action) {
+const playerReducer: Reducer<State> = (state = initialState, action?: any) => {
   const { audio } = state;
 
-  console.log('>>>-SHRIRAM->>> action.episode', action.episode);
   switch (action.type) {
     case "PLAY_EPISODE":
       const { url: episodeId } = action.episode;
@@ -18,24 +23,20 @@ export default function playerReducer(state = initialState, action) {
       return {
         ...state,
         episodeId,
-        playerId: newPlayerId,
+        // playerId: newPlayerId,
         isPlaying: true
       };
 
     case "PAUSE_EPISODE":
-      audio.pause(action?.episode.url);
+      audio.pause(action.episode.url);
       return {
         ...state,
-        isPlaying: false,
-      };
-
-    case "SHOW_CURRENT_TIME":
-      return {
-        ...state,
-        currentTime: state.audio.currentTime
+        isPlaying: false
       };
 
     default:
       return state;
   }
-}
+};
+
+export default playerReducer;

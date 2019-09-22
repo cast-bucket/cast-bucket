@@ -7,6 +7,7 @@
 
 - [Create React App](https://github.com/facebook/create-react-app)
 - [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) (Monorepo)
+- [TypeScript](https://www.typescriptlang.org/)
 - [React](https://github.com/facebook/react)
 - [React Native](https://github.com/facebook/react-native)
 - [React Native Web](https://github.com/necolas/react-native-web)

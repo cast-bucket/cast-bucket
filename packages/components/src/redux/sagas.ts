@@ -1,14 +1,13 @@
 import axios from "axios";
-import { call, put, take, takeEvery, select, all } from "redux-saga/effects";
+import { call, put, take, takeEvery, select, all, Pattern, ActionPattern } from "redux-saga/effects";
 import * as mocks from "../mocks";
 
 const base = process.env.REACT_APP_API_URL || "https://cast-bucket-api.now.sh";
 const mountpoint = process.env.REACT_APP_API_VERSION || "v1";
 
 const api = `${base}/${mountpoint}`;
-const mockFeedId = "https://ryanripley.com/feed/";
 
-export function* fetch(url) {
+export function* fetch(url: string) {
   try {
     const { data } = yield call(axios.get, `${api}${url}`);
     yield put({ type: "FETCH_SUCCEEDED", data });
@@ -31,7 +30,7 @@ export function* fetchCategories() {
  * @param {string} podcastType - one of ["new-releases", "subscriptions", "recommended", "recently-played"];
  * @returns podcasts of the specified type
  */
-export function* fetchPodcasts(podcastType) {
+export function* fetchPodcasts() {
   try {
     // const podcasts = yield call(fetch, "/podcasts");
     const podcasts = mocks.podcastListItems.map(item => ({ ...item, type: "PODCAST_ITEM" }));
@@ -41,35 +40,18 @@ export function* fetchPodcasts(podcastType) {
   }
 }
 
-export function* fetchEpisodes({ podcastId }) {
-  try {
-    const mockEpisodeItems = mocks.episodeItems[podcastId]?.items || [];
-    const episodeItems = mockEpisodeItems
-      .filter(item => item.enclosure && item.enclosure.url)
-      .map(item => ({
-        ...item,
-        url: item.enclosure.url,
-        isPlaying: false
-      }));
-    const episodes = episodeItems.reduce((o, episode) => ({ ...o, [episode.url]: episode }), {});
-    yield put({ type: "RECEIVED_EPISODES", episodes });
-  } catch (error) {
-    yield put({ type: "FETCH_EPISODES_FAILED", error });
-  }
-}
-
-export function* togglePlayingEpisode({ episode }) {
+export function* togglePlayingEpisode({ episode }: any) {
   try {
     const episodeId = episode.url;
     const { items: episodeItems } = yield select(state => state.episodes);
 
     // find any other episodes that are playing and pause them
     const otherPlayingEpisodes = Object.values(episodeItems).filter(
-      e => e.isPlaying === true && e.url !== episodeId
+      (e: any) => e.isPlaying === true && e.url !== episodeId
     );
 
     yield all(
-      otherPlayingEpisodes.map(ep => {
+      otherPlayingEpisodes.map((ep: any) => {
         episodeItems[ep.url].isPlaying = false;
         return put({ type: "PAUSE_EPISODE", episode: ep });
       })
@@ -92,6 +74,27 @@ export function* togglePlayingEpisode({ episode }) {
   } catch (error) {
     console.error("error", error);
     yield put({ type: "UPDATED_EPISODES_FAILED", error });
+  }
+}
+
+export function* fetchEpisodes(episode: any) {
+  try {
+    const { podcastId } = episode;
+    const mockEpisodeItems = mocks.episodeItems[podcastId].items || [];
+    const episodeItems = mockEpisodeItems
+      .filter((item: any) => item.enclosure && item.enclosure.url)
+      .map((item: any) => ({
+        ...item,
+        url: item.enclosure.url,
+        isPlaying: false
+      }));
+    const episodes = episodeItems.reduce(
+      (o: any, episode: any) => ({ ...o, [episode.url]: episode }),
+      {}
+    );
+    yield put({ type: "RECEIVED_EPISODES", episodes });
+  } catch (error) {
+    yield put({ type: "FETCH_EPISODES_FAILED", error });
   }
 }
 

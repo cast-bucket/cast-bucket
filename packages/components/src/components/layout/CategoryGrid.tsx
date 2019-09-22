@@ -14,6 +14,11 @@ const { width } = Dimensions.get("window");
 const itemSpacing = isSmallScreen(width) ? 15 : 50;
 
 class CategoriesGrid extends Component {
+	public state: any;
+	public setState: any;
+	public props: any;
+	public selectedCategories: any;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -82,6 +87,7 @@ class CategoriesGrid extends Component {
     const categories = this.props.categories || [];
     return (
       <View>
+      //@ts-ignore
         <FlatGrid
           fixed
           itemDimension={DEFAULT_ITEM_WIDTH}

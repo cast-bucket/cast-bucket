@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "@emotion/native";
 import { View } from "react-native";
 import titleCase from "title-case";
@@ -12,7 +12,7 @@ const ignoreTransformations = {
   "programming-languages-and-frameworks": "Programming Languages and Frameworks"
 };
 
-const appendUnit = dimensions => `${dimensions}px`;
+const appendUnit = (dimensions: number) => `${dimensions}px`;
 
 const Checked = styled.Image`
   width: 15px;
@@ -66,9 +66,17 @@ const CategoryTitle = styled.Text`
 
 const transformTitle = title => ignoreTransformations[title] || titleCase(title);
 
-export const CategoryItem = React.memo(props => {
+interface CategoryItemProps {
+  categoryId: string,
+  dimensions: number,
+  selectCategory: Function,
+  unselectCategory: Function
+  selected: Array<string>,
+}
+
+export const CategoryItem: FunctionComponent<CategoryItemProps> = React.memo(props => {
   const { categoryId, dimensions, selectCategory, unselectCategory, selected } = props;
-  const isSelected = selected.includes(categoryId);
+  const isSelected: boolean = selected.includes(categoryId);
 
   return (
     <View style={{ flex: 1, justifyContent: "flex-start" }}>

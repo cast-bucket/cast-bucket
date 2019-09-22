@@ -1,6 +1,6 @@
 import * as React from "react";
-import { ScrollView, View } from "react-native";
-import { BaseScrollView } from "recyclerlistview";
+import { ScrollView, View, ScrollViewProps } from "react-native";
+import { ScrollViewDefaultProps } from "recyclerlistview/dist/reactnative/core/scrollcomponent/BaseScrollView";
 import { FAB } from "react-native-paper";
 import styled from "@emotion/native";
 
@@ -22,17 +22,26 @@ const ScrollRightButton = styled(FAB)`
   background: white;
 `;
 
-class CarouselScrollView extends BaseScrollView {
-  constructor(props) {
+type ScrollViewState = {
+  xOffsetPosition: number;
+  showLeftButton: boolean;
+  showRightButton: boolean;
+};
+
+class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollViewState> {
+  public _scrollViewRef: any;
+
+  constructor(props: ScrollViewDefaultProps) {
     super(props);
-    this.state = {
+    const state: ScrollViewState = {
       xOffsetPosition: 0,
       showLeftButton: false,
-      showRightButton: true,
+      showRightButton: true
     };
+    this.state = state;
   }
 
-  scrollTo(...args) {
+  scrollTo(...args: any) {
     if (this._scrollViewRef) {
       this._scrollViewRef.scrollTo(...args);
     }
@@ -54,6 +63,7 @@ class CarouselScrollView extends BaseScrollView {
 
   render() {
     const { showLeftButton, showRightButton } = this.state;
+    const scrollViewProps: ScrollViewProps = this.props;
     return (
       <View>
         {showLeftButton && (
@@ -66,19 +76,21 @@ class CarouselScrollView extends BaseScrollView {
           />
         )}
         <ScrollView
-          {...this.props}
+          {...scrollViewProps}
           ref={scrollView => (this._scrollViewRef = scrollView)}
           onScroll={this.handleScroll}
         >
           {this.props.children}
         </ScrollView>
-        {showRightButton && <ScrollRightButton
-          small
-          icon="chevron-right"
-          onPress={() =>
-            this.scrollTo({ x: this.state.xOffsetPosition + SCROLL_BY, y: 0, animated: true })
-          }
-        />}
+        {showRightButton && (
+          <ScrollRightButton
+            small
+            icon="chevron-right"
+            onPress={() =>
+              this.scrollTo({ x: this.state.xOffsetPosition + SCROLL_BY, y: 0, animated: true })
+            }
+          />
+        )}
       </View>
     );
   }
