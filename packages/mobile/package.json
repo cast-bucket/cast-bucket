@@ -2,11 +2,17 @@
   "name": "@cast-bucket/mobile",
   "version": "0.1.0",
   "author": "Shriram Balaji",
-"license" : "AGPL-3.0-or-later",  "private": false,
+  "license": "AGPL-3.0-or-later",
+  "private": false,
   "scripts": {
     "prepare": "cd .. && yarn patch-package",
+    "compile": "tsc -b --incremental",
+    "format": "prettier --write '{.,src/**}/*.{js,jsx,ts,tsx}'",
+    "lint": "tslint -p .",
     "start": "node ../../node_modules/react-native/local-cli/cli.js start --projectRoot ../../.",
     "android": "react-native run-android",
+    "android-linux": "react-native bundle --platform android --dev true --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
+    "ios-linux": "react-native bundle --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios' && react-native run-ios",
     "test": "jest"
   },
   "dependencies": {
