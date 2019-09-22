@@ -12,8 +12,8 @@
     "prepare": "cd .. && yarn patch-package"
   },
   "dependencies": {
-    "@emotion/core": "10.0.10",
-    "@emotion/native": "10.0.10",
+    "@emotion/core": "10.0.14",
+    "@emotion/native": "10.0.14",
     "@types/react-redux": "6.x.x",
     "axios": "0.18.0",
     "dashify": "2.0.0",
