@@ -15,7 +15,7 @@
     "@emotion/core": "10.0.14",
     "@emotion/native": "10.0.14",
     "@types/react-redux": "6.x.x",
-    "axios": "0.18.0",
+    "axios": "0.18.1",
     "dashify": "2.0.0",
     "dayjs": "1.8.14",
     "howler": "2.1.2",
