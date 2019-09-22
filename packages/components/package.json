@@ -3,18 +3,22 @@
   "version": "0.1.0",
   "main": "index.js",
   "private": false,
-  "license": "MIT",
+  "license": "AGPL-3.0-or-later",
   "scripts": {
-    "lint": "eslint --ext .js --ext .jsx src"
+    "compile": "tsc -b --incremental",
+    "clean": "shx rm -f *.tsbuildinfo && shx rm -rf dist/*",
+    "format": "prettier --write '{.,src/**}/*.{js,jsx,ts,tsx}'",
+    "lint": "tslint -p .",
+    "prepare": "cd .. && yarn patch-package"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.10",
-    "@emotion/native": "^10.0.10",
-    "axios": "^0.18.0",
-    "core-js": "3",
-    "dashify": "^2.0.0",
-    "dayjs": "^1.8.14",
-    "howler": "^2.1.2",
+    "@emotion/core": "10.0.10",
+    "@emotion/native": "10.0.10",
+    "@types/react-redux": "6.x.x",
+    "axios": "0.18.0",
+    "dashify": "2.0.0",
+    "dayjs": "1.8.14",
+    "howler": "2.1.2",
     "is-electron": "^2.2.0",
     "is-touch-device": "^1.0.1",
     "react": "16.8.4",
@@ -23,14 +27,14 @@
     "react-dom": "16.8.4",
     "react-native": "0.59.4",
     "react-native-paper": "^2.15.2",
-    "react-native-responsive-fontsize": "^0.1.8",
-    "react-native-responsive-screen": "^1.2.2",
+    "react-native-responsive-fontsize": "0.1.8",
+    "react-native-responsive-screen": "1.2.2",
     "react-native-slider": "^0.11.0",
-    "react-native-text-ticker": "^0.19.0",
+    "react-native-text-ticker": "0.19.0",
     "react-native-vector-icons": "6.4.2",
     "react-redux": "6.0.1",
-    "react-router-dom": "^5.0.0",
-    "react-router-native": "^5.0.0",
+    "react-router-dom": "5.0.0",
+    "react-router-native": "5.0.0",
     "react-spring": "8.0.20",
     "react-test-renderer": "16.8.4",
     "recyclerlistview": "^2.0.12",
@@ -39,7 +43,7 @@
     "redux-persist": "5.10.0",
     "redux-saga": "1.0.2",
     "reselect": "4.0.0",
-    "title-case": "^2.1.1"
+    "title-case": "2.1.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.4.4",
@@ -48,6 +52,7 @@
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@types/react-native-vector-icons": "^6.4.2",
     "babel-loader": "^8.0.6"
   }
 }

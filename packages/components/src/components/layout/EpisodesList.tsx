@@ -5,7 +5,14 @@ import { fetchEpisodes, togglePlaying } from "../../redux/actions";
 import { isMobile } from "../../utils/platforms";
 import EpisodeItem from "../common/EpisodeItem";
 
-class EpisodesList extends Component {
+type EpisodesListProps = {
+  feed: string, 
+  fetchEpisodes: Function,
+  episodes: any,
+  togglePlaying: Function
+}
+
+class EpisodesList extends Component<EpisodesListProps> {
   componentDidMount() {
     const { feed, fetchEpisodes } = this.props;
     fetchEpisodes(feed);
@@ -14,7 +21,7 @@ class EpisodesList extends Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: EpisodesListProps) {
     if (prevProps.feed !== this.props.feed) {
       fetchEpisodes(this.props.feed);
     }
@@ -26,7 +33,7 @@ class EpisodesList extends Component {
     }
   }
 
-  isPlaying = url => {
+  isPlaying = (url: string) => {
     const episode = this.props.episodes[url];
     return episode ? episode.isPlaying : false;
   };
@@ -54,7 +61,7 @@ class EpisodesList extends Component {
         contentContainerStyle={containerStyle}
         data={Object.values(episodes)}
         renderItem={renderListItem}
-        keyExtractor={(item, index) => `${item.link}${index.toString()}`}
+        keyExtractor={(item: any, index: number) => `${item.link}${index.toString()}`}
       />
     );
   }
@@ -66,10 +73,10 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   const defaultState = { isFetching: true, items: {} };
   const { isFetching, items: episodes } = state.episodes || defaultState;
-  const nowPlaying = Object.values(episodes).filter(p => p.isPlaying === true);
+  const nowPlaying = Object.values(episodes).filter((p: any) => p.isPlaying === true);
   return { isFetching, episodes, nowPlaying };
 };
 

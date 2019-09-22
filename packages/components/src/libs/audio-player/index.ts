@@ -1,29 +1,34 @@
 import { Howl, Howler } from "howler";
 
+interface AudioSource {
+  url: string;
+  howl: any | null;
+}
+
 export default class Player {
+  private audio: Array<AudioSource>;
+
   constructor() {
     this.audio = [];
   }
 
-  getAudio(url) {
-    const source = this.audio.find(a => a.url === url);
-    return source?.howl || null;
+  getAudio(url: string) {
+    const source: AudioSource | undefined = this.audio.find((a: AudioSource) => a.url === url);
+    return source ? source.howl : null;
   }
 
-  play(url) {
+  play(url: string) {
     // set new audio source only if it's not already been played
     if (!this.getAudio(url)) {
       this.setAudioSource(url);
     }
     const player = this.getAudio(url);
-    return player?.play();
+    return player.play();
   }
 
   pause(url) {
-    console.log('>>>-SHRIRAM->>> url', url);
     const player = this.getAudio(url);
-    console.log('>>>-SHRIRAM->>> player', player);
-    player?.pause();
+    player.pause();
   }
 
   // seek(per) {
@@ -31,12 +36,16 @@ export default class Player {
   //   this.audio.seek(duration * per);
   // }
 
-  volume(val) {
+  volume(val: number) {
     // Update the global volume (affecting all Howls).
     Howler.volume(val);
   }
 
-  setAudioSource(url) {
-    if (url) this.audio.push({ url, howl: new Howl({ src: url, html5: true }) });
+  setAudioSource(url: string) {
+    if (url)
+      this.audio.push({
+        url,
+        howl: new Howl({ src: url, html5: true })
+      });
   }
 }

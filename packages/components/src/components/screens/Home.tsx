@@ -1,12 +1,13 @@
 import React from "react";
-import styled from "@emotion/native";
+import styled, { Styled } from "@emotion/native";
 import RF from "react-native-responsive-fontsize";
 import titleCase from "title-case";
 import { View } from "react-native";
-import { Text, Title } from "../common/Typography";
+import { Title } from "../common/Typography";
 import Podcasts from "../containers/Podcasts";
 import { isMobile } from "../../utils/platforms";
 import * as constants from "../../utils/constants";
+import { Link } from "../../libs/router";
 
 const Container = styled.ScrollView`
   flex: 1;
@@ -41,7 +42,7 @@ const UserAvatar = styled.Image`
   width: 50px;
 `;
 
-const rowButtonStyles = {
+const rowButtonStyles: Styled = {
   alignSelf: "center",
   color: "#184277",
   fontSize: RF(2.5),
@@ -57,24 +58,27 @@ const handleRowButtonPress = rowId => {
   console.log("Row Row Row the boat at" + rowId);
 };
 
-const RowButton = () => <Text style={rowButtonStyles}>View All</Text>;
-
-const renderHomePageSections = location => {
+const renderHomePageSections = () => {
   const sections = ["new-releases", "subscriptions", "recommended", "recently-played"];
   return sections.map(sectionId => {
     return (
       <Section key={sectionId}>
         <Row>
           <SectionTitle>{titleCase(sectionId)}</SectionTitle>
-          <RowButton onPress={() => handleRowButtonPress(sectionId)} />
+          <Link style={rowButtonStyles} onPress={() => handleRowButtonPress(sectionId)}>
+            View All
+          </Link>
         </Row>
-        <Podcasts type={sectionId} location={location} />
+        {
+          // @ts-ignore
+          <Podcasts type={sectionId} />
+        }
       </Section>
     );
   });
 };
 
-export const Home = ({ location }) => (
+export const Home = ({}) => (
   <Container contentContainerStyle={{ alignItems: "stretch" }}>
     <View
       style={{
@@ -88,6 +92,6 @@ export const Home = ({ location }) => (
       <PageHeading style={{ fontSize: RF(4) }}>Home</PageHeading>
       <UserAvatar source={{ uri: "https://i.pravatar.cc/120" }} />
     </View>
-    {renderHomePageSections(location)}
+    {renderHomePageSections()}
   </Container>
 );

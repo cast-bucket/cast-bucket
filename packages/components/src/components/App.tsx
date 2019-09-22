@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/native";
 import { View } from "react-native";
-import { Provider } from "react-redux";
+import { Provider, ProviderProps } from "react-redux";
 import { Route, Switch, withRouter } from "../libs/router";
 import configureStore from "../redux/store";
 import Player from "./common/Player";
@@ -31,7 +31,7 @@ const navigationRoutes = [
 // TODO: Show navigation based on Platform Type
 const AppView = () => {
   return (
-    <Provider store={store}>
+    <Provider store={store as any}>
       <View style={{ flex: 1, flexDirection: "column" }}>
         <Container>
           <Switch>

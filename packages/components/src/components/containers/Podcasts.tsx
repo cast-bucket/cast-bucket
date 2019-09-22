@@ -10,16 +10,22 @@ import PodcastsList from "../layout/PodcastsList";
  */
 
 class Podcasts extends React.Component {
+  public props: any;
+  public type: any;
+  public isFetching: any;
+  public location: any;
+
   componentDidMount() {
-    if (!this.props.items.length > 0) this.props.dispatch(fetchPodcasts());
+    if (!this.props.items.length) this.props.dispatch(fetchPodcasts());
   }
 
   render() {
-    const { items, type, isFetching, location } = this.props;
+    const { items, type, isFetching } = this.props;
     return isFetching || items.length <= 0 ? (
-      <ActivityIndicator animating />
+      <ActivityIndicator animating={true} />
     ) : (
-      <PodcastsList data={items} type={type} location={location} />
+      // @ts-ignore
+      <PodcastsList data={items} type={type} />
     );
   }
 }

@@ -46,11 +46,11 @@ export const Episodes = props => {
   return (
     <ScrollView>
       <EpisoderHeaderContainer>
-        <Header logo={logo} title={podcastId} size={ITEM_SIZE} style={{ flex: 1 }} />
+        <Header logo={logo} title={podcastId} size={ITEM_SIZE} />
       </EpisoderHeaderContainer>
       <PodcastTitle>{podcastId}</PodcastTitle>
       <PodcastDescription
-        style={{ fontSize: 22, maxWidth: isSmallScreen ? width * 0.9 : width * 0.5 }}
+        style={{ fontSize: 22, maxWidth: isSmallScreen ? width * 0.9 : width * 0.75 }}
       >
         {description}
       </PodcastDescription>

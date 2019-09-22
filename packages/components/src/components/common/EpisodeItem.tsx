@@ -1,5 +1,5 @@
 import styled from "@emotion/native";
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { Dimensions, StyleSheet, TouchableOpacity, View } from "react-native";
 import { MaterialIcons as Icon } from "../../libs/vector-icons";
 import { Text } from "./Typography";
@@ -39,9 +39,17 @@ const PlayButtonContainer = styled(TouchableOpacity)`
   height: 30px;
 `;
 
-const EpisodeItem = React.memo(({ item: episode, togglePlaying, isPlaying }) => {
-  if (!episode.url) return;
-  const { title, isoDate } = episode;
+interface EpisodeItemProps {
+  item: any;
+  togglePlaying: Function;
+  isPlaying: boolean;
+}
+
+// @ts-ignore
+const EpisodeItem: FunctionComponent<EpisodeItemProps> = React.memo((props: EpisodeItemProps) => {
+  const { item, togglePlaying, isPlaying } = props;
+  if (!item.url) return;
+  const { title, isoDate } = item;
 
   return (
     <View style={styles.episodeContainer}>
@@ -52,7 +60,7 @@ const EpisodeItem = React.memo(({ item: episode, togglePlaying, isPlaying }) => 
         </View>
         <PlayButtonContainer
           onPress={() => {
-            togglePlaying(episode);
+            togglePlaying(item);
           }}
           underlayColor="#000"
           activeOpacity={0.65}

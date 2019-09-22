@@ -44,6 +44,12 @@ const EpisodeTitle = styled(Text)`
 `;
 
 class Player extends React.Component {
+	public forceUpdate: any;
+	public props: any;
+	public currentEpisode: any;
+	public togglePlaying: any;
+	public isPlaying: any;
+	public title: any;
   resize = () => this.forceUpdate();
   
   render() {
@@ -83,6 +89,7 @@ class Player extends React.Component {
           </EpisodeInfoContainer>
           <View
             style={{
+              //@ts-ignore
               userSelect: "none"
             }}
           />
@@ -116,8 +123,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   togglePlaying,
-  play: ({ url: episodeId, ...meta }) => playEpisode(episodeId, meta),
-  pause: ({ url: episodeId, ...meta }) => pauseEpisode(episodeId, meta)
 };
 
 export default connect(
