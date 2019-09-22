@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "preserve",
+    "noEmit": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "typeRoots": ["../../@types", "../../node_modules/@types"],
+    "module": "esnext",
+    "strict": true
+  },
+  "include": ["src/"],
+  "references": [
+    {
+      "path": "../components"
+    }
+  ]
+}

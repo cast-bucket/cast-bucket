@@ -14,7 +14,7 @@ const externalModules = [
 const appIncludes = [
   resolveApp("src"),
   resolveApp("../core/src"),
-  resolveApp("../components/src/components"),
+  resolveApp("../components/src/"),
   ...externalModules
 ];
 
