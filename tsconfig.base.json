@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable"
+    ],    
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "noImplicitAny": false
+  }
+}
