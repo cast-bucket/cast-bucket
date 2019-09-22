@@ -2,8 +2,7 @@
   "name": "@cast-bucket/mobile",
   "version": "0.1.0",
   "author": "Shriram Balaji",
-  "license": "MIT",
-  "private": false,
+"license" : "AGPL-3.0-or-later",  "private": false,
   "scripts": {
     "prepare": "cd .. && yarn patch-package",
     "start": "node ../../node_modules/react-native/local-cli/cli.js start --projectRoot ../../.",
