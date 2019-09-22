@@ -8,6 +8,7 @@
   "scripts": {
     "test": "jest",
     "clean": "yarn workspaces run clean",
+    "build:web": "yarn workspace @cast-bucket/web build",
     "dev:web": "yarn workspace @cast-bucket/web compile && concurrently --kill-others \"yarn workspace @cast-bucket/web compile -w\" \"yarn workspace @cast-bucket/web start\"",
     "android": "yarn workspace @cast-bucket/mobile android",
     "start:mobile": "yarn patch-package && yarn workspace @cast-bucket/mobile start",
@@ -15,9 +16,6 @@
     "test:mobile": "yarn workspace @cast-bucket/mobile test",
     "eject": "react-scripts eject",
     "electron": "react-scripts start & electron .",
-    "android-linux": "react-native bundle --platform android --dev true --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
-    "ios-linux": "react-native bundle --entry-file='index.ios.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios' && react-native run-ios",
-    "prepare": "yarn patch-package",
     "patch-package": "patch-package"
   },
   "workspaces": [
@@ -38,12 +36,6 @@
   "devDependencies": {
     "concurrently": "4.1.0",
     "cross-env": "5.2.0",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-prettier": "^3.0.1",
     "husky": "^2.2.0",
     "lint-staged": "^8.1.6",
     "patch-package": "^6.1.1",
@@ -64,9 +56,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "dependencies": {
-    "eslint-plugin-react": "^7.13.0",
-    "eslint-plugin-react-native": "^3.6.0"
-  }
+  ]
 }

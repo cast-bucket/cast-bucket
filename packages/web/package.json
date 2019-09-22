@@ -5,8 +5,8 @@
   "author": "Shriram Balaji",
   "license": "AGPL-3.0-or-later",
   "scripts": {
-    "build": "react-app-rewired build",
-    "build:stats": "react-app-rewired build --stats && webpack-bundle-analyzer build/bundle-stats.json -m static -r build/bundle-stats.html -O",
+    "build": "yarn compile && react-app-rewired build && shx rm -rf dist && mv build dist",
+    "build:stats": "yarn compile && react-app-rewired build --stats && webpack-bundle-analyzer build/bundle-stats.json -m static -r build/bundle-stats.html -O",
     "clean": "shx rm -rf dist/*",
     "compile": "tsc -b --incremental",
     "eject": "react-scripts eject",
@@ -19,7 +19,7 @@
   "dependencies": {
     "@babel/polyfill": "7.4.0",
     "@cast-bucket/components": "^0.1.0",
-    "@emotion/native": "^10.0.10",
+    "@emotion/native": "^10.0.14",
     "react": "16.8.4",
     "react-app-polyfill": "0.2.2",
     "react-art": "16.8.4",
@@ -32,6 +32,7 @@
     "babel-plugin-react-native-web": "0.11.1",
     "react-app-rewired": "2.1.1",
     "serve": "10.1.2",
+    "shx": "^0.3.2",
     "webpack-bundle-analyzer": "3.5.1"
   },
   "browserslist": [
