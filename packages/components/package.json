@@ -21,7 +21,7 @@
     "howler": "2.1.2",
     "is-electron": "^2.2.0",
     "is-touch-device": "^1.0.1",
-    "react": "16.8.4",
+    "react": "16.9.0",
     "react-app-polyfill": "0.2.2",
     "react-art": "16.8.4",
     "react-dom": "16.8.4",
