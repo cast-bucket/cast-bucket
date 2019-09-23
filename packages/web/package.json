@@ -31,7 +31,7 @@
   "devDependencies": {
     "babel-plugin-react-native-web": "0.11.1",
     "react-app-rewired": "2.1.1",
-    "serve": "10.1.2",
+    "serve": "11.1.0",
     "shx": "^0.3.2",
     "webpack-bundle-analyzer": "3.5.1"
   },
