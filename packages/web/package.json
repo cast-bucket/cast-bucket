@@ -17,7 +17,7 @@
     "test:web": "react-app-rewired test --env=jsdom"
   },
   "dependencies": {
-    "@babel/polyfill": "7.4.0",
+    "@babel/polyfill": "7.6.0",
     "@cast-bucket/components": "^0.1.0",
     "@emotion/native": "^10.0.14",
     "react": "16.9.0",
