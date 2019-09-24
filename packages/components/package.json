@@ -46,7 +46,7 @@
     "title-case": "2.1.1"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
     "@babel/plugin-proposal-optional-chaining": "^7.6.0",
     "@babel/preset-env": "^7.4.4",
