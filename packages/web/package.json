@@ -24,7 +24,7 @@
     "react-app-polyfill": "0.2.2",
     "react-art": "16.8.4",
     "react-dom": "16.9.0",
-    "react-native-super-grid": "^3.0.3",
+    "react-native-super-grid": "^3.1.0",
     "react-native-web": "0.11.7",
     "react-scripts": "^2.1.5"
   },
