@@ -21,7 +21,7 @@
     "@cast-bucket/components": "^0.1.0",
     "@emotion/native": "^10.0.14",
     "react": "16.9.0",
-    "react-app-polyfill": "0.2.2",
+    "react-app-polyfill": "1.0.3",
     "react-art": "16.8.4",
     "react-dom": "16.9.0",
     "react-native-super-grid": "^3.0.3",
