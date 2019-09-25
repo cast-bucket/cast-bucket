@@ -6,7 +6,7 @@ import { MaterialIcons as Icon } from "../../libs/vector-icons";
 import { isSmallScreen } from "../../utils/platforms";
 import { Text } from "./Typography";
 import { isMobile } from "../../utils/platforms";
-import { playEpisode, pauseEpisode, togglePlaying } from "../../redux/actions";
+import { togglePlaying } from "../../redux/actions";
 
 const MediaIcon = styled(Icon)`
   margin-left: 16px;
@@ -43,13 +43,13 @@ const EpisodeTitle = styled(Text)`
   white-space: nowrap;
 `;
 
-class Player extends React.Component {
-	public forceUpdate: any;
-	public props: any;
-	public currentEpisode: any;
-	public togglePlaying: any;
-	public isPlaying: any;
-	public title: any;
+
+type PlayerProps = {
+  togglePlaying: Function,
+  currentEpisode: any
+}
+
+class Player extends React.Component<PlayerProps> {
   resize = () => this.forceUpdate();
   
   render() {
