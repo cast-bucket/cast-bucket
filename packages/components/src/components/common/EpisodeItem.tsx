@@ -20,12 +20,10 @@ const EpisodeDate = styled(Text)`
 `;
 
 const PlayButtonIcon = styled(Icon)`
-  align-self: flex-end;
-  height: 30px;
+  height: 50px;
   justify-content: center;
-  margin-horizontal: 20px;
-  margin-top: 10px;
-  width: 30px;
+  margin-right: 10px;
+  width: 50px;
 `;
 
 const Row = styled.View`
@@ -34,13 +32,9 @@ const Row = styled.View`
   justify-content: space-between;
 `;
 
-const PlayButtonContainer = styled(TouchableOpacity)`
-  width: 30px;
-  height: 30px;
-`;
-
 interface EpisodeItemProps {
   item: any;
+  index?: number;
   togglePlaying: Function;
   isPlaying: boolean;
 }
@@ -54,23 +48,23 @@ const EpisodeItem: FunctionComponent<EpisodeItemProps> = React.memo((props: Epis
   return (
     <View style={styles.episodeContainer}>
       <Row>
-        <View style={{ flexDirection: "column", maxWidth: 0.75 * width }}>
+        <View style={{ flexDirection: "column", maxWidth: 0.8 * width }}>
           <EpisodeTitle>{title}</EpisodeTitle>
           <EpisodeDate>{new Date(isoDate).toDateString()}</EpisodeDate>
         </View>
-        <PlayButtonContainer
+        <PlayButtonIcon
+          style={{
+            userSelect: "none"
+          }}
+          name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
+          size={40}
+          color="#5e5fb8"
           onPress={() => {
             togglePlaying(item);
           }}
           underlayColor="#000"
           activeOpacity={0.65}
-        >
-          <PlayButtonIcon
-            name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
-            size={30}
-            color="#5e5fb8"
-          />
-        </PlayButtonContainer>
+        />
       </Row>
     </View>
   );
