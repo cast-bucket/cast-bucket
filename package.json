@@ -10,10 +10,8 @@
     "clean": "yarn workspaces run clean",
     "build:web": "yarn workspace @cast-bucket/web build",
     "dev:web": "yarn workspace @cast-bucket/web compile && concurrently --kill-others \"yarn workspace @cast-bucket/web compile -w\" \"yarn workspace @cast-bucket/web start\"",
-    "android": "yarn workspace @cast-bucket/mobile android",
-    "start:mobile": "yarn patch-package && yarn workspace @cast-bucket/mobile start",
-    "dev:mobile": "yarn workspace @cast-bucket/mobile dev",
-    "test:mobile": "yarn workspace @cast-bucket/mobile test",
+    "start:android": "yarn patch-package && yarn workspace @cast-bucket/mobile start",
+    "dev:android": "yarn workspace @cast-bucket/mobile compile && concurrently --kill-others \"yarn workspace @cast-bucket/mobile compile -w\" \"yarn workspace @cast-bucket/mobile start\"",
     "eject": "react-scripts eject",
     "electron": "react-scripts start & electron .",
     "patch-package": "patch-package"
