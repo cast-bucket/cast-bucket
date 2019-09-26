@@ -1,25 +1,19 @@
 import * as React from "react";
-import { ScrollView, View, ScrollViewProps } from "react-native";
+import { ScrollView, View, ScrollViewProps, StyleSheet } from "react-native";
 import { ScrollViewDefaultProps } from "recyclerlistview/dist/reactnative/core/scrollcomponent/BaseScrollView";
-import { FAB } from "react-native-paper";
 import styled from "@emotion/native";
+import { IconButton, Colors } from "react-native-paper";
 
 const SCROLL_BY = 400;
 
-const ScrollLeftButton = styled(FAB)`
-  position: absolute;
+const ScrollLeftButton = styled(IconButton)`
   left: 10;
   top: 100;
-  z-index: 9999;
-  background: white;
 `;
 
-const ScrollRightButton = styled(FAB)`
-  position: absolute;
+const ScrollRightButton = styled(IconButton)`
   right: 10;
   top: 100;
-  z-index: 9999;
-  background: white;
 `;
 
 type ScrollViewState = {
@@ -68,7 +62,8 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
       <View>
         {showLeftButton && (
           <ScrollLeftButton
-            small
+            style={styles.FAB}
+            color={Colors.grey700}
             icon="chevron-left"
             onPress={() =>
               this.scrollTo({ x: this.state.xOffsetPosition - SCROLL_BY, y: 0, animated: true })
@@ -84,7 +79,8 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
         </ScrollView>
         {showRightButton && (
           <ScrollRightButton
-            small
+            style={styles.FAB}
+            color={Colors.grey700}
             icon="chevron-right"
             onPress={() =>
               this.scrollTo({ x: this.state.xOffsetPosition + SCROLL_BY, y: 0, animated: true })
@@ -95,5 +91,27 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
     );
   }
 }
+
+const styles = StyleSheet.create({
+  FAB: {
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    zIndex: 1,
+    width: 40,
+    height: 40,
+    backgroundColor: "#fafafa",
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 5
+    },
+    borderRadius: 100,
+    shadowOpacity: 0.24,
+    shadowRadius: 6,
+    opacity: 1,
+    elevation: 6
+  }
+});
 
 export default CarouselScrollView;
