@@ -10,6 +10,7 @@ import { togglePlaying } from "../../redux/actions";
 
 const MediaIcon = styled(Icon)`
   margin-left: 16px;
+  user-select: none;
 `;
 
 const PodcastImage = styled.Image`
@@ -38,9 +39,15 @@ const EpisodeTitle = styled(Text)`
   margin-horizontal: 10px;
   margin-vertical: 10px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-word;
-  white-space: nowrap;
+  ${() => {
+    if (!isMobile) {
+      return `
+        text-overflow: ellipsis;
+        word-break: break-word;
+        white-space: nowrap;
+      `;
+    }
+  }}
 `;
 
 
@@ -51,7 +58,7 @@ type PlayerProps = {
 
 class Player extends React.Component<PlayerProps> {
   resize = () => this.forceUpdate();
-  
+
   render() {
     const { currentEpisode, togglePlaying } = this.props;
     if (!currentEpisode) return null;
@@ -61,7 +68,7 @@ class Player extends React.Component<PlayerProps> {
     }
 
     const { isPlaying, title } = currentEpisode;
-    
+
     return (
       <PlayerContainer
         style={{
@@ -84,8 +91,10 @@ class Player extends React.Component<PlayerProps> {
               maxWidth: isSmallScreen ? 0.75 * width : width
             }}
           >
-            <PodcastImage source={{ uri: "" }} style={{ width: 52, height: 52 }} />
-            <EpisodeTitle>{title}</EpisodeTitle>
+            <PodcastImage style={{ width: 52, height: 52 }} />
+            <EpisodeTitle numberOfLines={1} style={{ maxWidth: 0.5 * width }}>
+              {title}
+            </EpisodeTitle>
           </EpisodeInfoContainer>
           <View
             style={{
@@ -122,7 +131,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  togglePlaying,
+  togglePlaying
 };
 
 export default connect(
