@@ -62,12 +62,12 @@ class PodcastsList extends Component<PodcastsListProps, PodcastsListState> {
         isHorizontal={true}
         dataProvider={this.state.dataProvider}
         layoutProvider={this.state.layoutProvider}
-        contentContainerStyle={{ height: ITEM_SIZE + 30, marginVertical: 25, flex: 1 }}
+        contentContainerStyle={{ height: ITEM_SIZE + 30, marginVertical: 25 }}
         showsHorizontalScrollIndicator={false}
         rowRenderer={this.renderPodcastItem}
         canChangeSize={true}
         useWindowScroll={true}
-        {...(!isTouchDevice() ? { externalScrollView: CarouselScrollView } : {})} // enable carousel buttons only on non-touch devices
+        {...(!isTouchDevice() && !isMobile ? { externalScrollView: CarouselScrollView } : {})} // enable carousel buttons only on non-touch devices
         renderFooter={() => <View style={{ paddingRight: 30 }} />}
       />
     );
