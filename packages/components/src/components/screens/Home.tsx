@@ -3,7 +3,7 @@ import styled, { Styled } from "@emotion/native";
 import RF from "react-native-responsive-fontsize";
 import titleCase from "title-case";
 import { View } from "react-native";
-import { Title } from "../common/Typography";
+import { Title, Text } from "../common/Typography";
 import Podcasts from "../containers/Podcasts";
 import { isMobile } from "../../utils/platforms";
 import * as constants from "../../utils/constants";
@@ -42,11 +42,12 @@ const UserAvatar = styled.Image`
   width: 50px;
 `;
 
-const rowButtonStyles: Styled = {
+const rowButtonStyles: any = {
   alignSelf: "center",
   color: "#184277",
   fontSize: RF(2.5),
-  marginRight: 15
+  marginRight: 15,
+  textDecoration: 'none' 
 };
 
 if (!isMobile) {
@@ -65,8 +66,8 @@ const renderHomePageSections = () => {
       <Section key={sectionId}>
         <Row>
           <SectionTitle>{titleCase(sectionId)}</SectionTitle>
-          <Link style={rowButtonStyles} onPress={() => handleRowButtonPress(sectionId)}>
-            View All
+          <Link style={{ ...rowButtonStyles }} onPress={() => handleRowButtonPress(sectionId)}>
+            <Text>View All</Text>
           </Link>
         </Row>
         {

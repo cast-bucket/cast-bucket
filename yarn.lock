@@ -10668,6 +10668,11 @@ react-native-text-ticker@0.19.0:
   resolved "https://registry.yarnpkg.com/react-native-text-ticker/-/react-native-text-ticker-0.19.0.tgz#1ec0c294f949ebd95bb0579527d01da4771dd72d"
   integrity sha512-WPaRW80quecckqqjvXK/yVKxGeL/eaBfTl3Y5UXbyBbAVI34KQeSirIHPVACMxoyPMykhXMmyRhzLpgkercZLQ==
 
+react-native-track-player@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/react-native-track-player/-/react-native-track-player-1.1.8.tgz#4827d46a14320c405d19f34593c3f999c2424b0f"
+  integrity sha512-pAGMgEHtnrnHQYI53qxeZ/dNbw5CNiCTMjj6L09CQrWvZ6cJwjOQeyz4/6aOs7HfUDJc3HLntzKwTHYT7ges0g==
+
 react-native-vector-icons@6.4.2:
   version "6.4.2"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.4.2.tgz#ee0b097e783387544ed160a3192a437c097e551d"

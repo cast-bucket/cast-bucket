@@ -18,12 +18,11 @@ const playerReducer: Reducer<State> = (state = initialState, action?: any) => {
 
   switch (action.type) {
     case "PLAY_EPISODE":
-      const { url: episodeId } = action.episode;
-      const newPlayerId = audio.play(episodeId);
+      const { url: episodeId, ...meta } = action.episode;
+      audio.play(episodeId, meta);
       return {
         ...state,
         episodeId,
-        // playerId: newPlayerId,
         isPlaying: true
       };
 

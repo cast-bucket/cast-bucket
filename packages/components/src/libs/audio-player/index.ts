@@ -1,51 +1,53 @@
-import { Howl, Howler } from "howler";
+import TrackPlayer, { TrackMetadata, seekTo } from "react-native-track-player";
 
-interface AudioSource {
-  url: string;
-  howl: any | null;
+interface CustomTrackPlayerMetadata extends TrackMetadata {
+  pausedAt?: number;
 }
 
 export default class Player {
-  private audio: Array<AudioSource>;
-
-  constructor() {
-    this.audio = [];
-  }
-
-  getAudio(url: string) {
-    const source: AudioSource | undefined = this.audio.find((a: AudioSource) => a.url === url);
-    return source ? source.howl : null;
-  }
-
-  play(url: string) {
-    // set new audio source only if it's not already been played
-    if (!this.getAudio(url)) {
-      this.setAudioSource(url);
+  async play(url: string, metadata: any) {
+    const audio: TrackPlayer.Track = await TrackPlayer.getTrack(url);
+    if (audio) {
+      const { pausedAt } = audio;
+      return pausedAt ? this.skipAndSeek(audio, pausedAt, metadata) : await TrackPlayer.skip(url);
+    } else {
+      return await this.initialize(url, metadata);
     }
-    const player = this.getAudio(url);
-    return player.play();
   }
 
-  pause(url) {
-    const player = this.getAudio(url);
-    player.pause();
+  async skipAndSeek(track: TrackPlayer.Track, seconds: number, meta: TrackMetadata) {
+    await TrackPlayer.skip(track.url);
+    await TrackPlayer.seekTo(seconds);
+    await TrackPlayer.play();
   }
 
-  // seek(per) {
-  //   const duration = this.audio.duration();
-  //   this.audio.seek(duration * per);
-  // }
-
-  volume(val: number) {
-    // Update the global volume (affecting all Howls).
-    Howler.volume(val);
+  async pause(url: string) {
+    const track = await TrackPlayer.getTrack(url);
+    if (track) {
+      const currentPosition = await TrackPlayer.getPosition();
+      const meta: CustomTrackPlayerMetadata = { ...track, pausedAt: currentPosition };
+      await TrackPlayer.updateMetadataForTrack(url, meta);
+    }
+    await TrackPlayer.pause();
   }
 
-  setAudioSource(url: string) {
-    if (url)
-      this.audio.push({
-        url,
-        howl: new Howl({ src: url, html5: true })
+  async volume(val: number) {
+    // Update the global volume (affecting all players).
+    await TrackPlayer.setVolume(val);
+  }
+
+  async initialize(url: string, metadata: any) {
+    if (url) {
+      TrackPlayer.setupPlayer().then(async () => {
+        TrackPlayer.add({
+          title: metadata.title,
+          artist: metadata.creator,
+          id: url,
+          url
+        }).then(async () => {
+          await TrackPlayer.play();
+        });
       });
+    }
   }
 }

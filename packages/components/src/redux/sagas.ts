@@ -80,7 +80,7 @@ export function* togglePlayingEpisode({ episode }: any) {
 export function* fetchEpisodes(episode: any) {
   try {
     const { podcastId } = episode;
-    const mockEpisodeItems = mocks.episodeItems[podcastId].items || [];
+    const mockEpisodeItems = mocks.episodeItems[podcastId] ? mocks.episodeItems[podcastId].items : [];
     const episodeItems = mockEpisodeItems
       .filter((item: any) => item.enclosure && item.enclosure.url)
       .map((item: any) => ({

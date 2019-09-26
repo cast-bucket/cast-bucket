@@ -6,10 +6,11 @@ import { MaterialIcons as Icon } from "../../libs/vector-icons";
 import { isSmallScreen } from "../../utils/platforms";
 import { Text } from "./Typography";
 import { isMobile } from "../../utils/platforms";
-import { playEpisode, pauseEpisode, togglePlaying } from "../../redux/actions";
+import { togglePlaying } from "../../redux/actions";
 
 const MediaIcon = styled(Icon)`
   margin-left: 16px;
+  user-select: none;
 `;
 
 const PodcastImage = styled.Image`
@@ -38,20 +39,26 @@ const EpisodeTitle = styled(Text)`
   margin-horizontal: 10px;
   margin-vertical: 10px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-word;
-  white-space: nowrap;
+  ${() => {
+    if (!isMobile) {
+      return `
+        text-overflow: ellipsis;
+        word-break: break-word;
+        white-space: nowrap;
+      `;
+    }
+  }}
 `;
 
-class Player extends React.Component {
-	public forceUpdate: any;
-	public props: any;
-	public currentEpisode: any;
-	public togglePlaying: any;
-	public isPlaying: any;
-	public title: any;
+
+type PlayerProps = {
+  togglePlaying: Function,
+  currentEpisode: any
+}
+
+class Player extends React.Component<PlayerProps> {
   resize = () => this.forceUpdate();
-  
+
   render() {
     const { currentEpisode, togglePlaying } = this.props;
     if (!currentEpisode) return null;
@@ -61,7 +68,7 @@ class Player extends React.Component {
     }
 
     const { isPlaying, title } = currentEpisode;
-    
+
     return (
       <PlayerContainer
         style={{
@@ -84,8 +91,10 @@ class Player extends React.Component {
               maxWidth: isSmallScreen ? 0.75 * width : width
             }}
           >
-            <PodcastImage source={{ uri: "" }} style={{ width: 52, height: 52 }} />
-            <EpisodeTitle>{title}</EpisodeTitle>
+            <PodcastImage style={{ width: 52, height: 52 }} />
+            <EpisodeTitle numberOfLines={1} style={{ maxWidth: 0.5 * width }}>
+              {title}
+            </EpisodeTitle>
           </EpisodeInfoContainer>
           <View
             style={{
@@ -122,7 +131,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  togglePlaying,
+  togglePlaying
 };
 
 export default connect(
