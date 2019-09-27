@@ -23,6 +23,7 @@ const ViewTypes = {
 
 type PodcastsListProps = {
   data: any,
+  type: string
 }
 
 type PodcastsListState = {
@@ -30,7 +31,6 @@ type PodcastsListState = {
   layoutProvider: BaseLayoutProvider,
 }
 
-// FIXME: Remove parentContainer and move redux actions into here to avoid remount
 class PodcastsList extends Component<PodcastsListProps, PodcastsListState> {
   constructor(props: PodcastsListProps) {
     super(props);
