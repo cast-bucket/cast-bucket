@@ -26,7 +26,7 @@ export class Browse extends React.PureComponent {
             onChangeText={text => this.setState({ text })}
           />
         </View>
-        <PodcastsSection type="recommended" />
+        <PodcastsSection sectionType="recommended" />
       </ScrollView>
     );
   }
