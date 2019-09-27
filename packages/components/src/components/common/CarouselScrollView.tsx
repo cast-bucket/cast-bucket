@@ -98,8 +98,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     position: "absolute",
     zIndex: 1,
-    width: 40,
-    height: 40,
+    width: 32,
+    height: 32,
     backgroundColor: "#fafafa",
     shadowColor: "#000000",
     shadowOffset: {
@@ -110,7 +110,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.24,
     shadowRadius: 6,
     opacity: 1,
-    elevation: 6
+    elevation: 6,
+    userSelect: 'none'
   }
 });
 
