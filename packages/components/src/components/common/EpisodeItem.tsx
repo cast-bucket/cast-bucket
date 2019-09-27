@@ -62,8 +62,6 @@ const EpisodeItem: FunctionComponent<EpisodeItemProps> = React.memo((props: Epis
           onPress={() => {
             togglePlaying(item);
           }}
-          underlayColor="#000"
-          activeOpacity={0.65}
         />
       </Row>
     </View>
