@@ -5,27 +5,28 @@ import {
   Text as RPText,
   Title as RPTitle
 } from "react-native-paper";
-import RF from "react-native-responsive-fontsize";
+import styled from "@emotion/native";
+import * as constants from "../../utils/constants";
 
 const commonStyles = {
   fontFamily: "Inter"
 };
 
-const titleStyle = {
-  fontSize: RF(3.5)
-};
+export const Title = props => <RPTitle {...props} style={[commonStyles, props.style]} />;
 
-const headingStyle = {
-  fontSize: RF(4.5)
-};
+export const Heading = props => <Headline {...props} style={[commonStyles, props.style]} />;
 
-export const Title = props => (
-  <RPTitle {...props} style={[commonStyles, titleStyle, props.style]} />
-);
-
-export const Heading = props => (
-  <Headline {...props} style={[commonStyles, headingStyle, props.style]} />
-);
+export const SectionTitle = styled(Title)`
+  font-weight: 700;
+  font-size: 26px;
+  padding-left: ${constants.ui.containers.margin.px};
+`;
 
 export const Paragraph = props => <RPParagraph {...props} style={[commonStyles, props.style]} />;
 export const Text = props => <RPText {...props} style={[commonStyles, props.style]} />;
+export const PageHeading = styled(Title)`
+  font-weight: 700;
+  font-size: 32px;
+  margin-left: ${constants.ui.containers.margin.px};
+  margin-bottom: ${constants.ui.containers.margin.px};
+`;
