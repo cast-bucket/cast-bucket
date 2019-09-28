@@ -3,20 +3,11 @@ import React, { FunctionComponent } from "react";
 import Podcasts from "../containers/Podcasts";
 import styled from "@emotion/native";
 import { isMobile } from "../../utils/platforms";
-import * as constants from "../../utils/constants";
-import { Title, Text } from "../common/Typography";
+import { SectionTitle, Text } from "../common/Typography";
 import { Link, withRouter } from "../../libs/router";
 import titleCase from "title-case";
+import { View } from "react-native";
 
-const Section = styled.View`
-  margin-top: 20px;
-`;
-
-const SectionTitle = styled(Title)`
-  font-weight: 700;
-  font-size: 22px;
-  padding-left: ${constants.spacing.containerMargin.dim};
-`;
 const Row = styled.View`
   flex-direction: row;
   justify-content: space-between;
@@ -47,15 +38,20 @@ type PodcastsSectionProps = {
 const PodcastsSection: FunctionComponent<PodcastsSectionProps> = React.memo(props => {
   const { sectionType } = props;
   return (
-    <Section key={sectionType}>
+    <View key={sectionType}>
       <Row>
         <SectionTitle>{titleCase(sectionType)}</SectionTitle>
-        <Link style={{ ...rowButtonStyles }} onPress={() => handleRowButtonPress(sectionType)}>
+        <Link
+          style={{ ...rowButtonStyles }}
+          to={{
+            pathname: sectionType
+          }}
+        >
           <Text>View All</Text>
         </Link>
       </Row>
       <Podcasts type={sectionType} />
-    </Section>
+    </View>
   );
 });
 

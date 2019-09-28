@@ -1,17 +1,12 @@
-import React from "react";
 import styled from "@emotion/native";
+import React from "react";
 import { View } from "react-native";
-import { Title } from "../common/Typography";
-import * as constants from "../../utils/constants";
+import { PageHeading } from "../common/Typography";
+import { Page } from "../common/Page";
 import PodcastsSection from "../layout/PodcastsSection";
 
-const Container = styled.ScrollView`
+const ScrollableContainer = styled.ScrollView`
   flex: 1;
-`;
-
-const PageHeading = styled(Title)`
-  font-weight: 700;
-  margin-left: ${constants.spacing.containerMargin.dim};
 `;
 
 const UserAvatar = styled.Image`
@@ -19,6 +14,7 @@ const UserAvatar = styled.Image`
   background: lightblue;
   border-radius: 100px;
   margin-right: 20px;
+  margin-top: -5px;
   height: 50px;
   width: 50px;
 `;
@@ -32,19 +28,14 @@ const renderHomePageSections = () => {
 };
 
 export const Home = ({}) => (
-  <Container contentContainerStyle={{ alignItems: "stretch" }}>
-    <View
-      style={{
-        flex: 1,
-        flexDirection: "row",
-        alignItems: "stretch",
-        justifyContent: "space-between",
-        paddingTop: 40
-      }}
-    >
-      <PageHeading style={{ fontSize: 32 }}>Home</PageHeading>
-      <UserAvatar source={{ uri: "https://i.pravatar.cc/120" }} />
-    </View>
+  <ScrollableContainer contentContainerStyle={{ alignItems: "stretch" }}>
+    <Page>
+      <View style={{ justifyContent: "space-between", flexDirection: 'row', alignItems: 'center' }}>
+        <PageHeading>Home</PageHeading>
+        <UserAvatar source={{ uri: "https://i.pravatar.cc/120" }} />
+      </View>
+    </Page>
+
     {renderHomePageSections()}
-  </Container>
+  </ScrollableContainer>
 );
