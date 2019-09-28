@@ -3,6 +3,7 @@ import { ScrollView, View, ScrollViewProps, StyleSheet } from "react-native";
 import { ScrollViewDefaultProps } from "recyclerlistview/dist/reactnative/core/scrollcomponent/BaseScrollView";
 import styled from "@emotion/native";
 import { IconButton, Colors } from "react-native-paper";
+import { isMobile } from "../../utils/platforms";
 
 const SCROLL_BY = 400;
 
@@ -111,7 +112,7 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     opacity: 1,
     elevation: 6,
-    userSelect: 'none'
+    ...(!isMobile && { userSelect: 'none' })
   }
 });
 
