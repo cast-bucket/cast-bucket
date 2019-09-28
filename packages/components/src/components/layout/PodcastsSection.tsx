@@ -16,13 +16,11 @@ const Row = styled.View`
 
 const rowButtonStyles: any = {
   alignSelf: "center",
-  color: "#184277",
-  fontSize: 20,
-  marginRight: 15,
-  textDecoration: "none"
+  marginRight: 15
 };
 
 if (!isMobile) {
+  rowButtonStyles.textDecoration = "none";
   rowButtonStyles.cursor = "pointer";
 }
 
