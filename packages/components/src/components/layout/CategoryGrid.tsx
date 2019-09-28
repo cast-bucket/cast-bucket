@@ -19,7 +19,7 @@ type CategoriesGridProps = {
 }
 
 type CategoriesGridState = {
-  selectedCategories: string[],
+  selectedCategories: Array<string> | []
 }
 
 class CategoriesGrid extends Component<CategoriesGridProps, CategoriesGridState> {
@@ -62,7 +62,7 @@ class CategoriesGrid extends Component<CategoriesGridProps, CategoriesGridState>
   }
 
   handleNextClick = async () => {
-    const { selectedCategories }: string[] = this.state || [];
+    const { selectedCategories } = this.state;
     try {
       await memoSet("categories", { selected: selectedCategories.sort() });
     } catch (error) {}
@@ -70,7 +70,7 @@ class CategoriesGrid extends Component<CategoriesGridProps, CategoriesGridState>
 
   renderNextButton = () => {
     const categories = this.props.categories || [];
-    const { selectedCategories } = this.state || [];
+    const { selectedCategories }: any = this.state || [];
     return (
       categories.length > 0 && (
         <Button
