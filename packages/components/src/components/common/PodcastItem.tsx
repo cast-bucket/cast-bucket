@@ -17,14 +17,14 @@ const PodcastTitle = styled(Text)`
 const PodcastImage = styled.Image`
   width: ${props => props.size};
   height: ${props => props.size};
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: #7cffc3;
 `;
 
 const PodcastImageContainer = styled.TouchableHighlight`
   width: ${props => props.size};
   height: ${props => props.size};
-  border-radius: 10px;
+  border-radius: 20px;
 `;
 
 const getPodcastImage = (logo, title) => {
@@ -41,7 +41,7 @@ interface PodcastItemProps {
   title: string;
   size: string;
   style: any;
-  history: any
+  history: any;
 }
 
 const PodcastItem: FunctionComponent<PodcastItemProps> = React.memo(props => {
