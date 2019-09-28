@@ -22,14 +22,14 @@ const ViewTypes = {
 };
 
 type PodcastsListProps = {
-  data: any,
-  type: string
-}
+  data: any;
+  type: string;
+};
 
 type PodcastsListState = {
-  dataProvider: BaseDataProvider,
-  layoutProvider: BaseLayoutProvider,
-}
+  dataProvider: BaseDataProvider;
+  layoutProvider: BaseLayoutProvider;
+};
 
 class PodcastsList extends Component<PodcastsListProps, PodcastsListState> {
   constructor(props: PodcastsListProps) {
@@ -62,7 +62,11 @@ class PodcastsList extends Component<PodcastsListProps, PodcastsListState> {
         isHorizontal={true}
         dataProvider={this.state.dataProvider}
         layoutProvider={this.state.layoutProvider}
-        contentContainerStyle={{ height: ITEM_SIZE , marginTop: 25, marginBottom: 50 }}
+        contentContainerStyle={{
+          height: isMobile ? ITEM_SIZE + 30 : ITEM_SIZE,
+          marginTop: 25,
+          marginBottom: 50
+        }}
         showsHorizontalScrollIndicator={false}
         rowRenderer={this.renderPodcastItem}
         canChangeSize={true}
