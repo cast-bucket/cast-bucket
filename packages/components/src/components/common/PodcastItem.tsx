@@ -5,6 +5,7 @@ import getPlaceHolderImage from "../../utils/getPlaceHolderImage";
 import { Text } from "./Typography";
 import dashify from "dashify";
 import { withRouter } from "../../libs/router";
+import { isMobile } from "../../utils/platforms";
 
 const PodcastTitle = styled(Text)`
   font-size: 18px;
@@ -17,14 +18,14 @@ const PodcastTitle = styled(Text)`
 const PodcastImage = styled.Image`
   width: ${props => props.size};
   height: ${props => props.size};
-  border-radius: 20px;
   background-color: #7cffc3;
+  border-radius: ${isMobile ? '10px' : '20px'};
 `;
 
 const PodcastImageContainer = styled.TouchableHighlight`
   width: ${props => props.size};
   height: ${props => props.size};
-  border-radius: 20px;
+  border-radius: ${isMobile ? "10px" : "20px"};
 `;
 
 const getPodcastImage = (logo, title) => {
