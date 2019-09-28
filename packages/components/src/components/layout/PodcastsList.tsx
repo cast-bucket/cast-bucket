@@ -15,8 +15,8 @@ import PodcastItem from "../common/PodcastItem";
 
 const { height } = Dimensions.get("window");
 
-const ITEM_SIZE = isMobile ? 180 : 220;
-const ITEM_SPACING = constants.spacing.containerMargin.val;
+const ITEM_SIZE = isMobile ? 180 : 250;
+const ITEM_SPACING = constants.ui.containers.margin.value;
 const ViewTypes = {
   PODCAST_ITEM: 0
 };
@@ -62,7 +62,7 @@ class PodcastsList extends Component<PodcastsListProps, PodcastsListState> {
         isHorizontal={true}
         dataProvider={this.state.dataProvider}
         layoutProvider={this.state.layoutProvider}
-        contentContainerStyle={{ height: ITEM_SIZE + 30, marginVertical: 25 }}
+        contentContainerStyle={{ height: ITEM_SIZE , marginTop: 25, marginBottom: 50 }}
         showsHorizontalScrollIndicator={false}
         rowRenderer={this.renderPodcastItem}
         canChangeSize={true}
