@@ -38,22 +38,27 @@ export class Browse extends React.PureComponent {
             style={{
               margin: constants.ui.containers.margin.value,
               marginTop: 0,
-              flex: 1,
               flexDirection: "row",
               alignItems: "center",
               borderRadius: 50,
               borderColor: Colors.grey400,
-              borderWidth: 1,
-              padding: 20
+              ...(isSmallScreen ? { padding: 0 } : { padding: 16 }),
+              borderWidth: 1
             }}
           >
-            <Icon name="search" size={15} color={Colors.grey600} style={{ paddingRight: 5 }} />
+            <Icon
+              name="search"
+              size={22}
+              color={Colors.grey400}
+              style={{ marginHorizontal: 5, paddingLeft: 5 }}
+            />
             <TextInput
               placeholder="Search for Podcasts"
               style={{
+                fontSize: 18,
+                fontFamily: "Inter",
                 // @ts-ignore
-                outlineStyle: "none",
-                backgroundColor: "white",
+                ...(!isMobile && { outlineStyle: "none" }),
                 borderWidth: 0
               }}
               value={this.state.text}
@@ -72,7 +77,7 @@ export class Browse extends React.PureComponent {
             renderItem={({ item, index }) => {
               return (
                 <Link
-                  style={{ textDecoration: "none" }}
+                  style={{ ...(!isMobile && { textDecoration: "none" }) }}
                   // TODO: Add link once Podcasts Page is done
                   // to={{
                   //   pathname: `/podcasts/${item}`
