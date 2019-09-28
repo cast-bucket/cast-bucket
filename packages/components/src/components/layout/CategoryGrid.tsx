@@ -13,13 +13,18 @@ const DEFAULT_ITEM_WIDTH = 150;
 const { width } = Dimensions.get("window");
 const itemSpacing = isSmallScreen(width) ? 15 : 50;
 
-class CategoriesGrid extends Component {
-	public state: any;
-	public setState: any;
-	public props: any;
-	public selectedCategories: any;
+type CategoriesGridProps = {
+  categories: Array<string>,
+  fetchCategories: Function,
+}
 
-  constructor(props) {
+type CategoriesGridState = {
+  selectedCategories: string[],
+}
+
+class CategoriesGrid extends Component<CategoriesGridProps, CategoriesGridState> {
+
+  constructor(props: CategoriesGridProps) {
     super(props);
     this.state = {
       selectedCategories: []
@@ -53,11 +58,11 @@ class CategoriesGrid extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(fetchCategories());
+    this.props.fetchCategories();
   }
 
   handleNextClick = async () => {
-    const { selectedCategories } = this.state || [];
+    const { selectedCategories }: string[] = this.state || [];
     try {
       await memoSet("categories", { selected: selectedCategories.sort() });
     } catch (error) {}
@@ -87,25 +92,33 @@ class CategoriesGrid extends Component {
     const categories = this.props.categories || [];
     return (
       <View>
-      //@ts-ignore
-        <FlatGrid
-          fixed
-          itemDimension={DEFAULT_ITEM_WIDTH}
-          items={categories}
-          spacing={itemSpacing}
-          renderItem={this.renderItem}
-          ListFooterComponent={this.renderNextButton}
-        />
+        {
+          // @ts-ignore
+          <FlatGrid
+            fixed
+            itemDimension={DEFAULT_ITEM_WIDTH}
+            items={categories}
+            spacing={itemSpacing}
+            renderItem={this.renderItem}
+            ListFooterComponent={this.renderNextButton}
+          />
+        }
       </View>
     );
   }
 }
 
+const mapDispatchToProps = {
+  fetchCategories,
+}
+
 const mapStateToProps = state => {
-  const data = state.categories;
-  const defaultState = { isFetching: true, categories: [] };
-  const { isFetching, categories } = data || defaultState;
+  const defaultState = { isFetching: true, items: [] };
+  const { isFetching, items: categories } = state.categories || defaultState;
   return { isFetching, categories };
 };
 
-export default connect(mapStateToProps)(CategoriesGrid);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CategoriesGrid);
