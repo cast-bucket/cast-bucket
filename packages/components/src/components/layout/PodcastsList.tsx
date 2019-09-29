@@ -15,22 +15,22 @@ import PodcastItem from "../common/PodcastItem";
 
 const { height } = Dimensions.get("window");
 
-const ITEM_SIZE = isMobile ? 180 : 220;
-const ITEM_SPACING = constants.spacing.containerMargin.val;
+const ITEM_SIZE = isMobile ? 180 : 250;
+const ITEM_SPACING = constants.ui.containers.margin.value;
 const ViewTypes = {
   PODCAST_ITEM: 0
 };
 
 type PodcastsListProps = {
-  data: any,
-}
+  data: any;
+  type: string;
+};
 
 type PodcastsListState = {
-  dataProvider: BaseDataProvider,
-  layoutProvider: BaseLayoutProvider,
-}
+  dataProvider: BaseDataProvider;
+  layoutProvider: BaseLayoutProvider;
+};
 
-// FIXME: Remove parentContainer and move redux actions into here to avoid remount
 class PodcastsList extends Component<PodcastsListProps, PodcastsListState> {
   constructor(props: PodcastsListProps) {
     super(props);
@@ -62,7 +62,11 @@ class PodcastsList extends Component<PodcastsListProps, PodcastsListState> {
         isHorizontal={true}
         dataProvider={this.state.dataProvider}
         layoutProvider={this.state.layoutProvider}
-        contentContainerStyle={{ height: ITEM_SIZE + 30, marginVertical: 25 }}
+        contentContainerStyle={{
+          height: isMobile ? ITEM_SIZE + 30 : ITEM_SIZE,
+          marginTop: 25,
+          marginBottom: 50
+        }}
         showsHorizontalScrollIndicator={false}
         rowRenderer={this.renderPodcastItem}
         canChangeSize={true}

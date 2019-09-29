@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "@emotion/native";
 import { ScrollView, Dimensions } from "react-native";
 import Header from "../common/EpisodesHeader";
@@ -38,7 +38,15 @@ const EpisodesContainer = styled.View`
   margin-top: 100px;
 `;
 
-export const Episodes = props => {
+type EpisodesScreenProps = {
+  podcastId: string,
+  description: string,
+  rss: string,
+  location: any,
+  logo: any
+};
+
+export const Episodes: FunctionComponent<EpisodesScreenProps> = (props) => {
   const { podcastId, description, logo, rss } = getPodcastOptions(props);
   if (!podcastId) {
     return <Redirect path="/home" />;

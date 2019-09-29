@@ -9,14 +9,17 @@ import PodcastsList from "../layout/PodcastsList";
  * Recommended
  */
 
-class Podcasts extends React.Component {
-  public props: any;
-  public type: any;
-  public isFetching: any;
-  public location: any;
+ type PodcastsContainerProps = {
+   items: Array<any>,
+   fetchPodcasts: Function,
+   type: string,
+   isFetching: boolean
+ }
+
+class PodcastsContainer extends React.Component<PodcastsContainerProps> {
 
   componentDidMount() {
-    if (!this.props.items.length) this.props.dispatch(fetchPodcasts());
+    if (!this.props.items.length) this.props.fetchPodcasts();
   }
 
   render() {
@@ -24,7 +27,6 @@ class Podcasts extends React.Component {
     return isFetching || items.length <= 0 ? (
       <ActivityIndicator animating={true} />
     ) : (
-      // @ts-ignore
       <PodcastsList data={items} type={type} />
     );
   }
@@ -36,4 +38,11 @@ const mapStateToProps = state => {
   return { isFetching, items };
 };
 
-export default connect(mapStateToProps)(Podcasts);
+const mapDispatchToProps = {
+  fetchPodcasts
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PodcastsContainer);

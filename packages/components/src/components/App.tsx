@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "@emotion/native";
 import { View } from "react-native";
-import { Provider, ProviderProps } from "react-redux";
-import { Route, Switch, withRouter } from "../libs/router";
+import { Provider } from "react-redux";
+import { Route, Switch } from "../libs/router";
 import configureStore from "../redux/store";
 import Player from "./common/Player";
 import { Text } from "./common/Typography";
 import BottomNavigation from "./navigation/BottomNavigation";
-import { Episodes, Home } from "./screens";
+import { Episodes, Home, Browse } from "./screens";
 
 const initialState = {};
 const store = configureStore(initialState);
@@ -17,7 +17,6 @@ const Container = styled.View`
   align-items: stretch;
 `;
 
-const Browse = () => <Text> Browse </Text>;
 const Library = () => <Text> Library </Text>;
 const Account = () => <Text> Account </Text>;
 
@@ -36,9 +35,9 @@ const AppView = () => {
         <Container>
           <Switch>
             <Route exact path={["/", "/home"]} render={() => <Home />} />
-            <Route exact path="/browse" component={Browse} />
-            <Route exact path="/library" component={Library} />
-            <Route exact path="/account" component={Account} />
+            <Route exact path="/browse" render={() => < Browse /> } />
+            <Route exact path="/library" render={() => <Library />} />
+            <Route exact path="/account" render={() => <Account />} />
             <Route
               path="/episodes/:podcastId"
               render={props => <Episodes key={props.match.params.podcastId} {...props} />}
@@ -53,4 +52,4 @@ const AppView = () => {
   );
 };
 
-export const App = withRouter(AppView);
+export const App = AppView;
