@@ -1,5 +1,5 @@
-import React from "react";
 import styled from "@emotion/native";
+import React from "react";
 import { View } from "react-native";
 import { Provider } from "react-redux";
 import { Route, Switch } from "../libs/router";
@@ -7,7 +7,7 @@ import configureStore from "../redux/store";
 import Player from "./common/Player";
 import { Text } from "./common/Typography";
 import BottomNavigation from "./navigation/BottomNavigation";
-import { Episodes, Home, Browse } from "./screens";
+import { Browse, Episodes, Home } from "./screens";
 
 const initialState = {};
 const store = configureStore(initialState);
