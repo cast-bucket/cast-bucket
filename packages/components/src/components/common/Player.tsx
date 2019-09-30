@@ -1,12 +1,13 @@
+import { IEpisodeItem } from '@cast-bucket/core';
 import styled from "@emotion/native";
 import React from "react";
-import { connect } from "react-redux";
 import { Dimensions, View } from "react-native";
+import { connect } from "react-redux";
 import { MaterialIcons as Icon } from "../../libs/vector-icons";
-import { isSmallScreen } from "../../utils/platforms";
-import { Text } from "./Typography";
-import { isMobile } from "../../utils/platforms";
 import { togglePlaying } from "../../redux/actions";
+import { AppState } from '../../redux/store';
+import { isMobile, isSmallScreen } from "../../utils/platforms";
+import { Text } from "./Typography";
 
 const MediaIcon = styled(Icon)`
   margin-left: 16px;
@@ -50,17 +51,16 @@ const EpisodeTitle = styled(Text)`
   }}
 `;
 
-
-type PlayerProps = {
-  togglePlaying: Function,
-  currentEpisode: any
-}
+interface PlayerProps {
+  togglePlaying: (arg0: IEpisodeItem) => void;
+  currentEpisode: any;
+};
 
 class Player extends React.Component<PlayerProps> {
   resize = () => this.forceUpdate();
 
   render() {
-    const { currentEpisode, togglePlaying } = this.props;
+    const { currentEpisode } = this.props;
     if (!currentEpisode) return null;
 
     if (!isMobile) {
@@ -98,7 +98,7 @@ class Player extends React.Component<PlayerProps> {
           </EpisodeInfoContainer>
           <View
             style={{
-              //@ts-ignore
+              // @ts-ignore
               userSelect: "none"
             }}
           />
@@ -108,7 +108,7 @@ class Player extends React.Component<PlayerProps> {
             size={42}
             color="#5e5fb8"
             onPress={() => {
-              togglePlaying(currentEpisode);
+              this.props.togglePlaying(currentEpisode);
             }}
           />
           {!isSmallScreen && <MediaIcon name="forward-10" size={28} color="#5e5fb8" />}
@@ -119,7 +119,7 @@ class Player extends React.Component<PlayerProps> {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: AppState) => {
   const { audioPlayer, episodes } = state;
   const { episodeId } = audioPlayer;
   let currentEpisode = null;
