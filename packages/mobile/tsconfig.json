@@ -5,6 +5,7 @@
     "jsx": "preserve",
     "noEmit": true,
     "outDir": "dist",
+    "isolatedModules": false,
     "rootDir": "src",
     "typeRoots": ["../../@types", "../../node_modules/@types"],
     "module": "esnext",
