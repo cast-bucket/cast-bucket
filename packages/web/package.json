@@ -26,7 +26,7 @@
     "react-dom": "16.9.0",
     "react-native-super-grid": "^3.0.3",
     "react-native-web": "0.11.7",
-    "react-scripts": "^2.1.5"
+    "react-scripts": "^3.1.2"
   },
   "devDependencies": {
     "babel-plugin-react-native-web": "0.11.1",
