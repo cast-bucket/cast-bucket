@@ -1,5 +1,5 @@
 import axios from "axios";
-import { call, put, take, takeEvery, select, all, Pattern, ActionPattern } from "redux-saga/effects";
+import { all, call, put, select, take, takeEvery } from "redux-saga/effects";
 import * as mocks from "../mocks";
 
 const base = process.env.REACT_APP_API_URL || "https://cast-bucket-api.now.sh";
@@ -80,7 +80,9 @@ export function* togglePlayingEpisode({ episode }: any) {
 export function* fetchEpisodes(episode: any) {
   try {
     const { podcastId } = episode;
-    const mockEpisodeItems = mocks.episodeItems[podcastId] ? mocks.episodeItems[podcastId].items : [];
+    const mockEpisodeItems = mocks.episodeItems[podcastId]
+      ? mocks.episodeItems[podcastId].items
+      : [];
     const episodeItems = mockEpisodeItems
       .filter((item: any) => item.enclosure && item.enclosure.url)
       .map((item: any) => ({
@@ -88,10 +90,7 @@ export function* fetchEpisodes(episode: any) {
         url: item.enclosure.url,
         isPlaying: false
       }));
-    const episodes = episodeItems.reduce(
-      (o: any, episode: any) => ({ ...o, [episode.url]: episode }),
-      {}
-    );
+    const episodes = episodeItems.reduce((o: any, ep: any) => ({ ...o, [ep.url]: episode }), {});
     yield put({ type: "RECEIVED_EPISODES", episodes });
   } catch (error) {
     yield put({ type: "FETCH_EPISODES_FAILED", error });
