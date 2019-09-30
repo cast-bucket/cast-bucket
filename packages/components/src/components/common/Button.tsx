@@ -1,5 +1,5 @@
-import React from "react";
 import styled from "@emotion/native";
+import React from "react";
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
   margin: ${props => props.margin};

@@ -1,8 +1,8 @@
-import React from "react";
 import styled from "@emotion/native";
+import React from "react";
 import getPlaceHolderImage from "../../utils/getPlaceHolderImage";
 
-type EpisodeHeaderProps = {
+interface EpisodeHeaderProps {
   logo: any;
   size: string;
   title: string;
