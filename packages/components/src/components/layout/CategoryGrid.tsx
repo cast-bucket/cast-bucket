@@ -1,44 +1,43 @@
 import React, { Component } from "react";
-import { Dimensions, View } from "react-native";
-import { connect } from "react-redux";
+import { View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
-import { CategoryItem, Button } from "../common";
+import { connect } from "react-redux";
 import { fetchCategories } from "../../redux/actions/";
-import { isSmallScreen } from "../../utils/breakpoints";
-
+import { AppState } from "../../redux/store";
 import { memoSet } from "../../utils/memoize";
+import { isSmallScreen } from "../../utils/platforms";
+import { Button, CategoryItem } from "../common";
 
 const DEFAULT_ITEM_WIDTH = 150;
 
-const { width } = Dimensions.get("window");
-const itemSpacing = isSmallScreen(width) ? 15 : 50;
+const itemSpacing = isSmallScreen ? 15 : 50;
 
-type CategoriesGridProps = {
-  categories: Array<string>,
-  fetchCategories: Function,
+interface CategoriesGridProps {
+  categories: string[];
+  fetchCategories: () => void;
 }
 
-type CategoriesGridState = {
-  selectedCategories: Array<string> | []
+interface CategoriesGridState {
+  selectedCategories: string[] | [];
 }
 
 class CategoriesGrid extends Component<CategoriesGridProps, CategoriesGridState> {
-
   constructor(props: CategoriesGridProps) {
     super(props);
+    const selectedCategories: string[] = [];
     this.state = {
-      selectedCategories: []
+      selectedCategories
     };
   }
 
-  selectCategory = categoryId => {
+  selectCategory = (categoryId: string) => {
     const categories = this.state.selectedCategories;
     this.setState({
-      selectedCategories: categories.concat(categoryId)
+      selectedCategories: [...categories, categoryId]
     });
   };
 
-  unselectCategory = categoryId => {
+  unselectCategory = (categoryId: string) => {
     const categories = this.state.selectedCategories;
     this.setState({
       selectedCategories: categories.filter(item => item !== categoryId)
@@ -61,11 +60,14 @@ class CategoriesGrid extends Component<CategoriesGridProps, CategoriesGridState>
     this.props.fetchCategories();
   }
 
+  // !FIXME: Remove this and store this in state
   handleNextClick = async () => {
     const { selectedCategories } = this.state;
     try {
       await memoSet("categories", { selected: selectedCategories.sort() });
-    } catch (error) {}
+    } catch (error) {
+      // console.error("error");
+    }
   };
 
   renderNextButton = () => {
@@ -77,7 +79,7 @@ class CategoriesGrid extends Component<CategoriesGridProps, CategoriesGridState>
           disabled={selectedCategories.length <= 0}
           css={{
             margin: 50,
-            alignSelf: isSmallScreen(width) ? "center" : "flex-end"
+            alignSelf: isSmallScreen ? "center" : "flex-end"
           }}
           onPress={this.handleNextClick}
         >
@@ -109,10 +111,10 @@ class CategoriesGrid extends Component<CategoriesGridProps, CategoriesGridState>
 }
 
 const mapDispatchToProps = {
-  fetchCategories,
-}
+  fetchCategories
+};
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: AppState) => {
   const defaultState = { isFetching: true, items: [] };
   const { isFetching, items: categories } = state.categories || defaultState;
   return { isFetching, categories };
