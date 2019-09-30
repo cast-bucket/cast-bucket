@@ -4,14 +4,18 @@
     "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
     "noEmit": true,
-    "declaration": true,
     "outDir": "dist",
     "rootDir": "src",
-    "typeRoots": ["../../@types", "../../node_modules/@types"],
+    "typeRoots": [
+      "../../@types",
+      "../../node_modules/@types"
+    ],
     "module": "esnext",
-    "strict": true
+    "strict": true,
   },
-  "include": ["src/"],
+  "include": [
+    "src/"
+  ],
   "references": [
     {
       "path": "../components"
