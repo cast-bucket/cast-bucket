@@ -32,7 +32,8 @@
       "ban-keywords",
       "check-format"
     ],
-    "quotemark": false
+    "quotemark": false,
+    "react/destructuring-assignment": "never"
   },
   "rulesDirectory": []
 }
