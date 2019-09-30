@@ -6,14 +6,22 @@
     "noEmit": true,
     "outDir": "dist",
     "rootDir": "src",
-    "typeRoots": ["../../@types", "../../node_modules/@types"],
+    "typeRoots": [
+      "../../@types",
+      "../../node_modules/@types"
+    ],
     "module": "esnext",
-    "strict": true
+    "strict": true,
   },
-  "include": ["src/"],
+  "include": [
+    "src/"
+  ],
   "references": [
     {
       "path": "../components"
+    },
+    {
+      "path": "../core"
     }
   ]
 }

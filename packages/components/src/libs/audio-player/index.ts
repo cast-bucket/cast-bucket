@@ -1,4 +1,4 @@
-import TrackPlayer, { TrackMetadata, seekTo } from "react-native-track-player";
+import TrackPlayer, { TrackMetadata } from "react-native-track-player";
 
 interface CustomTrackPlayerMetadata extends TrackMetadata {
   pausedAt?: number;

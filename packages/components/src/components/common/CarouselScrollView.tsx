@@ -1,8 +1,8 @@
-import * as React from "react";
-import { ScrollView, View, ScrollViewProps, StyleSheet } from "react-native";
-import { ScrollViewDefaultProps } from "recyclerlistview/dist/reactnative/core/scrollcomponent/BaseScrollView";
 import styled from "@emotion/native";
-import { IconButton, Colors } from "react-native-paper";
+import * as React from "react";
+import { ScrollView, ScrollViewProps, StyleSheet, View } from "react-native";
+import { Colors, IconButton } from "react-native-paper";
+import { ScrollViewDefaultProps } from "recyclerlistview/dist/reactnative/core/scrollcomponent/BaseScrollView";
 import { isMobile } from "../../utils/platforms";
 
 const SCROLL_BY = 400;
@@ -17,7 +17,7 @@ const ScrollRightButton = styled(IconButton)`
   top: 109;
 `;
 
-type ScrollViewState = {
+interface ScrollViewState  {
   xOffsetPosition: number;
   showLeftButton: boolean;
   showRightButton: boolean;

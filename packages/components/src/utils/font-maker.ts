@@ -2,26 +2,6 @@
 import { Platform } from "react-native";
 
 const font = {
-  CircularStd: {
-    weights: {
-      Black: "800",
-      Bold: "700",
-      Medium: "400"
-    },
-    styles: {
-      Italic: "italic"
-    }
-  },
-  "Space Mono": {
-    weights: {
-      Black: "800",
-      Bold: "700",
-      Medium: "400"
-    },
-    styles: {
-      Italic: "italic"
-    }
-  },
   Inter: {
     weights: {
       Thin: "100",
@@ -40,16 +20,16 @@ const font = {
   }
 };
 
+const defaultFontOptions = {
+  weight: null,
+  style: null,
+  family: "Inter"
+};
 // generate styles for a font with given weight and style
-export const fontMaker = (options = {}) => {
-  let { weight, style, family } = Object.assign(
-    {
-      weight: null,
-      style: null,
-      family: "CircularStd"
-    },
-    options
-  );
+export const fontMaker = (options: any = defaultFontOptions) => {
+  const { family } = options;
+  let { weight, style } = options;
+  
   const { weights, styles } = font[family];
   if (Platform.OS === "android" || Platform.OS === "ios") {
     weight = weights[weight] ? weight : "";
@@ -61,7 +41,7 @@ export const fontMaker = (options = {}) => {
       fontFamily: family + (suffix.length ? `-${suffix}` : "")
     };
   } else {
-    weight = weights[weight] || weights["Medium"];
+    weight = weights[weight] || weights.Medium;
     style = styles[style] || null;
     return {
       fontFamily: family,

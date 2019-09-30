@@ -1,11 +1,11 @@
-import React, { FunctionComponent } from "react";
 import styled from "@emotion/native";
-import { ScrollView, Dimensions } from "react-native";
+import React, { FunctionComponent } from "react";
+import { Dimensions, ScrollView } from "react-native";
+import { Redirect } from "../../libs/router";
+import { isSmallScreen } from "../../utils/platforms";
 import Header from "../common/EpisodesHeader";
 import { Paragraph, Text } from "../common/Typography";
-import { Redirect } from "../../libs/router";
 import EpisodesList from "../layout/EpisodesList";
-import { isSmallScreen } from "../../utils/platforms";
 
 const ITEM_SIZE = 250;
 
@@ -38,15 +38,15 @@ const EpisodesContainer = styled.View`
   margin-top: 100px;
 `;
 
-type EpisodesScreenProps = {
-  podcastId: string,
-  description: string,
-  rss: string,
-  location: any,
-  logo: any
-};
+interface EpisodesScreenProps {
+  podcastId: string;
+  description: string;
+  rss: string;
+  location: any;
+  logo: any;
+}
 
-export const Episodes: FunctionComponent<EpisodesScreenProps> = (props) => {
+export const Episodes: FunctionComponent<EpisodesScreenProps> = props => {
   const { podcastId, description, logo, rss } = getPodcastOptions(props);
   if (!podcastId) {
     return <Redirect path="/home" />;

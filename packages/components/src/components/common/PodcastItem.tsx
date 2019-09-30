@@ -1,49 +1,46 @@
-import React, { FunctionComponent } from "react";
+import { IPodcastItem } from "@cast-bucket/core";
 import styled from "@emotion/native";
-import { View } from "react-native";
-import getPlaceHolderImage from "../../utils/getPlaceHolderImage";
-import { Text } from "./Typography";
 import dashify from "dashify";
+import React, { FunctionComponent } from "react";
+import { View } from "react-native";
 import { withRouter } from "../../libs/router";
+import getPlaceHolderImage from "../../utils/getPlaceHolderImage";
 import { isMobile } from "../../utils/platforms";
+import { Text } from "./Typography";
+
+
+interface PodcastItemProps extends IPodcastItem {
+  categoryId: string;
+  logo: any;
+  size: string;
+  style: any;
+  history: any;
+}
 
 const PodcastTitle = styled(Text)`
   font-size: 18px;
   margin-top: 10px;
-  max-width: ${props => props.size};
+  max-width: ${(props: PodcastItemProps) => props.size};
   text-align: center;
   line-height: 25px;
 `;
 
 const PodcastImage = styled.Image`
-  width: ${props => props.size};
-  height: ${props => props.size};
+  width: ${(props: PodcastItemProps) => props.size};
+  height: ${(props: PodcastItemProps) => props.size};
   background-color: #7cffc3;
-  border-radius: ${isMobile ? '10px' : '20px'};
-`;
-
-const PodcastImageContainer = styled.TouchableHighlight`
-  width: ${props => props.size};
-  height: ${props => props.size};
   border-radius: ${isMobile ? "10px" : "20px"};
 `;
 
-const getPodcastImage = (logo, title) => {
+const PodcastImageContainer = styled.TouchableHighlight`
+  width: ${(props: PodcastItemProps) => props.size};
+  height: ${(props: PodcastItemProps) => props.size};
+  border-radius: ${isMobile ? "10px" : "20px"};
+`;
+
+const getPodcastImage = (logo: any, title: string) => {
   return logo && logo.image ? { uri: logo.image } : getPlaceHolderImage(title);
 };
-
-interface PodcastItemProps {
-  categoryId: string;
-  description: string;
-  hosts: string;
-  logo: string;
-  rss: string;
-  runtime: string;
-  title: string;
-  size: string;
-  style: any;
-  history: any;
-}
 
 const PodcastItem: FunctionComponent<PodcastItemProps> = React.memo(props => {
   const { categoryId, description, hosts, logo, rss, runtime, title } = props;

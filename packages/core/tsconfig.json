@@ -4,13 +4,10 @@
     "composite": true,
     "declaration": true,
     "isolatedModules": false,
-    "jsx": "preserve",
     "noEmit": false,
-    "outDir": "dist",
+    "outDir": "dist/",
     "rootDir": "src",
-    "resolveJsonModule": true,
     "typeRoots": ["../../@types", "../../node_modules/@types"]
   },
-  "include": ["src/**/*", "./src/mocks/*.json"],
-  "references": [{ "path": "../core/" }]
+  "include": ["src/"]
 }

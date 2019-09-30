@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from "react";
 import styled from "@emotion/native";
+import React, { FunctionComponent } from "react";
 import { View } from "react-native";
 import titleCase from "title-case";
+import { MaterialIcons as Icon } from "../../libs/vector-icons";
 
-const checkedIcon = require("../../assets/icons/checkmark-green.png");
 
 const ignoreTransformations = {
   iOS: "iOS",
@@ -14,7 +14,17 @@ const ignoreTransformations = {
 
 const appendUnit = (dimensions: number) => `${dimensions}px`;
 
-const Checked = styled.Image`
+
+interface CategoryItemProps {
+  categoryId: string;
+  dimensions: number;
+  selectCategory: (categoryId: string) => void;
+  unselectCategory: (categoryId: string) => void;
+  selected: string[];
+  isSelected?: boolean;
+}
+
+const Checked = styled(Icon)`
   width: 15px;
   height: 15px;
   position: absolute;
@@ -25,10 +35,10 @@ const Checked = styled.Image`
 `;
 
 const CategoryImage = styled.Image`
-  width: ${props => appendUnit(props.dimensions)};
-  height: ${props => appendUnit(props.dimensions)};
+  width: ${(props: CategoryItemProps) => appendUnit(props.dimensions)};
+  height: ${(props: CategoryItemProps) => appendUnit(props.dimensions)};
   border-radius: 5px;
-  ${props => {
+  ${(props: CategoryItemProps) => {
     const borderEnabled = {
       borderRadius: 5,
       borderWidth: 1.5,
@@ -64,15 +74,7 @@ const CategoryTitle = styled.Text`
   text-align: center;
 `;
 
-const transformTitle = title => ignoreTransformations[title] || titleCase(title);
-
-interface CategoryItemProps {
-  categoryId: string,
-  dimensions: number,
-  selectCategory: Function,
-  unselectCategory: Function
-  selected: Array<string>,
-}
+const transformTitle = (title: string) => ignoreTransformations[title] || titleCase(title);
 
 export const CategoryItem: FunctionComponent<CategoryItemProps> = React.memo(props => {
   const { categoryId, dimensions, selectCategory, unselectCategory, selected } = props;
@@ -87,7 +89,7 @@ export const CategoryItem: FunctionComponent<CategoryItemProps> = React.memo(pro
         onPress={() => (isSelected ? unselectCategory(categoryId) : selectCategory(categoryId))}
         underlayColor="black"
       >
-        {isSelected && <Checked source={checkedIcon} />}
+        {isSelected && <Checked name="check-circle" />}
         <CategoryImage
           dimensions={dimensions}
           style={{ resizeMode: "cover" }}

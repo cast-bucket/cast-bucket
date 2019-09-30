@@ -1,12 +1,12 @@
-import React, { FunctionComponent } from "react";
-
-import Podcasts from "../containers/Podcasts";
 import styled from "@emotion/native";
+import React, { FunctionComponent } from "react";
+import { View } from "react-native";
+import titleCase from "title-case";
+import { Link, withRouter } from "../../libs/router";
 import { isMobile } from "../../utils/platforms";
 import { SectionTitle, Text } from "../common/Typography";
-import { Link, withRouter } from "../../libs/router";
-import titleCase from "title-case";
-import { View } from "react-native";
+import Podcasts from "../containers/Podcasts";
+
 
 const Row = styled.View`
   flex-direction: row;
@@ -24,12 +24,7 @@ if (!isMobile) {
   rowButtonStyles.cursor = "pointer";
 }
 
-// TODO: load more items, or link section to new page?
-const handleRowButtonPress = rowId => {
-  console.log("Row Row Row the boat at" + rowId);
-};
-
-type PodcastsSectionProps = {
+interface PodcastsSectionProps {
   sectionType: string;
 };
 

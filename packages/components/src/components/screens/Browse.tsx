@@ -1,15 +1,19 @@
 import React from "react";
-import { ScrollView, View, FlatList, TextInput, Dimensions, StyleSheet } from "react-native";
+import { FlatList, ScrollView, StyleSheet, TextInput, View } from "react-native";
 import { Colors } from "react-native-paper";
-import * as constants from "../../utils/constants";
-import PodcastsSection from "../layout/PodcastsSection";
-import { SectionTitle, Title, PageHeading } from "../common/Typography";
-import { MaterialIcons as Icon } from "../../libs/vector-icons";
 import { Link } from "../../libs/router";
-import { isSmallScreen, isMobile } from "../../utils/platforms";
+import { MaterialIcons as Icon } from "../../libs/vector-icons";
+import * as constants from "../../utils/constants";
+import { isMobile, isSmallScreen } from "../../utils/platforms";
 import { Page } from "../common/Page";
+import { PageHeading, SectionTitle, Title } from "../common/Typography";
+import PodcastsSection from "../layout/PodcastsSection";
 
 export class Browse extends React.PureComponent {
+  state = {
+    text: ""
+  };
+
   resize = () => this.forceUpdate();
 
   componentDidMount() {
@@ -23,10 +27,6 @@ export class Browse extends React.PureComponent {
       window.removeEventListener("resize", this.resize);
     }
   }
-
-  state = {
-    text: ""
-  };
 
   render() {
     const categories = constants.data.appCategories;

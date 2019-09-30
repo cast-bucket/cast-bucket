@@ -1,13 +1,8 @@
+import { IPodcastItem } from "@cast-bucket/core";
 import isTouchDevice from "is-touch-device";
 import React, { Component } from "react";
 import { Dimensions, View } from "react-native";
-import {
-  DataProvider,
-  LayoutProvider,
-  RecyclerListView,
-  BaseDataProvider,
-  BaseLayoutProvider
-} from "recyclerlistview";
+import { BaseDataProvider, BaseLayoutProvider, DataProvider, LayoutProvider, RecyclerListView } from "recyclerlistview";
 import * as constants from "../../utils/constants";
 import { isMobile } from "../../utils/platforms";
 import CarouselScrollView from "../common/CarouselScrollView";
@@ -21,15 +16,15 @@ const ViewTypes = {
   PODCAST_ITEM: 0
 };
 
-type PodcastsListProps = {
-  data: any;
-  type: string;
-};
+interface PodcastsListProps {
+  data: IPodcastItem[];
+  podcastSectionType?: string,
+}
 
-type PodcastsListState = {
+interface PodcastsListState {
   dataProvider: BaseDataProvider;
   layoutProvider: BaseLayoutProvider;
-};
+}
 
 class PodcastsList extends Component<PodcastsListProps, PodcastsListState> {
   constructor(props: PodcastsListProps) {

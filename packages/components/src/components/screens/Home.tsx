@@ -1,8 +1,8 @@
 import styled from "@emotion/native";
 import React from "react";
 import { View } from "react-native";
-import { PageHeading } from "../common/Typography";
 import { Page } from "../common/Page";
+import { PageHeading } from "../common/Typography";
 import PodcastsSection from "../layout/PodcastsSection";
 
 const ScrollableContainer = styled.ScrollView`

@@ -1,10 +1,11 @@
 import AudioPlayer from "../../libs/audio-player/";
-import { Reducer } from '../types';
+import { Reducer } from "../types";
 
 export interface State {
   audio: any;
-  currentEpisode: any | null,
+  currentEpisode: any | null;
   isPlaying: boolean;
+  episodeId?: string | null;
 }
 
 const initialState: State = {

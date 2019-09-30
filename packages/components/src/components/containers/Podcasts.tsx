@@ -9,15 +9,14 @@ import PodcastsList from "../layout/PodcastsList";
  * Recommended
  */
 
- type PodcastsContainerProps = {
-   items: Array<any>,
-   fetchPodcasts: Function,
-   type: string,
-   isFetching: boolean
- }
+interface PodcastsContainerProps {
+  items: any[];
+  fetchPodcasts: (() => void);
+  type: string;
+  isFetching: boolean;
+}
 
 class PodcastsContainer extends React.Component<PodcastsContainerProps> {
-
   componentDidMount() {
     if (!this.props.items.length) this.props.fetchPodcasts();
   }
@@ -27,7 +26,7 @@ class PodcastsContainer extends React.Component<PodcastsContainerProps> {
     return isFetching || items.length <= 0 ? (
       <ActivityIndicator animating={true} />
     ) : (
-      <PodcastsList data={items} type={type} />
+      <PodcastsList data={items} podcastSectionType={type} />
     );
   }
 }

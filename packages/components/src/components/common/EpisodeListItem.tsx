@@ -1,6 +1,7 @@
+import { IEpisodeItem } from "@cast-bucket/core/";
 import styled from "@emotion/native";
 import React, { FunctionComponent } from "react";
-import { Dimensions, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Dimensions, StyleSheet, View } from "react-native";
 import { MaterialIcons as Icon } from "../../libs/vector-icons";
 import { Text } from "./Typography";
 
@@ -32,15 +33,15 @@ const Row = styled.View`
   justify-content: space-between;
 `;
 
-interface EpisodeItemProps {
+interface EpisodeListItemProps {
   item: any;
   index?: number;
-  togglePlaying: Function;
+  togglePlaying: ((arg0: IEpisodeItem) => void);
   isPlaying: boolean;
 }
 
 // @ts-ignore
-const EpisodeItem: FunctionComponent<EpisodeItemProps> = React.memo((props: EpisodeItemProps) => {
+const EpisodeListItem: FunctionComponent<EpisodeListItemProps> = React.memo((props: EpisodeListItemProps) => {
   const { item, togglePlaying, isPlaying } = props;
   if (!item.url) return;
   const { title, isoDate } = item;
@@ -78,4 +79,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default EpisodeItem;
+export default EpisodeListItem;

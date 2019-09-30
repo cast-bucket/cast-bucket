@@ -1,21 +1,22 @@
+import { IEpisodeItem } from "@cast-bucket/core/";
 import React, { Component } from "react";
 import { FlatList, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { fetchEpisodes, togglePlaying } from "../../redux/actions";
+import { AppState } from "../../redux/store";
 import { isMobile } from "../../utils/platforms";
-import EpisodeItem from "../common/EpisodeItem";
-
-type EpisodesListProps = {
-  feed: string, 
-  fetchEpisodes: Function,
-  episodes: any,
-  togglePlaying: Function
+import EpisodeListItem from "../common/EpisodeListItem";
+interface EpisodesListProps {
+  feed: string;
+  fetchEpisodes: (feedUrl: string) => void;
+  episodes: any;
+  togglePlaying: (arg0: IEpisodeItem) => void;
 }
 
 class EpisodesList extends Component<EpisodesListProps> {
   componentDidMount() {
-    const { feed, fetchEpisodes } = this.props;
-    fetchEpisodes(feed);
+    const { feed } = this.props;
+    this.props.fetchEpisodes(feed);
     if (!isMobile) {
       window.addEventListener("resize", this.resize);
     }
@@ -23,7 +24,8 @@ class EpisodesList extends Component<EpisodesListProps> {
 
   componentDidUpdate(prevProps: EpisodesListProps) {
     if (prevProps.feed !== this.props.feed) {
-      fetchEpisodes(this.props.feed);
+      const { feed } = this.props;
+      this.props.fetchEpisodes(feed);
     }
   }
 
@@ -47,7 +49,7 @@ class EpisodesList extends Component<EpisodesListProps> {
     const { episodes } = this.props;
     const renderListItem = ({ item }) => {
       return (
-        <EpisodeItem
+        <EpisodeListItem
           item={item}
           isPlaying={this.isPlaying(item.url)}
           togglePlaying={this.props.togglePlaying}
@@ -73,7 +75,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppState) => {
   const defaultState = { isFetching: true, items: {} };
   const { isFetching, items: episodes } = state.episodes || defaultState;
   const nowPlaying = Object.values(episodes).filter((p: any) => p.isPlaying === true);
