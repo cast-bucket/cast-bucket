@@ -1,7 +1,7 @@
 import Feather from "react-native-vector-icons/Feather";
 import FeatherIconFont from "react-native-vector-icons/Fonts/Feather.ttf";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import MaterialIconFont from "react-native-vector-icons/Fonts/MaterialIcons.ttf";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 export { Feather, MaterialIcons };
 
