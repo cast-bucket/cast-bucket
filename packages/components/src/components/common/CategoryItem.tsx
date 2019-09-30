@@ -14,6 +14,16 @@ const ignoreTransformations = {
 
 const appendUnit = (dimensions: number) => `${dimensions}px`;
 
+
+interface CategoryItemProps {
+  categoryId: string;
+  dimensions: number;
+  selectCategory: (categoryId: string) => void;
+  unselectCategory: (categoryId: string) => void;
+  selected: string[];
+  isSelected?: boolean;
+}
+
 const Checked = styled(Icon)`
   width: 15px;
   height: 15px;
@@ -65,15 +75,6 @@ const CategoryTitle = styled.Text`
 `;
 
 const transformTitle = (title: string) => ignoreTransformations[title] || titleCase(title);
-
-interface CategoryItemProps {
-  categoryId: string;
-  dimensions: number;
-  selectCategory: (categoryId: string) => void;
-  unselectCategory: (categoryId: string) => void;
-  selected: string[];
-  isSelected?: boolean;
-}
 
 export const CategoryItem: FunctionComponent<CategoryItemProps> = React.memo(props => {
   const { categoryId, dimensions, selectCategory, unselectCategory, selected } = props;

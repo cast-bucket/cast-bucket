@@ -8,6 +8,15 @@ import getPlaceHolderImage from "../../utils/getPlaceHolderImage";
 import { isMobile } from "../../utils/platforms";
 import { Text } from "./Typography";
 
+
+interface PodcastItemProps extends IPodcastItem {
+  categoryId: string;
+  logo: any;
+  size: string;
+  style: any;
+  history: any;
+}
+
 const PodcastTitle = styled(Text)`
   font-size: 18px;
   margin-top: 10px;
@@ -32,14 +41,6 @@ const PodcastImageContainer = styled.TouchableHighlight`
 const getPodcastImage = (logo: any, title: string) => {
   return logo && logo.image ? { uri: logo.image } : getPlaceHolderImage(title);
 };
-
-interface PodcastItemProps extends IPodcastItem {
-  categoryId: string;
-  logo: any;
-  size: string;
-  style: any;
-  history: any;
-}
 
 const PodcastItem: FunctionComponent<PodcastItemProps> = React.memo(props => {
   const { categoryId, description, hosts, logo, rss, runtime, title } = props;
