@@ -24,7 +24,11 @@
     "type": "git",
     "url": "git+https://github.com/Shriram-Balaji/cast-bucket.git"
   },
-  "precommit": "NODE_ENV=production lint-staged",
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test && lint-staged"
+    }
+  },
   "lint-staged": {
     "*.{ts,tsx}": [
       "tslint --fix",
