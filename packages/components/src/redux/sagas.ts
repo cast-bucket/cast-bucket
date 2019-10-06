@@ -77,9 +77,8 @@ export function* togglePlayingEpisode({ episode }: any) {
   }
 }
 
-export function* fetchEpisodes(episode: any) {
+export function* fetchEpisodes({ podcastId }: any) {
   try {
-    const { podcastId } = episode;
     const mockEpisodeItems = mocks.episodeItems[podcastId]
       ? mocks.episodeItems[podcastId].items
       : [];
@@ -90,7 +89,7 @@ export function* fetchEpisodes(episode: any) {
         url: item.enclosure.url,
         isPlaying: false
       }));
-    const episodes = episodeItems.reduce((o: any, ep: any) => ({ ...o, [ep.url]: episode }), {});
+    const episodes = episodeItems.reduce((o: any, ep: any) => ({ ...o, [ep.url]: ep }), {});
     yield put({ type: "RECEIVED_EPISODES", episodes });
   } catch (error) {
     yield put({ type: "FETCH_EPISODES_FAILED", error });
