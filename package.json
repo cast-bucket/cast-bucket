@@ -9,6 +9,7 @@
     "test": "jest",
     "clean": "yarn workspaces run clean",
     "build:web": "yarn workspace @cast-bucket/web build",
+    "dev": "yarn dev:web",
     "dev:web": "yarn workspace @cast-bucket/web compile && concurrently --kill-others \"yarn workspace @cast-bucket/web compile -w\" \"yarn workspace @cast-bucket/web start\"",
     "start:android": "yarn patch-package && yarn workspace @cast-bucket/mobile start",
     "dev:android": "yarn workspace @cast-bucket/mobile compile && concurrently --kill-others \"yarn workspace @cast-bucket/mobile compile -w\" \"yarn workspace @cast-bucket/mobile start\"",
