@@ -63,3 +63,4 @@ tmp/
 packages/**/dist/
 *.tsbuildinfo
 .vscode
+*.jsx
