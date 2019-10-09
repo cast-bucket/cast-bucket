@@ -11769,10 +11769,10 @@ react-native-store-review@0.1.5:
   resolved "https://registry.yarnpkg.com/react-native-store-review/-/react-native-store-review-0.1.5.tgz#9df69786a137580748e368641698d2104519e4cf"
   integrity sha512-vVx7NYaQva3bGU5MdqXn4yEB+o+GPdmjqAuj7PnkepfeCS6Bi3sqniiKoXmKOKDgRTfIobBZjUkHzWeHli1+3A==
 
-react-native-super-grid@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/react-native-super-grid/-/react-native-super-grid-3.0.3.tgz#0fe577647826fe426e747c96627d8f6c343dd1be"
-  integrity sha512-cQc7fkT0pqSUtsfLjeyU559LWa92U65CfsPLMuDWfdOmb8Gh8YIfG6dQKqvgqiNhh2e1tF3n02OU232PFh74hg==
+react-native-super-grid@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-super-grid/-/react-native-super-grid-3.1.1.tgz#27652de0827d158ba0ab400631f30c74a68f8550"
+  integrity sha512-qtnoXDKDG/hfqPzmXt34HGNjlOL1D7+efYlaaECCGp2MwOZxE7MTDy9pHGtpTcrM8JRTVyqB1Piy1SkkWEa80Q==
   dependencies:
     prop-types "^15.6.0"
 
