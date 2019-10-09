@@ -66,4 +66,4 @@ Once an emulator or a physical device is connected to your system, the app shoul
 
 ## Community 
 
-<br/>Join our Slack Community: [Slack Invitation](https://join.slack.com/t/cast-bucket/shared_invite/enQtNjI1NzY0NjEyOTQ4LWRkMzM3MDRmNGU2ODI5MGJmMWU4NjViZDUxZThjOTA2MTU1Yzc3ODFhYzI4NTIwYjIzYjlmYzA1MTQ3NGY1NTQ)
+<br/>Join our Slack Community: [Slack Invitation](https://join.slack.com/t/cast-bucket/shared_invite/enQtNjI1NzY0NjEyOTQ4LTI0MjdiNDA5MzVhMDAzMWYwYjRkMTQ0YTBlZWQxNDlkZWFkMzI5MzBjODFjN2ExNmE4YjczZTMyOGM5OTU0ZWM)
