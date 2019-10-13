@@ -7,7 +7,7 @@ import configureStore from "../redux/store";
 import Player from "./common/Player";
 import { Text } from "./common/Typography";
 import BottomNavigation from "./navigation/BottomNavigation";
-import { Browse, Episodes, Home } from "./screens";
+import { Browse, Downloads, Episodes, Home } from "./screens";
 
 const initialState = {};
 const store = configureStore(initialState);
@@ -17,13 +17,12 @@ const Container = styled.View`
   align-items: stretch;
 `;
 
-const Library = () => <Text> Library </Text>;
 const Account = () => <Text> Account </Text>;
 
 const navigationRoutes = [
   { key: "home", title: "Home", icon: "home" },
   { key: "browse", title: "Browse", icon: "radio" },
-  { key: "library", title: "Library", icon: "bookmark" },
+  { key: "downloads", title: "Downloads", icon: "download" },
   { key: "account", title: "Account", icon: "user" }
 ];
 
@@ -35,8 +34,8 @@ const AppView = () => {
         <Container>
           <Switch>
             <Route exact path={["/", "/home"]} render={() => <Home />} />
-            <Route exact path="/browse" render={() => < Browse /> } />
-            <Route exact path="/library" render={() => <Library />} />
+            <Route exact path="/browse" render={() => <Browse />} />
+            <Route exact path="/downloads" render={() => <Downloads />} />
             <Route exact path="/account" render={() => <Account />} />
             <Route
               path="/episodes/:podcastId"
