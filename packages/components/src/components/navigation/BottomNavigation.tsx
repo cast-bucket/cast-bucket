@@ -33,7 +33,7 @@ const Navigation = props => {
       navigationState={navState}
       onIndexChange={handleIndexChange}
       renderScene={() => null}
-      barStyle={{ backgroundColor: "#f3f3f3" }}
+      barStyle={{ backgroundColor: "#e3e3e3" }}
       labeled={false}
       onTabPress={({ route }: any) =>
         !isCurrentLocation(route.key) && history.replace({ pathname: `/${route.key}` })
