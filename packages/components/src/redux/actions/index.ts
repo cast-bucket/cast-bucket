@@ -8,10 +8,13 @@ export const fetchPodcasts = () => ({
   type: "FETCH_PODCASTS"
 });
 
-
 export const fetchEpisodes = (podcastId: string) => ({
   type: "FETCH_EPISODES",
   podcastId
+});
+
+export const fetchDownloads = () => ({
+  type: "FETCH_DOWNLOADS"
 });
 
 export const playEpisode = (episode: IEpisodeItem) => ({
@@ -24,7 +27,8 @@ export const pauseEpisode = (episode: IEpisodeItem) => ({
   episode
 });
 
-export const togglePlaying = (episode: IEpisodeItem) => ({
+export const togglePlaying = (episode: IEpisodeItem, externalState = null) => ({
   type: "TOGGLE_PLAYING_EPISODE",
-  episode
+  episode,
+  externalState
 });

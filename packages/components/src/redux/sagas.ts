@@ -40,9 +40,11 @@ export function* fetchPodcasts() {
   }
 }
 
-export function* togglePlayingEpisode({ episode }: any) {
+export function* togglePlayingEpisode(episodeState: any) {
+  const { episode, externalState }: any = episodeState;
   try {
     const episodeId = episode.url;
+    if (!episodeId) throw new Error("Unable to find episodeId / url");
     const { items: episodeItems } = yield select(state => state.episodes);
 
     // find any other episodes that are playing and pause them
@@ -60,11 +62,11 @@ export function* togglePlayingEpisode({ episode }: any) {
     // toggle Playing State
     const currentEpisode = {
       ...episode,
-      isPlaying: !episode.isPlaying
+      isPlaying: externalState ? !externalState.isPlaying : !episode.isPlaying
     };
 
     // Play / Pause
-    if (episode.isPlaying) {
+    if (externalState ? externalState.isPlaying : episode.isPlaying) {
       yield put({ type: "PAUSE_EPISODE", episode });
     } else {
       yield put({ type: "PLAY_EPISODE", episode });
@@ -96,10 +98,20 @@ export function* fetchEpisodes({ podcastId }: any) {
   }
 }
 
+export function* fetchDownloads() {
+  try {
+    const mockDownloadItems = mocks.downloadItems;
+    yield put({ type: "RECEIVED_DOWNLOADS", downloads: mockDownloadItems });
+  } catch (error) {
+    yield put({ type: "FETCH_DOWNLOADS_FAILED", error });
+  }
+}
+
 export default function* rootSaga() {
   yield takeEvery("FETCH_CATEGORIES", fetchCategories);
   yield takeEvery("FETCH_EPISODES", fetchEpisodes);
   yield takeEvery("FETCH_PODCASTS", fetchPodcasts);
+  yield takeEvery("FETCH_DOWNLOADS", fetchDownloads);
   yield takeEvery("TOGGLE_PLAYING_EPISODE", togglePlayingEpisode);
   yield take("PLAY_EPISODE");
   yield take("PAUSE_EPISODE");
