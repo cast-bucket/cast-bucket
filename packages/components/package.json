@@ -37,7 +37,7 @@
     "react-router-dom": "5.0.0",
     "react-router-native": "5.1.2",
     "react-spring": "8.0.20",
-    "react-test-renderer": "16.9.0",
+    "react-test-renderer": "16.10.2",
     "recyclerlistview": "^2.0.12",
     "redux": "4.0.4",
     "redux-devtools-extension": "2.13.8",
