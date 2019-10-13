@@ -49,9 +49,22 @@ export const episodesReducer = (state = { isFetching: false, items: {} }, action
   }
 };
 
+export const downloadsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "RECEIVED_DOWNLOADS":
+      return {
+        ...state,
+        items: action.downloads
+      };
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   categories: categoriesReducer,
   podcasts: podcastsReducer,
   episodes: episodesReducer,
+  downloads: downloadsReducer,
   audioPlayer: playerReducer
 });

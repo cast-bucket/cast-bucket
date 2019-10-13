@@ -57,6 +57,7 @@ export class Browse extends React.PureComponent {
               style={{
                 fontSize: 18,
                 fontFamily: "Inter",
+                padding: 7,
                 // @ts-ignore
                 ...(!isMobile && { outlineStyle: "none" }),
                 borderWidth: 0
