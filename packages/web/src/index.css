@@ -20,6 +20,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-display: swap;
+  background-color: #f3f3f3;
 }
 
 /* code {
