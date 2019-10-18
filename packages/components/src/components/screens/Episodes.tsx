@@ -1,9 +1,10 @@
 import styled from "@emotion/native";
 import React, { FunctionComponent } from "react";
-import { Dimensions, ScrollView } from "react-native";
+import { Dimensions } from "react-native";
 import { Redirect } from "../../libs/router";
 import { isSmallScreen } from "../../utils/platforms";
 import Header from "../common/EpisodesHeader";
+import { PageWrapper } from "../common/PageWrapper";
 import { Paragraph, Text } from "../common/Typography";
 import EpisodesList from "../layout/EpisodesList";
 
@@ -52,7 +53,7 @@ export const Episodes: FunctionComponent<EpisodesScreenProps> = props => {
     return <Redirect path="/home" />;
   }
   return (
-    <ScrollView>
+    <PageWrapper>
       <EpisoderHeaderContainer>
         <Header logo={logo} title={podcastId} size={ITEM_SIZE} />
       </EpisoderHeaderContainer>
@@ -65,6 +66,6 @@ export const Episodes: FunctionComponent<EpisodesScreenProps> = props => {
       <EpisodesContainer>
         <EpisodesList feed={rss} />
       </EpisodesContainer>
-    </ScrollView>
+    </PageWrapper>
   );
 };
