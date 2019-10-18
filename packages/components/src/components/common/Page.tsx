@@ -8,6 +8,7 @@ export const Page = props => (
       alignItems: "stretch",
       marginTop: 40,
       marginBottom: 20,
+      ...(props.style ? props.style : {})
     }}
   >
     {props.children}
