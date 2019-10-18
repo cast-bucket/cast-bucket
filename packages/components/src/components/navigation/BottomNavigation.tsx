@@ -29,7 +29,7 @@ const Navigation = props => {
 
   return (
     <BottomNavigation
-      style={{ flex: 1, maxHeight: 54 }}
+      style={{ maxHeight: 54 }}
       navigationState={navState}
       onIndexChange={handleIndexChange}
       renderScene={() => null}

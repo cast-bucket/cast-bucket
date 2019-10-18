@@ -5,13 +5,14 @@ import React, { useEffect, useState } from "react";
 import { FlatList, Image, ScrollView, View } from "react-native";
 import { Colors } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
+import { withRouter } from "../../libs/router";
 import { MaterialIcons as Icon } from "../../libs/vector-icons";
 import { fetchDownloads, togglePlaying } from "../../redux/actions";
 import { AppState } from "../../redux/store";
 import * as constants from "../../utils/constants";
 import { isWeb } from "../../utils/platforms";
-import { Page } from "../common/Page";
-import { PageHeading, Text } from "../common/Typography";
+import { PageWrapper } from "../common/PageWrapper";
+import { Text } from "../common/Typography";
 
 const DownloadItem = styled.View`
   min-width: 0px;
@@ -121,25 +122,23 @@ export const Downloads = () => {
   const [nowPlaying, setNowPlaying] = useState();
 
   return (
-    <ScrollView>
-      <Page>
-        <PageHeading>Downloads</PageHeading>
-        <FlatList
-          contentContainerStyle={{
-            marginHorizontal: constants.ui.containers.margin.value,
-            flex: 1
-          }}
-          data={downloads}
-          renderItem={({ item, index }) => (
-            <DownloadListItem
-              item={item}
-              nowPlaying={nowPlaying}
-              setNowPlaying={setNowPlaying}
-              index={index}
-            />
-          )}
-        />
-      </Page>
-    </ScrollView>
+    <PageWrapper title="Downloads">
+      <FlatList
+        contentContainerStyle={{
+          marginTop: 20,
+          marginHorizontal: constants.ui.containers.margin.value,
+          flex: 1
+        }}
+        data={downloads}
+        renderItem={({ item, index }) => (
+          <DownloadListItem
+            item={item}
+            nowPlaying={nowPlaying}
+            setNowPlaying={setNowPlaying}
+            index={index}
+          />
+        )}
+      />
+    </PageWrapper>
   );
 };

@@ -30,7 +30,7 @@ const renderHomePageSections = () => {
 export const Home = ({}) => (
   <ScrollableContainer contentContainerStyle={{ alignItems: "stretch" }}>
     <Page>
-      <View style={{ justifyContent: "space-between", flexDirection: 'row', alignItems: 'center' }}>
+      <View style={{ justifyContent: "space-between", flexDirection: "row", alignItems: "center" }}>
         <PageHeading>Home</PageHeading>
         <UserAvatar source={{ uri: "https://i.pravatar.cc/120" }} />
       </View>
