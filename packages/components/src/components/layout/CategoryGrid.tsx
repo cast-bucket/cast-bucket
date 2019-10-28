@@ -1,10 +1,10 @@
+import { memoSet } from "@cast-bucket/core/";
 import React, { Component } from "react";
 import { View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 import { connect } from "react-redux";
 import { fetchCategories } from "../../redux/actions/";
 import { AppState } from "../../redux/store";
-import { memoSet } from "../../utils/memoize";
 import { isSmallScreen } from "../../utils/platforms";
 import { Button, CategoryItem } from "../common";
 
