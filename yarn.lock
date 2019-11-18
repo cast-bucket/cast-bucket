@@ -11776,10 +11776,10 @@ react-native-paper@^2.16.0:
     react-lifecycles-compat "^3.0.4"
     react-native-safe-area-view "^0.12.0"
 
-react-native-responsive-fontsize@0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/react-native-responsive-fontsize/-/react-native-responsive-fontsize-0.1.8.tgz#3002ffded228e47ed607d760590ef1676b0a5440"
-  integrity sha512-4bWxWLRZAXBXIQM/lcMt271arlxOiae8cGdiq/c54xpwsu0swvK3WJEw71oUxAT4u+TL47BHh3U7yxkGGsOEZQ==
+react-native-responsive-fontsize@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-responsive-fontsize/-/react-native-responsive-fontsize-0.4.0.tgz#900f0ad4fe00c33edf60390704e9b7eb66982f08"
+  integrity sha512-rRypEU21f3+/983gVUfuAh0B6aH0uPFB1GgiiSGvzRf39i+CvMxW32ohF4ofnJ59TxnIS0ihfuaaFwcx3x2ZDg==
   dependencies:
     react-native-iphone-x-helper "^1.0.2"
 
