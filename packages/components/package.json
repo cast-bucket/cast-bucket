@@ -41,7 +41,7 @@
     "recyclerlistview": "^2.0.12",
     "redux": "4.0.4",
     "redux-devtools-extension": "2.13.8",
-    "redux-persist": "5.10.0",
+    "redux-persist": "6.0.0",
     "redux-saga": "1.1.1",
     "reselect": "4.0.0",
     "title-case": "2.1.1"
