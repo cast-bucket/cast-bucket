@@ -8,6 +8,16 @@ export const fetchPodcasts = () => ({
   type: "FETCH_PODCASTS"
 });
 
+export const fetchSubscriptions = (userId: string) => ({
+  type: "FETCH_SUBSCRIPTIONS",
+  userId
+});
+
+export const fetchRecentlyPlayedHistory = (userId: string) => ({
+  type: "FETCH_RECENTLY_PLAYED",
+  userId
+});
+
 export const fetchEpisodes = (podcastId: string) => ({
   type: "FETCH_EPISODES",
   podcastId
