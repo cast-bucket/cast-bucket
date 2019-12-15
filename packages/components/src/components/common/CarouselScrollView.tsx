@@ -1,9 +1,9 @@
 import styled from "@emotion/native";
 import * as React from "react";
-import { ScrollView, ScrollViewProps, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { Colors, IconButton } from "react-native-paper";
 import { ScrollViewDefaultProps } from "recyclerlistview/dist/reactnative/core/scrollcomponent/BaseScrollView";
-import { isMobile } from "../../utils/platforms";
+import { isMobile, isWeb } from "../../utils/platforms";
 
 const SCROLL_BY = 400;
 
@@ -22,6 +22,10 @@ interface ScrollViewState {
   showLeftButton: boolean;
   showRightButton: boolean;
 }
+
+const CustomScrollView = styled(ScrollView)`
+  ${isWeb ? `scrollbar-width: none` : {}};
+`;
 
 class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollViewState> {
   public _scrollViewRef: any;
@@ -71,13 +75,16 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
             }
           />
         )}
-        <ScrollView
+        <CustomScrollView
           {...scrollViewProps}
           ref={scrollView => (this._scrollViewRef = scrollView)}
           onScroll={this.handleScroll}
+          style={{
+            "scrollbar-width": "none"
+          }}
         >
           {this.props.children}
-        </ScrollView>
+        </CustomScrollView>
         {showRightButton && (
           <ScrollRightButton
             style={styles.FAB}
