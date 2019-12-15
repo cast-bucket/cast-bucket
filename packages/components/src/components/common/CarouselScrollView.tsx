@@ -17,11 +17,11 @@ const ScrollRightButton = styled(IconButton)`
   top: 109;
 `;
 
-interface ScrollViewState  {
+interface ScrollViewState {
   xOffsetPosition: number;
   showLeftButton: boolean;
   showRightButton: boolean;
-};
+}
 
 class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollViewState> {
   public _scrollViewRef: any;
@@ -58,7 +58,7 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
 
   render() {
     const { showLeftButton, showRightButton } = this.state;
-    const scrollViewProps: ScrollViewProps = this.props;
+    const scrollViewProps: any = this.props;
     return (
       <View>
         {showLeftButton && (
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     opacity: 1,
     elevation: 6,
-    ...(!isMobile && { userSelect: 'none' })
+    ...(!isMobile && { userSelect: "none" })
   }
 });
 
