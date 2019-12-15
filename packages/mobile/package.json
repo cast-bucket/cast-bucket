@@ -7,6 +7,7 @@
   "scripts": {
     "prepare": "cd .. && yarn patch-package",
     "compile": "tsc -b --incremental",
+    "clean": "shx rm -rf build/*",
     "format": "prettier --write '{.,src/**}/*.{js,jsx,ts,tsx}'",
     "lint": "tslint -p .",
     "start": "node ../../node_modules/react-native/local-cli/cli.js start --projectRoot ../../.",
