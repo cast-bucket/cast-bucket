@@ -6,6 +6,7 @@ import { AppRegistry } from "react-native-web";
 import "./index.css";
 
 const lightTheme = {
+  isDark: false,
   colors: {
     primary: "#2cb67d",
     stroke: "#eaeaea",
@@ -17,6 +18,7 @@ const lightTheme = {
 };
 
 const darkTheme = {
+  isDark: true,
   colors: {
     primary: "#2cb67d",
     stroke: "#1b1e20",
