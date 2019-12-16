@@ -81,20 +81,29 @@ export function* togglePlayingEpisode(episodeState: any) {
 
 export function* fetchEpisodes({ podcastId }: any) {
   try {
-    const mockEpisodeItems = mocks.episodeItems[podcastId]
+    const mockEpisodeItems: any[] = mocks.episodeItems[podcastId]
       ? mocks.episodeItems[podcastId].items
       : [];
-    const episodeItems = mockEpisodeItems
+    const episodeItems: any[] = mockEpisodeItems
       .filter((item: any) => item.enclosure && item.enclosure.url)
       .map((item: any) => ({
         ...item,
         url: item.enclosure.url,
         isPlaying: false
       }));
-    const episodes = episodeItems.reduce((o: any, ep: any) => ({ ...o, [ep.url]: ep }), {});
+    const episodes: any = episodeItems.reduce((o: any, ep: any) => ({ ...o, [ep.url]: ep }), {});
     yield put({ type: "RECEIVED_EPISODES", episodes });
   } catch (error) {
     yield put({ type: "FETCH_EPISODES_FAILED", error });
+  }
+}
+
+export function* fetchSubscriptions({ userId }: any) {
+  try {
+    const subscriptions = yield call(fetch, `/user/${userId}`);
+    yield put({ type: "RECEIVED_SUBSCRIPTIONS", subscriptions });
+  } catch (error) {
+    yield put({ type: "RECEIVED_SUBSCRIPTIONS_FAILED", error });
   }
 }
 
@@ -112,6 +121,7 @@ export default function* rootSaga() {
   yield takeEvery("FETCH_EPISODES", fetchEpisodes);
   yield takeEvery("FETCH_PODCASTS", fetchPodcasts);
   yield takeEvery("FETCH_DOWNLOADS", fetchDownloads);
+  yield takeEvery("FETCH_SUBSCRIPTIONS", fetchSubscriptions);
   yield takeEvery("TOGGLE_PLAYING_EPISODE", togglePlayingEpisode);
   yield take("PLAY_EPISODE");
   yield take("PAUSE_EPISODE");

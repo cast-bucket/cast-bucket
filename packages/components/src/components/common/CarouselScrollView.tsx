@@ -1,9 +1,9 @@
 import styled from "@emotion/native";
 import * as React from "react";
-import { ScrollView, ScrollViewProps, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { Colors, IconButton } from "react-native-paper";
 import { ScrollViewDefaultProps } from "recyclerlistview/dist/reactnative/core/scrollcomponent/BaseScrollView";
-import { isMobile } from "../../utils/platforms";
+import { isMobile, isWeb } from "../../utils/platforms";
 
 const SCROLL_BY = 400;
 
@@ -17,11 +17,11 @@ const ScrollRightButton = styled(IconButton)`
   top: 109;
 `;
 
-interface ScrollViewState  {
+interface ScrollViewState {
   xOffsetPosition: number;
   showLeftButton: boolean;
   showRightButton: boolean;
-};
+}
 
 class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollViewState> {
   public _scrollViewRef: any;
@@ -49,16 +49,16 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
 
   handleScroll = ({ nativeEvent }) => {
     const xOffsetPosition = nativeEvent.contentOffset.x;
-    this.setState({
+    this.setState(() => ({
       xOffsetPosition,
       showLeftButton: xOffsetPosition > 0,
       showRightButton: !this.isCloseToRight(nativeEvent)
-    });
+    }));
   };
 
   render() {
     const { showLeftButton, showRightButton } = this.state;
-    const scrollViewProps: ScrollViewProps = this.props;
+    const scrollViewProps: any = this.props;
     return (
       <View>
         {showLeftButton && (
@@ -75,6 +75,7 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
           {...scrollViewProps}
           ref={scrollView => (this._scrollViewRef = scrollView)}
           onScroll={this.handleScroll}
+          data-no-scrollbar
         >
           {this.props.children}
         </ScrollView>
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     opacity: 1,
     elevation: 6,
-    ...(!isMobile && { userSelect: 'none' })
+    ...(!isMobile && { userSelect: "none" })
   }
 });
 
