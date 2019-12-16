@@ -24,6 +24,8 @@ const Container = styled.View`
   align-items: stretch;
 `;
 
+const BottomNavigationContainer = styled.View``;
+
 const navigationRoutes = [
   { key: "home", title: "Home", icon: "home" },
   { key: "browse", title: "Browse", icon: "radio" },
@@ -70,13 +72,24 @@ const AuthenticatedApp = () => {
           </Switch>
         </Container>
         <Player />
-        <BottomNavigation routes={navigationRoutes} />
+        <BottomNavigationContainer>
+          <BottomNavigation routes={navigationRoutes} />
+        </BottomNavigationContainer>
       </View>
     </Provider>
   );
 };
 
 const UnauthenticatedApp = () => <Login />;
+
+// TODO: Use HOC for Lazy Import
+function LazyComponentHOC(Component) {
+  return props => (
+    <React.Suspense fallback={<FullPageSpinner />}>
+      <Component {...props} />
+    </React.Suspense>
+  );
+}
 
 const AppWrapper = () => {
   const user: any = useAuthenticatedUser();
