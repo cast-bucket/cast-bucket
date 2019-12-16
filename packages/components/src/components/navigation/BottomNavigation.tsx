@@ -35,7 +35,7 @@ const Navigation = props => {
       onIndexChange={handleIndexChange}
       renderScene={() => null}
       activeColor={theme.colors.accent}
-      inactiveColor={Colors.grey100}
+      inactiveColor={Colors.grey600}
       renderIcon={({ route, color }: any) => (
         <Icon name={`${route.icon}`} size={20} color={color} />
       )}
