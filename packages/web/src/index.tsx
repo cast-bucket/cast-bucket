@@ -5,7 +5,18 @@ import React from "react";
 import { AppRegistry } from "react-native-web";
 import "./index.css";
 
-const theme = {
+const lightTheme = {
+  colors: {
+    primary: "#2cb67d",
+    stroke: "#eaeaea",
+    secondary: "#2b2c34",
+    text: "#2b2c34",
+    accent: "#6246ea",
+    background: "#fffffe"
+  }
+};
+
+const darkTheme = {
   colors: {
     primary: "#2cb67d",
     stroke: "#1b1e20",
@@ -17,7 +28,7 @@ const theme = {
 };
 
 const AppView = () => (
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={darkTheme}>
     <Router>
       <App />
     </Router>
