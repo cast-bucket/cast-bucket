@@ -1,9 +1,10 @@
 import styled from "@emotion/native";
+import { withTheme } from "emotion-theming";
 import * as React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
-import { Colors, IconButton } from "react-native-paper";
+import { IconButton } from "react-native-paper";
 import { ScrollViewDefaultProps } from "recyclerlistview/dist/reactnative/core/scrollcomponent/BaseScrollView";
-import { isMobile, isWeb } from "../../utils/platforms";
+import { isMobile } from "../../utils/platforms";
 
 const SCROLL_BY = 400;
 
@@ -57,14 +58,18 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
   };
 
   render() {
+    const { theme }: any = this.props;
     const { showLeftButton, showRightButton } = this.state;
+    const scrollButtonThemeStyles = {
+      backgroundColor: theme.colors.stroke
+    };
     const scrollViewProps: any = this.props;
     return (
       <View>
         {showLeftButton && (
           <ScrollLeftButton
-            style={styles.FAB}
-            color={Colors.grey700}
+            style={[styles.FAB, scrollButtonThemeStyles]}
+            color={theme.colors.accent}
             icon="chevron-left"
             onPress={() =>
               this.scrollTo({ x: this.state.xOffsetPosition - SCROLL_BY, y: 0, animated: true })
@@ -81,8 +86,8 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
         </ScrollView>
         {showRightButton && (
           <ScrollRightButton
-            style={styles.FAB}
-            color={Colors.grey700}
+            style={[styles.FAB, scrollButtonThemeStyles]}
+            color={theme.colors.accent}
             icon="chevron-right"
             onPress={() =>
               this.scrollTo({ x: this.state.xOffsetPosition + SCROLL_BY, y: 0, animated: true })
@@ -117,4 +122,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CarouselScrollView;
+export default withTheme(CarouselScrollView);
