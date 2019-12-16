@@ -14,11 +14,15 @@ const commonStyles = {
   fontFamily: "Inter"
 };
 
-export const Heading = (props: any) => <Headline {...props} style={[commonStyles, props.style]} />;
+export const Heading = withTheme((props: any) => {
+  const themeStyles = props.theme ? { color: props.theme.colors.text } : {};
+  return <Headline {...props} style={[commonStyles, themeStyles, props.style]} />;
+});
 
-export const Paragraph = (props: any) => (
-  <RPParagraph {...props} style={[commonStyles, props.style]} />
-);
+export const Paragraph = withTheme((props: any) => {
+  const themeStyles = props.theme ? { color: props.theme.colors.secondary } : {};
+  return <RPParagraph {...props} style={[commonStyles, themeStyles, props.style]} />;
+});
 
 export const Text = withTheme((props: any) => {
   const themeStyles = props.theme ? { color: props.theme.colors.text } : {};
