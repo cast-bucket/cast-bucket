@@ -23,10 +23,6 @@ interface ScrollViewState {
   showRightButton: boolean;
 }
 
-const CustomScrollView = styled(ScrollView)`
-  ${isWeb ? `scrollbar-width: none` : {}};
-`;
-
 class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollViewState> {
   public _scrollViewRef: any;
 
@@ -53,11 +49,11 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
 
   handleScroll = ({ nativeEvent }) => {
     const xOffsetPosition = nativeEvent.contentOffset.x;
-    this.setState({
+    this.setState(() => ({
       xOffsetPosition,
       showLeftButton: xOffsetPosition > 0,
       showRightButton: !this.isCloseToRight(nativeEvent)
-    });
+    }));
   };
 
   render() {
@@ -75,16 +71,14 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
             }
           />
         )}
-        <CustomScrollView
+        <ScrollView
           {...scrollViewProps}
           ref={scrollView => (this._scrollViewRef = scrollView)}
           onScroll={this.handleScroll}
-          style={{
-            "scrollbar-width": "none"
-          }}
+          data-no-scrollbar
         >
           {this.props.children}
-        </CustomScrollView>
+        </ScrollView>
         {showRightButton && (
           <ScrollRightButton
             style={styles.FAB}
