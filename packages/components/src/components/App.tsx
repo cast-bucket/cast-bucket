@@ -1,4 +1,5 @@
 import styled from "@emotion/native";
+import { useTheme } from "emotion-theming";
 import isEmpty from "is-empty";
 import React from "react";
 import { View } from "react-native";
@@ -34,10 +35,17 @@ const navigationRoutes = [
 
 // TODO: Show navigation based on Platform Type
 const AuthenticatedApp = () => {
-  const user: any = useAuthenticatedUser();
+  // const user: any = useAuthenticatedUser();
+  const theme: any = useTheme();
   return (
     <Provider store={store as any}>
-      <View style={{ flex: 1, flexDirection: "column" }}>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "column",
+          backgroundColor: theme.colors.background
+        }}
+      >
         <Container>
           <Switch>
             <Route exact path={["/", "/home"]} render={() => <Home />} />
