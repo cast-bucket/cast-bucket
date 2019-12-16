@@ -1,5 +1,6 @@
 import { IEpisodeItem } from "@cast-bucket/core/";
 import styled from "@emotion/native";
+import { useTheme } from "emotion-theming";
 import React, { FunctionComponent } from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
 import { MaterialIcons as Icon } from "../../libs/vector-icons";
@@ -8,7 +9,6 @@ import { Text } from "./Typography";
 const { width } = Dimensions.get("window");
 
 const EpisodeTitle = styled(Text)`
-  color: #111111;
   font-size: 18px;
   font-weight: 500;
   line-height: 30px;
@@ -16,7 +16,6 @@ const EpisodeTitle = styled(Text)`
 `;
 
 const EpisodeDate = styled(Text)`
-  color: #7a7a7a;
   margin-vertical: 5px;
 `;
 
@@ -36,38 +35,49 @@ const Row = styled.View`
 interface EpisodeListItemProps {
   item: any;
   index?: number;
-  togglePlaying: ((arg0: IEpisodeItem) => void);
+  togglePlaying: (arg0: IEpisodeItem) => void;
   isPlaying: boolean;
 }
 
 // @ts-ignore
-const EpisodeListItem: FunctionComponent<EpisodeListItemProps> = React.memo((props: EpisodeListItemProps) => {
-  const { item, togglePlaying, isPlaying } = props;
-  if (!item.url) return;
-  const { title, isoDate } = item;
+const EpisodeListItem: FunctionComponent<EpisodeListItemProps> = React.memo(
+  (props: EpisodeListItemProps) => {
+    const theme: any = useTheme();
+    const { item, togglePlaying, isPlaying } = props;
+    if (!item.url) return;
+    const { title, isoDate } = item;
 
-  return (
-    <View style={styles.episodeContainer}>
-      <Row>
-        <View style={{ flexDirection: "column", maxWidth: 0.8 * width }}>
-          <EpisodeTitle>{title}</EpisodeTitle>
-          <EpisodeDate>{new Date(isoDate).toDateString()}</EpisodeDate>
-        </View>
-        <PlayButtonIcon
-          style={{
-            userSelect: "none"
-          }}
-          name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
-          size={40}
-          color="#5e5fb8"
-          onPress={() => {
-            togglePlaying(item);
-          }}
-        />
-      </Row>
-    </View>
-  );
-});
+    return (
+      <View
+        style={{
+          paddingLeft: 20,
+          paddingVertical: 30,
+          borderTopColor: theme.colors.stroke,
+          borderTopWidth: 1,
+          alignSelf: "stretch"
+        }}
+      >
+        <Row>
+          <View style={{ flexDirection: "column", maxWidth: 0.8 * width }}>
+            <EpisodeTitle>{title}</EpisodeTitle>
+            <EpisodeDate>{new Date(isoDate).toDateString()}</EpisodeDate>
+          </View>
+          <PlayButtonIcon
+            style={{
+              userSelect: "none"
+            }}
+            name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
+            size={40}
+            color={theme.colors.accent}
+            onPress={() => {
+              togglePlaying(item);
+            }}
+          />
+        </Row>
+      </View>
+    );
+  }
+);
 
 const styles = StyleSheet.create({
   episodeContainer: {
