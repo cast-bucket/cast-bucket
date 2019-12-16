@@ -1,6 +1,6 @@
+import { withTheme } from "emotion-theming";
 import React from "react";
 import { FlatList, ScrollView, StyleSheet, TextInput, View } from "react-native";
-import { Colors } from "react-native-paper";
 import { Link } from "../../libs/router";
 import { MaterialIcons as Icon } from "../../libs/vector-icons";
 import * as constants from "../../utils/constants";
@@ -9,7 +9,7 @@ import { Page } from "../common/Page";
 import { PageHeading, SectionTitle, Title } from "../common/Typography";
 import PodcastsSection from "../layout/PodcastsSection";
 
-export class Browse extends React.PureComponent {
+class BrowseComponent extends React.PureComponent {
   state = {
     text: ""
   };
@@ -29,6 +29,7 @@ export class Browse extends React.PureComponent {
   }
 
   render() {
+    const { theme }: any = this.props;
     const categories = constants.data.appCategories;
     return (
       <ScrollView>
@@ -41,7 +42,7 @@ export class Browse extends React.PureComponent {
               flexDirection: "row",
               alignItems: "center",
               borderRadius: 50,
-              borderColor: Colors.grey400,
+              borderColor: theme.colors.text,
               ...(isSmallScreen ? { padding: 0 } : { padding: 16 }),
               borderWidth: 1
             }}
@@ -49,7 +50,7 @@ export class Browse extends React.PureComponent {
             <Icon
               name="search"
               size={22}
-              color={Colors.grey400}
+              color={theme.colors.accent}
               style={{ marginHorizontal: 5, paddingLeft: 5 }}
             />
             <TextInput
@@ -60,7 +61,8 @@ export class Browse extends React.PureComponent {
                 padding: 7,
                 // @ts-ignore
                 ...(!isMobile && { outlineStyle: "none" }),
-                borderWidth: 0
+                borderWidth: 0,
+                color: theme.colors.text
               }}
               value={this.state.text}
               onChangeText={text => this.setState({ text })}
@@ -90,7 +92,7 @@ export class Browse extends React.PureComponent {
                       ...(index === categories.length - 1
                         ? { borderBottomWidth: 0 }
                         : { borderBottomWidth: 1 }),
-                      borderBottomColor: Colors.grey300,
+                      borderBottomColor: theme.colors.stroke,
                       flexDirection: "row",
                       justifyContent: "space-between",
                       alignItems: "center"
@@ -103,7 +105,7 @@ export class Browse extends React.PureComponent {
                       name="chevron-right"
                       size={22}
                       style={{ alignSelf: "flex-end" }}
-                      color={Colors.indigo600}
+                      color={theme.colors.accent}
                     />
                   </View>
                 </Link>
@@ -130,3 +132,5 @@ const styles = StyleSheet.create({
         })
   }
 });
+
+export const Browse = withTheme(BrowseComponent);
