@@ -1,4 +1,5 @@
 import styled from "@emotion/native";
+import { withTheme } from "emotion-theming";
 import React from "react";
 import {
   Headline,
@@ -19,9 +20,15 @@ export const Paragraph = (props: any) => (
   <RPParagraph {...props} style={[commonStyles, props.style]} />
 );
 
-export const Text = (props: any) => <RPText {...props} style={[commonStyles, props.style]} />;
+export const Text = withTheme((props: any) => {
+  const themeStyles = props.theme ? { color: props.theme.colors.text } : {};
+  return <RPText {...props} style={[commonStyles, themeStyles, props.style]} />;
+});
 
-export const Title = (props: any) => <RPTitle {...props} style={[commonStyles, props.style]} />;
+export const Title = withTheme((props: any) => {
+  const themeStyles = props.theme ? { color: props.theme.colors.text } : {};
+  return <RPTitle {...props} style={[commonStyles, themeStyles, props.style]} />;
+});
 
 export const SectionTitle = styled(Title)`
   font-weight: 700;
