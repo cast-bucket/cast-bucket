@@ -30,7 +30,6 @@ export interface IEpisodeItem {
   itunes?: RSSFeedItunes;
 }
 
-
 // Podcast
 export interface PodcastHostTwitter {
   link: string;
@@ -59,5 +58,12 @@ export interface IPodcastItem {
   web?: PodcastExternalLink;
 }
 
+// User
 
-
+export interface IUser {
+  username: string;
+  token: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+}

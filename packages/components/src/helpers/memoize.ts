@@ -1,16 +1,15 @@
-import AsyncStorage from "@react-native-community/async-storage";
+import { AsyncStorage } from "react-native";
 
 const MEMOIZATION_TTL = 30;
 export const memoSet = async (key: string, value: any) => {
   try {
     await AsyncStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
-    // Error saving data
     throw error;
   }
 };
 
-export const memoCheck = async (key: string) => {
+export const memoGet = async (key: string) => {
   try {
     const value = await AsyncStorage.getItem(key);
     if (value !== null) {
@@ -24,7 +23,6 @@ export const memoCheck = async (key: string) => {
     }
   } catch (error) {
     throw error;
-    // Error retrieving data
   }
 };
 

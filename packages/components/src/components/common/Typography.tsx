@@ -7,6 +7,7 @@ import {
   Title as RPTitle
 } from "react-native-paper";
 import * as constants from "../../utils/constants";
+import { isSmallScreen } from "../../utils/platforms";
 
 const commonStyles = {
   fontFamily: "Inter"
@@ -24,13 +25,13 @@ export const Title = (props: any) => <RPTitle {...props} style={[commonStyles, p
 
 export const SectionTitle = styled(Title)`
   font-weight: 700;
-  font-size: 26px;
+  font-size: ${isSmallScreen ? "26px" : "28px"};
   padding-left: ${constants.ui.containers.margin.px};
 `;
 
 export const PageHeading = styled(Title)`
   font-weight: 700;
-  font-size: 32px;
+  font-size: ${isSmallScreen ? "32px" : "34px"};
   margin-left: ${constants.ui.containers.margin.px};
   margin-bottom: ${constants.ui.containers.margin.px};
 `;
