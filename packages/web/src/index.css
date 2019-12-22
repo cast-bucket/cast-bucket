@@ -28,6 +28,6 @@ body {
 } */
 
 /* https://github.com/necolas/react-native-web/issues/1299 */
-[data-no-scrollbar] {
-  scrollbar-width: none;
+.pagingEnabledFix > div > div > div {
+  height: 100%;
 }
