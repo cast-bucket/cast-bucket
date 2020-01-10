@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/cast-bucket/cast-bucket) 
+
 # Cast-Bucket
 
 📻 A cross-platform , open-source podcast listening experience for developers.
