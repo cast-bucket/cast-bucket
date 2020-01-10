@@ -4,7 +4,7 @@ import * as React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { IconButton } from "react-native-paper";
 import { ScrollViewDefaultProps } from "recyclerlistview/dist/reactnative/core/scrollcomponent/BaseScrollView";
-import { isMobile } from "../../utils/platforms";
+import { isMobile, isWeb } from "../../utils/platforms";
 
 const SCROLL_BY = 400;
 
