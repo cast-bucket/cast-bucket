@@ -6,7 +6,7 @@
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "clean": "shx rm -f *.tsbuildinfo && shx rm -rf dist && mkdirp dist",
-    "compile": "tsc -b --incremental",
+    "compile": "echo 'compiling . . .'",
     "format": "prettier --write '{.,src/**}/*.{js,jsx,ts,tsx}'",
     "lint": "tslint -p .",
     "prepare": "cd .. && yarn patch-package",
@@ -15,12 +15,7 @@
   },
   "devDependencies": {
     "mkdirp": "0.5.1",
-    "prettier": "1.18.2",
-    "tslint": "5.14.0",
-    "tslint-config-airbnb": "5.11.1",
-    "tslint-config-prettier": "1.18.0",
-    "tslint-react": "3.6.0",
-    "typescript": "3.6.2"
+    "typescript": "^3.7.4"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.6.2",
