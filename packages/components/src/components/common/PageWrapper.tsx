@@ -1,11 +1,19 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { ScrollView } from "react-native";
 import { Appbar, Colors } from "react-native-paper";
-import { withRouter } from "../../libs/router/";
+import { useHistory } from "../../libs/router/";
 import { isSmallScreen } from "../../utils/platforms";
 import { PageHeading } from "./Typography";
 
-export const PageWrapper = withRouter(({ children, title, history, titleStyle }) => {
+type PageWrapperProps = {
+  children: ReactNode[] | ReactNode;
+  title?: string;
+  titleStyle?: any;
+};
+
+export const PageWrapper: React.FC<PageWrapperProps> = props => {
+  const history = useHistory();
+  const { children, title, titleStyle } = props;
   const AppNavigationBar = () => (
     <Appbar.Header style={{ backgroundColor: Colors.black }}>
       <Appbar.BackAction onPress={() => history.goBack()} />
@@ -23,4 +31,4 @@ export const PageWrapper = withRouter(({ children, title, history, titleStyle })
       {children}
     </ScrollView>
   );
-});
+};
