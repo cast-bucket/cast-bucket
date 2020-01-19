@@ -21,13 +21,12 @@ const UserAvatar = styled.Image`
 
 const renderHomePageSections = () => {
   const sections = ["new-releases", "subscriptions", "recently-played"];
-  // @ts-ignore
   return sections.map((sectionId, index) => (
     <PodcastsSection sectionType={sectionId} key={index} />
   ));
 };
 
-export const Home = ({}) => (
+export const Home = () => (
   <ScrollableContainer contentContainerStyle={{ alignItems: "stretch" }}>
     <Page>
       <View style={{ justifyContent: "space-between", flexDirection: "row", alignItems: "center" }}>

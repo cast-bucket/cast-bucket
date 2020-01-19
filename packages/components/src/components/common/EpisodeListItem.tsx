@@ -2,7 +2,7 @@ import { IEpisodeItem } from "@cast-bucket/core/";
 import styled from "@emotion/native";
 import { useTheme } from "emotion-theming";
 import React, { FunctionComponent } from "react";
-import { Dimensions, StyleSheet, View } from "react-native";
+import { Dimensions, View } from "react-native";
 import { MaterialIcons as Icon } from "../../libs/vector-icons";
 import { Text } from "./Typography";
 
@@ -39,7 +39,6 @@ interface EpisodeListItemProps {
   isPlaying: boolean;
 }
 
-// @ts-ignore
 const EpisodeListItem: FunctionComponent<EpisodeListItemProps> = React.memo(
   (props: EpisodeListItemProps) => {
     const theme: any = useTheme();
@@ -78,15 +77,5 @@ const EpisodeListItem: FunctionComponent<EpisodeListItemProps> = React.memo(
     );
   }
 );
-
-const styles = StyleSheet.create({
-  episodeContainer: {
-    paddingLeft: 20,
-    paddingVertical: 30,
-    borderTopColor: "#d3d3d3",
-    borderTopWidth: 1,
-    alignSelf: "stretch"
-  }
-});
 
 export default EpisodeListItem;

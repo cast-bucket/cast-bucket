@@ -59,7 +59,6 @@ class BrowseComponent extends React.PureComponent {
                 fontSize: 18,
                 fontFamily: "Inter",
                 padding: 7,
-                // @ts-ignore
                 ...(!isMobile && { outlineStyle: "none" }),
                 borderWidth: 0,
                 color: theme.colors.text
@@ -81,10 +80,9 @@ class BrowseComponent extends React.PureComponent {
               return (
                 <Link
                   style={{ ...(!isMobile && { textDecoration: "none" }) }}
-                  // TODO: Add link once Podcasts Page is done
-                  // to={{
-                  //   pathname: `/podcasts/${item}`
-                  // }}
+                  to={{
+                    pathname: `/podcasts/${item}`
+                  }}
                 >
                   <View
                     style={{

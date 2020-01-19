@@ -38,7 +38,7 @@ const AuthenticatedApp = () => {
   // const user: any = useAuthenticatedUser();
   const theme: any = useTheme();
   return (
-    <Provider store={store as any}>
+    <Provider store={store}>
       <View
         style={{
           flex: 1,
@@ -91,6 +91,7 @@ const AuthenticatedApp = () => {
 const UnauthenticatedApp = () => <Login />;
 
 // TODO: Use HOC for Lazy Import
+// eslint-disable-next-line
 function LazyComponentHOC(Component) {
   return props => (
     <React.Suspense fallback={<FullPageSpinner />}>
@@ -100,7 +101,7 @@ function LazyComponentHOC(Component) {
 }
 
 const AppWrapper = () => {
-  const user: any = useAuthenticatedUser();
+  const user = useAuthenticatedUser();
   return user && !isEmpty(user) ? <AuthenticatedApp /> : <UnauthenticatedApp />;
 };
 

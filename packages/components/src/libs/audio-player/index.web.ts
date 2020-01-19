@@ -6,7 +6,7 @@ interface AudioSource {
 }
 
 export default class Player {
-  private audio: AudioSource[]
+  audio: AudioSource[];
 
   constructor() {
     this.audio = [];

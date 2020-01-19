@@ -1,18 +1,11 @@
 import React from "react";
-import { AppState } from "../redux/store";
 import { useAuth } from "./authentication";
-interface IContextProps {
-  state: AppState;
-  dispatch: ({ type }: { type: string }) => void;
-}
 
-const UserContext = React.createContext({} as IContextProps);
+const UserContext = React.createContext({});
 
 export const UserProvider = props => {
-  const {
-    data: { user }
-  } = useAuth();
-  return <UserContext.Provider value={user} {...props} />;
+  const { data }: any = useAuth();
+  return <UserContext.Provider value={data.user} {...props} />;
 };
 
 export const useAuthenticatedUser = () => React.useContext(UserContext);
