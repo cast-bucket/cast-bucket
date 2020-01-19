@@ -4,7 +4,8 @@ import * as React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { IconButton } from "react-native-paper";
 import { ScrollViewDefaultProps } from "recyclerlistview/dist/reactnative/core/scrollcomponent/BaseScrollView";
-import { isMobile, isWeb } from "../../utils/platforms";
+import { MaterialIcons as Icon } from "../../libs/vector-icons";
+import { isMobile } from "../../utils/platforms";
 
 const SCROLL_BY = 400;
 
@@ -25,7 +26,7 @@ interface ScrollViewState {
 }
 
 class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollViewState> {
-  public _scrollViewRef: any;
+  _scrollViewRef = null;
 
   constructor(props: ScrollViewDefaultProps) {
     super(props);
@@ -61,7 +62,7 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
     const { theme }: any = this.props;
     const { showLeftButton, showRightButton } = this.state;
     const scrollButtonThemeStyles = {
-      backgroundColor: theme.colors.stroke
+      backgroundColor: theme.colors.navigation
     };
     const scrollViewProps: any = this.props;
     return (
@@ -70,7 +71,7 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
           <ScrollLeftButton
             style={[styles.FAB, scrollButtonThemeStyles]}
             color={theme.colors.accent}
-            icon="chevron-left"
+            icon={({ size, color }) => <Icon name="chevron-left" size={size} color={color} />}
             onPress={() =>
               this.scrollTo({ x: this.state.xOffsetPosition - SCROLL_BY, y: 0, animated: true })
             }
@@ -88,7 +89,7 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
           <ScrollRightButton
             style={[styles.FAB, scrollButtonThemeStyles]}
             color={theme.colors.accent}
-            icon="chevron-right"
+            icon={({ size, color }) => <Icon name="chevron-right" size={size} color={color} />}
             onPress={() =>
               this.scrollTo({ x: this.state.xOffsetPosition + SCROLL_BY, y: 0, animated: true })
             }
@@ -105,8 +106,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     position: "absolute",
     zIndex: 1,
-    width: 32,
-    height: 32,
     backgroundColor: "#fafafa",
     shadowColor: "#000000",
     shadowOffset: {
