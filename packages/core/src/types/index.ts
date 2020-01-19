@@ -48,8 +48,10 @@ export interface PodcastExternalLink {
 
 export interface IPodcastItem {
   category: string;
+  categoryId?: string;
   title: string;
   description: string;
+  logo?: any;
   external?: PodcastExternalLink;
   frequency?: string;
   hosts: PodcastHost[];
