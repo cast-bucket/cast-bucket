@@ -1,32 +1,44 @@
 import { useTheme } from "emotion-theming";
 import React, { useState } from "react";
+import { Route } from "react-native";
 import { BottomNavigation, Colors } from "react-native-paper";
-import { withRouter } from "../../libs/router";
+import { useHistory, useLocation } from "../../libs/router";
 import { Feather as Icon } from "../../libs/vector-icons";
 import { Text } from "../common";
 
-const Navigation = props => {
-  const { history, routes, location } = props;
+const Navigation = ({ routes }) => {
+  const history = useHistory();
+  const location = useLocation();
   const theme: any = useTheme();
   const [navigationIndex, setNavigationIndex] = useState(0);
-  const [navigationRoutes] = useState(routes);
 
   const handleIndexChange = (index: number) => setNavigationIndex(index);
 
-  const routesWithIcons = navigationRoutes.map(route => {
-    return {
-      ...route
-    };
-  });
-
   const navState = {
     index: navigationIndex,
-    routes: routesWithIcons
+    routes
   };
 
   // avoid re-render when tabPress on currentLocation
-  const isCurrentLocation = route => {
+  const isCurrentLocation = (route: Route) => {
     return `/${route}` === location.pathname;
+  };
+
+  const addTopBorderForLightTheme = () => {
+    const borderTopWidth: number = 1;
+    const borderTopColor: string = theme.colors.stroke;
+    const borderStyle: string = "solid";
+    if (!theme.isDark)
+      return {
+        borderTopWidth,
+        borderTopColor,
+        borderStyle
+      };
+  };
+
+  const bottomBarStyle: any = {
+    backgroundColor: theme.colors.navigation,
+    ...addTopBorderForLightTheme()
   };
 
   return (
@@ -55,12 +67,12 @@ const Navigation = props => {
           {route.key}
         </Text>
       )}
-      barStyle={{ backgroundColor: theme.colors.stroke }}
-      onTabPress={({ route }: any) =>
+      barStyle={bottomBarStyle}
+      onTabPress={({ route }: Route) =>
         !isCurrentLocation(route.key) && history.replace({ pathname: `/${route.key}` })
       }
     />
   );
 };
 
-export default withRouter(Navigation);
+export default Navigation;
