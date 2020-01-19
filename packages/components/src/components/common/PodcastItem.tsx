@@ -3,40 +3,43 @@ import styled from "@emotion/native";
 import dashify from "dashify";
 import React, { FunctionComponent } from "react";
 import { View } from "react-native";
-import { withRouter } from "../../libs/router";
+import { useHistory } from "../../libs/router";
 import getPlaceHolderImage from "../../utils/getPlaceHolderImage";
 import { isMobile } from "../../utils/platforms";
 import { Text } from "./Typography";
 
-
 interface PodcastItemProps extends IPodcastItem {
-  categoryId: string;
-  logo: any;
-  size: string;
-  style: any;
-  history: any;
+  size?: string;
+  style?: any;
+  fallbackColor?: string;
 }
 
-const PodcastTitle = styled(Text)`
+const PodcastTitle = styled(Text)(
+  ({ size }) => `
   font-size: 18px;
   margin-top: 10px;
-  max-width: ${(props: PodcastItemProps) => props.size};
+  max-width: ${size};
   text-align: center;
   line-height: 25px;
-`;
+`
+);
 
-const PodcastImage = styled.Image`
-  width: ${(props: PodcastItemProps) => props.size};
-  height: ${(props: PodcastItemProps) => props.size};
+const PodcastImage = styled.Image(
+  ({ size }) => `
+  width: ${size};
+  height: ${size};
   background-color: #7cffc3;
-  border-radius: ${isMobile ? "10px" : "20px"};
-`;
+  border-radius: ${isMobile ? "10px" : "15px"};
+`
+);
 
-const PodcastImageContainer = styled.TouchableHighlight`
-  width: ${(props: PodcastItemProps) => props.size};
-  height: ${(props: PodcastItemProps) => props.size};
-  border-radius: ${isMobile ? "10px" : "20px"};
-`;
+const PodcastImageContainer = styled.TouchableHighlight(
+  ({ size }) => `
+  width: ${size};
+  height: ${size};
+  border-radius: ${isMobile ? "10px" : "15px"};
+`
+);
 
 const getPodcastImage = (logo: any, title: string) => {
   return logo && logo.image ? { uri: logo.image } : getPlaceHolderImage(title);
@@ -45,7 +48,8 @@ const getPodcastImage = (logo: any, title: string) => {
 const PodcastItem: FunctionComponent<PodcastItemProps> = React.memo(props => {
   const { categoryId, description, hosts, logo, rss, runtime, title } = props;
   const imageSource = getPodcastImage(logo, title);
-
+  // const theme: any = useTheme();
+  const history = useHistory();
   const podcastOptions = {
     categoryId,
     description,
@@ -63,7 +67,7 @@ const PodcastItem: FunctionComponent<PodcastItemProps> = React.memo(props => {
         underlayColor="black"
         activeOpacity={0.9}
         onPress={() =>
-          props.history.push({
+          history.push({
             pathname: `/episodes/${dashify(props.title)}`,
             state: { options: podcastOptions }
           })
@@ -76,4 +80,4 @@ const PodcastItem: FunctionComponent<PodcastItemProps> = React.memo(props => {
   );
 });
 
-export default withRouter(PodcastItem);
+export default PodcastItem;
