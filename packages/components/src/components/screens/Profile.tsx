@@ -2,7 +2,7 @@ import { useTheme } from "emotion-theming";
 import React from "react";
 import { View } from "react-native";
 import { TouchableRipple } from "react-native-paper";
-import { withRouter } from "../../libs/router";
+import { useHistory } from "../../libs/router";
 import { Feather as Icon } from "../../libs/vector-icons";
 import { Page } from "../common/Page";
 import { SettingsItem } from "../common/SettingsItem";
@@ -21,7 +21,8 @@ const SettingsIcon = ({ history }) => {
   );
 };
 
-export const Profile = withRouter(({ history }) => {
+export const Profile = props => {
+  const history = useHistory();
   const redirectTo = (path: string) =>
     history.push({
       pathname: `/${path}`
@@ -58,4 +59,4 @@ export const Profile = withRouter(({ history }) => {
       </SettingsItem>
     </Page>
   );
-});
+};

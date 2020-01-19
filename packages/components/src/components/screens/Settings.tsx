@@ -1,11 +1,12 @@
 import React from "react";
-import { withRouter } from "../../libs/router/index.web";
+import { useHistory } from "../../libs/router/index.web";
 import { PageWrapper } from "../common/PageWrapper";
 import { SettingsItem } from "../common/SettingsItem";
 import { ThemedFeatherIcon } from "../common/ThemedIcon";
 import { Text } from "../common/Typography";
 
-export const Settings = withRouter(({ history }) => {
+export const Settings = props => {
+  const history = useHistory();
   const redirectTo = (path: string) =>
     history.push({
       pathname: `/${path}`
@@ -31,4 +32,4 @@ export const Settings = withRouter(({ history }) => {
       </SettingsItem>
     </PageWrapper>
   );
-});
+};

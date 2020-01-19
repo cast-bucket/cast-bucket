@@ -2,11 +2,10 @@ import styled from "@emotion/native";
 import React, { FunctionComponent } from "react";
 import { View } from "react-native";
 import titleCase from "title-case";
-import { Link, withRouter } from "../../libs/router";
+import { Link } from "../../libs/router";
 import { isMobile } from "../../utils/platforms";
 import { SectionTitle, Text } from "../common/Typography";
 import Podcasts from "../containers/Podcasts";
-
 
 const Row = styled.View`
   flex-direction: row;
@@ -26,7 +25,7 @@ if (!isMobile) {
 
 interface PodcastsSectionProps {
   sectionType: string;
-};
+}
 
 const PodcastsSection: FunctionComponent<PodcastsSectionProps> = React.memo(props => {
   const { sectionType } = props;
@@ -48,4 +47,4 @@ const PodcastsSection: FunctionComponent<PodcastsSectionProps> = React.memo(prop
   );
 });
 
-export default withRouter(PodcastsSection);
+export default PodcastsSection;
