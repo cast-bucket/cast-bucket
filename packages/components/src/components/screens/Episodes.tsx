@@ -1,6 +1,7 @@
 import styled from "@emotion/native";
 import React, { FunctionComponent } from "react";
 import { Dimensions } from "react-native";
+import { RouteComponentProps } from "react-router-dom";
 import { Redirect } from "../../libs/router";
 import { isSmallScreen } from "../../utils/platforms";
 import Header from "../common/EpisodesHeader";
@@ -39,18 +40,20 @@ const EpisodesContainer = styled.View`
   margin-top: 100px;
 `;
 
-interface EpisodesScreenProps {
+type EpisodeScreenParams = {
   podcastId: string;
   description: string;
   rss: string;
   location: any;
   logo: any;
-}
+};
 
-export const Episodes: FunctionComponent<EpisodesScreenProps> = props => {
+type EpisodeScreenProps = RouteComponentProps<EpisodeScreenParams>;
+
+export const Episodes: FunctionComponent<EpisodeScreenProps> = props => {
   const { podcastId, description, logo, rss } = getPodcastOptions(props);
   if (!podcastId) {
-    return <Redirect path="/home" />;
+    return <Redirect to="/home" />;
   }
   return (
     <PageWrapper>
