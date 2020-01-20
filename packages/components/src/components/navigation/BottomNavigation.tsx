@@ -24,30 +24,22 @@ const Navigation = ({ routes }) => {
     return `/${route}` === location.pathname;
   };
 
-  const addTopBorderForLightTheme = () => {
-    const borderTopWidth: number = 1;
-    const borderTopColor: string = theme.colors.stroke;
-    const borderStyle: string = "solid";
-    if (!theme.isDark)
-      return {
-        borderTopWidth,
-        borderTopColor,
-        borderStyle
-      };
-  };
-
   const bottomBarStyle: any = {
     backgroundColor: theme.colors.navigation,
-    ...addTopBorderForLightTheme()
+    paddingTop: 5,
+    paddingBottom: 5
   };
 
   return (
     <BottomNavigation
+      sceneAnimationEnabled={true}
+      style={{ flexGrow: 0, flexShrink: 1, flexBasis: "auto", minHeight: 60 }}
       navigationState={navState}
       onIndexChange={handleIndexChange}
       renderScene={() => null}
       activeColor={theme.colors.accent}
       inactiveColor={Colors.grey600}
+      keyboardHidesNavigationBar={true}
       renderIcon={({ route, color }: any) => (
         <Icon name={`${route.icon}`} size={20} color={color} />
       )}
@@ -57,8 +49,6 @@ const Navigation = ({ routes }) => {
             fontSize: 12,
             fontWeight: "500",
             textAlign: "center",
-            backgroundColor: "transparent",
-            whiteSpace: "nowrap",
             color,
             textTransform: "capitalize",
             marginTop: 3
