@@ -20,12 +20,17 @@ import { Profile } from "./screens/Profile";
 const initialState = {};
 const store = configureStore(initialState);
 
-const Container = styled.View`
-  flex: 1;
-  align-items: stretch;
+const AppContainer = styled.View`
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  flex-direction: column;
 `;
 
-const BottomNavigationContainer = styled.View``;
+const Container = styled.View`
+  flex: 1;
+  align-self: auto;
+`;
 
 const navigationRoutes = [
   { key: "home", title: "Home", icon: "home" },
@@ -39,19 +44,17 @@ const AuthenticatedApp = () => {
   const theme: any = useTheme();
   return (
     <Provider store={store}>
-      <View
+      <AppContainer
         style={{
-          flex: 1,
-          flexDirection: "column",
           backgroundColor: theme.colors.background
         }}
       >
         <Container>
           <Switch>
-            <Route exact path={["/", "/home"]} render={() => <Home />} />
-            <Route exact path="/browse" render={() => <Browse />} />
-            <Route exact path="/downloads" render={() => <Downloads />} />
-            <Route exact path="/profile" render={() => <Profile />} />
+            <Route exact path={["/", "/home"]} component={Home} />
+            <Route exact path="/browse" component={Browse} />
+            <Route exact path="/downloads" component={Downloads} />
+            <Route exact path="/profile" component={Profile} />
             <Route
               exact
               path="/account"
@@ -80,10 +83,8 @@ const AuthenticatedApp = () => {
           </Switch>
         </Container>
         <Player />
-        <BottomNavigationContainer>
-          <BottomNavigation routes={navigationRoutes} />
-        </BottomNavigationContainer>
-      </View>
+        <BottomNavigation routes={navigationRoutes} />
+      </AppContainer>
     </Provider>
   );
 };
