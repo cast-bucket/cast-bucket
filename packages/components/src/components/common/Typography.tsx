@@ -8,11 +8,10 @@ import {
   Title as RPTitle
 } from "react-native-paper";
 import * as constants from "../../utils/constants";
+import { useFont } from "../../utils/font-maker";
 import { isSmallScreen } from "../../utils/platforms";
 
-const commonStyles = {
-  fontFamily: "Inter"
-};
+const commonStyles = useFont();
 
 export const Heading = withTheme((props: any) => {
   const themeStyles = props.theme ? { color: props.theme.colors.text } : {};
