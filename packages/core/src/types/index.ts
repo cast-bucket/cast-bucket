@@ -69,3 +69,8 @@ export interface IUser {
   lastName?: string;
   email?: string;
 }
+
+export interface ITheme {
+  isDark: boolean;
+  colors: any;
+}
