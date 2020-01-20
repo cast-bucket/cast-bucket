@@ -2,23 +2,31 @@ import { IPodcastItem } from "@cast-bucket/core";
 import isTouchDevice from "is-touch-device";
 import React, { Component } from "react";
 import { Dimensions, View } from "react-native";
-import { BaseDataProvider, BaseLayoutProvider, DataProvider, LayoutProvider, RecyclerListView } from "recyclerlistview";
+import {
+  BaseDataProvider,
+  BaseLayoutProvider,
+  DataProvider,
+  LayoutProvider,
+  RecyclerListView
+} from "recyclerlistview";
 import * as constants from "../../utils/constants";
-import { isMobile } from "../../utils/platforms";
+import { isMobile, isSmallScreen } from "../../utils/platforms";
 import CarouselScrollView from "../common/CarouselScrollView";
 import PodcastItem from "../common/PodcastItem";
 
 const { height } = Dimensions.get("window");
 
-const ITEM_SIZE = isMobile ? 180 : 250;
 const ITEM_SPACING = constants.ui.containers.margin.value;
+const ITEM_SIZE = isSmallScreen ? 220 : 250;
+const RECYCLER_HEIGHT = isSmallScreen ? ITEM_SIZE + 50 : ITEM_SIZE + 25;
+
 const ViewTypes = {
   PODCAST_ITEM: 0
 };
 
 interface PodcastsListProps {
   data: IPodcastItem[];
-  podcastSectionType?: string,
+  podcastSectionType?: string;
 }
 
 interface PodcastsListState {
@@ -46,7 +54,7 @@ class PodcastsList extends Component<PodcastsListProps, PodcastsListState> {
   }
 
   renderPodcastItem = (type: string, data: any) => {
-    const itemsStyles = { paddingLeft: ITEM_SPACING };
+    const itemsStyles = { paddingLeft: ITEM_SPACING, flex: 1 };
     const podcastItemDimensions = `${ITEM_SIZE - ITEM_SPACING}px`;
     return <PodcastItem {...data} style={itemsStyles} size={podcastItemDimensions} />;
   };
@@ -58,7 +66,7 @@ class PodcastsList extends Component<PodcastsListProps, PodcastsListState> {
         dataProvider={this.state.dataProvider}
         layoutProvider={this.state.layoutProvider}
         contentContainerStyle={{
-          height: isMobile ? ITEM_SIZE + 30 : ITEM_SIZE,
+          height: RECYCLER_HEIGHT,
           marginTop: 25,
           marginBottom: 50
         }}

@@ -1,6 +1,5 @@
 import styled from "@emotion/native";
-import React, { FunctionComponent } from "react";
-import { View } from "react-native";
+import React, { Fragment, FunctionComponent } from "react";
 import titleCase from "title-case";
 import { Link } from "../../libs/router";
 import { isMobile } from "../../utils/platforms";
@@ -30,7 +29,7 @@ interface PodcastsSectionProps {
 const PodcastsSection: FunctionComponent<PodcastsSectionProps> = React.memo(props => {
   const { sectionType } = props;
   return (
-    <View key={sectionType}>
+    <Fragment key={sectionType}>
       <Row>
         <SectionTitle>{titleCase(sectionType)}</SectionTitle>
         <Link
@@ -43,7 +42,7 @@ const PodcastsSection: FunctionComponent<PodcastsSectionProps> = React.memo(prop
         </Link>
       </Row>
       <Podcasts type={sectionType} />
-    </View>
+    </Fragment>
   );
 });
 

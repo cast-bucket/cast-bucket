@@ -5,7 +5,7 @@ import React, { FunctionComponent } from "react";
 import { View } from "react-native";
 import { useHistory } from "../../libs/router";
 import getPlaceHolderImage from "../../utils/getPlaceHolderImage";
-import { isMobile } from "../../utils/platforms";
+import { isMobile, isSmallScreen } from "../../utils/platforms";
 import { Text } from "./Typography";
 
 interface PodcastItemProps extends IPodcastItem {
@@ -16,11 +16,11 @@ interface PodcastItemProps extends IPodcastItem {
 
 const PodcastTitle = styled(Text)(
   ({ size }) => `
-  font-size: 18px;
+  font-size: ${isSmallScreen ? "16px" : "18px"};
   margin-top: 10px;
   max-width: ${size};
   text-align: center;
-  line-height: 25px;
+  line-height: 24px;
 `
 );
 
@@ -33,13 +33,9 @@ const PodcastImage = styled.Image(
 `
 );
 
-const PodcastImageContainer = styled.TouchableHighlight(
-  ({ size }) => `
-  width: ${size};
-  height: ${size};
-  border-radius: ${isMobile ? "10px" : "15px"};
-`
-);
+const PodcastImageContainer = styled.TouchableHighlight`
+  height: auto;
+`;
 
 const getPodcastImage = (logo: any, title: string) => {
   return logo && logo.image ? { uri: logo.image } : getPlaceHolderImage(title);
@@ -63,7 +59,6 @@ const PodcastItem: FunctionComponent<PodcastItemProps> = React.memo(props => {
   return (
     <View style={[props.style]}>
       <PodcastImageContainer
-        size={props.size}
         underlayColor="black"
         activeOpacity={0.9}
         onPress={() =>
@@ -75,7 +70,9 @@ const PodcastItem: FunctionComponent<PodcastItemProps> = React.memo(props => {
       >
         <PodcastImage source={imageSource} size={props.size} />
       </PodcastImageContainer>
-      <PodcastTitle size={props.size}>{props.title}</PodcastTitle>
+      <PodcastTitle size={props.size} numberOfLines={2}>
+        {props.title}
+      </PodcastTitle>
     </View>
   );
 });
