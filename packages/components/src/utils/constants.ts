@@ -24,7 +24,7 @@ export const data = {
 };
 
 // UI CONSTANTS
-const CONTAINER_MARGIN = 32;
+const CONTAINER_MARGIN = 24;
 export const ui = {
   containers: {
     margin: {
