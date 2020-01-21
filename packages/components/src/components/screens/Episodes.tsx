@@ -62,7 +62,7 @@ export const Episodes: FunctionComponent<EpisodeScreenProps> = props => {
       </EpisoderHeaderContainer>
       <PodcastTitle>{podcastId}</PodcastTitle>
       <PodcastDescription
-        style={{ fontSize: 22, maxWidth: isSmallScreen ? width * 0.9 : width * 0.75 }}
+        style={{ fontSize: 20, maxWidth: isSmallScreen ? width * 0.75 : width * 0.75 }}
       >
         {description}
       </PodcastDescription>
