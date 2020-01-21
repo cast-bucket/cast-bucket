@@ -1,11 +1,14 @@
 import axios from "axios";
-import { all, call, put, select, take, takeEvery } from "redux-saga/effects";
+import { eventChannel } from "redux-saga";
+import { all, apply, call, cancelled, put, select, take, takeEvery } from "redux-saga/effects";
+import AudioPlayer from "../libs/audio-player/";
 import * as mocks from "../mocks";
 
 const base = process.env.REACT_APP_API_URL || "https://cast-bucket-api.now.sh";
 const mountpoint = process.env.REACT_APP_API_VERSION || "v1";
 
 const api = `${base}/${mountpoint}`;
+const Player = new AudioPlayer();
 
 export function* fetch(url: string) {
   try {
@@ -38,6 +41,62 @@ export function* fetchPodcasts() {
   } catch (error) {
     yield put({ type: "FETCH_PODCASTS_FAILED", error });
   }
+}
+
+// this function creates an event channel from a given socket
+// Setup subscription to incoming `ping` events
+function createAudioChannel(audio) {
+  // `eventChannel` takes a subscriber function
+  // the subscriber function takes an `emit` argument to put messages onto the channel
+  return eventChannel(emit => {
+    const onLoadHandler = event => {
+      // puts event payload into the channel
+      // this allows a Saga to take this payload from the returned channel
+      emit(audio.duration() || audio._duration);
+    };
+
+    // setup the subscription
+    audio.on("load", onLoadHandler);
+    // audio.on("error", errorHandler);
+
+    // the subscriber must return an unsubscribe function
+    // this will be invoked when the saga calls `channel.close` method
+    const unsubscribe = () => {
+      audio.off("load", onLoadHandler);
+    };
+
+    return unsubscribe;
+  });
+}
+
+export function* playEpisode({ episode }: any) {
+  const { url: episodeId, ...meta } = episode;
+  const audio = yield apply(Player, Player.play, [episodeId, meta]);
+  const audioChannel = yield call(createAudioChannel, audio);
+  try {
+    while (true) {
+      const duration = yield take(audioChannel);
+      yield put({
+        type: "PLAYED_EPISODE",
+        episode: { ...episode, duration }
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  } finally {
+    if (yield cancelled()) {
+      audioChannel.close();
+    }
+  }
+}
+
+export function* pauseEpisode({ episode }: any) {
+  const { url: episodeId } = episode;
+  const audio = yield apply(Player, Player.pause, [episodeId]);
+  yield put({
+    type: "PAUSED_EPISODE",
+    episode: { ...episode, duration: audio.duration() }
+  });
 }
 
 export function* togglePlayingEpisode(episodeState: any) {
@@ -123,6 +182,6 @@ export default function* rootSaga() {
   yield takeEvery("FETCH_DOWNLOADS", fetchDownloads);
   yield takeEvery("FETCH_SUBSCRIPTIONS", fetchSubscriptions);
   yield takeEvery("TOGGLE_PLAYING_EPISODE", togglePlayingEpisode);
-  yield take("PLAY_EPISODE");
-  yield take("PAUSE_EPISODE");
+  yield takeEvery("PLAY_EPISODE", playEpisode);
+  yield takeEvery("PAUSE_EPISODE", pauseEpisode);
 }
