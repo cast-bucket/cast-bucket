@@ -1,16 +1,18 @@
+import { ITheme } from "@cast-bucket/core/src";
 import { useTheme } from "emotion-theming";
 import React from "react";
 import { View } from "react-native";
 import { TouchableRipple } from "react-native-paper";
 import { useHistory } from "../../libs/router";
 import { Feather as Icon } from "../../libs/vector-icons";
+import * as constants from "../../utils/constants";
 import { Page } from "../common/Page";
 import { SettingsItem } from "../common/SettingsItem";
 import { ThemedFeatherIcon } from "../common/ThemedIcon";
 import { PageHeading, Text } from "../common/Typography";
 
 const SettingsIcon = ({ history }) => {
-  const theme: any = useTheme();
+  const theme: ITheme = useTheme();
   return (
     <TouchableRipple
       onPress={() => history.push("/settings")}
@@ -21,7 +23,7 @@ const SettingsIcon = ({ history }) => {
   );
 };
 
-export const Profile = props => {
+export const Profile = () => {
   const history = useHistory();
   const redirectTo = (path: string) =>
     history.push({
@@ -35,7 +37,7 @@ export const Profile = props => {
           justifyContent: "space-between",
           flexDirection: "row",
           alignItems: "center",
-          marginBottom: 64
+          marginBottom: constants.ui.containers.margin.value
         }}
       >
         <PageHeading style={{ marginBottom: 0 }}>Profile</PageHeading>

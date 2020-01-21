@@ -1,3 +1,4 @@
+import { ITheme } from "@cast-bucket/core/src";
 import { useTheme } from "emotion-theming";
 import React from "react";
 import { View } from "react-native";
@@ -5,7 +6,7 @@ import { TouchableRipple } from "react-native-paper";
 import * as constants from "../../utils/constants";
 
 export const SettingsItem = ({ children, style, onPress }: any) => {
-  const theme: any = useTheme();
+  const theme: ITheme = useTheme();
   return (
     <TouchableRipple onPress={onPress} rippleColor="rgba(0, 0, 0, .32)">
       <View

@@ -1,9 +1,10 @@
+import { ITheme } from "@cast-bucket/core/src";
 import { useTheme } from "emotion-theming";
 import React from "react";
 import { ActivityIndicator, View } from "react-native";
 
 const FullPageSpinner = () => {
-  const theme: any = useTheme();
+  const theme: ITheme = useTheme();
   return (
     <View
       style={{

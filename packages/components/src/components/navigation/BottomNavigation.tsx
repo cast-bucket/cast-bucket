@@ -1,3 +1,4 @@
+import { ITheme } from "@cast-bucket/core/src";
 import { useTheme } from "emotion-theming";
 import React, { useState } from "react";
 import { Route } from "react-native";
@@ -6,22 +7,23 @@ import { useHistory, useLocation } from "../../libs/router";
 import { Feather as Icon } from "../../libs/vector-icons";
 import { Text } from "../common";
 
+const isCurrentLocation = (route: Route, location: any) => {
+  return `/${route}` === location.pathname;
+};
+
 const Navigation = ({ routes }) => {
   const history = useHistory();
   const location = useLocation();
-  const theme: any = useTheme();
-  const [navigationIndex, setNavigationIndex] = useState(0);
+  const theme: ITheme = useTheme();
+  const routeIndexByPath = routes.findIndex((r: Route) => `/${r.key}` === location.pathname);
+  const currentIndex = routeIndexByPath !== -1 ? routeIndexByPath : 0;
+  const [navigationIndex, setNavigationIndex] = useState(currentIndex);
 
   const handleIndexChange = (index: number) => setNavigationIndex(index);
 
   const navState = {
     index: navigationIndex,
     routes
-  };
-
-  // avoid re-render when tabPress on currentLocation
-  const isCurrentLocation = (route: Route) => {
-    return `/${route}` === location.pathname;
   };
 
   const bottomBarStyle: any = {
@@ -36,6 +38,10 @@ const Navigation = ({ routes }) => {
       style={{ flexGrow: 0, flexShrink: 1, flexBasis: "auto", minHeight: 60 }}
       navigationState={navState}
       onIndexChange={handleIndexChange}
+      // renderScene={({ route, jumpTo }) => {
+      //   const Route = routes.find(r => r.key === route.key);
+      //   return <Route.Component jumpTo={jumpTo} />;
+      // }}
       renderScene={() => null}
       activeColor={theme.colors.accent}
       inactiveColor={Colors.grey600}
@@ -59,7 +65,7 @@ const Navigation = ({ routes }) => {
       )}
       barStyle={bottomBarStyle}
       onTabPress={({ route }: Route) =>
-        !isCurrentLocation(route.key) && history.replace({ pathname: `/${route.key}` })
+        !isCurrentLocation(route.key, location) && history.push({ pathname: `/${route.key}` })
       }
     />
   );

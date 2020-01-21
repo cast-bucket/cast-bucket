@@ -1,4 +1,4 @@
-import { IEpisodeItem } from "@cast-bucket/core/";
+import { IEpisodeItem, ITheme } from "@cast-bucket/core/";
 import styled from "@emotion/native";
 import { useTheme } from "emotion-theming";
 import React, { FunctionComponent } from "react";
@@ -41,7 +41,7 @@ interface EpisodeListItemProps {
 
 const EpisodeListItem: FunctionComponent<EpisodeListItemProps> = React.memo(
   (props: EpisodeListItemProps) => {
-    const theme: any = useTheme();
+    const theme: ITheme = useTheme();
     const { item, togglePlaying, isPlaying } = props;
     if (!item.url) return;
     const { title, isoDate } = item;
@@ -58,7 +58,9 @@ const EpisodeListItem: FunctionComponent<EpisodeListItemProps> = React.memo(
       >
         <Row>
           <View style={{ flexDirection: "column", maxWidth: 0.8 * width }}>
-            <EpisodeTitle>{title}</EpisodeTitle>
+            <EpisodeTitle numberOfLines={1} style={{ maxWidth: 0.6 * width }}>
+              {title}
+            </EpisodeTitle>
             <EpisodeDate>{new Date(isoDate).toDateString()}</EpisodeDate>
           </View>
           <PlayButtonIcon
