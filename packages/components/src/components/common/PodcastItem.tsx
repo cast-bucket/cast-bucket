@@ -70,7 +70,7 @@ const PodcastItem: FunctionComponent<PodcastItemProps> = React.memo(props => {
       >
         <PodcastImage source={imageSource} size={props.size} />
       </PodcastImageContainer>
-      <PodcastTitle size={props.size} numberOfLines={2}>
+      <PodcastTitle size={props.size} numberOfLines={1}>
         {props.title}
       </PodcastTitle>
     </View>
