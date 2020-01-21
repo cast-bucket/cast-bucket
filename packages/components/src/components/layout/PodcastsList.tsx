@@ -16,9 +16,8 @@ import PodcastItem from "../common/PodcastItem";
 
 const { height } = Dimensions.get("window");
 
+const { RECYCLER_ITEM_SIZE: ITEM_SIZE, RECYCLER_CONTAINER_SIZE: RECYCLER_HEIGHT } = constants;
 const ITEM_SPACING = constants.ui.containers.margin.value;
-const ITEM_SIZE = isSmallScreen ? 220 : 250;
-const RECYCLER_HEIGHT = isSmallScreen ? ITEM_SIZE + 50 : ITEM_SIZE + 25;
 
 const ViewTypes = {
   PODCAST_ITEM: 0
