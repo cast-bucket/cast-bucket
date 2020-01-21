@@ -32,7 +32,7 @@ class BrowseComponent extends React.PureComponent {
     const { theme }: any = this.props;
     const categories = constants.data.appCategories;
     return (
-      <ScrollView>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ alignItems: "stretch" }}>
         <Page>
           <PageHeading>Discover</PageHeading>
           <View
@@ -41,8 +41,9 @@ class BrowseComponent extends React.PureComponent {
               marginTop: 0,
               flexDirection: "row",
               alignItems: "center",
-              borderRadius: 50,
-              borderColor: theme.colors.text,
+              borderRadius: 5,
+              borderColor: theme.colors.stroke,
+              backgroundColor: theme.colors.stroke,
               ...(isSmallScreen ? { padding: 0 } : { padding: 16 }),
               borderWidth: 1
             }}
@@ -56,6 +57,7 @@ class BrowseComponent extends React.PureComponent {
             <TextInput
               placeholder="Search for Podcasts"
               style={{
+                width: "100%",
                 fontSize: 18,
                 fontFamily: "Inter",
                 padding: 7,
