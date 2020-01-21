@@ -1,5 +1,6 @@
 import styled from "@emotion/native";
-import React, { Fragment, FunctionComponent } from "react";
+import React from "react";
+import { View } from "react-native";
 import titleCase from "title-case";
 import { Link } from "../../libs/router";
 import { isMobile } from "../../utils/platforms";
@@ -24,26 +25,29 @@ if (!isMobile) {
 
 interface PodcastsSectionProps {
   sectionType: string;
+  style?: any;
 }
 
-const PodcastsSection: FunctionComponent<PodcastsSectionProps> = React.memo(props => {
-  const { sectionType } = props;
-  return (
-    <Fragment key={sectionType}>
-      <Row>
-        <SectionTitle>{titleCase(sectionType)}</SectionTitle>
-        <Link
-          style={{ ...rowButtonStyles }}
-          to={{
-            pathname: sectionType
-          }}
-        >
-          <Text>View All</Text>
-        </Link>
-      </Row>
-      <Podcasts type={sectionType} />
-    </Fragment>
-  );
-});
+class PodcastsSection extends React.PureComponent<PodcastsSectionProps> {
+  render() {
+    const { sectionType, style } = this.props;
+    return (
+      <View key={sectionType} style={style}>
+        <Row>
+          <SectionTitle>{titleCase(sectionType)}</SectionTitle>
+          <Link
+            style={{ ...rowButtonStyles }}
+            to={{
+              pathname: sectionType
+            }}
+          >
+            <Text>View All</Text>
+          </Link>
+        </Row>
+        <Podcasts type={sectionType} />
+      </View>
+    );
+  }
+}
 
 export default PodcastsSection;
