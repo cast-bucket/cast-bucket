@@ -5,18 +5,19 @@ import { ScrollView, StyleSheet, View } from "react-native";
 import { IconButton } from "react-native-paper";
 import { ScrollViewDefaultProps } from "recyclerlistview/dist/reactnative/core/scrollcomponent/BaseScrollView";
 import { MaterialIcons as Icon } from "../../libs/vector-icons";
+import * as constants from "../../utils/constants";
 import { isMobile } from "../../utils/platforms";
 
-const SCROLL_BY = 400;
+const SCROLL_BY = constants.RECYCLER_ITEM_SIZE * 1;
 
 const ScrollLeftButton = styled(IconButton)`
-  left: 10;
-  top: 109;
+  left: 5;
+  top: 110;
 `;
 
 const ScrollRightButton = styled(IconButton)`
-  right: 10;
-  top: 109;
+  right: 15;
+  top: 110;
 `;
 
 interface ScrollViewState {
@@ -62,7 +63,7 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
     const { theme }: any = this.props;
     const { showLeftButton, showRightButton } = this.state;
     const scrollButtonThemeStyles = {
-      backgroundColor: theme.colors.navigation
+      backgroundColor: theme.colors.stroke
     };
     const scrollViewProps: any = this.props;
     return (
