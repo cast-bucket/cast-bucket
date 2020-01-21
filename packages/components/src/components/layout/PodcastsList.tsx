@@ -10,7 +10,7 @@ import {
   RecyclerListView
 } from "recyclerlistview";
 import * as constants from "../../utils/constants";
-import { isMobile, isSmallScreen } from "../../utils/platforms";
+import { isMobile } from "../../utils/platforms";
 import CarouselScrollView from "../common/CarouselScrollView";
 import PodcastItem from "../common/PodcastItem";
 
