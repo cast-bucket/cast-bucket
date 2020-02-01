@@ -5,11 +5,6 @@ import { Text, View } from "react-native";
 import FullPageSpinner from "../components/common/FullPageSpinner";
 import { AuthClient, getUser } from "../helpers/auth-client";
 
-interface IContextProps {
-  data: any;
-  login: any;
-}
-
 async function bootstrapAppData() {
   const data = await getUser();
   if (!data) {
@@ -20,7 +15,7 @@ async function bootstrapAppData() {
   };
 }
 
-const AuthContext = React.createContext({} as IContextProps);
+const AuthContext = React.createContext({});
 export const AuthProvider = props => {
   const [firstAttemptFinished, setFirstAttemptFinished] = React.useState(false);
 

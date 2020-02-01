@@ -94,17 +94,14 @@ class CategoriesGrid extends Component<CategoriesGridProps, CategoriesGridState>
     const categories = this.props.categories || [];
     return (
       <View>
-        {
-          // @ts-ignore
-          <FlatGrid
-            fixed
-            itemDimension={DEFAULT_ITEM_WIDTH}
-            items={categories}
-            spacing={itemSpacing}
-            renderItem={this.renderItem}
-            ListFooterComponent={this.renderNextButton}
-          />
-        }
+        <FlatGrid
+          fixed
+          itemDimension={DEFAULT_ITEM_WIDTH}
+          items={categories}
+          spacing={itemSpacing}
+          renderItem={this.renderItem}
+          ListFooterComponent={this.renderNextButton}
+        />
       </View>
     );
   }
@@ -120,7 +117,4 @@ const mapStateToProps = (state: AppState) => {
   return { isFetching, categories };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CategoriesGrid);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesGrid);

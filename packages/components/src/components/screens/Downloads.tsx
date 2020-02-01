@@ -2,10 +2,9 @@ import { IEpisodeItem } from "@cast-bucket/core";
 import styled from "@emotion/native";
 import dayjs from "dayjs";
 import React, { useEffect, useState } from "react";
-import { FlatList, Image, ScrollView, View } from "react-native";
+import { FlatList, Image, View } from "react-native";
 import { Colors } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
-import { withRouter } from "../../libs/router";
 import { MaterialIcons as Icon } from "../../libs/vector-icons";
 import { fetchDownloads, togglePlaying } from "../../redux/actions";
 import { AppState } from "../../redux/store";
@@ -56,7 +55,7 @@ const DownloadListItem = ({ item, nowPlaying, index, setNowPlaying }) => {
           />
         </View>
         <View style={{ flex: 1, marginLeft: 10 }}>
-          <Text numberOfLines={2} style={{ lineHeight: 22, fontWeight: 600, fontSize: 14 }}>
+          <Text numberOfLines={2} style={{ lineHeight: 22, fontWeight: "600", fontSize: 14 }}>
             {episodeItem.title}
           </Text>
           <Text numberOfLines={1} style={{ color: Colors.grey700, marginTop: 3, fontSize: 12 }}>
@@ -86,7 +85,7 @@ const DownloadListItem = ({ item, nowPlaying, index, setNowPlaying }) => {
             style={{
               letterSpacing: 1.5,
               fontSize: 10,
-              fontWeight: 500,
+              fontWeight: "500",
               textTransform: "uppercase"
             }}
           >
@@ -117,6 +116,7 @@ export const Downloads = () => {
   const downloads = useSelector((state: AppState) => state.downloads.items);
   useEffect(() => {
     dispatch(fetchDownloads());
+    // eslint-disable-next-line
   }, []);
 
   const [nowPlaying, setNowPlaying] = useState();

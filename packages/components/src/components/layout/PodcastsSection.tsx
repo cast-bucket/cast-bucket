@@ -1,12 +1,11 @@
 import styled from "@emotion/native";
-import React, { FunctionComponent } from "react";
+import React from "react";
 import { View } from "react-native";
 import titleCase from "title-case";
-import { Link, withRouter } from "../../libs/router";
+import { Link } from "../../libs/router";
 import { isMobile } from "../../utils/platforms";
 import { SectionTitle, Text } from "../common/Typography";
 import Podcasts from "../containers/Podcasts";
-
 
 const Row = styled.View`
   flex-direction: row;
@@ -26,26 +25,29 @@ if (!isMobile) {
 
 interface PodcastsSectionProps {
   sectionType: string;
-};
+  style?: any;
+}
 
-const PodcastsSection: FunctionComponent<PodcastsSectionProps> = React.memo(props => {
-  const { sectionType } = props;
-  return (
-    <View key={sectionType}>
-      <Row>
-        <SectionTitle>{titleCase(sectionType)}</SectionTitle>
-        <Link
-          style={{ ...rowButtonStyles }}
-          to={{
-            pathname: sectionType
-          }}
-        >
-          <Text>View All</Text>
-        </Link>
-      </Row>
-      <Podcasts type={sectionType} />
-    </View>
-  );
-});
+class PodcastsSection extends React.PureComponent<PodcastsSectionProps> {
+  render() {
+    const { sectionType, style } = this.props;
+    return (
+      <View key={sectionType} style={style}>
+        <Row>
+          <SectionTitle>{titleCase(sectionType)}</SectionTitle>
+          <Link
+            style={{ ...rowButtonStyles }}
+            to={{
+              pathname: sectionType
+            }}
+          >
+            <Text>View All</Text>
+          </Link>
+        </Row>
+        <Podcasts type={sectionType} />
+      </View>
+    );
+  }
+}
 
-export default withRouter(PodcastsSection);
+export default PodcastsSection;

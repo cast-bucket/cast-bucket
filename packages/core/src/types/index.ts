@@ -48,8 +48,10 @@ export interface PodcastExternalLink {
 
 export interface IPodcastItem {
   category: string;
+  categoryId?: string;
   title: string;
   description: string;
+  logo?: any;
   external?: PodcastExternalLink;
   frequency?: string;
   hosts: PodcastHost[];
@@ -66,4 +68,9 @@ export interface IUser {
   firstName?: string;
   lastName?: string;
   email?: string;
+}
+
+export interface ITheme {
+  isDark: boolean;
+  colors: any;
 }
