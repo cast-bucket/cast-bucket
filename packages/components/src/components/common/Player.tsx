@@ -7,6 +7,7 @@ import Slider from "react-native-slider";
 import { connect } from "react-redux";
 import { togglePlaying } from "../../redux/actions";
 import { AppState } from "../../redux/store";
+import convertSeconds from "../../utils/convert-seconds";
 import { isMobile, isSmallScreen } from "../../utils/platforms";
 import { ThemedMaterialIcon } from "../common/ThemedIcon";
 import { Text } from "./Typography";
@@ -69,6 +70,10 @@ const SliderContainer = styled.View`
 `;
 
 class Player extends React.Component<PlayerProps> {
+  state = {
+    value: 0
+  };
+
   resize = () => this.forceUpdate();
 
   render() {
@@ -79,7 +84,9 @@ class Player extends React.Component<PlayerProps> {
       window.addEventListener("resize", this.resize);
     }
 
-    const { isPlaying, title, duration } = currentEpisode;
+    const { isPlaying, title, duration, convertedDuration } = currentEpisode;
+    const { hours, minutes, seconds } = convertSeconds(this.state.value);
+    const currentTimeStamp = hours > 0 ? `${hours}:${minutes}:${seconds}` : `${minutes}:${seconds}`;
     return (
       <PlayerContainer
         style={{
@@ -127,12 +134,35 @@ class Player extends React.Component<PlayerProps> {
             />
             {!isSmallScreen && <MediaIcon name="forward-10" size={28} />}
           </View>
+          {!isSmallScreen && (
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                alignSelf: "center",
+                // @ts-ignore
+                userSelect: "none"
+              }}
+            >
+              <Text
+                style={{
+                  paddingLeft: 20,
+                  fontSize: 20,
+                  color: theme.colors.secondary
+                }}
+              >
+                {`${currentTimeStamp} / ${convertedDuration}`}
+              </Text>
+            </View>
+          )}
         </View>
         <SliderContainer style={{ position: "absolute", left: 0, right: 0, bottom: 72 }}>
           <Slider
             minimumValue={0}
             maximumValue={duration}
             step={1}
+            value={this.state.value}
+            onValueChange={value => this.setState({ value })}
             trackStyle={sliderStyles.track}
             thumbStyle={sliderStyles.thumb}
             minimumTrackTintColor={theme.colors.accent}
@@ -147,12 +177,17 @@ class Player extends React.Component<PlayerProps> {
 
 const mapStateToProps = (state: AppState) => {
   const { audioPlayer, episodes } = state;
-  const { episodeId, duration } = audioPlayer;
+  const { episodeId } = audioPlayer;
   let currentEpisode = null;
   if (episodeId) {
+    const episodeDuration = convertSeconds(audioPlayer.duration);
+    const { hours, minutes, seconds } = episodeDuration;
+    const convertedDuration =
+      hours > 0 ? `${hours}:${minutes}:${seconds}` : `${minutes}:${seconds}`;
     currentEpisode = {
       ...episodes.items[episodeId],
-      duration
+      duration: audioPlayer.duration,
+      convertedDuration
     };
   }
 
