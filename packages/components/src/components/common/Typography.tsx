@@ -35,7 +35,7 @@ export const Title = withTheme((props: any) => {
 
 export const SectionTitle = styled(Title)`
   font-weight: 700;
-  font-size: ${isSmallScreen ? "26px" : "28px"};
+  font-size: ${isSmallScreen ? "24px" : "26px"};
   padding-left: ${constants.ui.containers.margin.px};
 `;
 
