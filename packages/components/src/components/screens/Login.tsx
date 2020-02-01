@@ -3,12 +3,13 @@ import { View } from "react-native";
 import { useAuth } from "../../context/authentication";
 import { Button } from "../common/";
 
-export const Login = props => {
+export const Login = () => {
+  const auth: any = useAuth();
   return (
     <View
       style={{ flex: 1, flexDirection: "column", justifyContent: "center", alignItems: "center" }}
     >
-      <Button onPress={useAuth().login}>LOGIN</Button>
+      <Button onPress={auth.login}>LOGIN</Button>
     </View>
   );
 };

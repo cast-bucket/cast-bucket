@@ -6,15 +6,15 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 export { Feather, MaterialIcons };
 
 const iconStyles: string = [
-  `@font-face { src:url(${FeatherIconFont});font-family: Feather; }`, 
+  `@font-face { src:url(${FeatherIconFont});font-family: Feather; }`,
   `@font-face { src:url(${MaterialIconFont});font-family: MaterialIcons; }`
 ].join("\n");
 
-const style = document.createElement("style");
+const style: any = document.createElement("style");
 style.type = "text/css";
 
-if ((style as any).styleSheet) {
-  (style as any).styleSheet.cssText = iconStyles;
+if (style.styleSheet) {
+  style.styleSheet.cssText = iconStyles;
 } else {
   style.appendChild(document.createTextNode(iconStyles));
 }

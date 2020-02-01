@@ -6,7 +6,7 @@ interface EpisodeHeaderProps {
   logo: any;
   size: string;
   title: string;
-};
+}
 
 const PodcastImage = styled.Image`
   width: ${(props: EpisodeHeaderProps) => `${props.size}px`};
@@ -20,7 +20,6 @@ const getPodcastImage = (logo: any, title: string) => {
 
 const HeaderContainer = styled.View`
   align-items: center;
-  background-color: #f9f9f9;
 `;
 
 const PodcastInfo = styled.View``;

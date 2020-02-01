@@ -1,3 +1,5 @@
+import { isSmallScreen } from "./platforms";
+
 // data
 export const data = {
   appCategories: [
@@ -24,7 +26,7 @@ export const data = {
 };
 
 // UI CONSTANTS
-const CONTAINER_MARGIN = 32;
+const CONTAINER_MARGIN = 24;
 export const ui = {
   containers: {
     margin: {
@@ -33,3 +35,8 @@ export const ui = {
     }
   }
 };
+
+export const RECYCLER_ITEM_SIZE = isSmallScreen ? 200 : 250;
+export const RECYCLER_CONTAINER_SIZE = isSmallScreen
+  ? RECYCLER_ITEM_SIZE + 10
+  : RECYCLER_ITEM_SIZE + 25;

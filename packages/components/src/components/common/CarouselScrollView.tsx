@@ -1,20 +1,23 @@
 import styled from "@emotion/native";
+import { withTheme } from "emotion-theming";
 import * as React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
-import { Colors, IconButton } from "react-native-paper";
+import { IconButton } from "react-native-paper";
 import { ScrollViewDefaultProps } from "recyclerlistview/dist/reactnative/core/scrollcomponent/BaseScrollView";
-import { isMobile, isWeb } from "../../utils/platforms";
+import { MaterialIcons as Icon } from "../../libs/vector-icons";
+import * as constants from "../../utils/constants";
+import { isMobile } from "../../utils/platforms";
 
-const SCROLL_BY = 400;
+const SCROLL_BY = constants.RECYCLER_ITEM_SIZE * 1;
 
 const ScrollLeftButton = styled(IconButton)`
-  left: 10;
-  top: 109;
+  left: 5;
+  top: 110;
 `;
 
 const ScrollRightButton = styled(IconButton)`
-  right: 10;
-  top: 109;
+  right: 15;
+  top: 110;
 `;
 
 interface ScrollViewState {
@@ -24,7 +27,7 @@ interface ScrollViewState {
 }
 
 class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollViewState> {
-  public _scrollViewRef: any;
+  _scrollViewRef = null;
 
   constructor(props: ScrollViewDefaultProps) {
     super(props);
@@ -57,15 +60,19 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
   };
 
   render() {
+    const { theme }: any = this.props;
     const { showLeftButton, showRightButton } = this.state;
+    const scrollButtonThemeStyles = {
+      backgroundColor: theme.colors.stroke
+    };
     const scrollViewProps: any = this.props;
     return (
       <View>
         {showLeftButton && (
           <ScrollLeftButton
-            style={styles.FAB}
-            color={Colors.grey700}
-            icon="chevron-left"
+            style={[styles.FAB, scrollButtonThemeStyles]}
+            color={theme.colors.accent}
+            icon={({ size, color }) => <Icon name="chevron-left" size={size} color={color} />}
             onPress={() =>
               this.scrollTo({ x: this.state.xOffsetPosition - SCROLL_BY, y: 0, animated: true })
             }
@@ -81,9 +88,9 @@ class CarouselScrollView extends React.Component<ScrollViewDefaultProps, ScrollV
         </ScrollView>
         {showRightButton && (
           <ScrollRightButton
-            style={styles.FAB}
-            color={Colors.grey700}
-            icon="chevron-right"
+            style={[styles.FAB, scrollButtonThemeStyles]}
+            color={theme.colors.accent}
+            icon={({ size, color }) => <Icon name="chevron-right" size={size} color={color} />}
             onPress={() =>
               this.scrollTo({ x: this.state.xOffsetPosition + SCROLL_BY, y: 0, animated: true })
             }
@@ -100,8 +107,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     position: "absolute",
     zIndex: 1,
-    width: 32,
-    height: 32,
     backgroundColor: "#fafafa",
     shadowColor: "#000000",
     shadowOffset: {
@@ -117,4 +122,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CarouselScrollView;
+export default withTheme(CarouselScrollView);
