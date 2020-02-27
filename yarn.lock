@@ -10868,17 +10868,17 @@ react-app-rewired@2.1.5:
   dependencies:
     semver "^5.6.0"
 
-react-art@16.11.0:
-  version "16.11.0"
-  resolved "https://registry.yarnpkg.com/react-art/-/react-art-16.11.0.tgz#8bef960bb25e882d27855879f5e1f497516900fb"
-  integrity sha512-SKqYfYZVM2igrX52gs1JSm7sVeEQLTcKH2fvdya0MwBxxoFQlWQ5b03LtAKR3bGpajbBbpElap0UfUcOrxa+Fg==
+react-art@16.13.0:
+  version "16.13.0"
+  resolved "https://registry.yarnpkg.com/react-art/-/react-art-16.13.0.tgz#0d658306e8701829c2fa82790d0c1c35f84a5b6f"
+  integrity sha512-e1iOrix4ZNLVfNK4EQEK2X06WiJBAoLHfKSQZ3B5jEF5a+WiHq1F/DSz4XR7srMPkIfIAPKd+kHfuyee4YGS/Q==
   dependencies:
     art "^0.10.1"
     create-react-class "^15.6.2"
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    scheduler "^0.17.0"
+    scheduler "^0.19.0"
 
 react-async@^10.0.0:
   version "10.0.0"
@@ -11923,10 +11923,10 @@ scheduler@^0.16.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-scheduler@^0.17.0:
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.17.0.tgz#7c9c673e4ec781fac853927916d1c426b6f3ddfe"
-  integrity sha512-7rro8Io3tnCPuY4la/NuI5F2yfESpnfZyT6TtkXnSWVkcu0BCDJ+8gk5ozUaFaxpIyNuWAPXrH0yFcSi28fnDA==
+scheduler@^0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.19.0.tgz#a715d56302de403df742f4a9be11975b32f5698d"
+  integrity sha512-xowbVaTPe9r7y7RUejcK73/j8tt2jfiyTednOvHbA8JoClvMYCp+r8QegLwK/n8zWQAtZb1fFnER4XLBZXrCxA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
