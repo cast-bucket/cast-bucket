@@ -11010,10 +11010,10 @@ react-native-super-grid@^3.1.1:
   dependencies:
     prop-types "^15.6.0"
 
-react-native-text-ticker@0.19.0:
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/react-native-text-ticker/-/react-native-text-ticker-0.19.0.tgz#1ec0c294f949ebd95bb0579527d01da4771dd72d"
-  integrity sha512-WPaRW80quecckqqjvXK/yVKxGeL/eaBfTl3Y5UXbyBbAVI34KQeSirIHPVACMxoyPMykhXMmyRhzLpgkercZLQ==
+react-native-text-ticker@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-text-ticker/-/react-native-text-ticker-1.1.0.tgz#311da8b60637ca607c4ceb95357283c4e5fca343"
+  integrity sha512-gsKF+hW6P8bFsFWp7Cq55etSWRx4yLeDbMT3bAsGtcRLiI3SrHi55Du7d1JQTDzdKXLFBzzS5UbIpDXyn7+atw==
 
 react-native-track-player@^1.1.8:
   version "1.1.8"
