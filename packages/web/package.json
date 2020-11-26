@@ -28,7 +28,7 @@
     "react-dom": "16.9.0",
     "react-native-super-grid": "^3.1.1",
     "react-native-web": "0.11.6",
-    "react-scripts": "3.3.0",
+    "react-scripts": "4.0.1",
     "typescript": "^3.7.4"
   },
   "devDependencies": {
