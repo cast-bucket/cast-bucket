@@ -10974,10 +10974,10 @@ react-native-responsive-fontsize@0.1.8:
   dependencies:
     react-native-iphone-x-helper "^1.0.2"
 
-react-native-responsive-screen@1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/react-native-responsive-screen/-/react-native-responsive-screen-1.2.2.tgz#59d82146b61c62510032fb795652335433f05f93"
-  integrity sha512-0UDQIBD+bW7+3NNt+ukSleUkKxbRiNupmzLQjdjyRoAjqxidN8+1gs0mHXfmhowcg2b875zTYrtQUG3022yHKw==
+react-native-responsive-screen@1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-responsive-screen/-/react-native-responsive-screen-1.4.2.tgz#45280826d24f9accbfdf46a36cb8e6d780f76f28"
+  integrity sha512-BLYz0UUpeohrib7jbz6wDmtBD5OmiuMRko4IT8kIF63taXPod/c5iZgmWnr5qOnK8hMuKiGMvsM3sC+eHX/lEQ==
 
 react-native-safe-area-view@^0.14.6:
   version "0.14.8"
