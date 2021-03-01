@@ -65,7 +65,3 @@ If the feature is big, open an issue first for discussion.
 ```
 
 Once an emulator or a physical device is connected to your system, the app should automatically install and open. Follow the [Debugging Instructions](https://facebook.github.io/react-native/docs/debugging) from the react-native docs to setup :fire: Hot Reloading and Live Reload in your device to ease the development process.
-
-## Community 
-
-<br/>Join our Slack Community: [Slack Invitation](https://join.slack.com/t/cast-bucket/shared_invite/enQtNjI1NzY0NjEyOTQ4LTI0MjdiNDA5MzVhMDAzMWYwYjRkMTQ0YTBlZWQxNDlkZWFkMzI5MzBjODFjN2ExNmE4YjczZTMyOGM5OTU0ZWM)
