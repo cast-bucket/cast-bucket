@@ -1,0 +1,32 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@types/jest"
+    versions:
+    - 26.0.20
+    - 26.0.21
+    - 26.0.22
+  - dependency-name: react-scripts
+    versions:
+    - 4.0.1
+    - 4.0.2
+  - dependency-name: react-native-text-ticker
+    versions:
+    - 1.11.0
+  - dependency-name: lint-staged
+    versions:
+    - 10.5.3
+  - dependency-name: react-art
+    versions:
+    - 17.0.1
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
+  - dependency-name: redux
+    versions:
+    - 4.0.5
